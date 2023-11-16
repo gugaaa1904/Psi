@@ -1,0 +1,7 @@
+.background10 {
+  position: relative;
+  border-radius: var(--br-xs);
+  background-color: var(--additional-white);
+  width: 100%;
+  height: 761px;
+}

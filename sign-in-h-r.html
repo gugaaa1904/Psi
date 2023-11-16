@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./sign-in-h-r.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="sign-in-hr">
+      <div class="content">
+        <div class="input">
+          <input
+            class="email"
+            name="Email"
+            id="email_company"
+            placeholder="Email"
+            type="email"
+          />
+
+          <input
+            class="password"
+            name="Password"
+            id="password_company"
+            placeholder="Password"
+            type="password"
+          />
+        </div>
+        <b class="forgot-password" id="forgotPasswordText">Forgot Password?</b>
+        <b class="sign-up" id="signUpText">Sign Up</b>
+        <div class="dont-have-an-container">
+          <span>
+            <span>Don’t have an account?</span>
+            <span class="span"> </span>
+          </span>
+          <b class="sign-up1">Sign Up</b>
+        </div>
+        <div class="text">
+          <b class="tittle">Sign In to your Company Account</b>
+          <div class="body">Welcome back! please enter your detail</div>
+        </div>
+        <div class="buttonlargeprimary" id="buttonLargePrimaryContainer">
+          <b class="button">Sign In</b>
+        </div>
+        <img class="logo-1-icon" alt="" src="./public/logo-11@2x.png" />
+
+        <input
+          class="company-name"
+          name="Company Name"
+          id="company_name"
+          placeholder="Company Name"
+          type="text"
+        />
+
+        <b class="sign-up" id="signUpText1">Sign Up</b>
+      </div>
+      <div class="cover">
+        <div class="background"></div>
+        <div class="background1"></div>
+        <div class="text1">
+          <b class="tittle">Customizable Multipurpose Dashboard</b>
+          <div class="body1">
+            Everything you need in an easily customizable dashboard.
+          </div>
+        </div>
+        <div class="illustration">
+          <img class="illustration-child" alt="" src="./public/group-10.svg" />
+
+          <div class="rectangle-parent">
+            <div class="group-child"></div>
+            <b class="activity">Activity</b>
+            <div class="frame-parent">
+              <div class="m-parent">
+                <div class="m">M</div>
+                <div class="m">T</div>
+                <div class="m">W</div>
+                <div class="m">T</div>
+                <div class="m">F</div>
+                <div class="m">S</div>
+                <div class="m">S</div>
+              </div>
+              <div class="rectangle-group">
+                <div class="group-item"></div>
+                <div class="group-inner"></div>
+                <div class="rectangle-div"></div>
+                <div class="group-child1"></div>
+                <div class="group-child2"></div>
+                <div class="group-child3"></div>
+                <div class="group-child4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="group-parent">
+            <div class="rectangle-container">
+              <div class="group-child5"></div>
+              <div class="group-child6"></div>
+              <div class="group-child7"></div>
+              <div class="ellipse-div"></div>
+            </div>
+            <div class="group-container">
+              <div class="group-div">
+                <div class="group-child8"></div>
+                <div class="group-child9"></div>
+              </div>
+              <div class="rectangle-parent1">
+                <div class="group-child10"></div>
+                <div class="ellipse-parent">
+                  <div class="group-child11"></div>
+                  <div class="group-child12"></div>
+                  <div class="group-child13"></div>
+                  <div class="group-child14"></div>
+                  <div class="div">70%</div>
+                </div>
+              </div>
+              <div class="rectangle-parent2">
+                <div class="group-child15"></div>
+                <div class="rectangle-parent3">
+                  <div class="group-child16"></div>
+                  <div class="group-child17"></div>
+                </div>
+                <div class="parent">
+                  <b class="b">$1,235,00</b>
+                  <div class="completed">Completed</div>
+                </div>
+              </div>
+              <div class="rectangle-parent4">
+                <div class="group-child15"></div>
+                <div class="rectangle-parent3">
+                  <div class="group-child16"></div>
+                  <div class="group-child17"></div>
+                </div>
+                <div class="group">
+                  <b class="b">$2,266,70</b>
+                  <div class="completed">Completed</div>
+                </div>
+              </div>
+              <div class="rectangle-parent6">
+                <div class="group-child21"></div>
+                <div class="group-child22"></div>
+                <div class="group-child23"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var forgotPasswordText = document.getElementById("forgotPasswordText");
+      if (forgotPasswordText) {
+        forgotPasswordText.addEventListener("click", function (e) {
+          window.location.href = "./forgot-password-h-r.html";
+        });
+      }
+      
+      var signUpText = document.getElementById("signUpText");
+      if (signUpText) {
+        signUpText.addEventListener("click", function (e) {
+          window.location.href = "./sign-up-company.html";
+        });
+      }
+      
+      var buttonLargePrimaryContainer = document.getElementById(
+        "buttonLargePrimaryContainer"
+      );
+      if (buttonLargePrimaryContainer) {
+        buttonLargePrimaryContainer.addEventListener("click", function (e) {
+          window.location.href = "./add-colaborator.html";
+        });
+      }
+      
+      var signUpText1 = document.getElementById("signUpText1");
+      if (signUpText1) {
+        signUpText1.addEventListener("click", function (e) {
+          window.location.href = "./sign-up-company.html";
+        });
+      }
+      </script>
+  </body>
+</html>

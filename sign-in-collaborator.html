@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./sign-in-collaborator.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="sign-in-collaborator">
+      <div class="content2">
+        <div class="input1">
+          <input
+            class="email1"
+            name="Email"
+            id="email"
+            placeholder="Email"
+            type="email"
+          />
+
+          <input
+            class="password1"
+            name="Password"
+            id="password"
+            placeholder="Password"
+            type="password"
+          />
+        </div>
+        <b class="forgot-password1" id="forgotPasswordText">Forgot Password?</b>
+        <div class="text2">
+          <b class="tittle4">Sign In to your Account</b>
+          <div class="body2">Welcome back! please enter your detail</div>
+        </div>
+        <div class="buttonlargeprimary1" id="buttonLargePrimaryContainer">
+          <b class="button2">Sign In</b>
+        </div>
+        <img class="logo-1-icon2" alt="" src="./public/logo-11@2x.png" />
+
+        <img
+          class="chevron-right-icon"
+          alt=""
+          src="./public/chevronright1.svg"
+          id="chevronRightIcon"
+        />
+      </div>
+      <div class="cover-sign-in">
+        <div class="background2"></div>
+        <div class="background3"></div>
+        <div class="text3">
+          <b class="tittle4">Customizable Multipurpose Dashboard</b>
+          <div class="body3">
+            Everything you need in an easily customizable dashboard.
+          </div>
+        </div>
+        <div class="illustration1">
+          <img class="illustration-item" alt="" src="./public/group-10.svg" />
+
+          <div class="rectangle-parent7">
+            <div class="group-child24"></div>
+            <b class="activity1">Activity</b>
+            <div class="frame-group">
+              <div class="m-group">
+                <div class="m1">M</div>
+                <div class="m1">T</div>
+                <div class="m1">W</div>
+                <div class="m1">T</div>
+                <div class="m1">F</div>
+                <div class="m1">S</div>
+                <div class="m1">S</div>
+              </div>
+              <div class="rectangle-parent8">
+                <div class="group-child25"></div>
+                <div class="group-child26"></div>
+                <div class="group-child27"></div>
+                <div class="group-child28"></div>
+                <div class="group-child29"></div>
+                <div class="group-child30"></div>
+                <div class="group-child31"></div>
+              </div>
+            </div>
+          </div>
+          <div class="group-parent1">
+            <div class="rectangle-parent9">
+              <div class="group-child32"></div>
+              <div class="group-child33"></div>
+              <div class="group-child34"></div>
+              <div class="group-child35"></div>
+            </div>
+            <div class="group-parent2">
+              <div class="rectangle-parent10">
+                <div class="group-child36"></div>
+                <div class="group-child37"></div>
+              </div>
+              <div class="rectangle-parent11">
+                <div class="group-child38"></div>
+                <div class="ellipse-group">
+                  <div class="group-child39"></div>
+                  <div class="group-child40"></div>
+                  <div class="group-child41"></div>
+                  <div class="group-child42"></div>
+                  <div class="div1">70%</div>
+                </div>
+              </div>
+              <div class="rectangle-parent12">
+                <div class="group-child43"></div>
+                <div class="rectangle-parent13">
+                  <div class="group-child44"></div>
+                  <div class="group-child45"></div>
+                </div>
+                <div class="container">
+                  <b class="b2">$1,235,00</b>
+                  <div class="completed2">Completed</div>
+                </div>
+              </div>
+              <div class="rectangle-parent14">
+                <div class="group-child43"></div>
+                <div class="rectangle-parent13">
+                  <div class="group-child44"></div>
+                  <div class="group-child45"></div>
+                </div>
+                <div class="frame-div">
+                  <b class="b2">$2,266,70</b>
+                  <div class="completed2">Completed</div>
+                </div>
+              </div>
+              <div class="rectangle-parent16">
+                <div class="group-child49"></div>
+                <div class="group-child50"></div>
+                <div class="group-child51"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var forgotPasswordText = document.getElementById("forgotPasswordText");
+      if (forgotPasswordText) {
+        forgotPasswordText.addEventListener("click", function (e) {
+          window.location.href = "./forgot-password-collaborator.html";
+        });
+      }
+      
+      var buttonLargePrimaryContainer = document.getElementById(
+        "buttonLargePrimaryContainer"
+      );
+      if (buttonLargePrimaryContainer) {
+        buttonLargePrimaryContainer.addEventListener("click", function (e) {
+          window.location.href = "./dashboard.html";
+        });
+      }
+      
+      var chevronRightIcon = document.getElementById("chevronRightIcon");
+      if (chevronRightIcon) {
+        chevronRightIcon.addEventListener("click", function (e) {
+          window.location.href = "./choose-the3-types-user.html";
+        });
+      }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+.popup-overlay {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+}
+
+:root {
+  /* fonts */
+  --body-small-medium: Inter;
+  --m-16: Roboto;
+  --font-inherit: inherit;
+  --xs-semibold: Poppins;
+  --font-epilogue: Epilogue;
+  --font-open-sans: "Open Sans";
+
+  /* font sizes */
+  --font-size-5xs: 8px;
+  --font-size-3xs: 10px;
+  --body-small-medium-size: 12px;
+  --body-medium-regular-size: 14px;
+  --heading-h3-size: 24px;
+  --heading-h6-size: 16px;
+  --font-size-4xl-2: 23.2px;
+  --heading-h4-size: 22px;
+  --font-size-16xl: 35px;
+  --font-size-mid: 17px;
+  --font-size-lg: 18px;
+  --xl-semibold-size: 20px;
+  --font-size-mini: 15px;
+
+  /* Colors */
+  --additional-white: #fff;
+  --color-steelblue-100: #189ec7;
+  --color-steelblue-200: #179ec7;
+  --color-steelblue-300: #0d7a9b;
+  --color-steelblue-400: rgba(23, 158, 199, 0.2);
+  --greyscale-100: #f1f5f9;
+  --color-aliceblue-100: #edf2f6;
+  --greyscale-200: #e2e8f0;
+  --additional-emerald: #34d399;
+  --color-mediumseagreen-100: #17c772;
+  --color-mediumseagreen-200: #14ae5c;
+  --color-gray-100: #fefefe;
+  --color-gray-200: #8c8c8c;
+  --font-inactive: #82888d;
+  --color-gray-300: #817d7d;
+  --color-gray-400: #7b7b7b;
+  --color-gray-500: #2b2b2c;
+  --on-secondary-container: #171a2c;
+  --greyscale-900: #0f172a;
+  --color-gray-600: rgba(0, 0, 0, 0.5);
+  --font-primary: rgba(0, 0, 0, 0.85);
+  --color-gray-700: rgba(15, 23, 42, 0.2);
+  --color-gray-800: rgba(15, 23, 42, 0.7);
+  --additional-purple: #8b5cf6;
+  --additional-indigo: #6366f1;
+  --additional-sky: #38bdf8;
+  --color-deepskyblue-100: #25a4ca;
+  --primary-800: #4079ed;
+  --primary-600-base: #2563eb;
+  --greys-blue-grey-700: #737791;
+  --greyscale-500: #64748b;
+  --greyscale-50: #f8fafc;
+  --color-whitesmoke-100: #f8f9fa;
+  --blue-grey-50: #eceff1;
+  --color-lightslategray-100: #96a5b8;
+  --greyscale-400: #94a3b8;
+  --primary-200: #7b91b0;
+  --color-lightslategray-200: #788599;
+  --color-lightslategray-300: #77859a;
+  --border: #cfd8dc;
+  --greyscale-300: #cbd5e1;
+  --secondary-amber-500-base: #f6a722;
+  --color-black: #000;
+  --color-skyblue-100: #61b9d3;
+  --color-skyblue-200: #33aace;
+  --color-dimgray-100: #6d6d6d;
+  --color-dimgray-200: #5b6568;
+  --color-orangered: #f24822;
+  --color-darkslategray-100: #425166;
+  --color-darkslategray-200: #464e5f;
+  --on-secondary-container30: #434659;
+  --color-darkslategray-300: #374d54;
+  --color-darkslategray-400: #0d576d;
+  --color-darkslategray-500: #393a3a;
+  --color-darkslategray-600: #343434;
+  --gray-1: #333;
+  --color-darkslategray-700: #222b45;
+  --color-darkslategray-800: rgba(70, 78, 95, 0.04);
+  --color-mediumspringgreen-100: #00e096;
+  --secondary-algal-fuel-500-base: #24d164;
+  --color-gainsboro: #e3e3e3;
+  --color-red-100: #fe0000;
+  --color-goldenrod: #df9930;
+  --color-forestgreen: #3ca52b;
+  --color-tomato-100: #fd5252;
+  --greys-blue-grey-900: #151d48;
+  --color-lightskyblue-100: #90cdf9;
+  --color-lightsteelblue: rgba(175, 197, 232, 0.95);
+  --color-darkgray: #989898;
+  --primary-dark-shade: #05004e;
+  --color-silver: #bdc9d3;
+  --colors-green-100: #dcfce7;
+
+  /* Gaps */
+  --gap-11xs: 2px;
+  --gap-xs: 12px;
+  --gap-base: 16px;
+  --gap-5xs: 8px;
+  --gap-9xs: 4px;
+  --gap-5xl: 24px;
+  --gap-21xl: 40px;
+  --gap-13xl: 32px;
+
+  /* Paddings */
+  --padding-5xs: 8px;
+  --padding-base: 16px;
+  --padding-3xs: 10px;
+  --padding-2xl: 21px;
+  --padding-6xs: 7px;
+  --padding-9xs: 4px;
+  --padding-xl: 20px;
+  --padding-21xl: 40px;
+
+  /* Border radiuses */
+  --br-31xl: 50px;
+  --br-9xs: 4px;
+  --br-5xs: 8px;
+  --br-xs: 12px;
+  --br-981xl: 1000px;
+  --br-mini: 15px;
+  --br-10xs: 3px;
+  --br-5xl: 24px;
+  --br-6xs: 7px;
+  --br-3xs: 10px;
+  --br-base: 16px;
+  --br-7xl: 26px;
+  --br-7xs: 6px;
+  --br-xl: 20px;
+  --br-11xs: 2px;
+
+  /* Effects */
+  --dp-elevation: 0px 0px 2px rgba(0, 0, 0, 0.14),
+    0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 3px rgba(0, 0, 0, 0.2);
+}

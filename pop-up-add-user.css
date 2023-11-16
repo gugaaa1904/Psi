@@ -1,0 +1,32 @@
+.a-new-user,
+.danger-square-icon8 {
+  position: absolute;
+  top: 66px;
+  left: 53px;
+  width: 24px;
+  height: 24px;
+}
+.a-new-user {
+  top: 68px;
+  left: 80px;
+  letter-spacing: 0.2px;
+  line-height: 150%;
+  display: inline-block;
+  width: 256px;
+}
+.pop-up-add-user {
+  position: relative;
+  border-radius: var(--br-xs);
+  background-color: var(--additional-white);
+  border: 2px solid var(--color-gray-300);
+  box-sizing: border-box;
+  width: 334px;
+  height: 155px;
+  overflow: hidden;
+  max-width: 90%;
+  max-height: 90%;
+  text-align: left;
+  font-size: var(--body-medium-regular-size);
+  color: var(--color-steelblue-200);
+  font-family: var(--body-small-medium);
+}
