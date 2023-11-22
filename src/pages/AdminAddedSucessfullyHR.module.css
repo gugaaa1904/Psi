@@ -1,0 +1,58 @@
+.nextButtonIcon {
+  position: absolute;
+  top: 333px;
+  left: 860px;
+  width: 72px;
+  height: 62px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.adminAddedSucessfully {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+  display: inline-block;
+  width: 539px;
+}
+.checkCircleIcon,
+.content,
+.logo1Icon {
+  position: absolute;
+  top: 0;
+  left: 539px;
+  width: 65px;
+  height: 62px;
+}
+.content,
+.logo1Icon {
+  top: 422px;
+  left: 418px;
+  width: 604px;
+}
+.logo1Icon {
+  top: 10px;
+  left: 10px;
+  width: 302px;
+  height: 191px;
+  object-fit: cover;
+}
+.logo {
+  position: absolute;
+  top: 0;
+  left: 559px;
+  width: 322px;
+  height: 211px;
+}
+.adminAddedSucessfullyHr {
+  position: relative;
+  background-color: var(--additional-white);
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 40px;
+  color: var(--greyscale-900);
+  font-family: var(--body-medium-regular);
+}
