@@ -3,7 +3,7 @@
 /*==============================================================*/
 create table EMPRESA 
 (
-   EMPRESA_ID           integer                        not null,
+   EMPRESA_ID           integer                        not null AUTO_INCREMENT,
    NOME                 varchar(100)                   not null,
    LOCALIZACAO          varchar(100)                   null,
    ENDERECO             varchar(100)                   null,
