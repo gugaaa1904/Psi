@@ -1,0 +1,475 @@
+.listOfCollaborators {
+  position: absolute;
+  top: 14px;
+  left: 34px;
+  font-size: var(--xl-semibold-size);
+  line-height: 32px;
+  font-weight: 600;
+  font-family: var(--xl-semibold);
+  color: var(--primary-dark-shade);
+  display: inline-block;
+  width: 206px;
+  height: 27px;
+}
+.bigCardChild {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-5xl);
+  background-color: var(--additional-white);
+}
+.bigCard,
+.employeeChild {
+  position: absolute;
+  top: 0;
+  left: 1.1px;
+  width: 347.9px;
+  height: 121px;
+}
+.employeeChild {
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--additional-white);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 349px;
+  height: 122px;
+}
+.name {
+  position: absolute;
+  top: 24px;
+  left: 106px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  display: inline-block;
+  width: 138.3px;
+}
+.dhlEmployee {
+  margin: 0;
+}
+.position {
+  position: absolute;
+  top: 50px;
+  left: 106px;
+  font-size: var(--sm-medium-size);
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  color: var(--color-gray-200);
+  display: inline-block;
+  width: 120.7px;
+}
+.ellipse,
+.ellipse1 {
+  position: absolute;
+  top: 38px;
+  left: 282px;
+  border-radius: 50%;
+  background-color: var(--color-steelblue-100);
+  width: 45px;
+  height: 45px;
+}
+.ellipse1 {
+  top: 34px;
+  left: 278px;
+  background-color: var(--color-steelblue-200);
+  width: 53px;
+  height: 53px;
+  cursor: pointer;
+}
+.chevronRightSquareIcon,
+.image20Icon {
+  position: absolute;
+  top: 48px;
+  left: 292px;
+  width: 24px;
+  height: 24px;
+}
+.image20Icon {
+  top: 23px;
+  left: 22px;
+  width: 68px;
+  height: 74px;
+  object-fit: cover;
+}
+.employee,
+.image19Icon {
+  position: absolute;
+  top: 70px;
+  left: 34px;
+  width: 349px;
+  height: 122px;
+}
+.image19Icon {
+  top: 22px;
+  left: 22px;
+  width: 68px;
+  height: 74px;
+  object-fit: cover;
+}
+.employee2,
+.image18Icon {
+  position: absolute;
+  top: 221px;
+  left: 34px;
+  width: 349px;
+  height: 122px;
+}
+.image18Icon {
+  top: 23px;
+  left: 22px;
+  width: 68px;
+  height: 75px;
+  object-fit: cover;
+}
+.employee3 {
+  position: absolute;
+  top: 372px;
+  left: 34px;
+  width: 349px;
+  height: 122px;
+}
+.bigCard3,
+.employee4Child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 347.9px;
+  height: 121px;
+}
+.employee4Child {
+  top: 24px;
+  left: 20.9px;
+  background-color: var(--additional-white);
+  border: 1px solid var(--color-gray-500);
+  box-sizing: border-box;
+  width: 68px;
+  height: 74px;
+}
+.name3,
+.position3 {
+  position: absolute;
+  top: 24px;
+  left: 104.9px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  display: inline-block;
+  width: 138.3px;
+}
+.position3 {
+  top: 50px;
+  font-size: var(--sm-medium-size);
+  color: var(--color-gray-200);
+  width: 120.7px;
+}
+.ellipse6,
+.ellipse7 {
+  position: absolute;
+  top: 38px;
+  left: 280.9px;
+  border-radius: 50%;
+  background-color: var(--color-steelblue-100);
+  width: 45px;
+  height: 45px;
+}
+.ellipse7 {
+  top: 34px;
+  left: 276.9px;
+  background-color: var(--color-steelblue-200);
+  width: 53px;
+  height: 53px;
+  cursor: pointer;
+}
+.chevronRightSquareIcon3,
+.image21Icon {
+  position: absolute;
+  top: 48px;
+  left: 290.9px;
+  width: 24px;
+  height: 24px;
+}
+.image21Icon {
+  top: 24px;
+  left: 20.9px;
+  width: 68px;
+  height: 74px;
+  object-fit: cover;
+}
+.employee4 {
+  position: absolute;
+  top: 523px;
+  left: 34px;
+  width: 347.9px;
+  height: 121px;
+}
+.employee5Item,
+.name4 {
+  position: absolute;
+  top: 24px;
+}
+.employee5Item {
+  left: 22px;
+  background-color: var(--additional-white);
+  border: 1px solid var(--color-gray-500);
+  box-sizing: border-box;
+  width: 68px;
+  height: 74px;
+}
+.name4 {
+  left: 106px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  display: inline-block;
+  width: 147px;
+}
+.employee5,
+.volume {
+  position: absolute;
+  top: 673px;
+  left: 34px;
+  width: 349px;
+  height: 122px;
+}
+.volume {
+  top: 179px;
+  left: 32px;
+  border-radius: var(--br-mini);
+  background-color: var(--additional-white);
+  width: 417px;
+  height: 809px;
+}
+.divider {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--border);
+  height: 1px;
+  overflow: hidden;
+}
+.generalOverview1 {
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 24px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.generalOverview {
+  position: absolute;
+  width: calc(100% - 97px);
+  top: 89px;
+  right: 65px;
+  left: 32px;
+  height: 64px;
+  color: var(--font-primary);
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  background-color: var(--greyscale-50);
+  width: 1190px;
+  height: 900px;
+  overflow-y: auto;
+}
+.collaboratorInformation {
+  position: absolute;
+  top: 29px;
+  left: 32px;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+}
+.header {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  background-color: var(--additional-white);
+  width: 1190px;
+  height: 88px;
+  overflow: hidden;
+  font-size: var(--xl-semibold1-size);
+  color: var(--greyscale-900);
+}
+.settings1,
+.settingsIcon {
+  position: absolute;
+  top: 13px;
+}
+.settingsIcon {
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+}
+.settings1 {
+  left: 54px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.iconshelp,
+.settings {
+  position: absolute;
+  left: 16px;
+}
+.settings {
+  top: 827px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.iconshelp {
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.help1 {
+  position: absolute;
+  top: 13px;
+  left: 56px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.help,
+.profile1 {
+  position: absolute;
+  left: 16px;
+}
+.help {
+  top: 765px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.profile1 {
+  top: 13px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.profile {
+  position: absolute;
+  top: 163px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.colaboratorInformation1 {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  line-height: 160%;
+}
+.colaboratorInformation {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  border-radius: var(--br-xs);
+  background-color: var(--greyscale-50);
+  width: 218px;
+  height: 48px;
+  color: var(--color-steelblue-100);
+}
+.addColaborator,
+.removeColaborator {
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.removeColaborator {
+  position: absolute;
+  top: 67px;
+}
+.addColaborator {
+  top: 19px;
+}
+.addColaborator,
+.menu,
+.menu1 {
+  position: absolute;
+}
+.menu1 {
+  top: -5px;
+  left: 89px;
+  font-size: var(--xs-regular-size);
+  letter-spacing: 1px;
+  line-height: 160%;
+  color: var(--greyscale-400);
+}
+.menu {
+  top: 108px;
+  left: 16px;
+  width: 218px;
+  height: 211px;
+}
+.line,
+.line1,
+.line2,
+.line3 {
+  position: absolute;
+  box-sizing: border-box;
+}
+.line {
+  top: -0.5px;
+  left: 249.5px;
+  border-right: 1px solid var(--greyscale-100);
+  width: 1px;
+  height: 901px;
+}
+.line1,
+.line2,
+.line3 {
+  top: 819.5px;
+  left: 15.5px;
+  border-top: 1px solid var(--greyscale-100);
+  width: 219px;
+  height: 1px;
+}
+.line2,
+.line3 {
+  top: 318.5px;
+}
+.line3 {
+  top: 87.5px;
+}
+.logo1Icon,
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+}
+.logo1Icon {
+  height: 88px;
+  object-fit: cover;
+}
+.sidebar {
+  background-color: var(--additional-white);
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  height: 900px;
+  overflow: hidden;
+  font-size: var(--sm-medium-size);
+  color: var(--greyscale-500);
+}
+.fullReportsCollaborators {
+  position: relative;
+  background-color: var(--color-gray-100);
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--base-regular-size);
+  color: var(--color-black);
+  font-family: var(--body-large-bold);
+}

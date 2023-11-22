@@ -1,0 +1,355 @@
+.contentChild {
+  position: absolute;
+  top: 112px;
+  left: 20px;
+  border-radius: var(--br-mini);
+  background-color: var(--additional-white);
+  width: 1129px;
+  height: 764px;
+}
+.button {
+  position: absolute;
+  top: 5px;
+  left: 11px;
+  letter-spacing: 0.2px;
+  line-height: 140%;
+}
+.createNewCollaborator,
+.endDate,
+.plafond,
+.startDate,
+.tariff {
+  font-size: var(--base-regular-size);
+  position: absolute;
+  border-radius: var(--br-xs);
+}
+.createNewCollaborator {
+  top: 788px;
+  left: 459px;
+  background-color: var(--color-steelblue-100);
+  width: 220px;
+  height: 32px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--additional-white);
+}
+.endDate,
+.plafond,
+.startDate,
+.tariff {
+  border: 1px solid var(--greyscale-200);
+  font-family: var(--body-large-bold);
+  background-color: transparent;
+  top: 404px;
+  left: 687px;
+  box-sizing: border-box;
+  width: 404px;
+  height: 56px;
+}
+.endDate,
+.startDate,
+.tariff {
+  top: 330px;
+}
+.endDate,
+.startDate {
+  top: 258px;
+}
+.startDate {
+  top: 186px;
+}
+.contractOfThis {
+  position: absolute;
+  top: 146px;
+  left: 784px;
+  line-height: 160%;
+  font-weight: 600;
+  display: inline-block;
+  width: 210px;
+}
+.email,
+.password {
+  border: 1px solid var(--greyscale-200);
+  font-family: var(--body-large-bold);
+  font-size: var(--base-regular-size);
+  background-color: transparent;
+  position: absolute;
+  box-sizing: border-box;
+  width: 404px;
+}
+.password {
+  top: 698px;
+  left: 77px;
+  border-radius: var(--br-xs);
+  height: 56px;
+}
+.email {
+  top: 622px;
+}
+.adress,
+.email,
+.gender,
+.phoneNumber {
+  left: 77px;
+  border-radius: var(--br-xs);
+  height: 56px;
+}
+.gender {
+  position: absolute;
+  top: 546px;
+  border: 1px solid var(--greyscale-200);
+  box-sizing: border-box;
+  width: 404px;
+}
+.adress,
+.phoneNumber {
+  font-family: var(--body-large-bold);
+  font-size: var(--base-regular-size);
+  background-color: transparent;
+}
+.adress {
+  border: 1px solid var(--greyscale-200);
+  position: absolute;
+  top: 470px;
+  box-sizing: border-box;
+  width: 404px;
+}
+.phoneNumber {
+  top: 398px;
+}
+.age,
+.chooseRole,
+.name,
+.phoneNumber {
+  border: 1px solid var(--greyscale-200);
+  position: absolute;
+  box-sizing: border-box;
+  width: 404px;
+}
+.chooseRole {
+  top: 330px;
+  left: calc(50% - 518px);
+  border-radius: var(--br-9xs);
+  height: 49px;
+}
+.age,
+.name {
+  font-family: var(--body-large-bold);
+  font-size: var(--base-regular-size);
+  background-color: transparent;
+  top: 258px;
+  left: 77px;
+  border-radius: var(--br-xs);
+  height: 56px;
+}
+.name {
+  top: 186px;
+}
+.enterTheFields {
+  position: absolute;
+  top: 147px;
+  left: 126px;
+  line-height: 160%;
+  font-weight: 600;
+  display: inline-block;
+  width: 306px;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  background-color: var(--greyscale-50);
+  width: 1190px;
+  height: 900px;
+  overflow: hidden;
+}
+.addCollaborator {
+  position: absolute;
+  top: 29px;
+  left: 32px;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+}
+.header {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  background-color: var(--additional-white);
+  width: 1190px;
+  height: 88px;
+  overflow: hidden;
+  font-size: var(--xl-semibold1-size);
+  color: var(--greyscale-900);
+}
+.settings1,
+.settingsIcon {
+  position: absolute;
+  top: 13px;
+}
+.settingsIcon {
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+}
+.settings1 {
+  left: 54px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.iconshelp,
+.settings {
+  position: absolute;
+  left: 16px;
+}
+.settings {
+  top: 827px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.iconshelp {
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.help1 {
+  position: absolute;
+  top: 13px;
+  left: 56px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.help,
+.profile {
+  position: absolute;
+  top: 765px;
+  left: 16px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.profile {
+  top: 163px;
+  left: 0;
+}
+.reportsTexto {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.reports,
+.timelines {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.timelines {
+  top: 67px;
+}
+.addColaborator1 {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  line-height: 160%;
+}
+.dashboard {
+  top: 19px;
+  left: 0;
+  border-radius: var(--br-xs);
+  background-color: var(--greyscale-50);
+  width: 218px;
+  height: 48px;
+  color: var(--color-steelblue-100);
+}
+.dashboard,
+.menu,
+.menu1 {
+  position: absolute;
+}
+.menu1 {
+  top: -5px;
+  left: 89px;
+  font-size: var(--xs-regular-size);
+  letter-spacing: 1px;
+  line-height: 160%;
+  color: var(--greyscale-400);
+}
+.menu {
+  top: 108px;
+  left: 16px;
+  width: 218px;
+  height: 211px;
+}
+.line,
+.line1,
+.line2,
+.line3 {
+  position: absolute;
+  box-sizing: border-box;
+}
+.line {
+  top: -0.5px;
+  left: 249.5px;
+  border-right: 1px solid var(--greyscale-100);
+  width: 1px;
+  height: 901px;
+}
+.line1,
+.line2,
+.line3 {
+  top: 819.5px;
+  left: 15.5px;
+  border-top: 1px solid var(--greyscale-100);
+  width: 219px;
+  height: 1px;
+}
+.line2,
+.line3 {
+  top: 318.5px;
+}
+.line3 {
+  top: 87.5px;
+}
+.logo1Icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 88px;
+  object-fit: cover;
+}
+.addColaborator,
+.sidebar {
+  height: 900px;
+  overflow: hidden;
+}
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--additional-white);
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  width: 250px;
+}
+.addColaborator {
+  position: relative;
+  background-color: var(--color-gray-100);
+  width: 100%;
+  text-align: left;
+  font-size: var(--sm-medium-size);
+  color: var(--greyscale-500);
+  font-family: var(--body-large-bold);
+}

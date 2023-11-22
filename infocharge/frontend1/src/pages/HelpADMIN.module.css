@@ -1,0 +1,315 @@
+.wereHereForWhateverYouNe {
+  position: absolute;
+  top: 236px;
+  left: 445px;
+  width: 299px;
+  height: 23px;
+}
+.divider {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--border);
+  height: 1px;
+  overflow: hidden;
+}
+.faqFrequentlyAsked {
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 24px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.faqFrequentlyAskedQuestion {
+  position: absolute;
+  width: calc(100% - 61px);
+  top: 88px;
+  right: 31px;
+  left: 30px;
+  height: 64px;
+}
+.groupChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-mini);
+  background-color: var(--additional-white);
+  width: 1129px;
+  height: 708px;
+}
+.weHopeWeve {
+  position: absolute;
+  top: 608px;
+  left: 343px;
+  letter-spacing: 0.2px;
+  line-height: 150%;
+  font-weight: 600;
+  text-align: center;
+}
+.whatCanYouDoInTheAddUse1 {
+  margin-bottom: 0;
+}
+.whatCanYouDoInTheAddUse {
+  margin: 0;
+  padding-left: var(--padding-5xl);
+}
+.theActivityAnd {
+  margin: 0;
+  color: var(--color-gray-300);
+}
+.blankLine {
+  margin: 0;
+}
+.wereHereFor,
+.whatCanYouContainer {
+  position: absolute;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+  font-weight: 600;
+  display: inline-block;
+}
+.whatCanYouContainer {
+  top: 138.1px;
+  left: 67.9px;
+  font-size: var(--font-inherit);
+  font-family: var(--font-inherit);
+  width: 993.2px;
+  height: 422.6px;
+  color: var(--color-black);
+}
+.wereHereFor {
+  top: 63px;
+  left: 415px;
+  font-size: var(--font-size-lg);
+  width: 299px;
+}
+.rectangleParent {
+  position: absolute;
+  top: 168.6px;
+  left: 30px;
+  width: 1129px;
+  height: 708px;
+  color: var(--color-steelblue-100);
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 247px;
+  background-color: var(--greyscale-50);
+  width: 1190px;
+  height: 900px;
+  overflow-y: auto;
+}
+.notificationsIcon {
+  position: absolute;
+  top: 27px;
+  left: 1109px;
+  border-radius: var(--br-981xl);
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.header,
+.help {
+  position: absolute;
+}
+.help {
+  top: 29px;
+  left: 32px;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+}
+.header {
+  top: 0;
+  left: 250px;
+  background-color: var(--additional-white);
+  width: 1190px;
+  height: 88px;
+  overflow: hidden;
+  font-size: var(--xl-semibold1-size);
+  color: var(--greyscale-900);
+}
+.settings1,
+.settingsIcon {
+  position: absolute;
+  top: 13px;
+}
+.settingsIcon {
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+}
+.settings1 {
+  left: 54px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.iconshelp,
+.settings {
+  position: absolute;
+  left: 16px;
+}
+.settings {
+  top: 827px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.iconshelp {
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.help2 {
+  position: absolute;
+  top: 13px;
+  left: 56px;
+  line-height: 160%;
+}
+.help1,
+.profile1 {
+  position: absolute;
+  left: 16px;
+}
+.help1 {
+  top: 765px;
+  border-radius: var(--br-xs);
+  background-color: var(--greyscale-50);
+  width: 218px;
+  height: 48px;
+  color: var(--color-steelblue-100);
+}
+.profile1 {
+  top: 13px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.profile {
+  position: absolute;
+  top: 163px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.companyInformation {
+  position: absolute;
+  top: 115px;
+}
+.addUser,
+.companyInformation,
+.removeUser {
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.removeUser {
+  position: absolute;
+  top: 67px;
+}
+.addUser {
+  top: 19px;
+}
+.addUser,
+.menu,
+.menu1 {
+  position: absolute;
+}
+.menu1 {
+  top: -5px;
+  left: 89px;
+  font-size: var(--xs-regular-size);
+  letter-spacing: 1px;
+  line-height: 160%;
+  color: var(--greyscale-400);
+}
+.menu {
+  top: 108px;
+  left: 16px;
+  width: 218px;
+  height: 211px;
+}
+.line,
+.line1,
+.line2,
+.line3 {
+  position: absolute;
+  box-sizing: border-box;
+}
+.line {
+  top: -0.5px;
+  left: 249.5px;
+  border-right: 1px solid var(--greyscale-100);
+  width: 1px;
+  height: 901px;
+}
+.line1,
+.line2,
+.line3 {
+  top: 819.5px;
+  left: 15.5px;
+  border-top: 1px solid var(--greyscale-100);
+  width: 219px;
+  height: 1px;
+}
+.line2,
+.line3 {
+  top: 318.5px;
+}
+.line3 {
+  top: 87.5px;
+}
+.logo1Icon,
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+}
+.logo1Icon {
+  height: 88px;
+  object-fit: cover;
+}
+.sidebar {
+  background-color: var(--additional-white);
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  height: 900px;
+  overflow: hidden;
+  font-size: var(--sm-medium-size);
+  color: var(--greyscale-500);
+}
+.infochargegmailcom {
+  color: var(--color-steelblue-100);
+}
+.ifYouHaveContainer {
+  position: absolute;
+  top: 824px;
+  left: 456px;
+  letter-spacing: 0.2px;
+  line-height: 150%;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-gray-300);
+}
+.helpAdmin {
+  position: relative;
+  background-color: var(--color-gray-100);
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--base-regular-size);
+  color: var(--font-primary);
+  font-family: var(--body-large-bold);
+}

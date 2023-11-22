@@ -1,0 +1,176 @@
+.portuguese1 {
+  position: absolute;
+  top: 4px;
+  left: 20px;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+.portuguese {
+  position: absolute;
+  top: calc(50% - 16px);
+  left: 4px;
+  width: 119px;
+  height: 32px;
+}
+.english1 {
+  position: absolute;
+  top: 4px;
+  left: 20px;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.english {
+  top: calc(50% - 16px);
+  left: 131px;
+  border-radius: var(--br-9xs);
+  background-color: var(--color-steelblue-100);
+  box-shadow: var(--dp-elevation);
+  width: 96px;
+  height: 32px;
+  color: var(--additional-white);
+}
+.english,
+.language,
+.tabs {
+  position: absolute;
+}
+.tabs {
+  top: 7px;
+  left: 6.5px;
+  border-radius: var(--br-5xs);
+  background-color: var(--blue-grey-50);
+  width: 231px;
+  height: 40px;
+}
+.language {
+  top: 782px;
+  left: 244px;
+  width: 244px;
+  height: 55px;
+  color: var(--font-inactive);
+  font-family: var(--m-16);
+}
+.button {
+  position: absolute;
+  top: 4.5px;
+  left: 38.5px;
+  letter-spacing: 0.2px;
+  line-height: 140%;
+}
+.regularEmployee {
+  position: absolute;
+  top: 508px;
+  left: 286px;
+  border-radius: var(--br-xs);
+  background-color: var(--color-steelblue-100);
+  width: 159px;
+  height: 31px;
+  cursor: pointer;
+  text-align: left;
+}
+.administrator1 {
+  position: absolute;
+  top: 5px;
+  left: 24px;
+  letter-spacing: 0.2px;
+  line-height: 140%;
+}
+.administrator {
+  position: absolute;
+  top: 435px;
+  left: 286px;
+  border-radius: var(--br-xs);
+  background-color: var(--color-steelblue-100);
+  width: 159px;
+  height: 31px;
+  cursor: pointer;
+  text-align: left;
+}
+.button1 {
+  top: 4.5px;
+  left: 68px;
+  letter-spacing: 0.2px;
+  line-height: 140%;
+}
+.areYouAn,
+.button1,
+.hr {
+  position: absolute;
+}
+.hr {
+  top: 362px;
+  left: 286px;
+  border-radius: var(--br-xs);
+  background-color: var(--color-steelblue-100);
+  width: 159px;
+  height: 31px;
+  cursor: pointer;
+  text-align: left;
+}
+.areYouAn {
+  top: 0;
+  left: -93px;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+}
+.header {
+  position: absolute;
+  top: 237px;
+  left: 154px;
+  width: 423px;
+  height: 64px;
+  font-size: var(--xl-semibold1-size);
+  color: var(--greyscale-900);
+}
+.welcomePleaseSelect {
+  position: absolute;
+  top: 295px;
+  left: 255px;
+  font-size: var(--sm-medium-size);
+  line-height: 160%;
+  color: var(--greyscale-500);
+  display: inline-block;
+  width: 222px;
+}
+.logo1Icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 233px;
+  height: 87px;
+  object-fit: cover;
+}
+.logo {
+  position: absolute;
+  top: 94px;
+  left: 243px;
+  width: 246px;
+  height: 98px;
+}
+.content,
+.coverIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 732px;
+  height: 900px;
+  overflow: hidden;
+}
+.coverIcon {
+  left: 732px;
+  width: 708px;
+}
+.chooseThe3TypesUser {
+  position: relative;
+  background-color: var(--additional-white);
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--base-regular-size);
+  color: var(--additional-white);
+  font-family: var(--body-large-bold);
+}
