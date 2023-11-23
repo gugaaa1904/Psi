@@ -110,7 +110,7 @@ const SignUpAdmin = () => {
             Welcome! Enter your admin details
           </div>
           <b className={styles.signUpYour}>
-            Assign an Adminstrator to your Company
+            Assign an Adminstrator
           </b>
         </div>
         <div className={styles.logo}>

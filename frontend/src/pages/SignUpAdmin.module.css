@@ -175,12 +175,12 @@
 .welcomeEnterYour {
   position: absolute;
   top: 42px;
-  left: 35px;
+  left: 15px;
   line-height: 160%;
 }
 .signUpYour {
   top: 0;
-  left: -94px;
+  left: -14px;
   font-size: var(--heading-h3-size);
   letter-spacing: 0.2px;
   line-height: 125%;

@@ -10,7 +10,7 @@ const ChooseThe3TypesUser = () => {
   }, [navigate]);
 
   const onAdministratorContainerClick = useCallback(() => {
-    navigate("/sign-up-company");
+    navigate("/sign-in-admin");
   }, [navigate]);
 
   return (

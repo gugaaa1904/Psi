@@ -14,10 +14,8 @@
   height: 98px;
 }
 .tittle {
-  top: 0;
-  left: -85px;
   letter-spacing: 0.2px;
-  line-height: 125%;
+  line-height: 120%;
 }
 .body,
 .header,
@@ -34,7 +32,7 @@
 .header {
   top: 181px;
   left: 198px;
-  width: 278px;
+  width: 300px;
   height: 64px;
   font-size: var(--heading-h3-size);
 }
@@ -80,7 +78,7 @@
 }
 .forgotPassword {
   position: absolute;
-  top: 539px;
+  top: 489px;
   left: 265.5px;
   width: 143px;
   height: 42px;
@@ -120,7 +118,7 @@
   color: var(--additional-white);
 }
 .signUp {
-  top: 596px;
+  top: 556px;
   left: 391px;
   line-height: 160%;
   color: #189ec7;
@@ -132,8 +130,24 @@
 }
 .dontHaveAnContainer {
   position: absolute;
-  top: 596px;
+  top: 556px;
   left: 230px;
+  line-height: 160%;
+  text-align: center;
+}
+.signUpCompany1 {
+  position: absolute;
+  top: 605px;
+  left: 357px;
+  line-height: 160%;
+  color: #189ec7;
+  cursor: pointer;
+}
+
+.dontHaveAContainer {
+  position: absolute;
+  top: 605px;
+  left: 195px;
   line-height: 160%;
   text-align: center;
 }

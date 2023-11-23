@@ -25,6 +25,10 @@ const SignInAdmin = () => {
     navigate("/sign-up-admin");
   }, [navigate]);
 
+  const onSignUpCompanyClick = useCallback(() => {
+    navigate("/sign-up-company");
+  }, [navigate]);
+
   return (
     <div className={styles.signInAdmin}>
       <div className={styles.content}>
@@ -32,7 +36,7 @@ const SignInAdmin = () => {
           <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
         </div>
         <div className={styles.header}>
-          <b className={styles.tittle}>Sign In Administrator Account</b>
+          <b className={styles.tittle}>Sign In Administrator</b>
           <div className={styles.body}>
             Welcome back! please enter your detail
           </div>
@@ -83,6 +87,15 @@ const SignInAdmin = () => {
           <span>Don’t have an account?</span>
           <span className={styles.span}>{` `}</span>
         </div>
+
+        <b className={styles.signUpCompany1} onClick={onSignUpCompanyClick}>
+          Sign Up Company
+        </b>
+        <div className={styles.dontHaveAContainer}>
+          <span>Don’t have a Company?</span>
+          <span className={styles.span}>{` `}</span>
+        </div>
+
       </div>
       <div className={styles.coverSignIn}>
         <div className={styles.background} />
