@@ -5,6 +5,11 @@ import styles from "./ProfileADMIN.module.css";
 const ProfileADMIN = () => {
   const navigate = useNavigate();
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
   }, [navigate]);
@@ -87,9 +92,17 @@ const ProfileADMIN = () => {
               <b>&nbsp;</b>
             </p>
           </div>
-          <div className={styles.editPhotoButton}>
+          <div>
+          <input
+            type="file"
+            id="uploadInput"
+            style={{ display: 'none' }}
+            onChange={handleFileChange}
+          />
+          <label htmlFor="uploadInput" className={styles.editPhotoButton}>
             <b className={styles.button}>Edit Photo</b>
-          </div>
+          </label>
+        </div>
           <b className={styles.name}>José Maria</b>
         </div>
         <img className={styles.profileIcon} alt="" src="/profile.svg" />

@@ -32,7 +32,7 @@ const SignInAdmin = () => {
           <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
         </div>
         <div className={styles.header}>
-          <b className={styles.tittle}>Sign In to your Administrator Account</b>
+          <b className={styles.tittle}>Sign In Administrator Account</b>
           <div className={styles.body}>
             Welcome back! please enter your detail
           </div>

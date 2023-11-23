@@ -4,6 +4,11 @@ import styles from "./ProfileCollaborator.module.css";
 
 const ProfileCollaborator = () => {
   const navigate = useNavigate();
+  
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-collaborator");
@@ -136,8 +141,16 @@ const ProfileCollaborator = () => {
             </p>
           </div>
           <b className={styles.name}>António Mendes</b>
-          <div className={styles.editPhotoButton}>
-            <b className={styles.button}>Edit Photo</b>
+          <div>
+            <input
+              type="file"
+              id="uploadInput"
+              style={{ display: 'none' }}
+              onChange={handleFileChange}
+            />
+            <label htmlFor="uploadInput" className={styles.editPhotoButton}>
+              <b className={styles.button}>Edit Photo</b>
+            </label>
           </div>
         </div>
         <img

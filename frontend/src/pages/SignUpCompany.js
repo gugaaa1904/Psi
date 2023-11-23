@@ -51,6 +51,19 @@ const onSignUpClick = useCallback(() => {
     }));
   };
 
+  const handleImageClick = () => {
+    // Abrir o seletor de arquivo quando a imagem é clicada
+    document.getElementById("fileInput").click();
+  };
+
+  const handleImageChange = (e) => {
+    const image = e.target.files[0];
+    setFormData((prevData) => ({
+      ...prevData,
+      companyImage: image,
+    }));
+  };
+
   return (
     <div className={styles.signUpCompany}>
       <div className={styles.content}>
@@ -93,12 +106,15 @@ const onSignUpClick = useCallback(() => {
           </div>
         </div>
         <div className={styles.addYourCompany}>Add your Company Image</div>
-
-        <img
-          className={styles.iconCamera}
-          loading="eager"
-          alt=""
-          src="/camera@3x.png"
+        <label htmlFor="fileInput" className={styles.iconCamera} onClick={handleImageClick}>
+          <img loading="eager" alt="" src="/camera@3x.png"  style={{ width: '24px', height: '24px', marginRight: '5px' }} />
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          id="fileInput"
+          style={{ display: "none" }}
+          onChange={handleImageChange}
         />
 
         <input
@@ -159,7 +175,7 @@ const onSignUpClick = useCallback(() => {
           <div className={styles.welcomeEnterYour}>
             Welcome! Enter your company details
           </div>
-          <b className={styles.signUpYour}>Sign Up your Company</b>
+          <b className={styles.signUpYour}>Sign Up Company</b>
         </div>
         <div className={styles.logo}>
           <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
