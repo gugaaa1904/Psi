@@ -6,7 +6,7 @@ const SignInCollaborator = () => {
   const navigate = useNavigate();
 
   const onBackButtonClick = useCallback(() => {
-    navigate("/choose-the-3-types-user");
+    navigate("/");
   }, [navigate]);
 
   const onButtonLargePrimaryContainerClick = useCallback(() => {

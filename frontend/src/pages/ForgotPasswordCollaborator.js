@@ -6,7 +6,7 @@ const ForgotPasswordCollaborator = () => {
   const navigate = useNavigate();
 
   const onBackToSignInClick = useCallback(() => {
-    navigate("/");
+    navigate("/sign-in-collaborator");
   }, [navigate]);
 
   return (

@@ -6,7 +6,7 @@ const ChooseThe3TypesUser = () => {
   const navigate = useNavigate();
 
   const onRegularEmployeeContainerClick = useCallback(() => {
-    navigate("/");
+    navigate("/sign-in-collaborator");
   }, [navigate]);
 
   const onAdministratorContainerClick = useCallback(() => {

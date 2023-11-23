@@ -3,16 +3,16 @@ import PopUpChangePassword from "../components/PopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
 import Notifications from "../components/Notifications";
 import { useNavigate } from "react-router-dom";
-import styles from "./SettingsADMIN.module.css";
+import styles from "./SettingsCollaborator.module.css";
 
-const SettingsADMIN = () => {
+const SettingsCollaborator = () => {
   const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] =
     useState(false);
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
 
   const onLogoutContainerClick = useCallback(() => {
-    navigate("/choose-the-3-types-user");
+    navigate("/");
   }, [navigate]);
 
   const openPopUpChangePassword = useCallback(() => {
@@ -32,32 +32,28 @@ const SettingsADMIN = () => {
   }, []);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-admin");
+    navigate("/help-collaborator");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-admin");
+    navigate("/profile-collaborator");
   }, [navigate]);
 
-  const onCollaboratorInformationContainerClick = useCallback(() => {
-    navigate("/collaborator-info");
+  const onReportsContainerClick = useCallback(() => {
+    navigate("/reports-collaborator");
   }, [navigate]);
 
-  const onCompanyInformationContainerClick = useCallback(() => {
-    navigate("/company-info");
+  const onTimelinesContainerClick = useCallback(() => {
+    navigate("/timeline");
   }, [navigate]);
 
-  const onRemoveUserContainerClick = useCallback(() => {
-    navigate("/remove-user");
-  }, [navigate]);
-
-  const onAddUserContainerClick = useCallback(() => {
-    navigate("/add-user");
+  const onDashboardContainerClick = useCallback(() => {
+    navigate("/dashboard");
   }, [navigate]);
 
   return (
     <>
-      <div className={styles.settingsAdmin}>
+      <div className={styles.settingsCollaborator}>
         <div className={styles.content}>
           <div className={styles.contentChild} />
           <div className={styles.logout} onClick={onLogoutContainerClick}>
@@ -170,26 +166,20 @@ const SettingsADMIN = () => {
             <div className={styles.profile} onClick={onProfileContainerClick}>
               <div className={styles.profile1}>Profile</div>
             </div>
-            <div
-              className={styles.collaboratorInformation}
-              onClick={onCollaboratorInformationContainerClick}
-            >
-              <div className={styles.profile1}>Collaborator Information</div>
+            <div className={styles.reports} onClick={onReportsContainerClick}>
+              <div className={styles.reportsTexto}>Reports</div>
             </div>
             <div
-              className={styles.companyInformation}
-              onClick={onCompanyInformationContainerClick}
+              className={styles.timelines}
+              onClick={onTimelinesContainerClick}
             >
-              <div className={styles.profile1}>Company Information</div>
+              <div className={styles.profile1}>Timelines</div>
             </div>
             <div
-              className={styles.removeUser}
-              onClick={onRemoveUserContainerClick}
+              className={styles.dashboard}
+              onClick={onDashboardContainerClick}
             >
-              <div className={styles.profile1}>Remove User</div>
-            </div>
-            <div className={styles.addUser} onClick={onAddUserContainerClick}>
-              <div className={styles.profile1}>Add User</div>
+              <div className={styles.profile1}>Dashboard</div>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
@@ -221,4 +211,4 @@ const SettingsADMIN = () => {
   );
 };
 
-export default SettingsADMIN;
+export default SettingsCollaborator;

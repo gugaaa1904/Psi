@@ -5,6 +5,7 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
+import ChooseThe3TypesUser from "./pages/ChooseThe3TypesUser";
 import SignInCollaborator from "./pages/SignInCollaborator";
 import ReportsCollaborator from "./pages/ReportsCollaborator";
 import ProfileCollaborator from "./pages/ProfileCollaborator";
@@ -24,7 +25,6 @@ import SettingsADMIN from "./pages/SettingsADMIN";
 import RemoveUser from "./pages/RemoveUser";
 import AddUser from "./pages/AddUser";
 import SignUpCompany from "./pages/SignUpCompany";
-import ChooseThe3TypesUser from "./pages/ChooseThe3TypesUser";
 import MinMaxPowerAchived from "./pages/MinMaxPowerAchived";
 import AverageCostIn from "./pages/AverageCostIn";
 import AverageEnergyConsumptionIn from "./pages/AverageEnergyConsumptionIn";
@@ -51,6 +51,10 @@ function App() {
 
     switch (pathname) {
       case "/":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/sign-in-collaborator":
         title = "";
         metaDescription = "";
         break;
@@ -126,10 +130,6 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/choose-the-3-types-user":
-        title = "";
-        metaDescription = "";
-        break;
       case "/minmax-power-achived":
         title = "";
         metaDescription = "";
@@ -180,7 +180,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<SignInCollaborator />} />
+      <Route path="/" element={<ChooseThe3TypesUser />} />
+      <Route path="/sign-in-collaborator" element={<SignInCollaborator />} />
       <Route path="/reports-collaborator" element={<ReportsCollaborator />} />
       <Route path="/profile-collaborator" element={<ProfileCollaborator />} />
       <Route path="/timeline" element={<Timeline />} />
@@ -208,10 +209,6 @@ function App() {
       <Route path="/remove-user" element={<RemoveUser />} />
       <Route path="/add-user" element={<AddUser />} />
       <Route path="/sign-up-company" element={<SignUpCompany />} />
-      <Route
-        path="/choose-the-3-types-user"
-        element={<ChooseThe3TypesUser />}
-      />
       <Route path="/minmax-power-achived" element={<MinMaxPowerAchived />} />
       <Route path="/average-cost-in" element={<AverageCostIn />} />
       <Route

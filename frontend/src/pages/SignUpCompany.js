@@ -1,28 +1,66 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUpCompany.module.css";
+import React, { useState } from "react";
 
 const SignUpCompany = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    address: "",
+    telephone: "",
+    email: "",
+    funcs: "",
+    cnpj: "",
+  });
 
   const onSignInTextClick = useCallback(() => {
     navigate("/sign-in-admin");
   }, [navigate]);
+console.log(formData)
+const onSignUpClick = useCallback(() => {
+  // Aqui você deve fazer a requisição para o backend
+  fetch("http://localhost/projetofinal/backend/routes.php/company", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: new URLSearchParams(formData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Lógica para lidar com a resposta do backend
+      console.log(data);
 
-  const onButtonLargePrimaryContainerClick = useCallback(() => {
-    navigate("/sign-up-admin");
-  }, [navigate]);
+      // Navegue para a próxima página ou faça outras ações conforme necessário
+      navigate("/next-page");
+    })
+    .catch((error) => {
+      console.error("Erro na solicitação:", error);
+    });
+}, [formData, navigate]);
 
   const onBackButtonClick = useCallback(() => {
-    navigate("/choose-the-3-types-user");
+    navigate("/");
   }, [navigate]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className={styles.signUpCompany}>
       <div className={styles.content}>
+
         <b className={styles.signIn} onClick={onSignInTextClick}>
           Sign In
         </b>
+
         <div className={styles.doYouAlreadyContainer}>
           <span>Do you already have an account or a collaborator account?</span>
           <span className={styles.span}>{` `}</span>
@@ -32,12 +70,11 @@ const SignUpCompany = () => {
           <div className={styles.orSignIn}>Or sign in with</div>
           <div className={styles.line1} />
         </div>
-        <div
-          className={styles.buttonlargeprimary}
-          onClick={onButtonLargePrimaryContainerClick}
-        >
+
+        <div className={styles.buttonlargeprimary} onClick={onSignUpClick}>
           <b className={styles.button}>Sign Up</b>
         </div>
+
         <div className={styles.byCreatingAnAccountMeansY}>
           <input
             className={styles.checkbox}
@@ -58,53 +95,67 @@ const SignUpCompany = () => {
           </div>
         </div>
         <div className={styles.addYourCompany}>Add your Company Image</div>
+
         <img
           className={styles.iconCamera}
           loading="eager"
           alt=""
           src="/camera@3x.png"
         />
+
         <input
           className={styles.phoneNumber}
-          name="Phone Number"
+          name="telephone"
           id="phone_number"
           placeholder="Phone Number"
           type="number"
+          onChange={handleInputChange}
+          value={formData.telephone}
         />
         <input
           className={styles.employeesNumber}
-          name="Employees Number"
+          name="funcs"
           id="employess_number"
           placeholder="Employees Number"
           type="number"
+          onChange={handleInputChange}
+          value={formData.funcs}
         />
         <input
           className={styles.companyAddress}
-          name="Company Address"
+          name="address"
           id="company_address"
           placeholder="Company Address"
           type="text"
+          onChange={handleInputChange}
+          value={formData.address}
         />
         <input
           className={styles.companyEmail}
-          name="Company Email"
+          name="email"
           id="company_email"
           placeholder="Company Email"
           type="email"
+          onChange={handleInputChange}
+          value={formData.email}
         />
         <input
           className={styles.cnpj}
-          name="CNPJ"
+          name="cnpj"
           id="cnpj"
           placeholder="CNPJ (National Register of Legal Entities)"
           type="number"
+          onChange={handleInputChange}
+          value={formData.cnpj}
         />
         <input
           className={styles.companyName}
-          name="Company Name"
+          name="name"
           id="company_name"
           placeholder="Company Name"
           type="text"
+          onChange={handleInputChange}
+          value={formData.name}
         />
         <div className={styles.header}>
           <div className={styles.welcomeEnterYour}>
@@ -122,6 +173,13 @@ const SignUpCompany = () => {
           onClick={onBackButtonClick}
         />
       </div>
+
+
+
+
+
+
+
       <div className={styles.cover}>
         <div className={styles.background} />
         <div className={styles.background1} />
