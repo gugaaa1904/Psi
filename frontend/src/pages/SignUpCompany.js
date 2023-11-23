@@ -20,7 +20,7 @@ const SignUpCompany = () => {
 console.log(formData)
 const onSignUpClick = useCallback(() => {
   // Aqui você deve fazer a requisição para o backend
-  fetch("http://localhost/projetofinal/backend/routes.php/company", {
+  fetch("http://localhost/Psi/backend/routes.php/company", {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -32,13 +32,11 @@ const onSignUpClick = useCallback(() => {
     .then((data) => {
       // Lógica para lidar com a resposta do backend
       console.log(data);
-
-      // Navegue para a próxima página ou faça outras ações conforme necessário
-      navigate("/next-page");
     })
     .catch((error) => {
       console.error("Erro na solicitação:", error);
     });
+  navigate("/sign-in-admin");
 }, [formData, navigate]);
 
   const onBackButtonClick = useCallback(() => {
