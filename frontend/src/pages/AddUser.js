@@ -10,6 +10,7 @@ const AddUser = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
+    companyname: "",
     address: "",
     email: "",
     phone: "",
@@ -135,6 +136,17 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.address}
           />
+
+          <input
+            className={styles.companyname}
+            name="companyname"
+            id="companyname"
+            placeholder="Company Name"
+            type="text"
+            onChange={handleInputChange}
+            value={formData.companyname}
+          />
+          
           <input
             className={styles.phoneNumber}
             name="phone"

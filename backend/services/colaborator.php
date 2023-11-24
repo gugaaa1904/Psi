@@ -16,21 +16,24 @@ class CollaboratorService
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
             $name = isset($_POST['admin_name']) ? $this->sanitize($_POST['admin_name']) : '';
+            $companyname = isset($_POST['companyname']) ? $this->sanitize($_POST['companyname']) : '';
             $email = isset($_POST['email']) ?  $this->sanitize($_POST['email']) : '';
             $phone = isset($_POST['phone']) ? $this->sanitize($_POST['phone']) : '';
             $age = isset($_POST['age']) ?  $this->sanitize($_POST['age']) : '';
             $gender = isset($_POST['gender']) ?  $this->sanitize($_POST['gender']) : '';
             $password = isset($_POST['password']) ?  $this->sanitize($_POST['password']) : '';
+            $address = isset($_POST['address']) ?  $this->sanitize($_POST['address']) : '';
             $plafond = isset($_POST['plafond']) ?  $this->sanitize($_POST['plafond']) : '';
             $tariff = isset($_POST['tariff']) ?  $this->sanitize($_POST['tariff']) : '';
             $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
             $start_date = isset($_POST['start_date']) ?  $this->sanitize($_POST['start_date']) : '';
 
+
             // Use prepared statements to prevent SQL injection
             $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
             $sql->bind_param("s", $companyname);
             $sql->execute();
-            $sql->bind_result($empresaId);
+            $sql->bind_result($companyid);
 
             // Fetch the result
             if (!$sql->fetch()) {
@@ -41,9 +44,10 @@ class CollaboratorService
 
             $sql->close();
 
+
             // Use prepared statements to prevent SQL injection
-            $stmt = "INSERT INTO `Collaborator` (`NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
-                                        VALUES ('$name', '$email', '$phone', '$age', '$gender', '$password', '$plafond', '$tariff', '$end_date', '$start_date')";
+            $stmt = "INSERT INTO `Collaborator` (`NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
+                                        VALUES ('$name', '$companyname', '$email', '$phone', '$age', '$gender', '$password', '$address', '$plafond', '$tariff', '$end_date', '$start_date')";
 
             // Execute the statement
             $result = $this->conn->query($stmt);

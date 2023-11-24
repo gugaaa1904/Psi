@@ -2,7 +2,7 @@
 
 require_once 'config.php';
 
-class EmpresaService
+class CompanyService
 {
     private $conn;
 
@@ -50,8 +50,8 @@ class EmpresaService
     }
 }
 
-$empresaService = new EmpresaService();
+$CompanyService = new CompanyService();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cnpj'])) {
-    $empresaService->insert_company_post();
+    $CompanyService->insert_company_post();
 }

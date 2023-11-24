@@ -24,7 +24,7 @@
   padding: 0;
   background-color: var(--color-steelblue-100);
   position: absolute;
-  top: 762px;
+  top: 812px;
   left: 485px;
   border-radius: var(--br-xs);
   width: 220px;
@@ -34,7 +34,7 @@
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 655px;
+  top: 735px;
 }
 .email,
 .gender,
@@ -51,10 +51,10 @@
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 577px;
+  top: 657px;
 }
 .gender {
-  top: 499px;
+  top: 577px;
 }
 .adress,
 .phoneNumber {
@@ -66,14 +66,14 @@
 }
 .adress {
   border: 1px solid var(--greyscale-200);
-  top: 421px;
+  top: 501px;
   border-radius: var(--br-xs);
   box-sizing: border-box;
   width: 404px;
   height: 56px;
 }
 .phoneNumber {
-  top: 343px;
+  top: 423px;
 }
 .age,
 .phoneNumber {
@@ -87,11 +87,12 @@
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 265px;
+  top: 345px;
 }
 .age,
 .enterTheFields,
-.name {
+.name,
+.companyname {
   position: absolute;
   left: 67px;
 }
@@ -101,6 +102,17 @@
   font-size: var(--heading-h6-size);
   background-color: transparent;
   top: 187px;
+  border-radius: var(--br-xs);
+  box-sizing: border-box;
+  width: 404px;
+  height: 56px;
+}
+.companyname {
+  border: 1px solid var(--greyscale-200);
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+  background-color: transparent;
+  top: 267px;
   border-radius: var(--br-xs);
   box-sizing: border-box;
   width: 404px;
