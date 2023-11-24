@@ -76,13 +76,6 @@ CREATE TABLE `company` (
   `CNPJ` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `company`
---
-
-INSERT INTO `company` (`EMPRESA_ID`, `NAME`, `ADDRESS`, `PHONE`, `EMAIL`, `NUMBER_EMPLOYEES`, `CNPJ`) VALUES
-(1, 'wthrth', 'Rua Maria José Cardo n14 1DT', 465735467, 'goncalocustodioo@gmail.com', 23457246, 45676234);
-
 -- --------------------------------------------------------
 
 --

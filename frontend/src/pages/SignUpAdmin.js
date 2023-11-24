@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const SignUpAdmin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
+    admin_name: "",
     address: "",
     email: "",
     phone: "",
@@ -92,12 +92,12 @@ const SignUpAdmin = () => {
         </div>
         <input
           className={styles.password}
-          name="password_company"
-          id="password_company"
+          name="password"
+          id="password"
           placeholder="Password"
           type="password"
           onChange={handleInputChange}
-          value={formData.password_company}
+          value={formData.password}
         />
         <input
           className={styles.phoneNumber}
@@ -155,12 +155,12 @@ const SignUpAdmin = () => {
         />
         <input
           className={styles.companyName1}
-          name="company_name"
-          id="company_name"
+          name="companyname"
+          id="companyname"
           placeholder="Company Name"
           type="text"
           onChange={handleInputChange}
-          value={formData.company_name}
+          value={formData.companyname}
         />
         <img
           className={styles.backButtonIcon}

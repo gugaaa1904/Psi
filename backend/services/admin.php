@@ -15,17 +15,17 @@ class AdminService
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
-            $name = isset($_POST['name']) ? $this->sanitize($_POST['name']) : 'PICHA';
+            $name = isset($_POST['admin_name']) ? $this->sanitize($_POST['admin_name']) : 'PICHA';
             $email = isset($_POST['email']) ? $_POST['email'] : '';
             $phone = isset($_POST['phone']) ? $this->sanitize($_POST['phone']) : '';
             $age = isset($_POST['age']) ? $_POST['age'] : '';
             $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
-            $companyname = isset($_POST['companyname']) ? $_POST['companyname'] : ''; // Adjusted field name
+            $companyname = isset($_POST['companyname']) ? $_POST['companyname'] : '';
             $address = isset($_POST['address']) ? $_POST['address'] : '';
 
             // Use prepared statements to prevent SQL injection
-            $sql = $this->conn->prepare("SELECT EMPRESA_ID FROM company WHERE name = ?");
+            $sql = $this->conn->prepare("SELECT EMPRESA_ID FROM company WHERE NAME = ?");
             $sql->bind_param("s", $companyname);
             $sql->execute();
             $sql->bind_result($empresaId);
