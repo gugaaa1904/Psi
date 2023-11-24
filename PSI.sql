@@ -20,6 +20,13 @@ SET time_zone = "+00:00";
 --
 -- Database: `infocharge`
 --
+DROP DATABASE IF EXISTS infocharge;
+CREATE DATABASE IF NOT EXISTS infocharge CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+DROP TABLE IF EXISTS Admin;
+DROP TABLE IF EXISTS Company;
+DROP TABLE IF EXISTS Consuming;
+DROP TABLE IF EXISTS Collaborator;
 
 -- --------------------------------------------------------
 
@@ -27,161 +34,71 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `ADMIN_ID` int(11) NOT NULL,
-  `EMPRESA_ID` int(11) NOT NULL,
-  `NAME` varchar(100) NOT NULL,
-  `COMPANYNAME` varchar(100) NOT NULL,
-  `EMAIL` varchar(100) NOT NULL,
-  `PHONE` int(11) DEFAULT NULL,
-  `AGE` int(11) DEFAULT NULL,
-  `GENDER` varchar(30) DEFAULT NULL,
-  `PASSWORD` varchar(100) NOT NULL,
-  `ADDRESS` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+CREATE TABLE Admin (
+    ADMIN_ID int NOT NULL AUTO_INCREMENT,
+    COMPANY_ID int(11) NOT NULL,
+    NAME varchar(100) NOT NULL,
+    COMPANYNAME varchar(100) NOT NULL,
+    EMAIL varchar(100) NOT NULL,
+    PHONE int(11) DEFAULT NULL,
+    AGE int(11) DEFAULT NULL,
+    GENDER varchar(30) DEFAULT NULL,
+    PASSWORD  varchar(100) NOT NULL,
+    ADDRESS  varchar(255) DEFAULT NULL,
+    PRIMARY KEY (ADMIN_ID)
+);
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `colaborator`
 --
 
-CREATE TABLE `colaborator` (
-  `COLABORATOR_ID` int(11) NOT NULL,
-  `CONTRACT_ID` int(11) NOT NULL,
-  `EMPRESA_ID` int(11) NOT NULL,
-  `NAME` varchar(100) NOT NULL,
-  `EMAIL` varchar(100) NOT NULL,
-  `PHONE` int(11) DEFAULT NULL,
-  `AGE` int(11) DEFAULT NULL,
-  `GENDER` varchar(30) DEFAULT NULL,
-  `PASSWORD` varchar(100) NOT NULL,
-  `ADDRESS` varchar(255) DEFAULT NULL,
-  `COMPANYNAME` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+CREATE TABLE Collaborator (
+    COLABORATOR_ID int NOT NULL AUTO_INCREMENT,
+    COMPANY_ID int(11) NOT NULL,
+    NAME varchar(100) NOT NULL,
+    COMPANYNAME varchar(100) NOT NULL,
+    EMAIL varchar(100) NOT NULL,
+    PHONE int(11) DEFAULT NULL,
+    AGE int(11) DEFAULT NULL,
+    GENDER varchar(30) DEFAULT NULL,
+    PASSWORD  varchar(100) NOT NULL,
+    ADDRESS  varchar(255) DEFAULT NULL,
+    TARIFF decimal(10,0) NOT NULL,
+    START_DATE date NOT NULL,
+    END_DATE date NOT NULL,
+    PLAFOND decimal(10,0) NOT NULL,
+    PRIMARY KEY (COLABORATOR_ID)
+);
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `company`
 --
 
-CREATE TABLE `company` (
-  `EMPRESA_ID` int(11) NOT NULL,
-  `NAME` varchar(100) NOT NULL,
-  `ADDRESS` varchar(100) DEFAULT NULL,
-  `PHONE` int(11) DEFAULT NULL,
-  `EMAIL` varchar(100) DEFAULT NULL,
-  `NUMBER_EMPLOYEES` int(11) DEFAULT NULL,
-  `CNPJ` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+CREATE TABLE Company (
+    COMPANY_ID int(11) NOT NULL AUTO_INCREMENT,
+    NAME varchar(100) NOT NULL,
+    ADDRESS varchar(100) DEFAULT NULL,
+    PHONE int(11) DEFAULT NULL,
+    EMAIL varchar(100) DEFAULT NULL,
+    NUMBER_EMPLOYEES int(11) DEFAULT NULL,
+    CNPJ int(11) DEFAULT NULL,
+    PRIMARY KEY (COMPANY_ID)
+);
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `consuming`
 --
 
-CREATE TABLE `consuming` (
-  `CONSUMING_ID` int(11) NOT NULL,
-  `COLABORATOR_ID` int(11) DEFAULT NULL,
-  `ENERGY_USAGE` decimal(10,0) NOT NULL,
-  `DAILY_EXPENSE` decimal(10,0) NOT NULL,
-  `MONTHLY_EXPENSE` decimal(10,0) NOT NULL,
-  `CURRENT_POWER` decimal(10,0) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+CREATE TABLE Consuming (
+    CONSUMING_ID int(11) NOT NULL AUTO_INCREMENT,
+    COLABORATOR_ID int(11) DEFAULT NULL,
+    ENERGY_USAGE decimal(10,0) NOT NULL,
+    DAILY_EXPENSE decimal(10,0) NOT NULL,
+    MONTHLY_EXPENSE decimal(10,0) NOT NULL,
+    CURRENT_POWER decimal(10,0) NOT NULL,
+    PRIMARY KEY (CONSUMING_ID)
+);
 -- --------------------------------------------------------
-
---
--- Table structure for table `contract`
---
-
-CREATE TABLE `contract` (
-  `CONTRACT_ID` int(11) NOT NULL,
-  `TARIFF` decimal(10,0) NOT NULL,
-  `START_DATE` date NOT NULL,
-  `END_DATE` date NOT NULL,
-  `PLAFOND` decimal(10,0) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`ADMIN_ID`),
-  ADD UNIQUE KEY `ADMIN_PK` (`ADMIN_ID`),
-  ADD KEY `TEM_VARIOS_FK` (`EMPRESA_ID`);
-
---
--- Indexes for table `colaborator`
---
-ALTER TABLE `colaborator`
-  ADD PRIMARY KEY (`COLABORATOR_ID`),
-  ADD UNIQUE KEY `COLABORATOR_PK` (`COLABORATOR_ID`),
-  ADD KEY `PRETENCE_FK` (`CONTRACT_ID`),
-  ADD KEY `RELATIONSHIP_4_FK` (`EMPRESA_ID`);
-
---
--- Indexes for table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`EMPRESA_ID`),
-  ADD UNIQUE KEY `COMPANY_PK` (`EMPRESA_ID`);
-
---
--- Indexes for table `consuming`
---
-ALTER TABLE `consuming`
-  ADD PRIMARY KEY (`CONSUMING_ID`),
-  ADD UNIQUE KEY `CONSUMING_PK` (`CONSUMING_ID`),
-  ADD KEY `RELATIONSHIP_7_FK` (`COLABORATOR_ID`);
-
---
--- Indexes for table `contract`
---
-ALTER TABLE `contract`
-  ADD PRIMARY KEY (`CONTRACT_ID`),
-  ADD UNIQUE KEY `CONTRACT_PK` (`CONTRACT_ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `company`
---
-ALTER TABLE `company`
-  MODIFY `EMPRESA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `FK_ADMIN_TEM_VARIO_COMPANY` FOREIGN KEY (`EMPRESA_ID`) REFERENCES `company` (`EMPRESA_ID`);
-
---
--- Constraints for table `colaborator`
---
-ALTER TABLE `colaborator`
-  ADD CONSTRAINT `FK_COLABORA_PRETENCE_CONTRACT` FOREIGN KEY (`CONTRACT_ID`) REFERENCES `contract` (`CONTRACT_ID`),
-  ADD CONSTRAINT `FK_COLABORA_RELATIONS_COMPANY` FOREIGN KEY (`EMPRESA_ID`) REFERENCES `company` (`EMPRESA_ID`);
-
---
--- Constraints for table `consuming`
---
-ALTER TABLE `consuming`
-  ADD CONSTRAINT `FK_CONSUMIN_RELATIONS_COLABORA` FOREIGN KEY (`COLABORATOR_ID`) REFERENCES `colaborator` (`COLABORATOR_ID`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

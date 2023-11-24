@@ -4,9 +4,52 @@ import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
 
+
 const AddUser = () => {
   const [isPopUpAddUserOpen, setPopUpAddUserOpen] = useState(false);
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    address: "",
+    email: "",
+    phone: "",
+    age: "",
+    gender: "",
+    password: "",
+    plafond: "",
+    tariff: "",
+    end_date: "",
+    start_date: "",
+  });
+
+  console.log(formData);
+  const onAddUserClick = useCallback(() => {
+    // Aqui você deve fazer a requisição para o backend
+    fetch("http://localhost/Psi/backend/routes.php/colaborator", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: new URLSearchParams(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Lógica para lidar com a resposta do backend
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Erro na solicitação:", error);
+      });
+  }, [formData]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+    }));
+  };
 
   const openPopUpAddUser = useCallback(() => {
     setPopUpAddUserOpen(true);
@@ -45,87 +88,118 @@ const AddUser = () => {
       <div className={styles.addUser}>
         <div className={styles.content}>
           <div className={styles.contentChild} />
+
           <button
             className={styles.createNewUserButton}
             autoFocus={true}
-            onClick={openPopUpAddUser}
+            onClick={(openPopUpAddUser, onAddUserClick)}
           >
             <b className={styles.createNewUser}>Create New User</b>
           </button>
+
           <input
             className={styles.password}
-            name="Password"
+            name="password"
             id="password"
             placeholder="Password"
             type="password"
+            onChange={handleInputChange}
+            value={formData.password}
           />
           <input
             className={styles.email}
-            name="Email"
+            name="email"
             id="email"
             placeholder="Email"
             type="email"
+            onChange={handleInputChange}
+            value={formData.email}
           />
-          <select className={styles.gender} required={true} id="gender">
+          <select
+            className={styles.gender}
+            required={true}
+            name="gender"
+            id="gender"
+            onChange={handleInputChange}
+            value={formData.gender}
+          >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
           <input
             className={styles.adress}
-            name="Address"
+            name="address"
             id="address"
             placeholder="Address"
             type="text"
+            onChange={handleInputChange}
+            value={formData.address}
           />
           <input
             className={styles.phoneNumber}
-            name="Phone Number"
-            id="phone_number"
+            name="phone"
+            id="phone"
             placeholder="Phone Number"
             type="number"
+            onChange={handleInputChange}
+            value={formData.phone}
           />
-          <select className={styles.chooseRole} id="choose_role">
-            <option value="Administrator">Administrator</option>
-            <option value="Collaborator">Collaborator</option>
-          </select>
           <input
             className={styles.age}
-            name="Age"
+            name="age"
             id="age"
             placeholder="Age"
             type="number"
+            onChange={handleInputChange}
+            value={formData.age}
           />
-          <input className={styles.name} placeholder="Name" type="text" />
+          <input
+            className={styles.name}
+            name="name"
+            id="name"
+            placeholder="Name"
+            type="text"
+            onChange={handleInputChange}
+            value={formData.name}
+          />
           <div className={styles.enterTheFields}>
             Enter the fields below to add a new user:
           </div>
           <input
             className={styles.plafond}
-            name="Plafond"
+            name="plafond"
             id="plafond"
             placeholder="Plafond"
             type="number"
+            onChange={handleInputChange}
+            value={formData.plafond}
           />
           <input
             className={styles.tariff}
-            name="Tariff"
+            name="tariff"
             id="tariff"
             placeholder="Tariff"
             type="number"
+            onChange={handleInputChange}
+            value={formData.tariff}
           />
           <input
             className={styles.endDate}
-            name="End Date"
+            name="end_date"
             id="end_date"
             placeholder="End Date"
             type="date"
+            onChange={handleInputChange}
+            value={formData.end_date}
           />
           <input
             className={styles.startDate}
-            name="Start Date"
+            name="start_date"
             id="start_date"
             placeholder="Start Date"
             type="date"
+            onChange={handleInputChange}
+            value={formData.start_date}
           />
           <div className={styles.contractOfThis}>Contract of this User</div>
         </div>

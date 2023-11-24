@@ -15,37 +15,50 @@ class AdminService
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
-            $name = isset($_POST['admin_name']) ? $this->sanitize($_POST['admin_name']) : 'PICHA';
-            $email = isset($_POST['email']) ? $_POST['email'] : '';
+            $name = isset($_POST['admin_name']) ? $this->sanitize($_POST['admin_name']) : '';
+            $email = isset($_POST['email']) ?  $this->sanitize($_POST['email']) : '';
             $phone = isset($_POST['phone']) ? $this->sanitize($_POST['phone']) : '';
-            $age = isset($_POST['age']) ? $_POST['age'] : '';
-            $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
-            $password = isset($_POST['password']) ? $_POST['password'] : '';
-            $companyname = isset($_POST['companyname']) ? $_POST['companyname'] : '';
-            $address = isset($_POST['address']) ? $_POST['address'] : '';
+            $age = isset($_POST['age']) ?  $this->sanitize($_POST['age']) : '';
+            $gender = isset($_POST['gender']) ?  $this->sanitize($_POST['gender']) : '';
+            $password = isset($_POST['password']) ?  $this->sanitize($_POST['password']) : '';
+            $companyname = isset($_POST['companyname']) ?  $this->sanitize($_POST['companyname']) : '';
+            $address = isset($_POST['address']) ?  $this->sanitize($_POST['address']) : '';
 
             // Use prepared statements to prevent SQL injection
-            $sql = $this->conn->prepare("SELECT EMPRESA_ID FROM company WHERE NAME = ?");
+            $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
             $sql->bind_param("s", $companyname);
             $sql->execute();
-            $sql->bind_result($empresaId);
-            $sql->fetch();
+            $sql->bind_result($companyid);
+
+            // Fetch the result
+            if (!$sql->fetch()) {
+                // Company not found, handle the error (return an appropriate response)
+                $this->response(array('status' => 'failed', 'error' => 'Company not found'));
+                return;
+            }
+
             $sql->close();
 
             // Use prepared statements to prevent SQL injection
-            $stmt = "INSERT INTO `admin` (`EMPRESA_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`) 
-                                        VALUES ('$empresaId', '$name', '$email', '$phone', '$age', '$gender', '$password', '$companyname', '$address')";
+            $stmt = $this->conn->prepare("INSERT INTO `Admin` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            // Bind parameters
+            $stmt->bind_param("issiissss", $companyid, $name, $email, $phone, $age, $gender, $password, $companyname, $address);
 
             // Execute the statement
-            $result = $this->conn->query($stmt);
+            $result = $stmt->execute();
 
+            // Check the result
             if ($result === FALSE) {
                 $this->response(array('status' => 'failed', 'error' => 'Invalid data received'));
             } else {
                 $this->response(array('status' => 'success'));
             }
 
+            $stmt->close();
         }
+    
     }
 
     private function response($data)
