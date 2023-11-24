@@ -15,24 +15,32 @@ class AdminService
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
-            $admin_name = isset($_POST['admin_name']) ? $this->sanitize($_POST['admin_name']) : 'PICHA';
+            $name = isset($_POST['name']) ? $this->sanitize($_POST['name']) : 'PICHA';
             $email = isset($_POST['email']) ? $_POST['email'] : '';
             $phone = isset($_POST['phone']) ? $this->sanitize($_POST['phone']) : '';
             $age = isset($_POST['age']) ? $_POST['age'] : '';
             $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
-            $password_company = isset($_POST['password_company']) ? $_POST['password_company'] : '';
-            $company_name = isset($_POST['company_name']) ? $_POST['company_name'] : '';
+            $password = isset($_POST['password']) ? $_POST['password'] : '';
+            $companyname = isset($_POST['companyname']) ? $_POST['companyname'] : ''; // Adjusted field name
             $address = isset($_POST['address']) ? $_POST['address'] : '';
+
             // Use prepared statements to prevent SQL injection
-            $stmt = "INSERT INTO `admin` (`NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANY`, `ADDRESS`) 
-                                        VALUES ('$admin_name', '$email', '$phone', '$age', '$gender', '$password_company', '$company_name', '$address')";
+            $sql = $this->conn->prepare("SELECT EMPRESA_ID FROM company WHERE name = ?");
+            $sql->bind_param("s", $companyname);
+            $sql->execute();
+            $sql->bind_result($empresaId);
+            $sql->fetch();
+            $sql->close();
+
+            // Use prepared statements to prevent SQL injection
+            $stmt = "INSERT INTO `admin` (`EMPRESA_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`) 
+                                        VALUES ('$empresaId', '$name', '$email', '$phone', '$age', '$gender', '$password', '$companyname', '$address')";
 
             // Execute the statement
             $result = $this->conn->query($stmt);
 
             if ($result === FALSE) {
-                $error_message = mysqli_error($this->conn);
-                $this->response(array('status' => 'failed', 'error' => $error_message));
+                $this->response(array('status' => 'failed', 'error' => 'Invalid data received'));
             } else {
                 $this->response(array('status' => 'success'));
             }
@@ -52,8 +60,8 @@ class AdminService
     }
 }
 
-$AdminService = new AdminService();
+$adminService = new AdminService();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $AdminService->insert_admin_post();
+    $adminService->insert_admin_post();
 }

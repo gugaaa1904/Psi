@@ -6,14 +6,14 @@ import React, { useState } from "react";
 const SignUpAdmin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    admin_name: "",
+    name: "",
     address: "",
     email: "",
     phone: "",
     age: "",
     gender: "",
-    password_company: "",
-    company_name: "",
+    password: "",
+    companyname: "",
   });
 
   const onSignInTextClick = useCallback(() => {
