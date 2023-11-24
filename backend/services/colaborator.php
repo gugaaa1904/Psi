@@ -74,6 +74,6 @@ class CollaboratorService
 
 $CollaboratorService = new CollaboratorService();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['plafond'])) {
     $CollaboratorService->insert_collaborator_post();
 }
