@@ -73,7 +73,7 @@ const onSignUpClick = useCallback(() => {
         </b>
 
         <div className={styles.doYouAlreadyContainer}>
-          <span>Do you already have an account or a collaborator account?</span>
+          <span>Do you already have an account?</span>
           <span className={styles.span}>{` `}</span>
         </div>
         <div className={styles.orSignInWith}>

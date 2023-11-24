@@ -23,7 +23,7 @@ class EmpresaService
             $cnpj = isset($_POST['cnpj']) ? $_POST['cnpj'] : '';
 
             // Use prepared statements to prevent SQL injection
-            $stmt = "INSERT INTO `company` (`NAME`, `ADDRESS`, `PHONE`, `E_MAIL`, `NUMBER_EMPLOYEES`, `CNPJ`) 
+            $stmt = "INSERT INTO `company` (`NAME`, `ADDRESS`, `PHONE`, `EMAIL`, `NUMBER_EMPLOYEES`, `CNPJ`) 
                                         VALUES ('$name', '$address', '$telephone', '$email', '$funcs', '$cnpj')";
 
             // Execute the statement

@@ -1,229 +1,194 @@
-/*==============================================================*/
-/* Table: ADMIN                                                 */
-/*==============================================================*/
-create table ADMIN 
-(
-   FUNCIONARIO_ID       integer                        not null,
-   ADMIN_ID             integer                        not null,
-   EMPRESA_ID           integer                        null,
-   NAME                 varchar(100)                   not null,
-   SURNAME              varchar(100)                   not null,
-   E_MAIL               varchar(100)                   not null,
-   PHONE                integer                        null,
-   AGE                  integer                        null,
-   GENDER               varchar(30)                    null,
-   PASSWORD             varchar(100)                   not null,
-   ROLE                 varchar(100)                   not null,
-   ADDRESS              varchar(255)                   null,
-   constraint PK_ADMIN primary key (FUNCIONARIO_ID, ADMIN_ID)
-);
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 24, 2023 at 02:13 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
-/*==============================================================*/
-/* Index: ADMIN_PK                                              */
-/*==============================================================*/
-create unique index ADMIN_PK on ADMIN (
-FUNCIONARIO_ID ASC,
-ADMIN_ID ASC
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-/*==============================================================*/
-/* Index: INHERITANCE_2_FK                                      */
-/*==============================================================*/
-create index INHERITANCE_2_FK on ADMIN (
-FUNCIONARIO_ID ASC
-);
 
-/*==============================================================*/
-/* Table: COLABORATOR                                           */
-/*==============================================================*/
-create table COLABORATOR 
-(
-   FUNCIONARIO_ID       integer                        not null,
-   COLABORATOR_ID       integer                        not null,
-   CONTRACT_ID          integer                        not null,
-   EMPRESA_ID           integer                        null,
-   NAME                 varchar(100)                   not null,
-   SURNAME              varchar(100)                   not null,
-   E_MAIL               varchar(100)                   not null,
-   PHONE                integer                        null,
-   AGE                  integer                        null,
-   GENDER               varchar(30)                    null,
-   PASSWORD             varchar(100)                   not null,
-   ROLE                 varchar(100)                   not null,
-   ADDRESS              varchar(255)                   null,
-   constraint PK_COLABORATOR primary key (FUNCIONARIO_ID, COLABORATOR_ID)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-/*==============================================================*/
-/* Index: COLABORATOR_PK                                        */
-/*==============================================================*/
-create unique index COLABORATOR_PK on COLABORATOR (
-FUNCIONARIO_ID ASC,
-COLABORATOR_ID ASC
-);
+--
+-- Database: `infocharge`
+--
 
-/*==============================================================*/
-/* Index: PRETENCE_FK                                           */
-/*==============================================================*/
-create index PRETENCE_FK on COLABORATOR (
-CONTRACT_ID ASC
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Index: INHERITANCE_1_FK                                      */
-/*==============================================================*/
-create index INHERITANCE_1_FK on COLABORATOR (
-FUNCIONARIO_ID ASC
-);
+--
+-- Table structure for table `admin`
+--
 
-/*==============================================================*/
-/* Table: COMPANY                                               */
-/*==============================================================*/
-create table COMPANY 
-(
-   EMPRESA_ID           integer                        not null AUTO_INCREMENT,
-   NAME                 varchar(100)                   not null,
-   ADDRESS               varchar(100)                   null,
-   PHONE                integer                        null,
-   E_MAIL               varchar(100)                   null,
-   NUMBER_EMPLOYEES     integer                        null,
-   CNPJ                 integer                        null,
-   constraint PK_COMPANY primary key (EMPRESA_ID)
-);
+CREATE TABLE `admin` (
+  `ADMIN_ID` int(11) NOT NULL,
+  `EMPRESA_ID` int(11) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `COMPANYNAME` varchar(100) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `PHONE` int(11) DEFAULT NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `GENDER` varchar(30) DEFAULT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*==============================================================*/
-/* Index: COMPANY_PK                                            */
-/*==============================================================*/
-create unique index COMPANY_PK on COMPANY (
-EMPRESA_ID ASC
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: CONSUMING                                             */
-/*==============================================================*/
-create table CONSUMING 
-(
-   CONSUMING_ID         integer                        not null,
-   FUNCIONARIO_ID       integer                        null,
-   COLABORATOR_ID       integer                        null,
-   ENERGY_USAGE         numeric                        not null,
-   DAILY_EXPENSE        numeric                        not null,
-   MONTHLY_EXPENSE      numeric                        not null,
-   CURRENT_POWER        numeric                        not null,
-   constraint PK_CONSUMING primary key (CONSUMING_ID)
-);
+--
+-- Table structure for table `colaborator`
+--
 
-/*==============================================================*/
-/* Index: CONSUMING_PK                                          */
-/*==============================================================*/
-create unique index CONSUMING_PK on CONSUMING (
-CONSUMING_ID ASC
-);
+CREATE TABLE `colaborator` (
+  `COLABORATOR_ID` int(11) NOT NULL,
+  `CONTRACT_ID` int(11) NOT NULL,
+  `EMPRESA_ID` int(11) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `PHONE` int(11) DEFAULT NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `GENDER` varchar(30) DEFAULT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `COMPANYNAME` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*==============================================================*/
-/* Index: RELATIONSHIP_7_FK                                     */
-/*==============================================================*/
-create index RELATIONSHIP_7_FK on CONSUMING (
-FUNCIONARIO_ID ASC,
-COLABORATOR_ID ASC
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: CONTRACT                                              */
-/*==============================================================*/
-create table CONTRACT 
-(
-   CONTRACT_ID          integer                        not null,
-   FUNCIONARIO_ID       integer                        null,
-   ADMIN_ID             integer                        null,
-   TARIFF               numeric                        not null,
-   START_DATE           date                           not null,
-   END_DATE             date                           not null,
-   PLAFOND              numeric                        not null,
-   constraint PK_CONTRACT primary key (CONTRACT_ID)
-);
+--
+-- Table structure for table `company`
+--
 
-/*==============================================================*/
-/* Index: CONTRACT_PK                                           */
-/*==============================================================*/
-create unique index CONTRACT_PK on CONTRACT (
-CONTRACT_ID ASC
-);
+CREATE TABLE `company` (
+  `EMPRESA_ID` int(11) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `ADDRESS` varchar(100) DEFAULT NULL,
+  `PHONE` int(11) DEFAULT NULL,
+  `EMAIL` varchar(100) DEFAULT NULL,
+  `NUMBER_EMPLOYEES` int(11) DEFAULT NULL,
+  `CNPJ` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*==============================================================*/
-/* Index: RELATIONSHIP_5_FK                                     */
-/*==============================================================*/
-create index RELATIONSHIP_5_FK on CONTRACT (
-FUNCIONARIO_ID ASC,
-ADMIN_ID ASC
-);
+--
+-- Dumping data for table `company`
+--
 
-/*==============================================================*/
-/* Table: WORKERS                                               */
-/*==============================================================*/
-create table WORKERS 
-(
-   FUNCIONARIO_ID       integer                        not null,
-   EMPRESA_ID           integer                        not null,
-   NAME                 varchar(100)                   not null,
-   SURNAME              varchar(100)                   not null,
-   E_MAIL               varchar(100)                   not null,
-   PHONE                integer                        null,
-   AGE                  integer                        null,
-   GENDER               varchar(30)                    null,
-   PASSWORD             varchar(100)                   not null,
-   ROLE                 varchar(100)                   not null,
-   ADDRESS              varchar(255)                   null,
-   constraint PK_WORKERS primary key (FUNCIONARIO_ID)
-);
+INSERT INTO `company` (`EMPRESA_ID`, `NAME`, `ADDRESS`, `PHONE`, `EMAIL`, `NUMBER_EMPLOYEES`, `CNPJ`) VALUES
+(1, 'wthrth', 'Rua Maria José Cardo n14 1DT', 465735467, 'goncalocustodioo@gmail.com', 23457246, 45676234);
 
-/*==============================================================*/
-/* Index: WORKERS_PK                                            */
-/*==============================================================*/
-create unique index WORKERS_PK on WORKERS (
-FUNCIONARIO_ID ASC
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Index: TEM_VARIOS_FK                                         */
-/*==============================================================*/
-create index TEM_VARIOS_FK on WORKERS (
-EMPRESA_ID ASC
-);
+--
+-- Table structure for table `consuming`
+--
 
-alter table ADMIN
-   add constraint FK_ADMIN_INHERITAN_WORKERS foreign key (FUNCIONARIO_ID)
-      references WORKERS (FUNCIONARIO_ID)
-      on update restrict
-      on delete restrict;
+CREATE TABLE `consuming` (
+  `CONSUMING_ID` int(11) NOT NULL,
+  `COLABORATOR_ID` int(11) DEFAULT NULL,
+  `ENERGY_USAGE` decimal(10,0) NOT NULL,
+  `DAILY_EXPENSE` decimal(10,0) NOT NULL,
+  `MONTHLY_EXPENSE` decimal(10,0) NOT NULL,
+  `CURRENT_POWER` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-alter table COLABORATOR
-   add constraint FK_COLABORA_INHERITAN_WORKERS foreign key (FUNCIONARIO_ID)
-      references WORKERS (FUNCIONARIO_ID)
-      on update restrict
-      on delete restrict;
+-- --------------------------------------------------------
 
-alter table COLABORATOR
-   add constraint FK_COLABORA_PRETENCE_CONTRACT foreign key (CONTRACT_ID)
-      references CONTRACT (CONTRACT_ID)
-      on update restrict
-      on delete restrict;
+--
+-- Table structure for table `contract`
+--
 
-alter table CONSUMING
-   add constraint FK_CONSUMIN_RELATIONS_COLABORA foreign key (FUNCIONARIO_ID, COLABORATOR_ID)
-      references COLABORATOR (FUNCIONARIO_ID, COLABORATOR_ID)
-      on update restrict
-      on delete restrict;
+CREATE TABLE `contract` (
+  `CONTRACT_ID` int(11) NOT NULL,
+  `TARIFF` decimal(10,0) NOT NULL,
+  `START_DATE` date NOT NULL,
+  `END_DATE` date NOT NULL,
+  `PLAFOND` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-alter table CONTRACT
-   add constraint FK_CONTRACT_RELATIONS_ADMIN foreign key (FUNCIONARIO_ID, ADMIN_ID)
-      references ADMIN (FUNCIONARIO_ID, ADMIN_ID)
-      on update restrict
-      on delete restrict;
+--
+-- Indexes for dumped tables
+--
 
-alter table WORKERS
-   add constraint FK_WORKERS_TEM_VARIO_COMPANY foreign key (EMPRESA_ID)
-      references COMPANY (EMPRESA_ID)
-      on update restrict
-      on delete restrict;
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`ADMIN_ID`),
+  ADD UNIQUE KEY `ADMIN_PK` (`ADMIN_ID`),
+  ADD KEY `TEM_VARIOS_FK` (`EMPRESA_ID`);
 
+--
+-- Indexes for table `colaborator`
+--
+ALTER TABLE `colaborator`
+  ADD PRIMARY KEY (`COLABORATOR_ID`),
+  ADD UNIQUE KEY `COLABORATOR_PK` (`COLABORATOR_ID`),
+  ADD KEY `PRETENCE_FK` (`CONTRACT_ID`),
+  ADD KEY `RELATIONSHIP_4_FK` (`EMPRESA_ID`);
+
+--
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`EMPRESA_ID`),
+  ADD UNIQUE KEY `COMPANY_PK` (`EMPRESA_ID`);
+
+--
+-- Indexes for table `consuming`
+--
+ALTER TABLE `consuming`
+  ADD PRIMARY KEY (`CONSUMING_ID`),
+  ADD UNIQUE KEY `CONSUMING_PK` (`CONSUMING_ID`),
+  ADD KEY `RELATIONSHIP_7_FK` (`COLABORATOR_ID`);
+
+--
+-- Indexes for table `contract`
+--
+ALTER TABLE `contract`
+  ADD PRIMARY KEY (`CONTRACT_ID`),
+  ADD UNIQUE KEY `CONTRACT_PK` (`CONTRACT_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `company`
+--
+ALTER TABLE `company`
+  MODIFY `EMPRESA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `FK_ADMIN_TEM_VARIO_COMPANY` FOREIGN KEY (`EMPRESA_ID`) REFERENCES `company` (`EMPRESA_ID`);
+
+--
+-- Constraints for table `colaborator`
+--
+ALTER TABLE `colaborator`
+  ADD CONSTRAINT `FK_COLABORA_PRETENCE_CONTRACT` FOREIGN KEY (`CONTRACT_ID`) REFERENCES `contract` (`CONTRACT_ID`),
+  ADD CONSTRAINT `FK_COLABORA_RELATIONS_COMPANY` FOREIGN KEY (`EMPRESA_ID`) REFERENCES `company` (`EMPRESA_ID`);
+
+--
+-- Constraints for table `consuming`
+--
+ALTER TABLE `consuming`
+  ADD CONSTRAINT `FK_CONSUMIN_RELATIONS_COLABORA` FOREIGN KEY (`COLABORATOR_ID`) REFERENCES `colaborator` (`COLABORATOR_ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

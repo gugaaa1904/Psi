@@ -6,9 +6,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 require_once 'services/company.php';
-//require_once 'employee_services.php';
-//require_once 'contract_services.php';
-// ... include other service files ...
+require_once 'services/admin.php';
 require_once 'config.php';
 $conn = connect();
 
@@ -31,8 +29,14 @@ switch ($uri) {
             http_response_code(405); // Method Not Allowed
         }
         break;
-    case '/employees':
-        // Handle employees routes similarly
+    case '/admin':
+        if ($requestMethod === 'GET') {
+            //clients_list();
+        } elseif ($requestMethod === 'POST') {
+            insert_admin_post();
+        } else {
+            http_response_code(405); // Method Not Allowed
+        }
         break;
     case '/contracts':
         // Handle contracts routes similarly
