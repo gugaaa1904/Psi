@@ -15,7 +15,7 @@ class CollaboratorService
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
-            $name = isset($_POST['admin_name']) ? $this->sanitize($_POST['admin_name']) : '';
+            $name = isset($_POST['name']) ? $this->sanitize($_POST['name']) : '';
             $companyname = isset($_POST['companyname']) ? $this->sanitize($_POST['companyname']) : '';
             $email = isset($_POST['email']) ?  $this->sanitize($_POST['email']) : '';
             $phone = isset($_POST['phone']) ? $this->sanitize($_POST['phone']) : '';
@@ -27,9 +27,6 @@ class CollaboratorService
             $tariff = isset($_POST['tariff']) ?  $this->sanitize($_POST['tariff']) : '';
             $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
             $start_date = isset($_POST['start_date']) ?  $this->sanitize($_POST['start_date']) : '';
-
-
-
 
             // Use prepared statements to prevent SQL injection
             $stmt = "INSERT INTO `Collaborator` (`NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 

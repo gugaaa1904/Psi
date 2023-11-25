@@ -32,7 +32,6 @@ DROP TABLE IF EXISTS Collaborator;
 
 --
 -- Table structure for table `admin`
---
 
 CREATE TABLE Admin (
     ADMIN_ID int NOT NULL AUTO_INCREMENT,
@@ -43,18 +42,14 @@ CREATE TABLE Admin (
     PHONE int(11) DEFAULT NULL,
     AGE int(11) DEFAULT NULL,
     GENDER varchar(30) DEFAULT NULL,
-    PASSWORD  varchar(100) NOT NULL,
-    ADDRESS  varchar(255) DEFAULT NULL,
+    PASSWORD varchar(100) NOT NULL,
+    ADDRESS varchar(255) DEFAULT NULL,
     PRIMARY KEY (ADMIN_ID)
 );
--- --------------------------------------------------------
 
---
--- Table structure for table `colaborator`
---
-
+-- Table structure for table `Collaborator`
 CREATE TABLE Collaborator (
-    COLABORATOR_ID int NOT NULL AUTO_INCREMENT,
+    COLLABORATOR_ID int NOT NULL AUTO_INCREMENT,
     COMPANY_ID int(11) NOT NULL,
     NAME varchar(100) NOT NULL,
     COMPANYNAME varchar(100) NOT NULL,
@@ -62,14 +57,15 @@ CREATE TABLE Collaborator (
     PHONE int(11) DEFAULT NULL,
     AGE int(11) DEFAULT NULL,
     GENDER varchar(30) DEFAULT NULL,
-    PASSWORD  varchar(100) NOT NULL,
-    ADDRESS  varchar(255) DEFAULT NULL,
+    PASSWORD varchar(100) NOT NULL,
+    ADDRESS varchar(255) DEFAULT NULL,
     TARIFF decimal(10,0) NOT NULL,
     START_DATE date NOT NULL,
     END_DATE date NOT NULL,
     PLAFOND decimal(10,0) NOT NULL,
-    PRIMARY KEY (COLABORATOR_ID)
+    PRIMARY KEY (COLLABORATOR_ID)
 );
+
 -- --------------------------------------------------------
 
 --
