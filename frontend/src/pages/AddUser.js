@@ -126,6 +126,7 @@ const AddUser = () => {
           >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+            <option value="Other">Other</option>
           </select>
           <input
             className={styles.adress}
@@ -146,13 +147,13 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.companyname}
           />
-          
+
           <input
             className={styles.phoneNumber}
             name="phone"
             id="phone"
             placeholder="Phone Number"
-            type="number"
+            type="integer"
             onChange={handleInputChange}
             value={formData.phone}
           />
@@ -161,7 +162,7 @@ const AddUser = () => {
             name="age"
             id="age"
             placeholder="Age"
-            type="number"
+            type="integer"
             onChange={handleInputChange}
             value={formData.age}
           />
