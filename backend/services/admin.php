@@ -75,6 +75,6 @@ class AdminService
 
 $adminService = new AdminService();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['admin_name'])) {
     $adminService->insert_admin_post();
 }

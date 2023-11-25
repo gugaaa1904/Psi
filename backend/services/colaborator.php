@@ -29,6 +29,23 @@ class CollaboratorService
             $start_date = isset($_POST['start_date']) ?  $this->sanitize($_POST['start_date']) : '';
 
             // Use prepared statements to prevent SQL injection
+            $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
+            $sql->bind_param("s", $companyname);
+            $sql->execute();
+            $sql->bind_result($companyid);
+
+            echo "Company Name: $companyname<br>";
+            
+            // Fetch the result
+            if (!$sql->fetch()) {
+                // Company not found, handle the error (return an appropriate response)
+                $this->response(array('status' => 'failed', 'error' => "Company not found for '$companyname'"));
+                return;
+            }
+
+            $sql->close();
+
+            // Use prepared statements to prevent SQL injection
             $stmt = "INSERT INTO `Collaborator` (`NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
                                         VALUES ('$name', '$companyname', '$email', '$phone', '$age', '$gender', '$password', '$address', '$plafond', '$tariff', '$end_date', '$start_date')";
 

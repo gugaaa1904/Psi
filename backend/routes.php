@@ -22,7 +22,8 @@ $uri = $uriParts[0];
 // Route the request based on the URI and method
 switch ($uri) {
     case '/company':
-        if ($requestMethod === 'GET') {
+        if ($requestMethod === 'GET'
+        ) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_company_post();
@@ -40,7 +41,8 @@ switch ($uri) {
         }
         break;
     case '/colaborator':
-        if ($requestMethod === 'GET') {
+        if ($requestMethod === 'GET'
+        ) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_collaborator_post();
