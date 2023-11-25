@@ -25,10 +25,14 @@ class AdminService
             $address = isset($_POST['address']) ?  $this->sanitize($_POST['address']) : '';
 
             // Use prepared statements to prevent SQL injection
+            $companyname = trim($companyname);
             $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
             $sql->bind_param("s", $companyname);
             $sql->execute();
             $sql->bind_result($companyid);
+
+            echo "Company Name: $companyname<br>";
+            echo "Database Encoding: " . $this->conn->character_set_name() . "<br>";
 
             // Fetch the result
             if (!$sql->fetch()) {
