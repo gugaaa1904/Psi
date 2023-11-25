@@ -71,6 +71,8 @@
   position: relative;
   letter-spacing: 0.2px;
   line-height: 140%;
+  text-align: center;
+  top: 5px;
 }
 .changeButton,
 .confirmNewPassword,
@@ -85,11 +87,10 @@
   top: 550px;
   background-color: var(--color-steelblue-100);
   width: 129px;
-  display: flex;
-  flex-direction: row;
+  text-align: center;
+  height: 30px;
   align-items: center;
   justify-content: space-between;
-  padding: var(--padding-6xs) var(--padding-77xl);
   cursor: pointer;
 }
 .confirmNewPassword,

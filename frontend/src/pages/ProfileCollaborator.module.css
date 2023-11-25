@@ -186,6 +186,7 @@
   background-color: var(--color-steelblue-100);
   width: 111px;
   height: 27px;
+  cursor: pointer;
   font-size: var(--heading-h6-size);
   color: var(--additional-white);
 }

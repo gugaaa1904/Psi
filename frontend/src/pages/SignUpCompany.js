@@ -122,7 +122,7 @@ const onSignUpClick = useCallback(() => {
           name="telephone"
           id="phone_number"
           placeholder="Phone Number"
-          type="number"
+          type="integer"
           onChange={handleInputChange}
           value={formData.telephone}
         />
@@ -131,7 +131,7 @@ const onSignUpClick = useCallback(() => {
           name="funcs"
           id="employess_number"
           placeholder="Employees Number"
-          type="number"
+          type="integer"
           onChange={handleInputChange}
           value={formData.funcs}
         />
@@ -158,7 +158,7 @@ const onSignUpClick = useCallback(() => {
           name="cnpj"
           id="cnpj"
           placeholder="CNPJ (National Register of Legal Entities)"
-          type="number"
+          type="integer"
           onChange={handleInputChange}
           value={formData.cnpj}
         />
