@@ -96,7 +96,8 @@
   font-size: var(--heading-h3-size);
   letter-spacing: 0.2px;
   line-height: 125%;
-  color: var(--greyscale-900);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .welcomePleaseSelect {
   position: absolute;
@@ -104,15 +105,17 @@
   left: 255px;
   font-size: var(--body-medium-regular-size);
   line-height: 160%;
-  color: var(--greyscale-500);
+  color: white;
+  font-style: oblique;
   display: inline-block;
   width: 222px;
 }
 .logo1Icon {
   position: absolute;
   top: 10px;
-  left: 10px;
-  width: 233px;
+  right: 0px;
+  left: -35px;
+  width: 303px;
   height: 87px;
   object-fit: cover;
 }
@@ -123,27 +126,78 @@
   width: 246px;
   height: 98px;
 }
-.content,
-.coverIcon {
+
+.content {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 732px;
-  height: 900px;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  left: 850px;
 }
-.coverIcon {
-  left: 732px;
-  width: 708px;
+
+.covericon {
+  position: cover;
+  width: 100%;
+  height: 100%;
 }
+
 .chooseThe3TypesUser {
-  position: relative;
+  position: absolute;
   background-color: var(--additional-white);
   width: 100%;
-  height: 900px;
+  height: 100%;
   overflow: hidden;
   text-align: center;
   font-size: var(--heading-h6-size);
   color: var(--additional-white);
   font-family: var(--body-medium-regular);
+}
+
+
+/* Responsive styles using media queries */
+@media only screen and (max-width: 768px) {
+
+  /* Adjust styles for screens 768 pixels and narrower */
+  .logo1Icon {
+    left: 0;
+    /* Adjust as needed */
+  }
+
+  .content {
+    left: 0;
+    /* Adjust as needed */
+  }
+
+  /* Add more adjustments as needed */
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+  /* Adjust styles for screens between 769 pixels and 1024 pixels */
+  .logo1Icon {
+    left: 0;
+    /* Adjust as needed */
+  }
+
+  .content {
+    left: 0;
+    /* Adjust as needed */
+  }
+
+  /* Add more adjustments as needed */
+}
+
+@media only screen and (min-width: 1025px) {
+
+  /* Adjust styles for screens 1025 pixels and wider */
+  .logo1Icon {
+    left: -35px;
+    /* Adjust as needed */
+  }
+
+  .content {
+    left: 850px;
+    /* Adjust as needed */
+  }
+
+  /* Add more adjustments as needed */
 }
