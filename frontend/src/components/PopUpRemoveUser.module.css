@@ -1,0 +1,31 @@
+.dangerSquareIcon,
+.theUserHas {
+  position: absolute;
+  top: 66px;
+  left: 53px;
+  width: 24px;
+  height: 24px;
+}
+.theUserHas {
+  top: 68px;
+  left: 80px;
+  letter-spacing: 0.2px;
+  line-height: 150%;
+  display: inline-block;
+  width: 256px;
+}
+.popUpRemoveUser {
+  border-radius: var(--br-xs);
+  background-color: var(--additional-white);
+  border: 2px solid var(--color-gray-400);
+  box-sizing: border-box;
+  width: 334px;
+  height: 155px;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: left;
+  font-size: var(--body-medium-regular-size);
+  color: var(--color-steelblue-100);
+  font-family: var(--body-medium-regular);
+}
