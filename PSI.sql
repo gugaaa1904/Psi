@@ -1,4 +1,3 @@
-
 /*==============================================================*/
 /* Table: ADMIN                                                 */
 /*==============================================================*/
@@ -57,14 +56,14 @@ create table Company
 /*==============================================================*/
 /* Table: CONSUMING                                             */
 /*==============================================================*/
-create table Consuming
+create table CONSUMING 
 (
-   CONSUMING_ID         integer                        not null AUTO_INCREMENT,
+   CONSUMING_ID         integer                        not null,
    COLLABORATOR_ID      integer                        not null,
-   ENERGY_USAGE         numeric                        not null,
-   DAILY_EXPENSE        numeric                        not null,
-   MONTHLY_EXPENSE      numeric                        not null,
-   CURRENT_POWER        numeric                        not null,
+   DAILY_USAGE          numeric                        not null,
+   DAILY_RUNTIME        numeric                        not null,
+   DAY                  numeric                        not null,
+   MONTH_YEAR           varchar(100)                   not null,
    constraint PK_CONSUMING primary key (CONSUMING_ID)
 );
 
