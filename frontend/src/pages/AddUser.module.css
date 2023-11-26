@@ -179,11 +179,11 @@
   line-height: 125%;
 }
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
-  width: 1190px;
+  width: 1690px;
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -348,11 +348,11 @@
 }
 .addUser,
 .sidebar {
-  height: 900px;
+  height: 1000px;
   overflow: hidden;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -362,7 +362,9 @@
 .addUser {
   position: relative;
   background-color: var(--color-gray-100);
-  width: 100%;
+  left: 200px;
+  width: 2000px;
+  height: 1000px;
   text-align: left;
   font-size: var(--body-medium-regular-size);
   color: var(--greyscale-500);

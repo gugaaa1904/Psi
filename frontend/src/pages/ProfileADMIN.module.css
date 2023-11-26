@@ -100,7 +100,7 @@
   line-height: 125%;
 }
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
@@ -275,11 +275,11 @@
 }
 .profileAdmin,
 .sidebar {
-  height: 900px;
+  height: 1000px;
   overflow: hidden;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -291,7 +291,8 @@
 .profileAdmin {
   position: relative;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 1900px;
+  left: 200px;
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--color-black);

@@ -124,7 +124,7 @@
 }
 .header,
 .help1 {
-  position: absolute;
+  position: fixed;
 }
 .help1 {
   top: 29px;
@@ -297,11 +297,11 @@
 }
 .helpCollaborator,
 .sidebar {
-  height: 900px;
+  height: 1000px;
   overflow: hidden;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -313,7 +313,8 @@
 .helpCollaborator {
   position: relative;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 1900px;
+  left: 200px;
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--color-steelblue-100);

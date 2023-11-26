@@ -453,7 +453,7 @@
   line-height: 125%;
 }
 .header1 {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
@@ -626,11 +626,11 @@
 }
 .companyInfo,
 .sidebar {
-  height: 900px;
+  height: 1000px;
   overflow: hidden;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -640,9 +640,10 @@
   color: var(--greyscale-500);
 }
 .companyInfo {
-  position: relative;
+  position: fixed;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 1990px;
+  left: 200px;
   text-align: left;
   font-size: var(--heading-h3-size);
   color: var(--primary-dark-shade);

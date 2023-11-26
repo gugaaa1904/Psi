@@ -7,7 +7,8 @@
 }
 .divider {
   position: absolute;
-  width: 100%;
+  width: 1200px;
+  height: 100px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -105,14 +106,14 @@
 .notificationsIcon {
   position: absolute;
   top: 27px;
-  left: 1109px;
+  left: 1459px;
   border-radius: var(--br-981xl);
   width: 40px;
   height: 40px;
   overflow: hidden;
   cursor: pointer;
 }
-.header,
+
 .help {
   position: absolute;
 }
@@ -124,9 +125,10 @@
 }
 .header {
   top: 0;
+  position: fixed;
   left: 250px;
   background-color: var(--additional-white);
-  width: 1190px;
+  width: 1690px;
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -297,11 +299,11 @@
 }
 .helpAdmin,
 .sidebar {
-  height: 900px;
+  height: 1000px;
   overflow: hidden;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -313,7 +315,8 @@
 .helpAdmin {
   position: relative;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 1900px;
+  left: 200px;
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--font-primary);

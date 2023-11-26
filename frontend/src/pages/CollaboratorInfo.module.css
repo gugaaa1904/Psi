@@ -857,7 +857,7 @@
   line-height: 125%;
 }
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
@@ -1032,11 +1032,11 @@
 }
 .collaboratorInfo,
 .sidebar {
-  height: 900px;
+  height: 1000px;
   overflow: hidden;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -1048,8 +1048,9 @@
 .collaboratorInfo {
   position: relative;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 1900px;
   text-align: left;
+  left: 200px;
   font-size: var(--body-small-medium-size);
   color: var(--primary-800);
   font-family: var(--body-medium-regular);
