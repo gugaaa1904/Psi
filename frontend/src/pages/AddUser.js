@@ -1,12 +1,15 @@
 import { useState, useCallback } from "react";
-import PopUpAddUser from "../components/PopUpAddUser";
+import Notifications from "../components/Notifications";
+import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
 
 
 const AddUser = () => {
-  const [isPopUpAddUserOpen, setPopUpAddUserOpen] = useState(false);
+  const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] =
+    useState(false);
+  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +26,6 @@ const AddUser = () => {
     start_date: "",
   });
 
-  console.log(formData);
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
     fetch("http://localhost/Psi/backend/routes.php/colaborator", {
@@ -38,26 +40,36 @@ const AddUser = () => {
       .then((data) => {
         // Lógica para lidar com a resposta do backend
         console.log(data);
-      })
+        // If the response indicates success, open the PopUpAddCollaborator
+    })
       .catch((error) => {
         console.error("Erro na solicitação:", error);
       });
   }, [formData]);
 
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
     }));
   };
 
-  const openPopUpAddUser = useCallback(() => {
-    setPopUpAddUserOpen(true);
+  const openPopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(true);
   }, []);
 
-  const closePopUpAddUser = useCallback(() => {
-    setPopUpAddUserOpen(false);
+  const closePopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(false);
+  }, []);
+
+  const openNotifications = useCallback(() => {
+    setNotificationsOpen(true);
+  }, []);
+
+  const closeNotifications = useCallback(() => {
+    setNotificationsOpen(false);
   }, []);
 
   const onSettingsContainerClick = useCallback(() => {
@@ -93,7 +105,7 @@ const AddUser = () => {
           <button
             className={styles.createNewUserButton}
             autoFocus={true}
-            onClick={(openPopUpAddUser, onAddUserClick)}
+            onClick={onAddUserClick}
           >
             <b className={styles.createNewUser}>Create New User</b>
           </button>
@@ -217,6 +229,12 @@ const AddUser = () => {
           <div className={styles.contractOfThis}>Contract of this User</div>
         </div>
         <div className={styles.header}>
+          <img
+            className={styles.notificationsIcon}
+            alt=""
+            src="/notifications.svg"
+            onClick={openNotifications}
+          />
           <b className={styles.addUser1}>Add User</b>
         </div>
         <div className={styles.sidebar}>
@@ -262,9 +280,22 @@ const AddUser = () => {
           <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
-      {isPopUpAddUserOpen && (
-        <PortalPopup placement="Centered" onOutsideClick={closePopUpAddUser}>
-          <PopUpAddUser onClose={closePopUpAddUser} />
+      {isPopUpAddCollaboratorOpen && (
+        <PortalPopup
+          overlayColor="rgba(113, 113, 113, 0.3)"
+          placement="Centered"
+          onOutsideClick={closePopUpAddCollaborator}
+        >
+          <CollaboratorAddedSucessfullyHR onClose={closePopUpAddCollaborator} />
+        </PortalPopup>
+      )}
+      {isNotificationsOpen && (
+        <PortalPopup
+          overlayColor="rgba(113, 113, 113, 0.3)"
+          placement="Centered"
+          onOutsideClick={closeNotifications}
+        >
+          <Notifications onClose={closeNotifications} />
         </PortalPopup>
       )}
     </>

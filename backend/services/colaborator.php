@@ -53,7 +53,7 @@ class CollaboratorService
 
             // Bind parameters
             $stmt->bind_param(
-                "issiissssiiss",
+                "isssissssiiss",
                 $companyid,
                 $name,
                 $companyname,

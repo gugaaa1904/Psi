@@ -1,0 +1,60 @@
+.nextButtonIcon {
+  position: absolute;
+  top: 333px;
+  left: 860px;
+  width: 72px;
+  height: 62px;
+  overflow: hidden;
+  object-fit: cover;
+  cursor: pointer;
+}
+.CollaboratorAddedSucessfully1 {
+  position: absolute;
+  top: 8px;
+  left: -92px;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+  display: inline-block;
+  width: 764px;
+}
+.checkCircleIcon {
+  position: absolute;
+  top: 8px;
+  left: 614px;
+  width: 65px;
+  height: 62px;
+  object-fit: cover;
+}
+.content {
+  position: absolute;
+  top: 438px;
+  left: 428px;
+  width: 604px;
+  height: 62px;
+}
+.logo1Icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 302px;
+  height: 191px;
+  object-fit: cover;
+}
+.logo {
+  position: absolute;
+  top: 0px;
+  left: 559px;
+  width: 322px;
+  height: 211px;
+}
+.CollaboratorAddedSucessfullyHr {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 40px;
+  color: var(--greyscale-900);
+  font-family: var(--font-inter);
+}

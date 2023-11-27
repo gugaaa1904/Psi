@@ -109,6 +109,7 @@ const HelpADMIN = () => {
             </div>
           </div>
         </div>
+
         <div className={styles.header}>
           <img
             className={styles.notificationsIcon}
@@ -118,6 +119,7 @@ const HelpADMIN = () => {
           />
           <b className={styles.help}>Help</b>
         </div>
+        
         <div className={styles.ifYouHaveContainer}>
           <span>
             If you have any additional question send a e-mail to our support
