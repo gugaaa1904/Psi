@@ -40,6 +40,15 @@ const HelpCollaborator = () => {
     <>
       <div className={styles.helpCollaborator}>
         <div className={styles.content}>
+          <div className={styles.header}>
+            <img
+              className={styles.notificationsIcon}
+              alt=""
+              src="/notifications.svg"
+              onClick={openNotifications}
+            />
+            <b className={styles.help1}>Help</b>
+          </div>
           <div className={styles.help}>
             <div className={styles.helpChild} />
             <div className={styles.weHopeWeve}>
@@ -112,15 +121,7 @@ const HelpCollaborator = () => {
             </div>
           </div>
         </div>
-        <div className={styles.header}>
-          <img
-            className={styles.notificationsIcon}
-            alt=""
-            src="/notifications.svg"
-            onClick={openNotifications}
-          />
-          <b className={styles.help1}>Help</b>
-        </div>
+
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
             <img className={styles.settingsIcon} alt="" src="/settings.svg" />

@@ -472,21 +472,22 @@
   font-size: var(--font-size-mid);
   color: var(--color-darkslategray-300);
 }
-.content,
+
 .notificationsIcon {
   position: absolute;
   overflow: hidden;
 }
 .content {
-  top: 0;
-  left: 250px;
+  position: fixed;
+  top: 0px;
+  left: 450px;
   background-color: var(--greyscale-50);
-  width: 1190px;
+  width: 1170px;
   height: 900px;
 }
 .notificationsIcon {
   top: 27px;
-  left: 1109px;
+  left: 1509px;
   border-radius: var(--br-981xl);
   width: 40px;
   height: 40px;
@@ -500,11 +501,11 @@
   line-height: 125%;
 }
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
-  width: 1190px;
+  width: 1690px;
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -532,7 +533,7 @@
   left: 16px;
 }
 .settings {
-  top: 827px;
+  top: 877px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -552,7 +553,17 @@
   line-height: 160%;
   font-weight: 500;
 }
-.help,
+
+.help {
+  position: absolute;
+  top: 825px;
+  left: 16px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
 .profile {
   position: absolute;
   top: 765px;
@@ -639,7 +650,13 @@
   width: 1px;
   height: 901px;
 }
-.line3,
+.line3 {
+    top: 874.5px;
+      left: 15.5px;
+      border-top: 1px solid var(--greyscale-100);
+      width: 219px;
+      height: 1px;
+}
 .line4,
 .line5 {
   top: 819.5px;
@@ -665,11 +682,11 @@
 }
 .sidebar,
 .timeline {
-  height: 900px;
+  height: 1000px;
   overflow: hidden;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -679,9 +696,9 @@
   color: var(--greyscale-500);
 }
 .timeline {
-  position: relative;
+  position: fixed;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 1900px;
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--greyscale-900);

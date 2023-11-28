@@ -103,30 +103,26 @@
   color: var(--font-primary);
 }
 .content {
-  position: absolute;
-  top: 0;
-  left: 247px;
-  background-color: var(--greyscale-50);
-  width: 1190px;
-  height: 900px;
-  overflow-y: auto;
-  text-align: center;
+  position: fixed;
+    top: 0px;
+    left: 450px;
+    background-color: var(--greyscale-50);
+    width: 1170px;
+    height: 900px;
 }
 .notificationsIcon {
   position: absolute;
   top: 27px;
-  left: 1109px;
+  left: 1509px;
   border-radius: var(--br-981xl);
   width: 40px;
   height: 40px;
   overflow: hidden;
   cursor: pointer;
 }
-.header,
+
 .help1 {
-  position: fixed;
-}
-.help1 {
+  position: relative;
   top: 29px;
   left: 32px;
   letter-spacing: 0.2px;
@@ -134,9 +130,10 @@
 }
 .header {
   top: 0;
-  left: 247px;
+  position: fixed;
+  left: 250px;
   background-color: var(--additional-white);
-  width: 1190px;
+  width: 1690px;
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -165,7 +162,7 @@
   left: 16px;
 }
 .settings {
-  top: 827px;
+  top: 877px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -189,7 +186,7 @@
   left: 16px;
 }
 .help2 {
-  top: 765px;
+  top: 825px;
   border-radius: var(--br-xs);
   background-color: var(--greyscale-50);
   width: 218px;
@@ -271,7 +268,13 @@
   width: 1px;
   height: 901px;
 }
-.line1,
+.line1 {
+    top: 874.5px;
+      left: 15.5px;
+      border-top: 1px solid var(--greyscale-100);
+      width: 219px;
+      height: 1px;
+}
 .line2,
 .line3 {
   top: 819.5px;
@@ -302,21 +305,20 @@
 }
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
-  background-color: var(--additional-white);
-  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  width: 250px;
-  font-size: var(--body-medium-regular-size);
-  color: var(--greyscale-500);
+    top: 0;
+    left: 0;
+    background-color: var(--additional-white);
+    box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+    width: 250px;
+    font-size: var(--body-medium-regular-size);
+    color: var(--greyscale-500);
 }
 .helpCollaborator {
-  position: relative;
-  background-color: var(--color-gray-100);
-  width: 1900px;
-  left: 200px;
-  text-align: left;
-  font-size: var(--heading-h6-size);
-  color: var(--color-steelblue-100);
-  font-family: var(--body-medium-regular);
+  position: fixed;
+    background-color: var(--color-gray-100);
+    width: 1900px;
+    text-align: left;
+    font-size: var(--heading-h6-size);
+    color: var(--greyscale-900);
+    font-family: var(--body-medium-regular)
 }
