@@ -1,8 +1,128 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
+import ReactApexChart from "react-apexcharts";
+
+const ApexChart = () => {
+  const [series, setSeries] = useState([
+    {
+      name: "Consuming",
+      data: [10, 41, 35, 51, 49, 62, 69],
+    },
+  ]);
+
+  const [options, setOptions] = useState({
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "straight",
+    },
+    title: {
+      text: "Daily Activity",
+      align: "center",
+      style: {
+        fontFamily: "Inter, sans-serif",
+      },
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5,
+      },
+    },
+    xaxis: {
+      categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    },
+  });
+
+  return (
+    <div id="chart">
+      <ReactApexChart options={options} series={series} type="line" height={350} />
+    </div>
+  );
+};
+
+class ApexChartClass extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      series: [
+        {
+          name: "Net Profit",
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+        },
+        {
+          name: "Revenue",
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+        },
+        {
+          name: "Free Cash Flow",
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
+        },
+      ],
+      options: {
+        chart: {
+          type: "bar",
+          height: 350,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"],
+        },
+        xaxis: {
+          categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+        },
+        yaxis: {
+          title: {
+            text: "$ (thousands)",
+          },
+        },
+        fill: {
+          opacity: 1,
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands";
+            },
+          },
+        },
+      },
+    };
+  }
+
+  render() {
+    return (
+      <div id="chart">
+        <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={350} />
+      </div>
+    );
+  }
+}
+
+
 
 const Dashboard = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
@@ -44,6 +164,7 @@ const Dashboard = () => {
     navigate("/timeline");
   }, [navigate]);
 
+  
   return (
     <>
       <div className={styles.dashboard}>
@@ -52,23 +173,13 @@ const Dashboard = () => {
             <div className={styles.bigCard}>
               <div className={styles.bigCardChild} />
             </div>
-            <div className={styles.month}>November</div>
             <div className={styles.graph}>
-              <div className={styles.line} />
-              <div className={styles.line1} />
-              <div className={styles.line2} />
-              <div className={styles.line3} />
-              <div className={styles.line4} />
-              <div className={styles.julBar2} />
-              <div className={styles.julBar} />
+              {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
+              <ApexChartClass />
+
+              
             </div>
-            <div className={styles.div}>
-              <div className={styles.div1}>0€</div>
-              <div className={styles.div2}>25€</div>
-              <div className={styles.div3}>50€</div>
-              <div className={styles.div4}>75€</div>
-              <div className={styles.div5}>100€</div>
-            </div>
+  
             <select className={styles.months} id="meses">
               <option value="January">January</option>
               <option value="February">February</option>
@@ -83,7 +194,6 @@ const Dashboard = () => {
               <option value="November">November</option>
               <option value="December">December</option>
             </select>
-            <div className={styles.monthlyExpenses1}>Monthly Expenses</div>
           </div>
           <div
             className={styles.variationBasedOnContract}
@@ -163,20 +273,7 @@ const Dashboard = () => {
                   className={styles.divider40Icon}
                   alt=""
                   src="/divider-401.svg"
-                />
-                <div className={styles.txts11}>
-                  <div className={styles.div7}>0</div>
-                  <div className={styles.div8}>6</div>
-                  <div className={styles.w}>w</div>
-                  <div className={styles.div9}>18</div>
-                  <div className={styles.div10}>24</div>
-                  <div className={styles.div11}>30</div>
-                  <div className={styles.div12}>36</div>
-                  <div className={styles.div13}>42</div>
-                  <div className={styles.div14}>48</div>
-                  <div className={styles.div15}>54</div>
-                  <div className={styles.div16}>60</div>
-                </div>
+                />    
                 <img className={styles.point3Icon} alt="" src="/point-31.svg" />
               </div>
             </div>
@@ -191,37 +288,10 @@ const Dashboard = () => {
               alt=""
               src="/background.svg"
             />
-            <img className={styles.lineIcon} alt="" src="/line.svg" />
-            <img
-              className={styles.lineChartIcon}
-              alt=""
-              src="/line-chart.svg"
-            />
-            <img
-              className={styles.lineIndicatorIcon}
-              alt=""
-              src="/line-indicator1.svg"
-            />
-            <div className={styles.days}>
-              <div className={styles.sun}>Sun</div>
-              <div className={styles.mon}>Mon</div>
-              <div className={styles.tue}>Tue</div>
-              <div className={styles.wed}>Wed</div>
-              <div className={styles.thu}>Thu</div>
-              <div className={styles.fri}>Fri</div>
-              <div className={styles.sat}>Sat</div>
-            </div>
-            <div className={styles.kwh1}>
-              <div className={styles.kwh2}>20 kWh</div>
-              <div className={styles.kwh3}>15 kWh</div>
-              <div className={styles.kwh4}>10 kWh</div>
-              <div className={styles.kwh5}>5 kWh</div>
-              <div className={styles.kwh6}>0 kWh</div>
-            </div>
-            <div className={styles.xY}>
-              <b className={styles.kwh7}>13 kWh</b>
-            </div>
-            <b className={styles.activity1}>Activity</b>
+            {/* <img className={styles.lineIcon} alt="" src="/line.svg" />*/}
+            <div className={styles.apexChartContainer}>
+              <ApexChart />
+            </div> 
           </div>
         </div>
         <div className={styles.header}>
