@@ -1,8 +1,278 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
+import ReactApexChart from "react-apexcharts";
+
+const ApexChart = () => {
+  const [series, setSeries] = useState([
+    {
+      name: "Consuming",
+      data: [10, 41, 35, 51, 49, 62, 69],
+    },
+  ]);
+
+  const [options, setOptions] = useState({
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "straight",
+    },
+    title: {
+      text: "Daily Activity",
+      align: "center",
+      style: {
+        fontFamily: "Inter, sans-serif",
+      },
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5,
+      },
+    },
+    xaxis: {
+      categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    },
+  });
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height={350}
+      />
+    </div>
+  );
+};
+
+class ApexChartClass extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      series: [
+        {
+          name: "Consuming",
+          data: [50,44, 55, 57, 56, 61, 58, 63, 60, 66,50,50],
+        },
+        {
+          name: "Plafond based on Contract",
+          data: [50,76, 85, 101, 98, 87, 105, 91, 114, 94,50,50],
+        },
+      ],
+      options: {
+        chart: {
+          type: "bar",
+          height: 350,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"],
+        },
+        title: {
+          text: 'Monthly Expenses',
+          align: 'center',
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
+        },
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dez",
+          ],
+        },
+        yaxis: {
+          title: {
+            text: " € (EURO) ",
+          },
+        },
+        fill: {
+          opacity: 1,
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return " € " + val ;
+            },
+          },
+        },
+      },
+    };
+  }
+
+  render() {
+    return (
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={350}
+        />
+      </div>
+    );
+  }
+}
+
+
+
+class ApexChartt extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    
+      series: [{
+          name: "Percentage of Consumption",
+          data: [120, 122, 96, 95, 150, 26, 81, 80, 120, 76, 134, 80]
+        },
+        {
+          name: "100%",
+          data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+        },
+      ],
+      options: {
+        chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          width: [5, 7, 5],
+          curve: 'straight',
+          dashArray: [0, 8, 5]
+        },
+        title: {
+          text: 'Variation based on Contract',
+          align: 'center',
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
+        },
+        legend: {
+          tooltipHoverFormatter: function(val, opts) {
+            return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+          }
+        },
+        markers: {
+          size: 0,
+          hover: {
+            sizeOffset: 6
+          }
+        },
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dez",
+          ],
+        },
+        yaxis: {
+          title: {
+            text: " % (PERCENTAGE) ",
+          },
+        },
+        tooltip: {
+          y: [
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " (mins)"
+                }
+              }
+            },
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " per session"
+                }
+              }
+            },
+            {
+              title: {
+                formatter: function (val) {
+                  return val;
+                }
+              }
+            }
+          ]
+        },
+        grid: {
+          borderColor: '#f1f1f1',
+        }
+      },
+    
+    
+    };
+  }
+
+
+
+  render() {
+    return (
+      
+
+<div id="chart">
+<ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350} />
+</div>
+
+
+    );
+  }
+}
+
+
+
+
+
 
 const Dashboard = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
@@ -51,39 +321,11 @@ const Dashboard = () => {
           <div className={styles.monthlyExpenses}>
             <div className={styles.bigCard}>
               <div className={styles.bigCardChild} />
+              <ApexChartClass />
             </div>
-            <div className={styles.month}>November</div>
             <div className={styles.graph}>
-              <div className={styles.line} />
-              <div className={styles.line1} />
-              <div className={styles.line2} />
-              <div className={styles.line3} />
-              <div className={styles.line4} />
-              <div className={styles.julBar2} />
-              <div className={styles.julBar} />
+              {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
             </div>
-            <div className={styles.div}>
-              <div className={styles.div1}>0€</div>
-              <div className={styles.div2}>25€</div>
-              <div className={styles.div3}>50€</div>
-              <div className={styles.div4}>75€</div>
-              <div className={styles.div5}>100€</div>
-            </div>
-            <select className={styles.months} id="meses">
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
-            </select>
-            <div className={styles.monthlyExpenses1}>Monthly Expenses</div>
           </div>
           <div
             className={styles.variationBasedOnContract}
@@ -97,36 +339,8 @@ const Dashboard = () => {
               alt=""
               src="/background7.svg"
             />
-            <div className={styles.kwhCompletionRate}>
-              <div className={styles.percentage}>
-                <div className={styles.sinceLastMonth}>
-                  +2,5% since last month
-                </div>
-                <b className={styles.b}>85%</b>
-              </div>
-              <div className={styles.kwhCompletionRate1}>
-                kWh Completion Rate - Contract
-              </div>
-            </div>
-            <div className={styles.months1}>
-              <div className={styles.jan}>Jan</div>
-              <div className={styles.feb}>Feb</div>
-              <div className={styles.mar}>Mar</div>
-              <div className={styles.apr}>Apr</div>
-              <div className={styles.may}>May</div>
-              <div className={styles.jun}>Jun</div>
-              <div className={styles.jul}>Jul</div>
-              <div className={styles.aug}>Aug</div>
-              <div className={styles.sep}>Sep</div>
-              <div className={styles.oct}>Oct</div>
-              <div className={styles.nov}>Nov</div>
-              <div className={styles.dec}>Dec</div>
-            </div>
-            <img className={styles.graphIcon} alt="" src="/graph2.svg" />
-            <b className={styles.variationBasedOn}>
-              Variation based on Contract
-            </b>
-            <div className={styles.div6}>100%</div>
+            <ApexChartt />
+            
           </div>
           <div className={styles.power}>
             <div className={styles.bigCard2}>
@@ -164,19 +378,6 @@ const Dashboard = () => {
                   alt=""
                   src="/divider-401.svg"
                 />
-                <div className={styles.txts11}>
-                  <div className={styles.div7}>0</div>
-                  <div className={styles.div8}>6</div>
-                  <div className={styles.w}>w</div>
-                  <div className={styles.div9}>18</div>
-                  <div className={styles.div10}>24</div>
-                  <div className={styles.div11}>30</div>
-                  <div className={styles.div12}>36</div>
-                  <div className={styles.div13}>42</div>
-                  <div className={styles.div14}>48</div>
-                  <div className={styles.div15}>54</div>
-                  <div className={styles.div16}>60</div>
-                </div>
                 <img className={styles.point3Icon} alt="" src="/point-31.svg" />
               </div>
             </div>
@@ -191,37 +392,10 @@ const Dashboard = () => {
               alt=""
               src="/background.svg"
             />
-            <img className={styles.lineIcon} alt="" src="/line.svg" />
-            <img
-              className={styles.lineChartIcon}
-              alt=""
-              src="/line-chart.svg"
-            />
-            <img
-              className={styles.lineIndicatorIcon}
-              alt=""
-              src="/line-indicator1.svg"
-            />
-            <div className={styles.days}>
-              <div className={styles.sun}>Sun</div>
-              <div className={styles.mon}>Mon</div>
-              <div className={styles.tue}>Tue</div>
-              <div className={styles.wed}>Wed</div>
-              <div className={styles.thu}>Thu</div>
-              <div className={styles.fri}>Fri</div>
-              <div className={styles.sat}>Sat</div>
+            {/* <img className={styles.lineIcon} alt="" src="/line.svg" />*/}
+            <div className={styles.apexChartContainer}>
+              <ApexChart />
             </div>
-            <div className={styles.kwh1}>
-              <div className={styles.kwh2}>20 kWh</div>
-              <div className={styles.kwh3}>15 kWh</div>
-              <div className={styles.kwh4}>10 kWh</div>
-              <div className={styles.kwh5}>5 kWh</div>
-              <div className={styles.kwh6}>0 kWh</div>
-            </div>
-            <div className={styles.xY}>
-              <b className={styles.kwh7}>13 kWh</b>
-            </div>
-            <b className={styles.activity1}>Activity</b>
           </div>
         </div>
         <div className={styles.header}>
