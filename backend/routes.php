@@ -6,9 +6,8 @@ header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 require_once 'services/company.php';
-//require_once 'employee_services.php';
-//require_once 'contract_services.php';
-// ... include other service files ...
+require_once 'services/admin.php';
+require_once 'services/colaborator.php';
 require_once 'config.php';
 $conn = connect();
 
@@ -23,7 +22,12 @@ $uri = $uriParts[0];
 // Route the request based on the URI and method
 switch ($uri) {
     case '/company':
+<<<<<<< HEAD
         if ($requestMethod === 'GET') {
+=======
+        if ($requestMethod === 'GET'
+        ) {
+>>>>>>> nodejs
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_company_post();
@@ -31,13 +35,29 @@ switch ($uri) {
             http_response_code(405); // Method Not Allowed
         }
         break;
-    case '/employees':
-        // Handle employees routes similarly
+    case '/admin':
+        if ($requestMethod === 'GET') {
+            //clients_list();
+        } elseif ($requestMethod === 'POST') {
+            insert_admin_post();
+        } else {
+            http_response_code(405); // Method Not Allowed
+        }
         break;
-    case '/contracts':
-        // Handle contracts routes similarly
+    case '/colaborator':
+<<<<<<< HEAD
+        if ($requestMethod === 'GET') {
+=======
+        if ($requestMethod === 'GET'
+        ) {
+>>>>>>> nodejs
+            //clients_list();
+        } elseif ($requestMethod === 'POST') {
+            insert_collaborator_post();
+        } else {
+            http_response_code(405); // Method Not Allowed
+        }
         break;
-        // Add more cases for other routes...
     default:
         http_response_code(404); // Not Found
         break;

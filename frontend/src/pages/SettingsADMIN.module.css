@@ -39,6 +39,7 @@
   height: 298px;
 }
 .divider {
+<<<<<<< HEAD
   width: 100%;
   right: 0;
   bottom: 0;
@@ -46,6 +47,16 @@
   background-color: var(--border);
   height: 1px;
   overflow: hidden;
+=======
+  width: 1200px;
+    height: 100px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--border);
+    height: 1px;
+    overflow: hidden;
+>>>>>>> nodejs
 }
 .divider,
 .privacy,
@@ -71,6 +82,11 @@
   position: relative;
   letter-spacing: 0.2px;
   line-height: 140%;
+<<<<<<< HEAD
+=======
+  text-align: center;
+  top: 5px;
+>>>>>>> nodejs
 }
 .changeButton,
 .confirmNewPassword,
@@ -85,11 +101,18 @@
   top: 550px;
   background-color: var(--color-steelblue-100);
   width: 129px;
+<<<<<<< HEAD
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: var(--padding-6xs) var(--padding-77xl);
+=======
+  text-align: center;
+  height: 30px;
+  align-items: center;
+  justify-content: space-between;
+>>>>>>> nodejs
   cursor: pointer;
 }
 .confirmNewPassword,
@@ -215,7 +238,11 @@
 .notificationsIcon {
   position: absolute;
   top: 27px;
+<<<<<<< HEAD
   left: 1109px;
+=======
+  left: 1459px;
+>>>>>>> nodejs
   border-radius: var(--br-981xl);
   width: 40px;
   height: 40px;
@@ -230,11 +257,19 @@
   line-height: 125%;
 }
 .header {
+<<<<<<< HEAD
   position: absolute;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
   width: 1190px;
+=======
+  position: fixed;
+  top: 0;
+  left: 250px;
+  background-color: var(--additional-white);
+  width: 1790px;
+>>>>>>> nodejs
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -390,15 +425,26 @@
   height: 88px;
   object-fit: cover;
 }
+<<<<<<< HEAD
 .settingsAdmin,
 .sidebar {
+=======
+.settingsAdmin{
+>>>>>>> nodejs
   height: 900px;
   overflow: hidden;
 }
 .sidebar {
+<<<<<<< HEAD
   position: absolute;
   top: 0;
   left: 0;
+=======
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1000px;
+>>>>>>> nodejs
   background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
   width: 250px;
@@ -408,7 +454,12 @@
 .settingsAdmin {
   position: relative;
   background-color: var(--color-gray-100);
+<<<<<<< HEAD
   width: 100%;
+=======
+  width: 1600px;
+  left: 200px;
+>>>>>>> nodejs
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--additional-white);

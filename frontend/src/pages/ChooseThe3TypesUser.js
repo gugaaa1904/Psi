@@ -26,18 +26,27 @@ const ChooseThe3TypesUser = () => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> nodejs
         <div
           className={styles.regularEmployee}
           onClick={onRegularEmployeeContainerClick}
         >
           <b className={styles.button}> Employee</b>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> nodejs
         <div
           className={styles.administrator}
           onClick={onAdministratorContainerClick}
         >
           <b className={styles.administrator1}>Administrator</b>
         </div>
+<<<<<<< HEAD
         <b className={styles.areYouAn}>
           Are you an Administrator or an Employee?
         </b>
@@ -49,6 +58,30 @@ const ChooseThe3TypesUser = () => {
         </div>
       </div>
       <img className={styles.coverIcon} alt="" src="/cover.svg" />
+=======
+
+        <b className={styles.areYouAn}>
+          Are you an Administrator or an Employee?
+        </b>
+
+        <div className={styles.welcomePleaseSelect}>
+          Welcome! Please select your role:
+        </div>
+
+        <div className={styles.logo}>
+          <img
+            className={styles.logo1Icon}
+            alt=""
+            src="/InfoCharge-removebg-preview.png"
+          />
+        </div>
+      </div>
+      <img
+        className={styles.covericon}
+        alt=""
+        src="/Optimized-EletricCarsBG.jpg"
+      />
+>>>>>>> nodejs
     </div>
   );
 };

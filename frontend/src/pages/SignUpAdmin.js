@@ -1,21 +1,58 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUpAdmin.module.css";
+import React, { useState } from "react";
 
 const SignUpAdmin = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    admin_name: "",
+    address: "",
+    email: "",
+    phone: "",
+    age: "",
+    gender: "",
+    password: "",
+    companyname: "",
+  });
 
   const onSignInTextClick = useCallback(() => {
     navigate("/sign-in-admin");
   }, [navigate]);
+  console.log(formData);
+  const onSignUpClick = useCallback(() => {
+    // Aqui você deve fazer a requisição para o backend
+    fetch("http://localhost/Psi/backend/routes.php/admin", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: new URLSearchParams(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Lógica para lidar com a resposta do backend
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Erro na solicitação:", error);
+      });
+    navigate("/sign-in-admin");
+  }, [formData, navigate]);
 
-  const onButtonLargePrimaryContainerClick = useCallback(() => {
-    navigate("/company-info");
-  }, [navigate]);
 
   const onBackButtonClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className={styles.signUpAdmin}>
@@ -24,7 +61,7 @@ const SignUpAdmin = () => {
           Sign In
         </b>
         <div className={styles.doYouAlreadyContainer}>
-          <span>Do you already have an account or a collaborator account?</span>
+          <span>Do you already have an account?</span>
           <span className={styles.span}>{` `}</span>
         </div>
         <div className={styles.orSignInWith}>
@@ -32,10 +69,7 @@ const SignUpAdmin = () => {
           <div className={styles.orSignIn}>Or sign in with</div>
           <div className={styles.line1} />
         </div>
-        <div
-          className={styles.buttonlargeprimary}
-          onClick={onButtonLargePrimaryContainerClick}
-        >
+        <div className={styles.buttonlargeprimary} onClick={onSignUpClick}>
           <b className={styles.button}>Sign Up</b>
         </div>
         <div className={styles.byCreatingAnAccountMeansY} />
@@ -58,70 +92,98 @@ const SignUpAdmin = () => {
         </div>
         <input
           className={styles.password}
-          name="Password"
-          id="password_company"
+          name="password"
+          id="password"
           placeholder="Password"
           type="password"
+          onChange={handleInputChange}
+          value={formData.password}
         />
+<<<<<<< HEAD
         <input
           className={styles.phoneNumber}
-          name="Gender"
+          name="gender"
           id="gender"
-          placeholder="gender"
-          type="number"
+          placeholder="Gender"
+          type="text"
+          onChange={handleInputChange}
+          value={formData.gender}
         />
+=======
+        <select
+          className={styles.gender}
+          required={true}
+          name="gender"
+          id="gender"
+          onChange={handleInputChange}
+          value={formData.gender}
+        >
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+>>>>>>> nodejs
         <input
           className={styles.employeesNumber}
-          name="Age"
+          name="age"
           id="age"
           placeholder="Age"
+<<<<<<< HEAD
           type="number"
+=======
+          type="integer"
+>>>>>>> nodejs
+          onChange={handleInputChange}
+          value={formData.age}
         />
         <input
           className={styles.companyAddress}
-          name="Phone"
+          name="phone"
           id="phone"
           placeholder="Phone"
-          type="text"
+<<<<<<< HEAD
+          type="number"
+=======
+          type="integer"
+>>>>>>> nodejs
+          onChange={handleInputChange}
+          value={formData.phone}
         />
         <input
           className={styles.companyEmail}
-          name="E-mail Admin"
+          name="email"
           id="email"
           placeholder="E-mail"
           type="email"
+          onChange={handleInputChange}
+          value={formData.email}
         />
         <input
           className={styles.cnpj}
-          name="Surname"
-          id="surname"
-          placeholder="Surname"
-          type="number"
+          name="address"
+          id="address"
+          placeholder="Address"
+          type="text"
+          onChange={handleInputChange}
+          value={formData.address}
         />
         <input
           className={styles.companyName}
-          name="Name"
+          name="admin_name"
           id="admin_name"
           placeholder="Name"
           type="text"
+          onChange={handleInputChange}
+          value={formData.admin_name}
         />
-        <div className={styles.header}>
-          <div className={styles.welcomeEnterYour}>
-            Welcome! Enter your admin details
-          </div>
-          <b className={styles.signUpYour}>
-            Assign an Adminstrator
-          </b>
-        </div>
-        <div className={styles.logo}>
-          <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
-        </div>
         <input
           className={styles.companyName1}
-          name="Company Name"
-          id="company_name"
+          name="companyname"
+          id="companyname"
           placeholder="Company Name"
           type="text"
+          onChange={handleInputChange}
+          value={formData.companyname}
         />
         <img
           className={styles.backButtonIcon}
@@ -129,6 +191,15 @@ const SignUpAdmin = () => {
           src="/back-button.svg"
           onClick={onBackButtonClick}
         />
+        <div className={styles.header}>
+          <div className={styles.welcomeEnterYour}>
+            Welcome! Enter your admin details
+          </div>
+          <b className={styles.signUpYour}>Assign an Adminstrator</b>
+        </div>
+        <div className={styles.logo}>
+          <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
+        </div>
       </div>
       <div className={styles.cover}>
         <div className={styles.background} />

@@ -57,6 +57,10 @@
   border-radius: var(--br-xs);
   background-color: var(--color-steelblue-100);
   width: 111px;
+<<<<<<< HEAD
+=======
+  cursor: pointer;
+>>>>>>> nodejs
   height: 27px;
   color: var(--additional-white);
 }
@@ -99,7 +103,11 @@
   line-height: 125%;
 }
 .header {
+<<<<<<< HEAD
   position: absolute;
+=======
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
@@ -274,11 +282,19 @@
 }
 .profileAdmin,
 .sidebar {
+<<<<<<< HEAD
   height: 900px;
   overflow: hidden;
 }
 .sidebar {
   position: absolute;
+=======
+  height: 1000px;
+  overflow: hidden;
+}
+.sidebar {
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -290,7 +306,12 @@
 .profileAdmin {
   position: relative;
   background-color: var(--color-gray-100);
+<<<<<<< HEAD
   width: 100%;
+=======
+  width: 1900px;
+  left: 200px;
+>>>>>>> nodejs
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--color-black);

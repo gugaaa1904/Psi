@@ -857,7 +857,11 @@
   line-height: 125%;
 }
 .header {
+<<<<<<< HEAD
   position: absolute;
+=======
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
@@ -1032,11 +1036,19 @@
 }
 .collaboratorInfo,
 .sidebar {
+<<<<<<< HEAD
   height: 900px;
   overflow: hidden;
 }
 .sidebar {
   position: absolute;
+=======
+  height: 1000px;
+  overflow: hidden;
+}
+.sidebar {
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -1048,8 +1060,14 @@
 .collaboratorInfo {
   position: relative;
   background-color: var(--color-gray-100);
+<<<<<<< HEAD
   width: 100%;
   text-align: left;
+=======
+  width: 1900px;
+  text-align: left;
+  left: 200px;
+>>>>>>> nodejs
   font-size: var(--body-small-medium-size);
   color: var(--primary-800);
   font-family: var(--body-medium-regular);

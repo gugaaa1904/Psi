@@ -54,7 +54,7 @@
   top: 657px;
 }
 .gender {
-  top: 579px;
+  top: 577px;
 }
 .adress,
 .phoneNumber {
@@ -73,10 +73,9 @@
   height: 56px;
 }
 .phoneNumber {
-  top: 343px;
+  top: 423px;
 }
 .age,
-.chooseRole,
 .phoneNumber {
   border: 1px solid var(--greyscale-200);
   border-radius: var(--br-xs);
@@ -84,20 +83,16 @@
   width: 404px;
   height: 56px;
 }
-.chooseRole {
-  position: absolute;
-  top: 423px;
-  left: 67px;
-}
 .age {
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 265px;
+  top: 345px;
 }
 .age,
 .enterTheFields,
-.name {
+.name,
+.companyname {
   position: absolute;
   left: 67px;
 }
@@ -107,6 +102,17 @@
   font-size: var(--heading-h6-size);
   background-color: transparent;
   top: 187px;
+  border-radius: var(--br-xs);
+  box-sizing: border-box;
+  width: 404px;
+  height: 56px;
+}
+.companyname {
+  border: 1px solid var(--greyscale-200);
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+  background-color: transparent;
+  top: 267px;
   border-radius: var(--br-xs);
   box-sizing: border-box;
   width: 404px;
@@ -173,11 +179,19 @@
   line-height: 125%;
 }
 .header {
+<<<<<<< HEAD
   position: absolute;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
   width: 1190px;
+=======
+  position: fixed;
+  top: 0;
+  left: 250px;
+  background-color: var(--additional-white);
+  width: 1690px;
+>>>>>>> nodejs
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -238,6 +252,20 @@
   height: 48px;
   cursor: pointer;
 }
+<<<<<<< HEAD
+=======
+.notificationsIcon {
+  position: absolute;
+  top: 27px;
+  left: 1459px;
+  border-radius: var(--br-981xl);
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+>>>>>>> nodejs
 .profile1 {
   top: 13px;
   letter-spacing: 0.2px;
@@ -342,11 +370,19 @@
 }
 .addUser,
 .sidebar {
+<<<<<<< HEAD
   height: 900px;
   overflow: hidden;
 }
 .sidebar {
   position: absolute;
+=======
+  height: 1000px;
+  overflow: hidden;
+}
+.sidebar {
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -356,7 +392,13 @@
 .addUser {
   position: relative;
   background-color: var(--color-gray-100);
+<<<<<<< HEAD
   width: 100%;
+=======
+  left: 200px;
+  width: 2000px;
+  height: 1000px;
+>>>>>>> nodejs
   text-align: left;
   font-size: var(--body-medium-regular-size);
   color: var(--greyscale-500);

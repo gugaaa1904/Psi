@@ -17,7 +17,8 @@ const SignUpCompany = () => {
   const onSignInTextClick = useCallback(() => {
     navigate("/sign-in-admin");
   }, [navigate]);
-console.log(formData)
+  console.log(formData)
+  console.log("picha");
 const onSignUpClick = useCallback(() => {
   // Aqui você deve fazer a requisição para o backend
   fetch("http://localhost/Psi/backend/routes.php/company", {
@@ -73,7 +74,7 @@ const onSignUpClick = useCallback(() => {
         </b>
 
         <div className={styles.doYouAlreadyContainer}>
-          <span>Do you already have an account or a collaborator account?</span>
+          <span>Do you already have an account?</span>
           <span className={styles.span}>{` `}</span>
         </div>
         <div className={styles.orSignInWith}>
@@ -122,7 +123,7 @@ const onSignUpClick = useCallback(() => {
           name="telephone"
           id="phone_number"
           placeholder="Phone Number"
-          type="number"
+          type="integer"
           onChange={handleInputChange}
           value={formData.telephone}
         />
@@ -131,7 +132,7 @@ const onSignUpClick = useCallback(() => {
           name="funcs"
           id="employess_number"
           placeholder="Employees Number"
-          type="number"
+          type="integer"
           onChange={handleInputChange}
           value={formData.funcs}
         />
@@ -158,7 +159,7 @@ const onSignUpClick = useCallback(() => {
           name="cnpj"
           id="cnpj"
           placeholder="CNPJ (National Register of Legal Entities)"
-          type="number"
+          type="integer"
           onChange={handleInputChange}
           value={formData.cnpj}
         />

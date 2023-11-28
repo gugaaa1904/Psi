@@ -472,21 +472,37 @@
   font-size: var(--font-size-mid);
   color: var(--color-darkslategray-300);
 }
+<<<<<<< HEAD
 .content,
+=======
+
+>>>>>>> nodejs
 .notificationsIcon {
   position: absolute;
   overflow: hidden;
 }
 .content {
+<<<<<<< HEAD
   top: 0;
   left: 250px;
   background-color: var(--greyscale-50);
   width: 1190px;
+=======
+  position: fixed;
+  top: 0px;
+  left: 450px;
+  background-color: var(--greyscale-50);
+  width: 1170px;
+>>>>>>> nodejs
   height: 900px;
 }
 .notificationsIcon {
   top: 27px;
+<<<<<<< HEAD
   left: 1109px;
+=======
+  left: 1509px;
+>>>>>>> nodejs
   border-radius: var(--br-981xl);
   width: 40px;
   height: 40px;
@@ -500,11 +516,19 @@
   line-height: 125%;
 }
 .header {
+<<<<<<< HEAD
   position: absolute;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
   width: 1190px;
+=======
+  position: fixed;
+  top: 0;
+  left: 250px;
+  background-color: var(--additional-white);
+  width: 1690px;
+>>>>>>> nodejs
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -532,7 +556,11 @@
   left: 16px;
 }
 .settings {
+<<<<<<< HEAD
   top: 827px;
+=======
+  top: 877px;
+>>>>>>> nodejs
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -552,7 +580,21 @@
   line-height: 160%;
   font-weight: 500;
 }
+<<<<<<< HEAD
 .help,
+=======
+
+.help {
+  position: absolute;
+  top: 825px;
+  left: 16px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+>>>>>>> nodejs
 .profile {
   position: absolute;
   top: 765px;
@@ -639,7 +681,17 @@
   width: 1px;
   height: 901px;
 }
+<<<<<<< HEAD
 .line3,
+=======
+.line3 {
+    top: 874.5px;
+      left: 15.5px;
+      border-top: 1px solid var(--greyscale-100);
+      width: 219px;
+      height: 1px;
+}
+>>>>>>> nodejs
 .line4,
 .line5 {
   top: 819.5px;
@@ -665,11 +717,19 @@
 }
 .sidebar,
 .timeline {
+<<<<<<< HEAD
   height: 900px;
   overflow: hidden;
 }
 .sidebar {
   position: absolute;
+=======
+  height: 1000px;
+  overflow: hidden;
+}
+.sidebar {
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -679,9 +739,15 @@
   color: var(--greyscale-500);
 }
 .timeline {
+<<<<<<< HEAD
   position: relative;
   background-color: var(--color-gray-100);
   width: 100%;
+=======
+  position: fixed;
+  background-color: var(--color-gray-100);
+  width: 1900px;
+>>>>>>> nodejs
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--greyscale-900);

@@ -1,12 +1,76 @@
 import { useState, useCallback } from "react";
+<<<<<<< HEAD
 import PopUpAddUser from "../components/PopUpAddUser";
+=======
+import Notifications from "../components/Notifications";
+import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
+>>>>>>> nodejs
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
 
+
 const AddUser = () => {
+<<<<<<< HEAD
   const [isPopUpAddUserOpen, setPopUpAddUserOpen] = useState(false);
+=======
+  const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] =
+    useState(false);
+  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
+>>>>>>> nodejs
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    companyname: "",
+    address: "",
+    email: "",
+    phone: "",
+    age: "",
+    gender: "",
+    password: "",
+    plafond: "",
+    tariff: "",
+    end_date: "",
+    start_date: "",
+  });
+
+<<<<<<< HEAD
+  console.log(formData);
+=======
+>>>>>>> nodejs
+  const onAddUserClick = useCallback(() => {
+    // Aqui você deve fazer a requisição para o backend
+    fetch("http://localhost/Psi/backend/routes.php/colaborator", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: new URLSearchParams(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Lógica para lidar com a resposta do backend
+        console.log(data);
+<<<<<<< HEAD
+      })
+=======
+        // If the response indicates success, open the PopUpAddCollaborator
+    })
+>>>>>>> nodejs
+      .catch((error) => {
+        console.error("Erro na solicitação:", error);
+      });
+  }, [formData]);
+
+<<<<<<< HEAD
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+    }));
+  };
 
   const openPopUpAddUser = useCallback(() => {
     setPopUpAddUserOpen(true);
@@ -14,6 +78,31 @@ const AddUser = () => {
 
   const closePopUpAddUser = useCallback(() => {
     setPopUpAddUserOpen(false);
+=======
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const openPopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(true);
+  }, []);
+
+  const closePopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(false);
+  }, []);
+
+  const openNotifications = useCallback(() => {
+    setNotificationsOpen(true);
+  }, []);
+
+  const closeNotifications = useCallback(() => {
+    setNotificationsOpen(false);
+>>>>>>> nodejs
   }, []);
 
   const onSettingsContainerClick = useCallback(() => {
@@ -45,91 +134,162 @@ const AddUser = () => {
       <div className={styles.addUser}>
         <div className={styles.content}>
           <div className={styles.contentChild} />
+
           <button
             className={styles.createNewUserButton}
             autoFocus={true}
-            onClick={openPopUpAddUser}
+<<<<<<< HEAD
+            onClick={(openPopUpAddUser, onAddUserClick)}
+=======
+            onClick={onAddUserClick}
+>>>>>>> nodejs
           >
             <b className={styles.createNewUser}>Create New User</b>
           </button>
+
           <input
             className={styles.password}
-            name="Password"
+            name="password"
             id="password"
             placeholder="Password"
             type="password"
+            onChange={handleInputChange}
+            value={formData.password}
           />
           <input
             className={styles.email}
-            name="Email"
+            name="email"
             id="email"
             placeholder="Email"
             type="email"
+            onChange={handleInputChange}
+            value={formData.email}
           />
-          <select className={styles.gender} required={true} id="gender">
+          <select
+            className={styles.gender}
+            required={true}
+            name="gender"
+            id="gender"
+            onChange={handleInputChange}
+            value={formData.gender}
+          >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+<<<<<<< HEAD
+=======
+            <option value="Other">Other</option>
+>>>>>>> nodejs
           </select>
           <input
             className={styles.adress}
-            name="Address"
+            name="address"
             id="address"
             placeholder="Address"
             type="text"
+            onChange={handleInputChange}
+            value={formData.address}
           />
+
+          <input
+            className={styles.companyname}
+            name="companyname"
+            id="companyname"
+            placeholder="Company Name"
+            type="text"
+            onChange={handleInputChange}
+            value={formData.companyname}
+          />
+<<<<<<< HEAD
+          
+=======
+
+>>>>>>> nodejs
           <input
             className={styles.phoneNumber}
-            name="Phone Number"
-            id="phone_number"
+            name="phone"
+            id="phone"
             placeholder="Phone Number"
+<<<<<<< HEAD
             type="number"
+=======
+            type="integer"
+>>>>>>> nodejs
+            onChange={handleInputChange}
+            value={formData.phone}
           />
-          <select className={styles.chooseRole} id="choose_role">
-            <option value="Administrator">Administrator</option>
-            <option value="Collaborator">Collaborator</option>
-          </select>
           <input
             className={styles.age}
-            name="Age"
+            name="age"
             id="age"
             placeholder="Age"
+<<<<<<< HEAD
             type="number"
+=======
+            type="integer"
+>>>>>>> nodejs
+            onChange={handleInputChange}
+            value={formData.age}
           />
-          <input className={styles.name} placeholder="Name" type="text" />
+          <input
+            className={styles.name}
+            name="name"
+            id="name"
+            placeholder="Name"
+            type="text"
+            onChange={handleInputChange}
+            value={formData.name}
+          />
           <div className={styles.enterTheFields}>
             Enter the fields below to add a new user:
           </div>
           <input
             className={styles.plafond}
-            name="Plafond"
+            name="plafond"
             id="plafond"
             placeholder="Plafond"
             type="number"
+            onChange={handleInputChange}
+            value={formData.plafond}
           />
           <input
             className={styles.tariff}
-            name="Tariff"
+            name="tariff"
             id="tariff"
             placeholder="Tariff"
             type="number"
+            onChange={handleInputChange}
+            value={formData.tariff}
           />
           <input
             className={styles.endDate}
-            name="End Date"
+            name="end_date"
             id="end_date"
             placeholder="End Date"
             type="date"
+            onChange={handleInputChange}
+            value={formData.end_date}
           />
           <input
             className={styles.startDate}
-            name="Start Date"
+            name="start_date"
             id="start_date"
             placeholder="Start Date"
             type="date"
+            onChange={handleInputChange}
+            value={formData.start_date}
           />
           <div className={styles.contractOfThis}>Contract of this User</div>
         </div>
         <div className={styles.header}>
+<<<<<<< HEAD
+=======
+          <img
+            className={styles.notificationsIcon}
+            alt=""
+            src="/notifications.svg"
+            onClick={openNotifications}
+          />
+>>>>>>> nodejs
           <b className={styles.addUser1}>Add User</b>
         </div>
         <div className={styles.sidebar}>
@@ -175,9 +335,28 @@ const AddUser = () => {
           <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
+<<<<<<< HEAD
       {isPopUpAddUserOpen && (
         <PortalPopup placement="Centered" onOutsideClick={closePopUpAddUser}>
           <PopUpAddUser onClose={closePopUpAddUser} />
+=======
+      {isPopUpAddCollaboratorOpen && (
+        <PortalPopup
+          overlayColor="rgba(113, 113, 113, 0.3)"
+          placement="Centered"
+          onOutsideClick={closePopUpAddCollaborator}
+        >
+          <CollaboratorAddedSucessfullyHR onClose={closePopUpAddCollaborator} />
+        </PortalPopup>
+      )}
+      {isNotificationsOpen && (
+        <PortalPopup
+          overlayColor="rgba(113, 113, 113, 0.3)"
+          placement="Centered"
+          onOutsideClick={closeNotifications}
+        >
+          <Notifications onClose={closeNotifications} />
+>>>>>>> nodejs
         </PortalPopup>
       )}
     </>

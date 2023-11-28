@@ -453,7 +453,11 @@
   line-height: 125%;
 }
 .header1 {
+<<<<<<< HEAD
   position: absolute;
+=======
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
@@ -626,11 +630,19 @@
 }
 .companyInfo,
 .sidebar {
+<<<<<<< HEAD
   height: 900px;
   overflow: hidden;
 }
 .sidebar {
   position: absolute;
+=======
+  height: 1000px;
+  overflow: hidden;
+}
+.sidebar {
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -640,9 +652,16 @@
   color: var(--greyscale-500);
 }
 .companyInfo {
+<<<<<<< HEAD
   position: relative;
   background-color: var(--color-gray-100);
   width: 100%;
+=======
+  position: fixed;
+  background-color: var(--color-gray-100);
+  width: 1990px;
+  left: 200px;
+>>>>>>> nodejs
   text-align: left;
   font-size: var(--heading-h3-size);
   color: var(--primary-dark-shade);
