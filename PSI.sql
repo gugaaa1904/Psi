@@ -58,7 +58,7 @@ create table Company
 /*==============================================================*/
 create table CONSUMING 
 (
-   CONSUMING_ID         integer                        not null,
+   CONSUMING_ID         integer                        not null AUTO_INCREMENT,
    COLLABORATOR_ID      integer                        not null,
    DAILY_USAGE          numeric                        not null,
    DAILY_RUNTIME        numeric                        not null,
