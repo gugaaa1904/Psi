@@ -2,12 +2,10 @@ var express = require("express");
 var router = express.Router();
 
 // Require our controllers.
-var company = require("../services/company_services");
-var admin = require("../services/admin_services");
-var collaborator = require("../services/collaborator_services");
-var consuming = require("../services/consuming_services");
-
-const { route } = require("..");
+var company = require("../services/company");
+var admin = require("../services/admin");
+var collaborator = require("../services/collaborator");
+var consuming = require("../services/consuming");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -18,11 +16,6 @@ router.get("/", function (req, res, next) {
 router.get("/admin/:id", (req, res) => {
   admin.get_admin(req, res);
 });
-
-//POST request for a client by token
-//router.post('/clienttoken', (req, res) => {
-//client_service.get_client_by_token(req, res);
-//});
 
 // POST request for creating a admin
 router.post("/admin", admin.create_admin);

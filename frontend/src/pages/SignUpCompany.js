@@ -17,16 +17,17 @@ const SignUpCompany = () => {
   const onSignInTextClick = useCallback(() => {
     navigate("/sign-in-admin");
   }, [navigate]);
+  
 console.log(formData)
 const onSignUpClick = useCallback(() => {
   // Aqui você deve fazer a requisição para o backend
-  fetch("http://localhost/Psi/backend/routes.php/company", {
+  fetch("http://localhost/Psi/backend/routes.js/company", {
     method: "POST",
     mode: "no-cors",
     headers: {
       "Content-Type": "application/json",
     },
-    body: new URLSearchParams(formData),
+    body: JSON.stringify(formData),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -187,12 +188,6 @@ const onSignUpClick = useCallback(() => {
           onClick={onBackButtonClick}
         />
       </div>
-
-
-
-
-
-
 
       <div className={styles.cover}>
         <div className={styles.background} />

@@ -1,10 +1,10 @@
-const { query } = require("express");
+const express = require("express");
 const connection = require("./db");
 const utils = require("./utils");
 
 //Get all Companies
 async function company_list(res) {
-  let selectQuery = "SELECT * FROM company";
+  let selectQuery = "SELECT * FROM Company";
   connection.query(selectQuery, function (err, result, fields) {
     if (err) throw err;
     console.log(JSON.stringify(result));
@@ -27,13 +27,18 @@ async function create_company(req, res, next) {
     return res
       .status(400)
       .json({ err: "Invalid input! (Only numbers, letters and space)" });
-  
-  var selectQuery =
-    "INSERT INTO Company (NAME, ADDRESS, PHONE, EMAIL, NUMBER_EMPLOYEES, CNPJ) VALUES (?, ?, ?, ?, ?, ?)";
 
-  connection.query(selectQuery, params, function (err, result, fields) {
-    if (err) throw err;
+  var insertQuery =
+    "INSERT INTO `company` (`NAME`, `ADDRESS`, `PHONE`, `EMAIL`, `NUMBER_EMPLOYEES`, `CNPJ`) VALUES (?, ?, ?, ?, ?, ?)";
+
+  connection.query(insertQuery, params, function (err, result, fields) {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+
     console.log(result);
+    res.status(201).json({ message: "Company created successfully" });
   });
 }
 

@@ -64,16 +64,12 @@ class ApexChartClass extends React.Component {
     this.state = {
       series: [
         {
-          name: "Net Profit",
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+          name: "Consuming",
+          data: [50, 44, 55, 57, 56, 61, 58, 63, 60, 66, 50, 50],
         },
         {
-          name: "Revenue",
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
-        },
-        {
-          name: "Free Cash Flow",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
+          name: "Plafond based on Contract",
+          data: [50, 76, 85, 101, 98, 87, 105, 91, 114, 94, 50, 50],
         },
       ],
       options: {
@@ -96,8 +92,16 @@ class ApexChartClass extends React.Component {
           width: 2,
           colors: ["transparent"],
         },
+        title: {
+          text: "Monthly Expenses",
+          align: "center",
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
+        },
         xaxis: {
           categories: [
+            "Jan",
             "Feb",
             "Mar",
             "Apr",
@@ -107,11 +111,13 @@ class ApexChartClass extends React.Component {
             "Aug",
             "Sep",
             "Oct",
+            "Nov",
+            "Dez",
           ],
         },
         yaxis: {
           title: {
-            text: "$ (thousands)",
+            text: " € (EURO) ",
           },
         },
         fill: {
@@ -120,7 +126,7 @@ class ApexChartClass extends React.Component {
         tooltip: {
           y: {
             formatter: function (val) {
-              return "$ " + val + " thousands";
+              return " € " + val;
             },
           },
         },
@@ -135,6 +141,127 @@ class ApexChartClass extends React.Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
+          height={350}
+        />
+      </div>
+    );
+  }
+}
+
+class ApexChartt extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      series: [
+        {
+          name: "Percentage of Consumption",
+          data: [120, 122, 96, 95, 150, 26, 81, 80, 120, 76, 134, 80],
+        },
+        {
+          name: "100%",
+          data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+        },
+      ],
+      options: {
+        chart: {
+          height: 350,
+          type: "line",
+          zoom: {
+            enabled: false,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          width: [5, 7, 5],
+          curve: "straight",
+          dashArray: [0, 8, 5],
+        },
+        title: {
+          text: "Variation based on Contract",
+          align: "center",
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
+        },
+        legend: {
+          tooltipHoverFormatter: function (val, opts) {
+            return (
+              val +
+              " - " +
+              opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
+              ""
+            );
+          },
+        },
+        markers: {
+          size: 0,
+          hover: {
+            sizeOffset: 6,
+          },
+        },
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dez",
+          ],
+        },
+        yaxis: {
+          title: {
+            text: " % (PERCENTAGE) ",
+          },
+        },
+        tooltip: {
+          y: [
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " (mins)";
+                },
+              },
+            },
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " per session";
+                },
+              },
+            },
+            {
+              title: {
+                formatter: function (val) {
+                  return val;
+                },
+              },
+            },
+          ],
+        },
+        grid: {
+          borderColor: "#f1f1f1",
+        },
+      },
+    };
+  }
+
+  render() {
+    return (
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
           height={350}
         />
       </div>
@@ -189,26 +316,11 @@ const Dashboard = () => {
           <div className={styles.monthlyExpenses}>
             <div className={styles.bigCard}>
               <div className={styles.bigCardChild} />
+              <ApexChartClass />
             </div>
             <div className={styles.graph}>
               {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
-              <ApexChartClass />
             </div>
-
-            <select className={styles.months} id="meses">
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
-            </select>
           </div>
           <div
             className={styles.variationBasedOnContract}
@@ -222,36 +334,7 @@ const Dashboard = () => {
               alt=""
               src="/background7.svg"
             />
-            <div className={styles.kwhCompletionRate}>
-              <div className={styles.percentage}>
-                <div className={styles.sinceLastMonth}>
-                  +2,5% since last month
-                </div>
-                <b className={styles.b}>85%</b>
-              </div>
-              <div className={styles.kwhCompletionRate1}>
-                kWh Completion Rate - Contract
-              </div>
-            </div>
-            <div className={styles.months1}>
-              <div className={styles.jan}>Jan</div>
-              <div className={styles.feb}>Feb</div>
-              <div className={styles.mar}>Mar</div>
-              <div className={styles.apr}>Apr</div>
-              <div className={styles.may}>May</div>
-              <div className={styles.jun}>Jun</div>
-              <div className={styles.jul}>Jul</div>
-              <div className={styles.aug}>Aug</div>
-              <div className={styles.sep}>Sep</div>
-              <div className={styles.oct}>Oct</div>
-              <div className={styles.nov}>Nov</div>
-              <div className={styles.dec}>Dec</div>
-            </div>
-            <img className={styles.graphIcon} alt="" src="/graph2.svg" />
-            <b className={styles.variationBasedOn}>
-              Variation based on Contract
-            </b>
-            <div className={styles.div6}>100%</div>
+            <ApexChartt />
           </div>
           <div className={styles.power}>
             <div className={styles.bigCard2}>

@@ -1,15 +1,8 @@
 const express = require("express");
 
 const app = express();
-var createError = require("http-errors");
-
 var routes = require("./backend/routes");
-
-const fs = require("fs");
-
-const mysql = require("infocharge");
-
-const crypto = require("crypto");
+const mysql = require('mysql');
 
 const cors = require("cors");
 app.use(cors());
