@@ -21,7 +21,7 @@ const SignUpCompany = () => {
 console.log(formData)
 const onSignUpClick = useCallback(() => {
   // Aqui você deve fazer a requisição para o backend
-  fetch("http://localhost/Psi/backend/routes.js/company", {
+  fetch("http://localhost/Psi/backend/routes/company", {
     method: "POST",
     mode: "no-cors",
     headers: {
