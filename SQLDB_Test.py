@@ -32,10 +32,12 @@ async def main():
 
     # Obter os dados de uso do dispositivo
     device_usage = await device.get_device_usage()
-    daily_usage_value = device_usage.to_dict()['saved_power']['today']
+    daily_usage_value = device_usage.to_dict()['power_usage']['today']  # Usando 'power_usage' em vez de 'saved_power'
+    weekly_usage_value = device_usage.to_dict()['power_usage']['past7']
+    monthly_usage_value = device_usage.to_dict()['power_usage']['past30']
 
     # Definir um ID fictício para COLLABORATOR_ID
-    collaborator_id = 1  # Substitua pelo ID desejado
+    collaborator_id = 2  # Substitua pelo ID desejado
 
     # Conectar ao banco de dados MySQL
     connection = mysql.connector.connect(host="localhost", user="root", password="", database="infocharge")
@@ -53,8 +55,8 @@ async def main():
         energy_data_value = energy_data_daily.to_dict()['data'][0]
 
         # Inserir os dados nas tabelas existentes
-        insert_query = "INSERT INTO CONSUMING (DAILY_USAGE, DAILY_RUNTIME, DAY, MONTH_YEAR, COLLABORATOR_ID) VALUES (%s, %s, %s, %s, %s)"
-        data = (daily_usage_value, today_runtime_value, datetime.today().day, f"{datetime.today().month}_{datetime.today().year}", collaborator_id)
+        insert_query = "INSERT INTO CONSUMING (DAILY_USAGE, WEEKLY_USAGE, MONTHLY_USAGE, DAILY_RUNTIME, DAY, MONTH_YEAR, COLLABORATOR_ID) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        data = (daily_usage_value, weekly_usage_value, monthly_usage_value, today_runtime_value, datetime.today().day, f"{datetime.today().month}_{datetime.today().year}", collaborator_id)
         cursor.execute(insert_query, data)
 
         # Commit das alterações
