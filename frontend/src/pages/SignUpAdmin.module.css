@@ -137,6 +137,20 @@
   width: 404px;
   height: 56px;
 }
+<<<<<<< HEAD
+=======
+
+.gender {
+  position: absolute;
+  left: 163px;
+  border-radius: var(--br-xs);
+  border: 1px solid var(--greyscale-200);
+  box-sizing: border-box;
+  width: 404px;
+  height: 56px;
+  top: 537px;
+}
+>>>>>>> nodejs
 .cnpj,
 .companyAddress,
 .companyEmail,

@@ -88,8 +88,14 @@
 }
 .backButtonIcon {
   position: absolute;
+<<<<<<< HEAD
   top: 10px;
   left: 18px;
+=======
+  top: 70px;
+  right: 0px;
+  left: 90px;
+>>>>>>> nodejs
   width: 50.5px;
   height: 43.5px;
   overflow: hidden;
@@ -108,7 +114,11 @@
   cursor: pointer;
 }
 .buttonlargeprimary {
+<<<<<<< HEAD
   top: 664px;
+=======
+  top: 694px;
+>>>>>>> nodejs
   left: 274px;
   border-radius: var(--br-xs);
   background-color: var(--color-steelblue-100);
@@ -137,7 +147,11 @@
 }
 .signUpCompany1 {
   position: absolute;
+<<<<<<< HEAD
   top: 605px;
+=======
+  top: 625px;
+>>>>>>> nodejs
   left: 357px;
   line-height: 160%;
   color: #189ec7;
@@ -146,13 +160,18 @@
 
 .dontHaveAContainer {
   position: absolute;
+<<<<<<< HEAD
   top: 605px;
+=======
+  top: 625px;
+>>>>>>> nodejs
   left: 195px;
   line-height: 160%;
   text-align: center;
 }
 .content {
   position: absolute;
+<<<<<<< HEAD
   top: 23px;
   left: 19px;
   width: 696px;
@@ -598,11 +617,30 @@
   font-size: var(--heading-h3-size);
   color: var(--additional-white);
 }
+=======
+  top: 40px;
+  left: 19px;
+  width: 806px;
+  height: 847px;
+  overflow: hidden;
+}
+
+.signInAdmin {
+  overflow: hidden;
+}
+
+>>>>>>> nodejs
 .signInAdmin {
   position: relative;
   background-color: var(--additional-white);
   width: 100%;
+<<<<<<< HEAD
   text-align: left;
+=======
+  height: 1000px;
+  text-align: left;
+  left: 550px;
+>>>>>>> nodejs
   font-size: var(--body-medium-regular-size);
   color: var(--greyscale-900);
   font-family: var(--body-medium-regular);

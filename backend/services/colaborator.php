@@ -15,7 +15,11 @@ class CollaboratorService
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
+<<<<<<< HEAD
             $name = isset($_POST['admin_name']) ? $this->sanitize($_POST['admin_name']) : '';
+=======
+            $name = isset($_POST['name']) ? $this->sanitize($_POST['name']) : '';
+>>>>>>> nodejs
             $companyname = isset($_POST['companyname']) ? $this->sanitize($_POST['companyname']) : '';
             $email = isset($_POST['email']) ?  $this->sanitize($_POST['email']) : '';
             $phone = isset($_POST['phone']) ? $this->sanitize($_POST['phone']) : '';
@@ -28,13 +32,24 @@ class CollaboratorService
             $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
             $start_date = isset($_POST['start_date']) ?  $this->sanitize($_POST['start_date']) : '';
 
+<<<<<<< HEAD
 
             // Use prepared statements to prevent SQL injection
+=======
+            // Use prepared statements to prevent SQL injection
+            $companyname = trim($companyname);
+>>>>>>> nodejs
             $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
             $sql->bind_param("s", $companyname);
             $sql->execute();
             $sql->bind_result($companyid);
 
+<<<<<<< HEAD
+=======
+            echo "Company Name: $companyname<br>";
+            echo "Database Encoding: " . $this->conn->character_set_name() . "<br>";
+
+>>>>>>> nodejs
             // Fetch the result
             if (!$sql->fetch()) {
                 // Company not found, handle the error (return an appropriate response)
@@ -44,6 +59,7 @@ class CollaboratorService
 
             $sql->close();
 
+<<<<<<< HEAD
 
             // Use prepared statements to prevent SQL injection
             $stmt = "INSERT INTO `Collaborator` (`NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
@@ -51,6 +67,33 @@ class CollaboratorService
 
             // Execute the statement
             $result = $this->conn->query($stmt);
+=======
+            // Use prepared statements to prevent SQL injection
+            $stmt = $this->conn->prepare("INSERT INTO `Collaborator` (`COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            // Bind parameters
+            $stmt->bind_param(
+                "isssissssiiss",
+                $companyid,
+                $name,
+                $companyname,
+                $email,
+                $phone,
+                $age,
+                $gender,
+                $password,
+                $address,
+                $plafond,
+                $tariff,
+                $end_date,
+                $start_date
+            );
+
+
+            // Execute the statement
+            $result = $stmt->execute();
+>>>>>>> nodejs
 
             if ($result === FALSE) {
                 $this->response(array('status' => 'failed', 'error' => 'Invalid data received'));

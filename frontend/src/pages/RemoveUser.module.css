@@ -73,11 +73,19 @@
   line-height: 125%;
 }
 .header {
+<<<<<<< HEAD
   position: absolute;
   top: 0;
   left: 250px;
   background-color: var(--additional-white);
   width: 1190px;
+=======
+  position: fixed;
+  top: 0;
+  left: 250px;
+  background-color: var(--additional-white);
+  width: 1890px;
+>>>>>>> nodejs
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
@@ -244,11 +252,19 @@
 }
 .removeUser,
 .sidebar {
+<<<<<<< HEAD
   height: 900px;
   overflow: hidden;
 }
 .sidebar {
   position: absolute;
+=======
+  height: 1000px;
+  overflow: hidden;
+}
+.sidebar {
+  position: fixed;
+>>>>>>> nodejs
   top: 0;
   left: 0;
   background-color: var(--additional-white);
@@ -260,7 +276,12 @@
 .removeUser {
   position: relative;
   background-color: var(--color-gray-100);
+<<<<<<< HEAD
   width: 100%;
+=======
+  width: 1900px;
+  left: 200px;
+>>>>>>> nodejs
   text-align: left;
   font-size: var(--heading-h6-size);
   color: var(--additional-white);

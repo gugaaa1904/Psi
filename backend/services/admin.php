@@ -25,11 +25,21 @@ class AdminService
             $address = isset($_POST['address']) ?  $this->sanitize($_POST['address']) : '';
 
             // Use prepared statements to prevent SQL injection
+<<<<<<< HEAD
+=======
+            $companyname = trim($companyname);
+>>>>>>> nodejs
             $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
             $sql->bind_param("s", $companyname);
             $sql->execute();
             $sql->bind_result($companyid);
 
+<<<<<<< HEAD
+=======
+            echo "Company Name: $companyname<br>";
+            echo "Database Encoding: " . $this->conn->character_set_name() . "<br>";
+
+>>>>>>> nodejs
             // Fetch the result
             if (!$sql->fetch()) {
                 // Company not found, handle the error (return an appropriate response)
@@ -75,6 +85,10 @@ class AdminService
 
 $adminService = new AdminService();
 
+<<<<<<< HEAD
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+=======
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['admin_name'])) {
+>>>>>>> nodejs
     $adminService->insert_admin_post();
 }

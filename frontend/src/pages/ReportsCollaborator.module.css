@@ -5,7 +5,11 @@
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
   width: 667px;
+<<<<<<< HEAD
   height: 2523px;
+=======
+  height: 2623px;
+>>>>>>> nodejs
 }
 .analysisTheAccumulated,
 .analysisTheBlue {
@@ -301,6 +305,10 @@
   width: 444.3px;
   height: 1px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> nodejs
 .line2,
 .line3,
 .line4,
@@ -647,15 +655,25 @@
 .fullReport {
   position: absolute;
   top: 123px;
+<<<<<<< HEAD
   left: 262px;
   width: 666px;
   height: 2523px;
   overflow-y: auto;
+=======
+  left: 62px;
+  width: 666px;
+  height: 2523px;
+>>>>>>> nodejs
 }
 .notificationsIcon {
   position: absolute;
   top: 27px;
+<<<<<<< HEAD
   left: 1109px;
+=======
+  left: 1509px;
+>>>>>>> nodejs
   border-radius: var(--br-981xl);
   width: 40px;
   height: 40px;
@@ -669,6 +687,7 @@
   letter-spacing: 0.2px;
   line-height: 125%;
 }
+<<<<<<< HEAD
 .content,
 .header {
   position: absolute;
@@ -689,6 +708,26 @@
   background-color: var(--greyscale-50);
   height: 900px;
   overflow-y: auto;
+=======
+
+.header {
+  position: fixed;
+    top: 0;
+    left: 250px;
+    background-color: var(--additional-white);
+    width: 1690px;
+    height: 88px;
+    overflow: hidden;
+    font-size: var(--heading-h3-size);
+}
+.content {
+  position: absolute;
+  top: 0;
+  background-color: var(--greyscale-50);
+  height: 2800px;
+  width: 770px;
+  left: 650px;
+>>>>>>> nodejs
 }
 .settings1,
 .settingsIcon {
@@ -713,7 +752,11 @@
   left: 16px;
 }
 .settings {
+<<<<<<< HEAD
   top: 827px;
+=======
+  top: 877px;
+>>>>>>> nodejs
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -733,17 +776,31 @@
   line-height: 160%;
   font-weight: 500;
 }
+<<<<<<< HEAD
 .help,
+=======
+.help {}
+>>>>>>> nodejs
 .profile1 {
   position: absolute;
   left: 16px;
 }
 .help {
+<<<<<<< HEAD
   top: 765px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
+=======
+    position: absolute;
+      top: 825px;
+      left: 16px;
+      border-radius: var(--br-xs);
+      width: 218px;
+      height: 48px;
+      cursor: pointer;
+>>>>>>> nodejs
 }
 .profile1 {
   top: 13px;
@@ -827,7 +884,17 @@
   width: 1px;
   height: 901px;
 }
+<<<<<<< HEAD
 .line7,
+=======
+.line7 {
+  top: 874.5px;
+    left: 15.5px;
+    border-top: 1px solid var(--greyscale-100);
+    width: 219px;
+    height: 1px;
+}
+>>>>>>> nodejs
 .line8,
 .line9 {
   top: 819.5px;
@@ -857,7 +924,12 @@
 .sidebar {
   background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+<<<<<<< HEAD
   height: 900px;
+=======
+  height: 1000px;
+  position: fixed;
+>>>>>>> nodejs
   overflow: hidden;
   font-size: var(--body-medium-regular-size);
   color: var(--greyscale-500);
@@ -866,9 +938,14 @@
 .reportsCollaborator {
   position: relative;
   background-color: var(--color-gray-100);
+<<<<<<< HEAD
   width: 100%;
   height: 900px;
   overflow: hidden;
+=======
+  width: 1800px;
+  height: 2000px;
+>>>>>>> nodejs
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--color-black);

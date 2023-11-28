@@ -99,6 +99,7 @@ const SignUpAdmin = () => {
           onChange={handleInputChange}
           value={formData.password}
         />
+<<<<<<< HEAD
         <input
           className={styles.phoneNumber}
           name="gender"
@@ -108,12 +109,30 @@ const SignUpAdmin = () => {
           onChange={handleInputChange}
           value={formData.gender}
         />
+=======
+        <select
+          className={styles.gender}
+          required={true}
+          name="gender"
+          id="gender"
+          onChange={handleInputChange}
+          value={formData.gender}
+        >
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+>>>>>>> nodejs
         <input
           className={styles.employeesNumber}
           name="age"
           id="age"
           placeholder="Age"
+<<<<<<< HEAD
           type="number"
+=======
+          type="integer"
+>>>>>>> nodejs
           onChange={handleInputChange}
           value={formData.age}
         />
@@ -122,7 +141,11 @@ const SignUpAdmin = () => {
           name="phone"
           id="phone"
           placeholder="Phone"
+<<<<<<< HEAD
           type="number"
+=======
+          type="integer"
+>>>>>>> nodejs
           onChange={handleInputChange}
           value={formData.phone}
         />

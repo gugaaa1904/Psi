@@ -1,12 +1,23 @@
 import { useState, useCallback } from "react";
+<<<<<<< HEAD
 import PopUpAddUser from "../components/PopUpAddUser";
+=======
+import Notifications from "../components/Notifications";
+import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
+>>>>>>> nodejs
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
 
 
 const AddUser = () => {
+<<<<<<< HEAD
   const [isPopUpAddUserOpen, setPopUpAddUserOpen] = useState(false);
+=======
+  const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] =
+    useState(false);
+  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
+>>>>>>> nodejs
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +34,10 @@ const AddUser = () => {
     start_date: "",
   });
 
+<<<<<<< HEAD
   console.log(formData);
+=======
+>>>>>>> nodejs
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
     fetch("http://localhost/Psi/backend/routes.php/colaborator", {
@@ -38,12 +52,18 @@ const AddUser = () => {
       .then((data) => {
         // Lógica para lidar com a resposta do backend
         console.log(data);
+<<<<<<< HEAD
       })
+=======
+        // If the response indicates success, open the PopUpAddCollaborator
+    })
+>>>>>>> nodejs
       .catch((error) => {
         console.error("Erro na solicitação:", error);
       });
   }, [formData]);
 
+<<<<<<< HEAD
   const handleInputChange = (e) => {
     const { name, value } = e.target;
       setFormData((prevData) => ({
@@ -58,6 +78,31 @@ const AddUser = () => {
 
   const closePopUpAddUser = useCallback(() => {
     setPopUpAddUserOpen(false);
+=======
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const openPopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(true);
+  }, []);
+
+  const closePopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(false);
+  }, []);
+
+  const openNotifications = useCallback(() => {
+    setNotificationsOpen(true);
+  }, []);
+
+  const closeNotifications = useCallback(() => {
+    setNotificationsOpen(false);
+>>>>>>> nodejs
   }, []);
 
   const onSettingsContainerClick = useCallback(() => {
@@ -93,7 +138,11 @@ const AddUser = () => {
           <button
             className={styles.createNewUserButton}
             autoFocus={true}
+<<<<<<< HEAD
             onClick={(openPopUpAddUser, onAddUserClick)}
+=======
+            onClick={onAddUserClick}
+>>>>>>> nodejs
           >
             <b className={styles.createNewUser}>Create New User</b>
           </button>
@@ -126,6 +175,10 @@ const AddUser = () => {
           >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+<<<<<<< HEAD
+=======
+            <option value="Other">Other</option>
+>>>>>>> nodejs
           </select>
           <input
             className={styles.adress}
@@ -146,13 +199,21 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.companyname}
           />
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> nodejs
           <input
             className={styles.phoneNumber}
             name="phone"
             id="phone"
             placeholder="Phone Number"
+<<<<<<< HEAD
             type="number"
+=======
+            type="integer"
+>>>>>>> nodejs
             onChange={handleInputChange}
             value={formData.phone}
           />
@@ -161,7 +222,11 @@ const AddUser = () => {
             name="age"
             id="age"
             placeholder="Age"
+<<<<<<< HEAD
             type="number"
+=======
+            type="integer"
+>>>>>>> nodejs
             onChange={handleInputChange}
             value={formData.age}
           />
@@ -216,6 +281,15 @@ const AddUser = () => {
           <div className={styles.contractOfThis}>Contract of this User</div>
         </div>
         <div className={styles.header}>
+<<<<<<< HEAD
+=======
+          <img
+            className={styles.notificationsIcon}
+            alt=""
+            src="/notifications.svg"
+            onClick={openNotifications}
+          />
+>>>>>>> nodejs
           <b className={styles.addUser1}>Add User</b>
         </div>
         <div className={styles.sidebar}>
@@ -261,9 +335,28 @@ const AddUser = () => {
           <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
+<<<<<<< HEAD
       {isPopUpAddUserOpen && (
         <PortalPopup placement="Centered" onOutsideClick={closePopUpAddUser}>
           <PopUpAddUser onClose={closePopUpAddUser} />
+=======
+      {isPopUpAddCollaboratorOpen && (
+        <PortalPopup
+          overlayColor="rgba(113, 113, 113, 0.3)"
+          placement="Centered"
+          onOutsideClick={closePopUpAddCollaborator}
+        >
+          <CollaboratorAddedSucessfullyHR onClose={closePopUpAddCollaborator} />
+        </PortalPopup>
+      )}
+      {isNotificationsOpen && (
+        <PortalPopup
+          overlayColor="rgba(113, 113, 113, 0.3)"
+          placement="Centered"
+          onOutsideClick={closeNotifications}
+        >
+          <Notifications onClose={closeNotifications} />
+>>>>>>> nodejs
         </PortalPopup>
       )}
     </>

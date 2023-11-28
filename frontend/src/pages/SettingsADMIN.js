@@ -103,12 +103,20 @@ const SettingsADMIN = () => {
             <div className={styles.divider} />
             <div className={styles.title}>Privacy</div>
           </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> nodejs
           <div
             className={styles.changeButton}
             onClick={openPopUpChangePassword}
           >
             <b className={styles.button1}>Change</b>
           </div>
+<<<<<<< HEAD
+=======
+          
+>>>>>>> nodejs
           <input
             className={styles.confirmNewPassword}
             name="Confirm new Password"

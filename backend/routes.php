@@ -22,7 +22,12 @@ $uri = $uriParts[0];
 // Route the request based on the URI and method
 switch ($uri) {
     case '/company':
+<<<<<<< HEAD
         if ($requestMethod === 'GET') {
+=======
+        if ($requestMethod === 'GET'
+        ) {
+>>>>>>> nodejs
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_company_post();
@@ -40,7 +45,12 @@ switch ($uri) {
         }
         break;
     case '/colaborator':
+<<<<<<< HEAD
         if ($requestMethod === 'GET') {
+=======
+        if ($requestMethod === 'GET'
+        ) {
+>>>>>>> nodejs
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_collaborator_post();
