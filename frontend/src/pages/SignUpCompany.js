@@ -17,7 +17,8 @@ const SignUpCompany = () => {
   const onSignInTextClick = useCallback(() => {
     navigate("/sign-in-admin");
   }, [navigate]);
-console.log(formData)
+  console.log(formData)
+  console.log("picha");
 const onSignUpClick = useCallback(() => {
   // Aqui você deve fazer a requisição para o backend
   fetch("http://localhost/Psi/backend/routes.php/company", {
