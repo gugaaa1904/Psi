@@ -41,11 +41,23 @@ switch ($uri) {
         }
         break;
     case '/colaborator':
-        if ($requestMethod === 'GET'
+        if (
+            $requestMethod === 'GET'
         ) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_collaborator_post();
+        } else {
+            http_response_code(405); // Method Not Allowed
+        }
+        break;
+    case '/loginadmin':
+        if (
+            $requestMethod === 'GET'
+        ) {
+            //clients_list();
+        } elseif ($requestMethod === 'POST') {
+            login_admin();
         } else {
             http_response_code(405); // Method Not Allowed
         }

@@ -1,226 +1,147 @@
-import { useState, useCallback } from "react";
-import PopUpChangePassword from "../components/PopUpChangePassword";
-import PortalPopup from "../components/PortalPopup";
-import Notifications from "../components/Notifications";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./SettingsADMIN.module.css";
+import styles from "./SignInAdmin.module.css";
 
-const SettingsADMIN = () => {
-  const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] =
-    useState(false);
-  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
+const SignInAdmin = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const onLogoutContainerClick = useCallback(() => {
+  const onForgotPasswordContainerClick = useCallback(() => {
+    navigate("/forgot-password-admin");
+  }, [navigate]);
+
+  const onForgotPasswordTextClick = useCallback(() => {
+    navigate("/forgot-password-admin");
+  }, [navigate]);
+
+  const onBackButtonClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
 
-  const openPopUpChangePassword = useCallback(() => {
-    setPopUpChangePasswordOpen(true);
-  }, []);
+  const onButtonLargePrimaryContainerClick = useCallback(async () => {
+    try {
+      const response = await fetch(
+        "http://localhost/Psi/backend/services/loginadmin.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
 
-  const closePopUpChangePassword = useCallback(() => {
-    setPopUpChangePasswordOpen(false);
-  }, []);
+      if (response.ok) {
+        try {
+          const data = await response.json();
+          console.log("Server Response:", data);
 
-  const openNotifications = useCallback(() => {
-    setNotificationsOpen(true);
-  }, []);
+          // Credenciais válidas, redirecionar para company-info
+          navigate("/company-info");
+        } catch (error) {
+          // Tratar erros ao tentar analisar o corpo da resposta como JSON
+          console.error("Erro ao analisar a resposta JSON:", error);
+        }
+      } else {
+        // Se a resposta não for bem-sucedida, tenta obter dados de resposta e mostrar o erro
+        const errorData = await response.json().catch(() => null);
+        const errorMessage = errorData?.error || "Erro desconhecido";
 
-  const closeNotifications = useCallback(() => {
-    setNotificationsOpen(false);
-  }, []);
+        console.error("Credenciais inválidas. Erro:", errorMessage);
+      }
+    } catch (error) {
+      // Se ocorrer um erro durante a solicitação
+      console.error("Erro ao processar a solicitação:", error);
+    }
+  }, [email, password, navigate]);
 
-  const onHelpContainerClick = useCallback(() => {
-    navigate("/help-admin");
+  const onSignUpTextClick = useCallback(() => {
+    navigate("/sign-up-admin");
   }, [navigate]);
 
-  const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-admin");
-  }, [navigate]);
-
-  const onCollaboratorInformationContainerClick = useCallback(() => {
-    navigate("/collaborator-info");
-  }, [navigate]);
-
-  const onCompanyInformationContainerClick = useCallback(() => {
-    navigate("/company-info");
-  }, [navigate]);
-
-  const onRemoveUserContainerClick = useCallback(() => {
-    navigate("/remove-user");
-  }, [navigate]);
-
-  const onAddUserContainerClick = useCallback(() => {
-    navigate("/add-user");
+  const onSignUpCompanyClick = useCallback(() => {
+    navigate("/sign-up-company");
   }, [navigate]);
 
   return (
     <>
-      <div className={styles.settingsAdmin}>
+      <div>
+        <img
+          className={styles.backButtonIcon}
+          alt=""
+          src="/back-button.svg"
+          onClick={onBackButtonClick}
+        />
+      </div>
+      <div className={styles.signInAdmin}>
         <div className={styles.content}>
-          <div className={styles.contentChild} />
-          <div className={styles.logout} onClick={onLogoutContainerClick}>
-            <b className={styles.button}>Log Out</b>
+          <div className={styles.logo}>
+            <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
           </div>
-          <div className={styles.privacy}>
-            <div className={styles.yourPrivacyIsContainer}>
-              <p
-                className={styles.yourPrivacyIs}
-              >{`Your privacy is important to us, and we want to ensure that you have control over who can access your information on this platform. Below, you can adjust your privacy settings to customize your experience. `}</p>
-              <p className={styles.yourPrivacyIs}>&nbsp;</p>
-              <p className={styles.yourPrivacyIs}>Account Security</p>
-              <p className={styles.yourPrivacyIs}>
-                Change Password: Regularly update your password to enhance the
-                security of your account.
-              </p>
-              <p className={styles.yourPrivacyIs}>&nbsp;</p>
-              <p className={styles.yourPrivacyIs}>Data Sharing</p>
-              <p className={styles.yourPrivacyIs}>
-                Information Sharing: Choose the level of information you are
-                comfortable sharing with others. [Minimal/Basic/Detailed/Custom]
-              </p>
-              <p className={styles.yourPrivacyIs}>
-                Third-Party Apps: Manage which third-party apps can access your
-                data and revoke access at any time.
-              </p>
-              <p className={styles.yourPrivacyIs}>&nbsp;</p>
-              <p className={styles.yourPrivacyIs}>Visibility</p>
-              <p className={styles.yourPrivacyIs}>
-                Profile Visibility: Control who can see your profile and your
-                posts. [Public/Friends Only/Private]
-              </p>
-              <p className={styles.yourPrivacyIs}>
-                Search Engine Indexing: Allow search engines to index your
-                profile? [Yes/No]
-              </p>
-              <p className={styles.yourPrivacyIs}>Privacy Policy</p>
-              <p className={styles.yourPrivacyIs}>
-                Review our privacy policy for a detailed understanding of how
-                your data is handled.
-              </p>
+          <div className={styles.header}>
+            <b className={styles.tittle}>Sign In Administrator</b>
+            <div className={styles.body}>
+              Welcome back! please enter your detail
             </div>
-            <div className={styles.divider} />
-            <div className={styles.title}>Privacy</div>
+          </div>
+          <div className={styles.input}>
+            <input
+              className={styles.email}
+              name="Email"
+              id="email"
+              placeholder="Email"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className={styles.password}
+              name="Password"
+              id="password"
+              placeholder="Password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div
+            className={styles.forgotPassword}
+            onClick={onForgotPasswordContainerClick}
+          >
+            <b
+              className={styles.forgotPassword1}
+              onClick={onForgotPasswordTextClick}
+            >
+              Forgot Password?
+            </b>
+          </div>
+          <div
+            className={styles.buttonlargeprimary}
+            onClick={onButtonLargePrimaryContainerClick}
+          >
+            <b className={styles.button}>Sign In</b>
+          </div>
+          <b className={styles.signUp} onClick={onSignUpTextClick}>
+            Sign Up
+          </b>
+          <div className={styles.dontHaveAnContainer}>
+            <span>Don’t have an account?</span>
+            <span className={styles.span}>{` `}</span>
           </div>
 
-          <div
-            className={styles.changeButton}
-            onClick={openPopUpChangePassword}
-          >
-            <b className={styles.button1}>Change</b>
+          <b className={styles.signUpCompany1} onClick={onSignUpCompanyClick}>
+            Sign Up Company
+          </b>
+          <div className={styles.dontHaveAContainer}>
+            <span>Don’t have a Company?</span>
+            <span className={styles.span}>{` `}</span>
           </div>
-          
-          <input
-            className={styles.confirmNewPassword}
-            name="Confirm new Password"
-            id="confirm_new_password"
-            placeholder="Confirm your new Password"
-            type="password"
-          />
-          <input
-            className={styles.newPassword}
-            name="New Password"
-            id="new_password"
-            placeholder="Enter your new Password"
-            type="password"
-          />
-          <input
-            className={styles.oldPassword}
-            name="Old Password"
-            id="old_password"
-            placeholder="Enter your old Password"
-            type="password"
-          />
-          <div className={styles.changePassword}>
-            <div className={styles.tittle}>Change your password</div>
-          </div>
-          <div className={styles.language}>
-            <div className={styles.tabs}>
-              <div className={styles.tab}>
-                <div className={styles.title1}>Portuguese</div>
-              </div>
-              <div className={styles.tab1}>
-                <div className={styles.title2}>English</div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.accessSecurity}>
-            <div className={styles.divider} />
-            <div className={styles.accessSecurity1}>{`Access & Security`}</div>
-          </div>
-        </div>
-        <div className={styles.header}>
-          <img
-            className={styles.notificationsIcon}
-            alt=""
-            src="/notifications.svg"
-            onClick={openNotifications}
-          />
-          <b className={styles.settings}>Settings</b>
-        </div>
-        <div className={styles.sidebar}>
-          <div className={styles.settings1}>
-            <img className={styles.settingsIcon} alt="" src="/settings1.svg" />
-            <b className={styles.settings2}>Settings</b>
-          </div>
-          <div className={styles.help} onClick={onHelpContainerClick}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
-            <div className={styles.help1}>Help</div>
-          </div>
-          <div className={styles.menu}>
-            <div className={styles.profile} onClick={onProfileContainerClick}>
-              <div className={styles.profile1}>Profile</div>
-            </div>
-            <div
-              className={styles.collaboratorInformation}
-              onClick={onCollaboratorInformationContainerClick}
-            >
-              <div className={styles.profile1}>Collaborator Information</div>
-            </div>
-            <div
-              className={styles.companyInformation}
-              onClick={onCompanyInformationContainerClick}
-            >
-              <div className={styles.profile1}>Company Information</div>
-            </div>
-            <div
-              className={styles.removeUser}
-              onClick={onRemoveUserContainerClick}
-            >
-              <div className={styles.profile1}>Remove User</div>
-            </div>
-            <div className={styles.addUser} onClick={onAddUserContainerClick}>
-              <div className={styles.profile1}>Add User</div>
-            </div>
-            <b className={styles.menu1}>MENU</b>
-          </div>
-          <div className={styles.line} />
-          <div className={styles.line1} />
-          <div className={styles.line2} />
-          <div className={styles.line3} />
-          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
-      {isPopUpChangePasswordOpen && (
-        <PortalPopup
-          placement="Centered"
-          onOutsideClick={closePopUpChangePassword}
-        >
-          <PopUpChangePassword onClose={closePopUpChangePassword} />
-        </PortalPopup>
-      )}
-      {isNotificationsOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeNotifications}
-        >
-          <Notifications onClose={closeNotifications} />
-        </PortalPopup>
-      )}
     </>
   );
 };
 
-export default SettingsADMIN;
+export default SignInAdmin;
