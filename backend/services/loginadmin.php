@@ -23,7 +23,7 @@ class LogINAdminService
 
     public function login_admin()
     {
-        error_log('Request Method: ' . $_SERVER["REQUEST_METHOD"]);   
+        error_log('Request Method: ' . $_SERVER["REQUEST_METHOD"]);
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Check if 'email' and 'password' keys are set in the $_POST array
