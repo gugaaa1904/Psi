@@ -1,14 +1,14 @@
 const express = require("express");
 
 const app = express();
-var routes = require("./backend/routes");
-const mysql = require('mysql');
+var routes = require("./routes");
+const mysql = require('mysql2');
 
 const cors = require("cors");
 app.use(cors());
 const PORT = 80;
 app.listen(PORT, () => {
-  console.log("server running at 80");
+  console.log(`Server running at http://localhost:${PORT}`);
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

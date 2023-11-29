@@ -2,14 +2,15 @@ var express = require("express");
 var router = express.Router();
 
 // Require our controllers.
-var company = require("../services/company");
-var admin = require("../services/admin");
-var collaborator = require("../services/collaborator");
-var consuming = require("../services/consuming");
+var company = require("./services/company_services");
+var admin = require("./services/admin_services");
+var collaborator = require("./services/collaborator_services");
+var consuming = require("./services/consuming_services");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
+  console.log("picha");
 });
 
 //GET request for a admin
