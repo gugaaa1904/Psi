@@ -4,13 +4,7 @@ header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
-
-require_once __DIR__ . '/../config.php';
+require_once '../config.php';
 
 class LogINAdminService
 {
@@ -27,19 +21,18 @@ class LogINAdminService
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Check if 'email' and 'password' keys are set in the $_POST array
-            if (isset($_POST['email']) && isset($_POST['password'])) {
                 $email = htmlspecialchars($_POST['email']);
                 $password = htmlspecialchars($_POST['password']);
 
-                $stmt = $this->conn->prepare("SELECT ADMIN_ID, COMPANY_ID, NAME, EMAIL, PASSWORD FROM admin WHERE EMAIL = ?");
+                $stmt = $this->conn->prepare("SELECT EMAIL, PASSWORD FROM admin WHERE EMAIL = ?");
                 $stmt->bind_param("s", $email);
                 $stmt->execute();
-                $stmt->bind_result($adminId, $companyId, $name, $emailDb, $passwordDb);
+                $stmt->bind_result($emailDb, $passwordDb);
 
                 if ($stmt->fetch()) {
-                    if ($password ==$passwordDb) {
+                    if ($password == $passwordDb) {
                         // Password is correct
-                        $this->response('success', array('admin_id' => $adminId, 'company_id' => $companyId, 'name' => $name));
+                        $this->response('success');
                     } else {
                         // Password is incorrect
                         $this->response('failed', array('error' => 'Invalid password' .", ". $email .", ". $emailDb .", ". $password .", ". $passwordDb));
@@ -50,14 +43,7 @@ class LogINAdminService
                 }
 
                 $stmt->close();
-            } else {
-                // 'email' or 'password' keys are not set in the $_POST array
-                $this->response('failed', array('error' => 'Email and password are required'));
-            }
-        } else {
-            // Invalid request method
-            $this->response('failed', array('error' => 'Invalid request method'));
-        }
+            } 
     }
 
     private function response($status, $data = array())
@@ -80,4 +66,7 @@ class LogINAdminService
 }
 
 $LogInadminService = new LogINAdminService();
-$LogInadminService->login_admin();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $LogInadminService->login_admin();
+}

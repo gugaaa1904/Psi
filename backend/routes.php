@@ -1,12 +1,13 @@
 <?php
 
-header("Access-Control-Allow-Origin: http://localhost:3001");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Methods: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 require_once 'services/company.php';
 require_once 'services/admin.php';
+require_once 'services/loginadmin.php';
 require_once 'services/collaborator.php';
 require_once 'config.php';
 $conn = connect();
