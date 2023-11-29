@@ -28,7 +28,7 @@ const AddUser = () => {
 
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
-    fetch("http://localhost/Psi/backend/routes.php/colaborator", {
+    fetch("http://localhost/Psi/backend/routes.php/collaborator", {
       method: "POST",
       mode: "no-cors",
       headers: {

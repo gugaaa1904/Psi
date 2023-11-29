@@ -65,11 +65,11 @@ class ApexChartClass extends React.Component {
       series: [
         {
           name: "Consuming",
-          data: [50,44, 55, 57, 56, 61, 58, 63, 60, 66,50,50],
+          data: [50, 44, 55, 57, 56, 61, 58, 63, 60, 66, 50, 50],
         },
         {
           name: "Plafond based on Contract",
-          data: [50,76, 85, 101, 98, 87, 105, 91, 114, 94,50,50],
+          data: [50, 76, 85, 101, 98, 87, 105, 91, 114, 94, 50, 50],
         },
       ],
       options: {
@@ -93,8 +93,8 @@ class ApexChartClass extends React.Component {
           colors: ["transparent"],
         },
         title: {
-          text: 'Monthly Expenses',
-          align: 'center',
+          text: "Monthly Expenses",
+          align: "center",
           style: {
             fontFamily: "Inter, sans-serif",
           },
@@ -126,7 +126,7 @@ class ApexChartClass extends React.Component {
         tooltip: {
           y: {
             formatter: function (val) {
-              return " € " + val ;
+              return " € " + val;
             },
           },
         },
@@ -148,56 +148,59 @@ class ApexChartClass extends React.Component {
   }
 }
 
-
-
 class ApexChartt extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-    
-      series: [{
+      series: [
+        {
           name: "Percentage of Consumption",
-          data: [120, 122, 96, 95, 150, 26, 81, 80, 120, 76, 134, 80]
+          data: [120, 122, 96, 95, 150, 26, 81, 80, 120, 76, 134, 80],
         },
         {
           name: "100%",
-          data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+          data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
         },
       ],
       options: {
         chart: {
           height: 350,
-          type: 'line',
+          type: "line",
           zoom: {
-            enabled: false
+            enabled: false,
           },
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         stroke: {
           width: [5, 7, 5],
-          curve: 'straight',
-          dashArray: [0, 8, 5]
+          curve: "straight",
+          dashArray: [0, 8, 5],
         },
         title: {
-          text: 'Variation based on Contract',
-          align: 'center',
+          text: "Variation based on Contract",
+          align: "center",
           style: {
             fontFamily: "Inter, sans-serif",
           },
         },
         legend: {
-          tooltipHoverFormatter: function(val, opts) {
-            return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
-          }
+          tooltipHoverFormatter: function (val, opts) {
+            return (
+              val +
+              " - " +
+              opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
+              ""
+            );
+          },
         },
         markers: {
           size: 0,
           hover: {
-            sizeOffset: 6
-          }
+            sizeOffset: 6,
+          },
         },
         xaxis: {
           categories: [
@@ -225,54 +228,46 @@ class ApexChartt extends React.Component {
             {
               title: {
                 formatter: function (val) {
-                  return val + " (mins)"
-                }
-              }
+                  return val + " (mins)";
+                },
+              },
             },
             {
               title: {
                 formatter: function (val) {
-                  return val + " per session"
-                }
-              }
+                  return val + " per session";
+                },
+              },
             },
             {
               title: {
                 formatter: function (val) {
                   return val;
-                }
-              }
-            }
-          ]
+                },
+              },
+            },
+          ],
         },
         grid: {
-          borderColor: '#f1f1f1',
-        }
+          borderColor: "#f1f1f1",
+        },
       },
-    
-    
     };
   }
 
-
-
   render() {
     return (
-      
-
-<div id="chart">
-<ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350} />
-</div>
-
-
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          height={350}
+        />
+      </div>
     );
   }
 }
-
-
-
-
-
 
 const Dashboard = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
@@ -340,7 +335,6 @@ const Dashboard = () => {
               src="/background7.svg"
             />
             <ApexChartt />
-            
           </div>
           <div className={styles.power}>
             <div className={styles.bigCard2}>
