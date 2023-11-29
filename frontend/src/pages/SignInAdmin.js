@@ -1,9 +1,11 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignInAdmin.module.css";
 
 const SignInAdmin = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onForgotPasswordContainerClick = useCallback(() => {
     navigate("/forgot-password-admin");
@@ -17,10 +19,44 @@ const SignInAdmin = () => {
     navigate("/");
   }, [navigate]);
 
-  const onButtonLargePrimaryContainerClick = useCallback(() => {
-    navigate("/company-info");
-  }, [navigate]);
-
+  const onButtonLargePrimaryContainerClick = useCallback(async () => {
+    try {
+      const response = await fetch("http://localhost/Psi/backend/services/loginadmin.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (data.status == "success") {
+        try {
+          console.log("Server Response:", data);
+  
+          // Credenciais válidas, redirecionar para company-info
+          navigate("/company-info");
+        } catch (error) {
+          // Tratar erros ao tentar analisar o corpo da resposta como JSON
+          console.error("Erro ao analisar a resposta JSON:", error);
+        }
+      } else {
+        // Se a resposta não for bem-sucedida, tenta obter dados de resposta e mostrar o erro
+        const errorData = await response.json().catch(() => null);
+        const errorMessage = errorData?.error || "Erro desconhecido";
+  
+        console.error("Credenciais inválidas. Erro:", errorMessage);
+      }
+    } catch (error) {
+      // Se ocorrer um erro durante a solicitação
+      console.error("Erro ao processar a solicitação:", error);
+    }
+  }, [email, password, navigate]);
+  
+  
   const onSignUpTextClick = useCallback(() => {
     navigate("/sign-up-admin");
   }, [navigate]);
@@ -53,13 +89,17 @@ const SignInAdmin = () => {
               name="Email"
               id="email"
               placeholder="Email"
-              type="email" />
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <input
               className={styles.password}
               name="Password"
               id="password"
               placeholder="Password"
-              type="password" />
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div
             className={styles.forgotPassword}
