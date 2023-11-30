@@ -31,37 +31,29 @@ const ChooseThe3TypesUser = () => {
           className={styles.regularEmployee}
           onClick={onRegularEmployeeContainerClick}
         >
-          <b className={styles.button}> Employee</b>
+          <b className={styles.button}> Sign In Collaborator</b>
         </div>
 
         <div
           className={styles.administrator}
           onClick={onAdministratorContainerClick}
         >
-          <b className={styles.administrator1}>Administrator</b>
+          <b className={styles.administrator1}>Sign In Administrator</b>
         </div>
 
         <b className={styles.areYouAn}>
-          Are you an Administrator or an Employee?
+          Welcome to InfoCharge ! Good to have you here !
         </b>
 
         <div className={styles.welcomePleaseSelect}>
-          Welcome! Please select your role:
+          To explore the app, please select how do you want to sign in:
         </div>
 
         <div className={styles.logo}>
-          <img
-            className={styles.logo1Icon}
-            alt=""
-            src="/InfoCharge-removebg-preview.png"
-          />
+          <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
         </div>
       </div>
-      <img
-        className={styles.covericon}
-        alt=""
-        src="/Optimized-EletricCarsBG.jpg"
-      />
+      <img className={styles.covericon} alt="" src="/backgroundhomepage.jpg" />
     </div>
   );
 };

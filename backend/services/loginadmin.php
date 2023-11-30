@@ -20,30 +20,31 @@ class LogINAdminService
         error_log('Request Method: ' . $_SERVER["REQUEST_METHOD"]);
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
             // Check if 'email' and 'password' keys are set in the $_POST array
-                $email = htmlspecialchars($_POST['email']);
-                $password = htmlspecialchars($_POST['password']);
-
-                $stmt = $this->conn->prepare("SELECT EMAIL, PASSWORD FROM admin WHERE EMAIL = ?");
-                $stmt->bind_param("s", $email);
+                //$email = htmlspecialchars(isset($_POST['email'])) ?  $this->sanitize($_POST['email']) : '';
+                //$password = htmlspecialchars(isset($_POST['password'])) ?  $this->sanitize($_POST['password']) : '';
+                $jsonInput = file_get_contents("php://input");
+                $dadosRecebidos = json_decode($jsonInput, true);
+                $email = $dadosRecebidos["email"];
+                $password = $dadosRecebidos["password"];
+                $stmt = $this->conn->prepare("SELECT EMAIL, PASSWORD FROM admin WHERE EMAIL = ? AND PASSWORD =?");
+                $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
                 $stmt->bind_result($emailDb, $passwordDb);
-
+                
                 if ($stmt->fetch()) {
-                    if ($password == $passwordDb) {
-                        // Password is correct
-                        $this->response('success');
-                    } else {
-                        // Password is incorrect
-                        $this->response('failed', array('error' => 'Invalid password' .", ". $email .", ". $emailDb .", ". $password .", ". $passwordDb));
-                    }
+                        $this->response('success' , array('error' => 'Good password' .", ". $email .", ". $emailDb .", ". $password .", ". $passwordDb));
+                    
                 } else {
                     // Admin not found
+                    
                     $this->response('failed', array('error' => 'Admin not found for email: ' . $email));
                 }
 
                 $stmt->close();
             } 
+            
     }
 
     private function response($status, $data = array())
@@ -67,6 +68,9 @@ class LogINAdminService
 
 $LogInadminService = new LogINAdminService();
 
+//echo $_POST;
+//echo $_POST['password'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $LogInadminService->login_admin();
+
 }

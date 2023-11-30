@@ -509,6 +509,7 @@
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
+  color: var(--greyscale-900);
 }
 .settings1,
 .settingsIcon {

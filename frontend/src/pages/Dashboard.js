@@ -403,11 +403,9 @@ const Dashboard = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
             <div className={styles.help1}>Help</div>
           </div>
           <div className={styles.menu}>
@@ -431,7 +429,6 @@ const Dashboard = () => {
           <div className={styles.line5} />
           <div className={styles.line6} />
           <div className={styles.line7} />
-          <div className={styles.line8} />
           <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
