@@ -9,6 +9,7 @@ require_once 'services/company.php';
 require_once 'services/admin.php';
 require_once 'services/loginadmin.php';
 require_once 'services/collaborator.php';
+require_once 'services/logincollaborator.php';
 require_once 'config.php';
 $conn = connect();
 
@@ -23,7 +24,8 @@ $uri = $uriParts[0];
 // Route the request based on the URI and method
 switch ($uri) {
     case '/company':
-        if ($requestMethod === 'GET'
+        if (
+            $requestMethod === 'GET'
         ) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
@@ -42,7 +44,8 @@ switch ($uri) {
         }
         break;
     case '/collaborator':
-        if ($requestMethod === 'GET'
+        if (
+            $requestMethod === 'GET'
         ) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
@@ -52,11 +55,23 @@ switch ($uri) {
         }
         break;
     case '/loginadmin':
-        if ($requestMethod === 'GET'
+        if (
+            $requestMethod === 'GET'
         ) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             login_admin();
+        } else {
+            http_response_code(405); // Method Not Allowed
+        }
+        break;
+    case '/logincollaborator':
+        if (
+            $requestMethod === 'GET'
+        ) {
+            //clients_list();
+        } elseif ($requestMethod === 'POST') {
+            login_collaborator();
         } else {
             http_response_code(405); // Method Not Allowed
         }
