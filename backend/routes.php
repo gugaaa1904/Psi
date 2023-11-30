@@ -10,6 +10,7 @@ require_once 'services/admin.php';
 require_once 'services/loginadmin.php';
 require_once 'services/collaborator.php';
 require_once 'services/logincollaborator.php';
+require_once 'services/removecollaborator.php';
 require_once 'config.php';
 $conn = connect();
 
@@ -44,9 +45,7 @@ switch ($uri) {
         }
         break;
     case '/collaborator':
-        if (
-            $requestMethod === 'GET'
-        ) {
+        if ($requestMethod === 'GET') {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_collaborator_post();

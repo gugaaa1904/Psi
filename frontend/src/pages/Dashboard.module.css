@@ -707,11 +707,7 @@
   height: 338px;
   cursor: pointer;
 }
-.content,
-.notificationsIcon {
-  position: absolute;
-  overflow: hidden;
-}
+
 .content {
   position: fixed;
   top: 0px;
@@ -721,6 +717,7 @@
   height: 900px;
 }
 .notificationsIcon {
+  position: fixed;
   top: 27px;
   left: 1509px;
   border-radius: var(--br-981xl);

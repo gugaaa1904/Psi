@@ -5,10 +5,8 @@ import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
 
-
 const AddUser = () => {
-  const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] =
-    useState(false);
+  const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] = useState(false);
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -25,7 +23,7 @@ const AddUser = () => {
     end_date: "",
     start_date: "",
   });
-
+  console.log(formData);
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
     fetch("http://localhost/Psi/backend/routes.php/collaborator", {
@@ -40,13 +38,11 @@ const AddUser = () => {
       .then((data) => {
         // Lógica para lidar com a resposta do backend
         console.log(data);
-        // If the response indicates success, open the PopUpAddCollaborator
-    })
+      })
       .catch((error) => {
         console.error("Erro na solicitação:", error);
       });
   }, [formData]);
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -101,24 +97,20 @@ const AddUser = () => {
       <div className={styles.addUser}>
         <div className={styles.content}>
           <div className={styles.contentChild} />
-
-          <button
-            className={styles.createNewUserButton}
-            autoFocus={true}
-            onClick={onAddUserClick}
-          >
-            <b className={styles.createNewUser}>Create New User</b>
-          </button>
+          <div className={styles.enterTheFields}>
+            Enter the fields below to add a new user:
+          </div>
 
           <input
-            className={styles.password}
-            name="password"
-            id="password"
-            placeholder="Password"
-            type="password"
+            className={styles.name}
+            name="name"
+            id="name"
+            placeholder="Name"
+            type="text"
             onChange={handleInputChange}
-            value={formData.password}
+            value={formData.name}
           />
+
           <input
             className={styles.email}
             name="email"
@@ -128,26 +120,15 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.email}
           />
-          <select
-            className={styles.gender}
-            required={true}
-            name="gender"
-            id="gender"
-            onChange={handleInputChange}
-            value={formData.gender}
-          >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+
           <input
-            className={styles.adress}
-            name="address"
-            id="address"
-            placeholder="Address"
-            type="text"
+            className={styles.password}
+            name="password"
+            id="password"
+            placeholder="Password"
+            type="password"
             onChange={handleInputChange}
-            value={formData.address}
+            value={formData.password}
           />
 
           <input
@@ -161,6 +142,16 @@ const AddUser = () => {
           />
 
           <input
+            className={styles.adress}
+            name="address"
+            id="address"
+            placeholder="Address"
+            type="text"
+            onChange={handleInputChange}
+            value={formData.address}
+          />
+
+          <input
             className={styles.phoneNumber}
             name="phone"
             id="phone"
@@ -169,6 +160,20 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.phone}
           />
+
+          <select
+            className={styles.gender}
+            required={true}
+            name="gender"
+            id="gender"
+            onChange={handleInputChange}
+            value={formData.gender}
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+
           <input
             className={styles.age}
             name="age"
@@ -178,56 +183,57 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.age}
           />
-          <input
-            className={styles.name}
-            name="name"
-            id="name"
-            placeholder="Name"
-            type="text"
-            onChange={handleInputChange}
-            value={formData.name}
-          />
-          <div className={styles.enterTheFields}>
-            Enter the fields below to add a new user:
-          </div>
-          <input
-            className={styles.plafond}
-            name="plafond"
-            id="plafond"
-            placeholder="Plafond"
-            type="number"
-            onChange={handleInputChange}
-            value={formData.plafond}
-          />
-          <input
-            className={styles.tariff}
-            name="tariff"
-            id="tariff"
-            placeholder="Tariff"
-            type="number"
-            onChange={handleInputChange}
-            value={formData.tariff}
-          />
-          <input
-            className={styles.endDate}
-            name="end_date"
-            id="end_date"
-            placeholder="End Date"
-            type="date"
-            onChange={handleInputChange}
-            value={formData.end_date}
-          />
-          <input
-            className={styles.startDate}
-            name="start_date"
-            id="start_date"
-            placeholder="Start Date"
-            type="date"
-            onChange={handleInputChange}
-            value={formData.start_date}
-          />
+
           <div className={styles.contractOfThis}>Contract of this User</div>
         </div>
+
+        <input
+          className={styles.startDate}
+          name="start_date"
+          id="start_date"
+          placeholder="Start Date"
+          type="date"
+          onChange={handleInputChange}
+          value={formData.start_date}
+        />
+
+        <input
+          className={styles.endDate}
+          name="end_date"
+          id="end_date"
+          placeholder="End Date"
+          type="date"
+          onChange={handleInputChange}
+          value={formData.end_date}
+        />
+
+        <input
+          className={styles.plafond}
+          name="plafond"
+          id="plafond"
+          placeholder="Plafond"
+          type="number"
+          onChange={handleInputChange}
+          value={formData.plafond}
+        />
+        <input
+          className={styles.tariff}
+          name="tariff"
+          id="tariff"
+          placeholder="Tariff"
+          type="number"
+          onChange={handleInputChange}
+          value={formData.tariff}
+        />
+
+        <button
+          className={styles.createNewUserButton}
+          autoFocus={true}
+          onClick={onAddUserClick}
+        >
+          <b className={styles.createNewUser}>Create New User</b>
+        </button>
+
         <div className={styles.header}>
           <img
             className={styles.notificationsIcon}
@@ -239,11 +245,9 @@ const AddUser = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
             <div className={styles.help1}>Help</div>
           </div>
           <div className={styles.menu}>
@@ -273,7 +277,6 @@ const AddUser = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
-          <div className={styles.line} />
           <div className={styles.line1} />
           <div className={styles.line2} />
           <div className={styles.line3} />
