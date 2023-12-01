@@ -235,6 +235,7 @@ const AddUser = () => {
         </button>
 
         <div className={styles.header}>
+          <div className={styles.line} />
           <img
             className={styles.notificationsIcon}
             alt=""
@@ -277,6 +278,7 @@ const AddUser = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
+
           <div className={styles.line1} />
           <div className={styles.line2} />
           <div className={styles.line3} />
