@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
@@ -88,7 +88,8 @@ const ApexChart = () => {
     </div>
   );
 };
-class ApexChartClass extends React.Component {
+
+class ApexChartClass extends Component {
   constructor(props) {
     super(props);
 
@@ -96,11 +97,11 @@ class ApexChartClass extends React.Component {
       series: [
         {
           name: "Consuming",
-          data: [50, 44, 55, 57, 56, 61, 58, 63, 60, 66, 50, 50],
+          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
           name: "Plafond based on Contract",
-          data: [50, 76, 85, 101, 98, 87, 105, 91, 114, 94, 50, 50],
+          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
       ],
       options: {
@@ -131,20 +132,7 @@ class ApexChartClass extends React.Component {
           },
         },
         xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dez",
-          ],
+          categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
         },
         yaxis: {
           title: {
@@ -163,6 +151,49 @@ class ApexChartClass extends React.Component {
         },
       },
     };
+  }
+
+  fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost/Psi/backend/services/consuming.php"
+      );
+      const dataFromServer = response.data;
+
+      // Preencher o array de Consuming multiplicando por 2.5
+      const consumingData = dataFromServer.map(
+        (item) => item.MONTHLY_USAGE * 2.5
+      );
+
+      // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
+      const plafondData = Array(consumingData.length).fill(50);
+
+      this.setState({
+        series: [
+          {
+            name: "Consuming",
+            data: consumingData,
+          },
+          {
+            name: "Plafond based on Contract",
+            data: plafondData,
+          },
+        ],
+        options: {
+          ...this.state.options,
+          xaxis: {
+            ...this.state.options.xaxis,
+            categories: dataFromServer.map((item) => item.MONTH_YEAR),
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Erro ao buscar dados do servidor:", error);
+    }
+  };
+
+  componentDidMount() {
+    this.fetchData();
   }
 
   render() {
