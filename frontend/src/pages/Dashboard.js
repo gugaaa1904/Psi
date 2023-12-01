@@ -1,18 +1,13 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import ReactApexChart from "react-apexcharts";
+import axios from "axios";
 
 const ApexChart = () => {
-  const [series, setSeries] = useState([
-    {
-      name: "Consuming",
-      data: [10, 41, 35, 51, 49, 62, 69],
-    },
-  ]);
-
+  const [series, setSeries] = useState([]);
   const [options, setOptions] = useState({
     chart: {
       height: 350,
@@ -41,9 +36,46 @@ const ApexChart = () => {
       },
     },
     xaxis: {
-      categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      categories: [], // Preencheremos isso com os valores da coluna "DAY"
     },
   });
+
+  // Função para buscar dados do servidor
+  const fetchData = useCallback(async () => {
+    try {
+      // Substitua a URL abaixo pela URL correta do seu arquivo PHP
+      const response = await axios.get(
+        "http://localhost/Psi/backend/services/consuming.php"
+      );
+      console.log(response.data);
+      // Extrai os dados da resposta
+      const dataFromServer = response.data;
+
+      // Atualiza o estado da série com os dados do servidor
+      setSeries([
+        {
+          name: "Consuming",
+          data: dataFromServer.map((item) => item.DAILY_USAGE), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
+        },
+      ]);
+
+      // Atualiza o estado das opções com os valores da coluna "DAY" no eixo X
+      setOptions((prevOptions) => ({
+        ...prevOptions,
+        xaxis: {
+          ...prevOptions.xaxis,
+          categories: dataFromServer.map((item) => item.DAY), // Usamos os valores da coluna "DAY" no eixo X
+        },
+      }));
+    } catch (error) {
+      console.error("Erro ao buscar dados do servidor:", error);
+    }
+  }, []);
+
+  // Chama a função para buscar dados ao montar o componente
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <div id="chart">
@@ -56,7 +88,6 @@ const ApexChart = () => {
     </div>
   );
 };
-
 class ApexChartClass extends React.Component {
   constructor(props) {
     super(props);
@@ -403,9 +434,11 @@ const Dashboard = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
+            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
+            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
             <div className={styles.help1}>Help</div>
           </div>
           <div className={styles.menu}>
@@ -429,6 +462,7 @@ const Dashboard = () => {
           <div className={styles.line5} />
           <div className={styles.line6} />
           <div className={styles.line7} />
+          <div className={styles.line8} />
           <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
