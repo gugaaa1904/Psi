@@ -6,7 +6,7 @@ $password = "";
 $dbname = "infocharge";
 
 // ID do colaborador que você deseja consultar
-$collaboratorId = 35; // Substitua pelo ID desejado
+$collaboratorId = 3; // Substitua pelo ID desejado
 
 // Criando a conexão com o banco de dados
 $conn = new mysqli($servername, $username, $password, $dbname);
