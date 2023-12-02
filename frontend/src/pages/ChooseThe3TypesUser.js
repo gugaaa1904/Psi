@@ -16,6 +16,7 @@ const ChooseThe3TypesUser = () => {
   return (
     <div className={styles.chooseThe3TypesUser}>
       <div className={styles.content}>
+        <div className={styles.background}></div>
         <div className={styles.language}>
           <div className={styles.tabs}>
             <div className={styles.portuguese}>
@@ -53,7 +54,7 @@ const ChooseThe3TypesUser = () => {
           <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
         </div>
       </div>
-      <img className={styles.covericon} alt="" src="/backgroundhomepage.jpg" />
+      <img className={styles.covericon} alt="" src="/electric_car_buying.jpg" />
     </div>
   );
 };

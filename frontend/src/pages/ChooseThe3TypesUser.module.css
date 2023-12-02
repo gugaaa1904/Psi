@@ -59,7 +59,7 @@
   top: 579px;
   left: 269px;
   border-radius: var(--br-xs);
-  background-color: var(--color-steelblue-100);
+  background-color: rgb(22, 128, 160);
   width: 199px;
   height: 61px;
   cursor: pointer;
@@ -78,7 +78,7 @@
   top: 473px;
   left: 269px;
   border-radius: var(--br-xs);
-  background-color: var(--color-steelblue-100);
+  background-color: rgb(22, 128, 160);
   width: 199px;
   height: 61px;
   cursor: pointer;
@@ -92,6 +92,35 @@
   transition: background-color 0.3s ease;
     ;
 }
+
+.administrator:hover {
+  background-color: #3498db;
+}
+
+.regularEmployee:hover {
+  background-color: #3498db;
+}
+
+.background {
+  position: absolute;
+  top: 73px;
+  left: 15px;
+  border-radius: 12px;
+  /* Adjust as needed for rounded corners */
+  background-color: rgb(22, 128, 160);
+  /* Modern blue color, you can change this */
+  width: 699px;
+  height: 785px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add a subtle shadow for depth */
+  transition: background-color 0.3s ease;
+}
+
+
+
 .areYouAn {
   position: absolute;
   top: 269px;
@@ -105,7 +134,7 @@
 .welcomePleaseSelect {
   position: absolute;
   top: 365px;
-  left: 155px;
+  left: 165px;
   font-size: var(--body-medium-regular-size);
   line-height: 200%;
   color: white;
@@ -133,7 +162,7 @@
 .logo {
   position: absolute;
   top: 94px;
-  left: 273px;
+  left: 278px;
   width: 246px;
   height: 98px;
 }

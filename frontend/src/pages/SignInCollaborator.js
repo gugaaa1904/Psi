@@ -57,6 +57,7 @@ const SignInCollaborator = () => {
           src="/back-button.svg"
           onClick={onBackButtonClick}
         />
+        
       </div>
       <div className={styles.signInCollaborator}>
         <div className={styles.content}>
