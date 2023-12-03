@@ -28,13 +28,13 @@ class LogINCollaboratorService
                 $dadosRecebidos = json_decode($jsonInput, true);
                 $email = $dadosRecebidos["email"];
                 $password = $dadosRecebidos["password"];
-                $stmt = $this->conn->prepare("SELECT EMAIL, PASSWORD FROM collaborator WHERE EMAIL = ? AND PASSWORD =?");
+                $stmt = $this->conn->prepare("SELECT COLLABORATOR_ID, EMAIL, PASSWORD FROM collaborator WHERE EMAIL = ? AND PASSWORD =?");
                 $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
-                $stmt->bind_result($emailDb, $passwordDb);
+                $stmt->bind_result($collaborator_id, $emailDb, $passwordDb);
                 
                 if ($stmt->fetch()) {
-                        $this->response('success' , array('error' => 'Good password' .", ". $email .", ". $emailDb .", ". $password .", ". $passwordDb));
+                        $this->response('success' , array('id' => $collaborator_id));
                     
                 } else {
                     // Admin not found

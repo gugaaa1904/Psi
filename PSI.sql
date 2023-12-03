@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Nov-2023 às 03:11
--- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- Tempo de geração: 03-Dez-2023 às 23:47
+-- Versão do servidor: 10.4.28-MariaDB
+-- versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,11 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ADMIN_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`) VALUES
-(1, 1, 'Xantos', 'DHL', 'xantos@gmail.com', 12443, 69, 'Other', 'xantos', '42134');
+(3, 2, 'joao', 'pila', 'ffasfa@gmail.com', 968912443, 4324, '', 'momo', 'Av 8 De Marco'),
+(4, 2, 'JOAO', 'pila', 'joao57rafa@hotmail.com', 968912443, 323, '', 'FDSSD', 'Av 8 De Marco'),
+(5, 2, 'João', 'pila', 'ffasfa@gmail.com', 968912443, 43, '', 'pila', 'Av 8 De Marco'),
+(6, 5, 'puma dono', 'puma', 'pumadono@gmail.com', 968912443, 432, '', 'momo', 'fsfsdfsd'),
+(7, 6, 'joao', 'hluz', 'joao57rafa@hotmail.com', 968912443, 0, '', 'fdsfsd', 'Av 8 De Marco');
 
 -- --------------------------------------------------------
 
@@ -70,6 +74,15 @@ CREATE TABLE `collaborator` (
   `END_DATE` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `collaborator`
+--
+
+INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`) VALUES
+(3, 2, 'João', 'pila', 'joao57rafa@hotmail.com', 968912443, 5435345, 'Female', '4324234', 'Av 8 De Marco', 50, 432, '2023-10-31', '2023-11-15'),
+(4, 2, 'RandomName', 'RandomCompany', 'random@example.com', 6546456, 6546456, 'Male', 'RandomPassword', 'RandomAddress', 654, 654, '2023-12-01', '2023-12-15'),
+(5, 2, 'joni', 'pila', 'fdsf@gmail.com', 432423, 432, 'female', 'pila', 'gdfgdfg', 543, 543, '2023-12-13', '2023-12-21');
+
 -- --------------------------------------------------------
 
 --
@@ -91,7 +104,11 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`COMPANY_ID`, `NAME`, `ADDRESS`, `PHONE`, `NUMBER_EMPLOYEES`, `CNPJ`, `EMAIL`) VALUES
-(1, 'DHL', '1324', 12214132, 41234, 123, 'dhl@gmail.com');
+(2, 'pila', 'Av 8 De Marco', 968912443, 432423, 423423, 'joao57rafa@hotmail.com'),
+(3, 'Numero 7 , 2*esquerdo', 'Av 8 De Marco', 968912443, 43242, 0, 'fdsfsd@gmail.com'),
+(4, 'nike', 'Av 8 De Marco', 968912443, 321, 232, 'nike@gmail.com'),
+(5, 'puma', 'puma street', 968912443, 2, 32, 'puma@gmail.com'),
+(6, 'hluz', 'Av 8 De Marco', 543543534, 543, 432, 'hluz@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -115,8 +132,11 @@ CREATE TABLE `consuming` (
 --
 
 INSERT INTO `consuming` (`CONSUMING_ID`, `COLLABORATOR_ID`, `DAILY_USAGE`, `DAILY_RUNTIME`, `DAY`, `MONTH_YEAR`, `WEEKLY_USAGE`, `MONTHLY_USAGE`) VALUES
-(13, 2, 45, 1328, 27, '11_2023', 270, 472),
-(14, 2, 0, 0, 28, '11_2023', 232, 468);
+(3, 3, 30, 30, 8, '8', 20, 80),
+(4, 35, 50, 60, 9, '8', 30, 40),
+(5, 35, 60, 90, 10, '9', 30, 65),
+(6, 11, 3, 3, 3, '3', 3, 3),
+(7, 35, 3, 3, 3, '3', 3, 3);
 
 --
 -- Índices para tabelas despejadas
@@ -157,19 +177,19 @@ ALTER TABLE `consuming`
 -- AUTO_INCREMENT de tabela `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `collaborator`
 --
 ALTER TABLE `collaborator`
-  MODIFY `COLLABORATOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `COLLABORATOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `company`
 --
 ALTER TABLE `company`
-  MODIFY `COMPANY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `COMPANY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `consuming`

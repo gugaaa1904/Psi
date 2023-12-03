@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useId } from "react";
 import styles from "./SignInCollaborator.module.css";
 
 
@@ -33,7 +34,8 @@ const SignInCollaborator = () => {
 
         
     if (data.status === "success") {
-          
+      console.log(data);
+      saveId(data.id);
           // Credenciais válidas, redirecionar para company-info
       navigate("/dashboard");
     } else {
