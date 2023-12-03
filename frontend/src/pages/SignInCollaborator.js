@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { useId } from "react";
 import styles from "./SignInCollaborator.module.css";
 
@@ -14,8 +15,6 @@ const SignInCollaborator = () => {
   }, [navigate]);
 
   const onButtonLargePrimaryContainerClick = async () => {
-    //navigate("/dashboard");
-  //}, [navigate]);
   try {
     const response = await fetch(
       "http://localhost/Psi/backend/services/logincollaborator.php",
@@ -29,14 +28,11 @@ const SignInCollaborator = () => {
     )
       
     const data = await response.json();
-        //console.log(response.body);
-        //const data = await response.text();
-
+    console.log(data);
         
     if (data.status === "success") {
-      console.log(data);
-      saveId(data.id);
-          // Credenciais válidas, redirecionar para company-info
+      setId(data.id);
+      // Credenciais válidas, redirecionar para company-info
       navigate("/dashboard");
     } else {
           // Se a resposta não for bem-sucedida, mostrar o erro
@@ -113,3 +109,6 @@ const SignInCollaborator = () => {
 };
 
 export default SignInCollaborator;
+SignInCollaborator.propTypes = {
+  setId: PropTypes.func.isRequired
+}
