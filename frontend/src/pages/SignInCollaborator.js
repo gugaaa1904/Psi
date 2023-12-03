@@ -28,10 +28,10 @@ const SignInCollaborator = () => {
     )
       
     const data = await response.json();
-    console.log(data);
+    console.log(data.id);
         
     if (data.status === "success") {
-      setId(data.id);
+      useId(data.id);
       // Credenciais válidas, redirecionar para company-info
       navigate("/dashboard");
     } else {
@@ -109,6 +109,3 @@ const SignInCollaborator = () => {
 };
 
 export default SignInCollaborator;
-SignInCollaborator.propTypes = {
-  setId: PropTypes.func.isRequired
-}
