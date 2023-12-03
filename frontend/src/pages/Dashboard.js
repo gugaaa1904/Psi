@@ -1,18 +1,15 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback , Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import ReactApexChart from "react-apexcharts";
+import axios from 'axios';
+
+
 
 const ApexChart = () => {
-  const [series, setSeries] = useState([
-    {
-      name: "Consuming",
-      data: [10, 41, 35, 51, 49, 62, 69],
-    },
-  ]);
-
+  const [series, setSeries] = useState([]);
   const [options, setOptions] = useState({
     chart: {
       height: 350,
@@ -41,9 +38,44 @@ const ApexChart = () => {
       },
     },
     xaxis: {
-      categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      categories: [], // Preencheremos isso com os valores da coluna "DAY"
     },
   });
+
+  // Função para buscar dados do servidor
+  const fetchData = useCallback(async () => {
+    try {
+      // Substitua a URL abaixo pela URL correta do seu arquivo PHP
+      const response = await axios.get('http://localhost/Psi/backend/services/consuming.php');
+      console.log(response.data);
+      // Extrai os dados da resposta
+      const dataFromServer = response.data;
+
+      // Atualiza o estado da série com os dados do servidor
+      setSeries([
+        {
+          name: 'Consuming',
+          data: dataFromServer.map(item => item.DAILY_USAGE), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
+        },
+      ]);
+
+      // Atualiza o estado das opções com os valores da coluna "DAY" no eixo X
+      setOptions(prevOptions => ({
+        ...prevOptions,
+        xaxis: {
+          ...prevOptions.xaxis,
+          categories: dataFromServer.map(item => item.DAY), // Usamos os valores da coluna "DAY" no eixo X
+        },
+      }));
+    } catch (error) {
+      console.error('Erro ao buscar dados do servidor:', error);
+    }
+  }, []);
+
+  // Chama a função para buscar dados ao montar o componente
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <div id="chart">
@@ -57,7 +89,8 @@ const ApexChart = () => {
   );
 };
 
-class ApexChartClass extends React.Component {
+
+class ApexChartClass extends Component {
   constructor(props) {
     super(props);
 
@@ -65,11 +98,11 @@ class ApexChartClass extends React.Component {
       series: [
         {
           name: "Consuming",
-          data: [50, 44, 55, 57, 56, 61, 58, 63, 60, 66, 50, 50],
+          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
           name: "Plafond based on Contract",
-          data: [50, 76, 85, 101, 98, 87, 105, 91, 114, 94, 50, 50],
+          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
       ],
       options: {
@@ -100,20 +133,7 @@ class ApexChartClass extends React.Component {
           },
         },
         xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dez",
-          ],
+          categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
         },
         yaxis: {
           title: {
@@ -132,6 +152,45 @@ class ApexChartClass extends React.Component {
         },
       },
     };
+  }
+
+  fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost/Psi/backend/services/consuming.php');
+      const dataFromServer = response.data;
+
+      // Preencher o array de Consuming multiplicando por 2.5
+      const consumingData = dataFromServer.map((item) => item.MONTHLY_USAGE * 2.5);
+
+      // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
+      const plafondData = Array(consumingData.length).fill(50);
+
+      this.setState({
+        series: [
+          {
+            name: "Consuming",
+            data: consumingData,
+          },
+          {
+            name: "Plafond based on Contract",
+            data: plafondData,
+          },
+        ],
+        options: {
+          ...this.state.options,
+          xaxis: {
+            ...this.state.options.xaxis,
+            categories: dataFromServer.map((item) => item.MONTH_YEAR),
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Erro ao buscar dados do servidor:", error);
+    }
+  };
+
+  componentDidMount() {
+    this.fetchData();
   }
 
   render() {
@@ -269,9 +328,13 @@ class ApexChartt extends React.Component {
   }
 }
 
+
+
 const Dashboard = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
+  const [selectedMonth, setSelectedMonth] = useState(1); // Valor padrão ou vazio
+  const [monthlyUsageData, setMonthlyUsageData] = useState([]);
 
   const onVariationBasedOnContractClick = useCallback(() => {
     navigate("/variation-based-on-contract");
@@ -309,6 +372,34 @@ const Dashboard = () => {
     navigate("/timeline");
   }, [navigate]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost/Psi/backend/services/consuming.php?month=${selectedMonth}`);
+        const data = await response.json();
+
+        if (data.length > 0) {
+          setMonthlyUsageData(data);
+        } else {
+          console.error(`Nenhum resultado encontrado para o mês ${selectedMonth}`);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    };
+
+    fetchData();
+  }, [selectedMonth]); // Execute sempre que o mês selecionado mudar
+
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+  };
+
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
   return (
     <>
       <div className={styles.dashboard}>
@@ -340,25 +431,19 @@ const Dashboard = () => {
             <div className={styles.bigCard2}>
               <div className={styles.bigCardChild} />
             </div>
-            <div className={styles.powerChild} />
-            <div className={styles.powerInKwhContainer}>
-              <p className={styles.kwh}>1526 kWh</p>
-              <p className={styles.blankLine}>&nbsp;</p>
+            <div>
+              <div className={styles.powerChild} />
+              <div className={styles.powerInKwhContainer}>
+                <p className={styles.kwh}>{monthlyUsageData.length > 0 ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh` : 'Loading...'}</p>
+                <p className={styles.blankLine}>&nbsp;</p>
+              </div>
+              <select className={styles.monthsDropDown} id="meses" onChange={handleMonthChange} value={selectedMonth}>
+                {/* Gera as opções do select usando os nomes dos meses */}
+                {monthNames.map((monthName, index) => (
+                  <option key={index} value={index + 1}>{monthName}</option>
+                ))}
+              </select>
             </div>
-            <select className={styles.monthsDropDown} id="meses">
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
-            </select>
             <div className={styles.graph1}>
               <div className={styles.gauge2Icon}>
                 <img className={styles.gauge2Icon} alt="" src="/gauge-21.svg" />

@@ -4,8 +4,8 @@ import styles from "./SignInAdmin.module.css";
 
 const SignInAdmin = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const onForgotPasswordContainerClick = useCallback(() => {
     navigate("/forgot-password-admin");
@@ -19,43 +19,39 @@ const SignInAdmin = () => {
     navigate("/");
   }, [navigate]);
 
-  const onButtonLargePrimaryContainerClick = useCallback(async () => {
-    try {
-      const response = await fetch("http://localhost/Psi/backend/services/loginadmin.php", {
+const onButtonLargePrimaryContainerClick = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost/Psi/backend/services/loginadmin.php",
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-      const data = await response.json();
-      console.log(data);
-      if (data.status == "success") {
-        try {
-          console.log("Server Response:", data);
-  
-          // Credenciais válidas, redirecionar para company-info
-          navigate("/company-info");
-        } catch (error) {
-          // Tratar erros ao tentar analisar o corpo da resposta como JSON
-          console.error("Erro ao analisar a resposta JSON:", error);
-        }
-      } else {
-        // Se a resposta não for bem-sucedida, tenta obter dados de resposta e mostrar o erro
-        const errorData = await response.json().catch(() => null);
-        const errorMessage = errorData?.error || "Erro desconhecido";
-  
-        console.error("Credenciais inválidas. Erro:", errorMessage);
+        body: JSON.stringify({ email: email, password: password }),
       }
-    } catch (error) {
-      // Se ocorrer um erro durante a solicitação
-      console.error("Erro ao processar a solicitação:", error);
+    )
+    
+    const data = await response.json();
+    //console.log(response.body);
+    //const data = await response.text();
+
+    
+    if (data.status === "success") {
+      
+      // Credenciais válidas, redirecionar para company-info
+      navigate("/company-info");
+    } else {
+      // Se a resposta não for bem-sucedida, mostrar o erro
+      const errorMessage = data.error || "Erro desconhecido";
+      console.error("Credenciais inválidas. Erro:", errorMessage);
     }
-  }, [email, password, navigate]);
-  
+  } catch (error) {
+    // Se ocorrer um erro durante a solicitação
+    console.error("Erro ao processar a solicitação:", error);
+  }
+}
+
   
   const onSignUpTextClick = useCallback(() => {
     navigate("/sign-up-admin");
@@ -66,13 +62,16 @@ const SignInAdmin = () => {
   }, [navigate]);
 
   return (
-    <><div><img
-      className={styles.backButtonIcon}
-      alt=""
-      src="/back-button.svg"
-      onClick={onBackButtonClick} />
-    </div>
-    <div className={styles.signInAdmin}>
+    <>
+      <div>
+        <img
+          className={styles.backButtonIcon}
+          alt=""
+          src="/back-button.svg"
+          onClick={onBackButtonClick}
+        />
+      </div>
+      <div className={styles.signInAdmin}>
         <div className={styles.content}>
           <div className={styles.logo}>
             <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
@@ -86,7 +85,7 @@ const SignInAdmin = () => {
           <div className={styles.input}>
             <input
               className={styles.email}
-              name="Email"
+              name="email"
               id="email"
               placeholder="Email"
               type="email"
@@ -94,7 +93,7 @@ const SignInAdmin = () => {
             />
             <input
               className={styles.password}
-              name="Password"
+              name="password"
               id="password"
               placeholder="Password"
               type="password"
@@ -134,7 +133,8 @@ const SignInAdmin = () => {
             <span className={styles.span}>{` `}</span>
           </div>
         </div>
-      </div></>
+      </div>
+    </>
   );
 };
 

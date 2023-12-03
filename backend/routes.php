@@ -1,13 +1,15 @@
 <?php
 
-header("Access-Control-Allow-Origin: http://localhost:3001");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Methods: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 require_once 'services/company.php';
 require_once 'services/admin.php';
+require_once 'services/loginadmin.php';
 require_once 'services/collaborator.php';
+require_once 'services/logincollaborator.php';
 require_once 'config.php';
 $conn = connect();
 
@@ -56,6 +58,26 @@ switch ($uri) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             login_admin();
+        } else {
+            http_response_code(405); // Method Not Allowed
+        }
+        break;
+    case '/logincollaborator':
+        if ($requestMethod === 'GET'
+        ) {
+            //clients_list();
+        } elseif ($requestMethod === 'POST') {
+            login_collaborator();
+        } else {
+            http_response_code(405); // Method Not Allowed
+        }
+        break;
+    case '/changepasswordadmin':
+        if ($requestMethod === 'GET'
+        ) {
+                //clients_list();
+        } elseif ($requestMethod === 'POST') {
+            change_password_admin();
         } else {
             http_response_code(405); // Method Not Allowed
         }

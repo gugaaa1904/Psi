@@ -1,12 +1,14 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Timeline.module.css";
+import axios from 'axios';
 
 const Timeline = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
+  const [timelineData, setTimelineData] = useState([]);
 
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
@@ -35,6 +37,28 @@ const Timeline = () => {
   const onDashboardContainerClick = useCallback(() => {
     navigate("/dashboard");
   }, [navigate]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost/Psi/backend/services/timeline.php');
+        setTimelineData(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const renderTimeline = () => {
+    return timelineData.map((entry, index) => (
+      <li key={index} className={styles.noData}>
+        <b>{`${entry.DAY}/${entry.MONTH_YEAR} -`}</b>
+        <span className={styles.span11}>{` ${(entry.DAILY_USAGE * 2.5).toFixed(2)}€`}</span>
+      </li>
+    ));
+  };
 
   return (
     <>
@@ -265,44 +289,7 @@ const Timeline = () => {
             <div className={styles.line} />
             <div className={styles.tuesday23Container}>
               <ul className={styles.november5October6Septemb}>
-                <li className={styles.noData}>
-                  <b>Tuesday, 23 -</b>
-                  <span className={styles.span11}> 2,46€</span>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>{`Friday, 19 - `}</b>
-                  <span className={styles.span11}>5,90€</span>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>{`Thursday, 11 - `}</b>
-                  <span className={styles.span11}>0,96€</span>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>{`Saturday, 6 - `}</b>
-                  <span className={styles.span11}>1,17€</span>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>{`Monday, 1 - `}</b>
-                  <span className={styles.span11}>0,10€</span>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>No data</b>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>No data</b>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>No data</b>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>No data</b>
-                </li>
-                <li className={styles.noData}>
-                  <b className={styles.span11}>No data</b>
-                </li>
-                <li>
-                  <b className={styles.span11}>No data</b>
-                </li>
+                {renderTimeline()}
               </ul>
             </div>
           </div>
