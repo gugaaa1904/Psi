@@ -11,6 +11,11 @@ $dbname = "infocharge";
 // Criando a conexão com o banco de dados
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Methods: *");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
 // Verifica a conexão
 if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
