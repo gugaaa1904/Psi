@@ -49,6 +49,7 @@ const ProfileCollaborator = () => {
 
     async function fetchData() {
       const idString = sessionStorage.getItem('id');
+      console.log(idString);
       try {
         const requestOptions = {
             method: 'POST',

@@ -17,13 +17,9 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-    // Check if 'email' and 'password' keys are set in the $_POST array
-    //$email = htmlspecialchars(isset($_POST['email'])) ?  $this->sanitize($_POST['email']) : '';
-    //$password = htmlspecialchars(isset($_POST['password'])) ?  $this->sanitize($_POST['password']) : '';
     $jsonInput = file_get_contents("php://input");
     $dadosRecebidos = json_decode($jsonInput, true);
-    $id = $dadosRecebidos["COLLABORATOR"];
+    $id = $dadosRecebidos['COLLABORATOR'];
     // Consulta SQL para obter os dados desejados, com filtro opcional do mês
     $sql = "SELECT NAME, COMPANYNAME, EMAIL, PHONE, AGE, GENDER , ADDRESS , TARIFF , PLAFOND FROM collaborator WHERE COLLABORATOR_ID = $id";
 
