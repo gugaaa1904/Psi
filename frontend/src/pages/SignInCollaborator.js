@@ -29,7 +29,7 @@ const SignInCollaborator = () => {
     console.log(data.id);
         
     if (data.status === "success") {
-      sessionStorage.setItem('id', JSON.stringify(userId));
+      sessionStorage.setItem('id', JSON.stringify(data.id));
       // Credenciais válidas, redirecionar para company-info
       navigate("/dashboard");
     } else {

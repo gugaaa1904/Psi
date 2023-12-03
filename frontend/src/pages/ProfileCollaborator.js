@@ -42,27 +42,40 @@ const ProfileCollaborator = () => {
   }, [navigate]);
 
   useEffect(() => {
-    // Faz a solicitação para o backend
-    fetch('http://localhost/Psi/backend/services/profilecollaborator.php')
-      .then((response) => response.json())
-      .then((data) => {
-        // Atualiza o estado com o valor retornado pela coluna NAME
-        if (data.length > 0) {
-          setFullName(data[0].NAME);
-          setAge(data[0].AGE);
-          setGender(data[0].GENDER);
-          setPhone(data[0].PHONE);
-          setAddress(data[0].ADDRESS);
-          setCompanyName(data[0].COMPANYNAME);
-          setTariff(data[0].TARIFF);
-          setPlafond(data[0].PLAFOND);
-        }
-      })
-      .catch((error) => {
-        console.error('Erro ao obter dados do colaborador:', error);
-      });
-  }, []); 
-  
+    const idString = sessionStorage.getItem('id');
+    if(!idString){
+      navigate("/sign-in-collaborator")
+    }
+
+    async function fetchData() {
+      const idString = sessionStorage.getItem('id');
+      try {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: new URLSearchParams({COLLABORATOR:idString})
+        };
+        const response = await fetch('http://localhost/Psi/backend/services/profilecollaborator.php', requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          // Atualiza o estado com o valor retornado pela coluna NAME
+          if (data.length > 0) {
+            setFullName(data[0].NAME);
+            setAge(data[0].AGE);
+            setGender(data[0].GENDER);
+            setPhone(data[0].PHONE);
+            setAddress(data[0].ADDRESS);
+            setCompanyName(data[0].COMPANYNAME);
+            setTariff(data[0].TARIFF);
+            setPlafond(data[0].PLAFOND);
+          }
+        });
+      }catch(error){
+          return [];
+      }
+    }
+    fetchData();
+    }, []); 
   
 
   return (
