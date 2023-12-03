@@ -41,6 +41,10 @@ const ProfileCollaborator = () => {
     navigate("/dashboard");
   }, [navigate]);
 
+  const [formData, setFormData] = useState({
+    COLLABORATOR: sessionStorage.getItem('id')
+  });
+
   useEffect(() => {
     const idString = sessionStorage.getItem('id');
     if(!idString){
@@ -48,13 +52,12 @@ const ProfileCollaborator = () => {
     }
 
     async function fetchData() {
-      const idString = sessionStorage.getItem('id');
-      console.log(idString);
+      console.log(formData)
       try {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: new URLSearchParams({COLLABORATOR:idString})
+            body: new URLSearchParams(formData)
         };
         const response = await fetch('http://localhost/Psi/backend/services/profilecollaborator.php', requestOptions)
         .then((response) => response.json())
