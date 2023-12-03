@@ -5,9 +5,6 @@ $username = "root";
 $password = "";
 $dbname = "infocharge";
 
-// ID do colaborador que você deseja consultar
-$collaboratorId = 3; // Substitua pelo ID desejado
-
 // Parâmetro do mês (verifica se foi passado na solicitação)
 //$selectedMonth = isset($_GET['month']) ? intval($_GET['month']) : null;
 
