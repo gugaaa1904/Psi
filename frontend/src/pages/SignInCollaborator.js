@@ -1,7 +1,5 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
-import { useId } from "react";
 import styles from "./SignInCollaborator.module.css";
 
 
@@ -31,7 +29,7 @@ const SignInCollaborator = () => {
     console.log(data.id);
         
     if (data.status === "success") {
-      useId(data.id);
+      sessionStorage.setItem('id', JSON.stringify(userId));
       // Credenciais válidas, redirecionar para company-info
       navigate("/dashboard");
     } else {
