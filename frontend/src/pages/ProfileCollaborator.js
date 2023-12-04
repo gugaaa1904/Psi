@@ -59,7 +59,7 @@ const ProfileCollaborator = () => {
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({COLLABORATOR: idString})
+            body: JSON.stringify({id: idString})
         })
         const data = await response.json();
         console.log(data);
