@@ -124,31 +124,7 @@ const CollaboratorInfo = () => {
   const [averageWeeklyUsage, setAverageWeeklyUsage] = useState(null);
   const [minDailyUsage, setMinDailyUsage] = useState(null);
   const [maxDailyUsage, setMaxDailyUsage] = useState(null);
-
-  const onMaxPowerAchieved1Click = useCallback(() => {
-    navigate("/minmax-power-achived");
-  }, [navigate]);
-
-  const onMinPowerAchieved1Click = useCallback(() => {
-    navigate("/minmax-power-achived");
-  }, [navigate]);
-
-  const onAverageCostIn1Click = useCallback(() => {
-    navigate("/average-cost-in");
-  }, [navigate]);
-
-  const onAverageEnergyConsumptionInClick = useCallback(() => {
-    navigate("/average-energy-consumption-in-kw");
-  }, [navigate]);
-
-  const onListOfCollaborators1Click = useCallback(() => {
-    navigate("/full-reports-collaborators");
-  }, [navigate]);
-
-  const onGeneralConsumingContainerClick = useCallback(() => {
-    navigate("/general-consuming");
-  }, [navigate]);
-
+  
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
   }, [navigate]);
@@ -199,7 +175,6 @@ const CollaboratorInfo = () => {
       <div className={styles.content}>
         <div
           className={styles.maxPowerAchieved}
-          onClick={onMaxPowerAchieved1Click}
         >
           <div className={styles.bigCard}>
             <div className={styles.bigCardChild} />
@@ -212,7 +187,6 @@ const CollaboratorInfo = () => {
         </div>
         <div
           className={styles.minPowerAchieved}
-          onClick={onMinPowerAchieved1Click}
         >
           <div className={styles.bigCard}>
             <div className={styles.bigCardChild} />
@@ -223,7 +197,7 @@ const CollaboratorInfo = () => {
           <div className={styles.minPowerAchieved1}>Min Power Achieved</div>
           <img className={styles.greenIcon} alt="" src="/green-icon.svg" />
         </div>
-        <div className={styles.averageCostIn} onClick={onAverageCostIn1Click}>
+        <div className={styles.averageCostIn}>
           <div className={styles.bigCard2}>
             <div className={styles.bigCardChild} />
           </div>
@@ -233,7 +207,6 @@ const CollaboratorInfo = () => {
         </div>
         <div
           className={styles.averageEnergyConsumptionIn}
-          onClick={onAverageEnergyConsumptionInClick}
         >
           <div className={styles.bigCard2}>
             <div className={styles.bigCardChild} />
@@ -246,7 +219,6 @@ const CollaboratorInfo = () => {
         </div>
         <div
           className={styles.listOfCollaborators}
-          onClick={onListOfCollaborators1Click}
         >
           <div className={styles.bigCard4}>
             <div className={styles.bigCardChild} />
@@ -306,7 +278,6 @@ const CollaboratorInfo = () => {
         </div>
         <div
           className={styles.generalConsuming}
-          onClick={onGeneralConsumingContainerClick}
         >
           <div className={styles.bigCard9}>
             <div className={styles.bigCardChild} />
