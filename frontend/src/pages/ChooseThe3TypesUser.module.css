@@ -7,6 +7,7 @@
   font-weight: 500;
   opacity: 0.8;
 }
+
 .portuguese {
   position: absolute;
   top: calc(50% - 16px);
@@ -14,6 +15,7 @@
   width: 119px;
   height: 32px;
 }
+
 .english1 {
   position: absolute;
   top: 4px;
@@ -22,6 +24,7 @@
   line-height: 24px;
   font-weight: 500;
 }
+
 .english {
   top: calc(50% - 16px);
   left: 131px;
@@ -32,11 +35,13 @@
   height: 32px;
   color: var(--additional-white);
 }
+
 .english,
 .language,
 .tabs {
   position: absolute;
 }
+
 .tabs {
   top: 7px;
   left: 6.5px;
@@ -45,6 +50,7 @@
   width: 231px;
   height: 40px;
 }
+
 .language {
   top: 782px;
   left: 244px;
@@ -70,7 +76,8 @@
   font-family: 'Arial', sans-serif;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease;;
+  transition: background-color 0.3s ease;
+  ;
 }
 
 .administrator {
@@ -90,7 +97,7 @@
   font-size: 16px;
   font-weight: bold;
   transition: background-color 0.3s ease;
-    ;
+  ;
 }
 
 .administrator:hover {
@@ -131,6 +138,7 @@
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .welcomePleaseSelect {
   position: absolute;
   top: 365px;
@@ -142,6 +150,7 @@
   white-space: nowrap;
   /* Prevent line breaks */
 }
+
 .logo1Icon {
   position: absolute;
   top: 0px;

@@ -8,6 +8,7 @@
   width: 1565px;
   height: 815px;
 }
+
 .createNewUser {
   position: absolute;
   top: 5px;
@@ -19,6 +20,7 @@
   color: var(--additional-white);
   text-align: center;
 }
+
 .createNewUserButton {
   cursor: pointer;
   border: 0;
@@ -31,9 +33,11 @@
   width: 173px;
   height: 32px;
 }
+
 .createNewUserButton:hover {
   background-color: #2980b9;
-  border-color: #0463a1; /* Darker shade on hover, adjust as needed */
+  border-color: #0463a1;
+  /* Darker shade on hover, adjust as needed */
 }
 
 .age,
@@ -86,7 +90,8 @@
 .adress,
 .gender,
 .email,
-.password, input {
+.password,
+input {
   border: none;
   outline: none;
   padding: 0 12px;
@@ -103,10 +108,12 @@
 .adress,
 .gender,
 .email,
-.password, input:focus {
+.password,
+input:focus {
   border: 1px solid rgb(22, 128, 160);
   /* Adjust focus border color */
 }
+
 .enterTheFields {
   top: 150px;
   left: 350px;
@@ -175,6 +182,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   left: 1190px;
 }
+
 .endDate,
 .plafond,
 .startDate,
@@ -191,7 +199,8 @@
 .endDate,
 .plafond,
 .startDate,
-.tariff, input:focus {
+.tariff,
+input:focus {
   border: 1px solid rgb(22, 128, 160);
   /* Adjust focus border color */
 }
@@ -199,12 +208,15 @@
 .startDate {
   top: 200px;
 }
+
 .endDate {
   top: 280px;
 }
+
 .plafond {
   top: 360px;
 }
+
 .tariff {
   top: 440px;
 }
@@ -227,6 +239,7 @@
   width: 1670px;
   height: 1000px;
 }
+
 .addUser1 {
   position: absolute;
   top: 29px;
@@ -234,6 +247,7 @@
   letter-spacing: 0.2px;
   line-height: 125%;
 }
+
 .header {
   position: fixed;
   top: 0;
@@ -245,6 +259,7 @@
   font-size: var(--heading-h3-size);
   color: white;
 }
+
 .settings1,
 .settingsIcon {
   position: absolute;
@@ -257,11 +272,13 @@
   line-height: 160%;
   font-weight: 500;
 }
+
 .iconshelp,
 .settings {
   position: absolute;
   left: 16px;
 }
+
 .settings {
   position: absolute;
   top: 880px;
@@ -279,11 +296,13 @@
   line-height: 160%;
   font-weight: 500;
 }
+
 .help,
 .profile1 {
   position: absolute;
   left: 16px;
 }
+
 .help {
   position: absolute;
   top: 825px;
@@ -292,6 +311,7 @@
   height: 48px;
   cursor: pointer;
 }
+
 .notificationsIcon {
   position: absolute;
   top: 27px;
@@ -302,12 +322,14 @@
   background-color: white;
   cursor: pointer;
 }
+
 .profile1 {
   top: 13px;
   letter-spacing: 0.2px;
   line-height: 160%;
   font-weight: 500;
 }
+
 .collaboratorInformation,
 .companyInformation,
 .profile,
@@ -320,24 +342,29 @@
   height: 48px;
   cursor: pointer;
 }
+
 .collaboratorInformation,
 .companyInformation,
 .removeUser {
   top: 163px;
 }
+
 .companyInformation,
 .removeUser {
   top: 115px;
 }
+
 .removeUser {
   top: 67px;
 }
+
 .addUser3 {
   position: absolute;
   top: 13px;
   left: 16px;
   line-height: 160%;
 }
+
 .addUser2 {
   top: 19px;
   left: 0;
@@ -347,11 +374,13 @@
   height: 48px;
   color: var(--color-steelblue-100);
 }
+
 .addUser2,
 .menu,
 .menu1 {
   position: absolute;
 }
+
 .menu1 {
   top: -10px;
   left: 89px;
@@ -360,6 +389,7 @@
   line-height: 160%;
   color: white;
 }
+
 .menu {
   top: 108px;
   left: 16px;
@@ -374,6 +404,7 @@
   position: absolute;
   box-sizing: border-box;
 }
+
 .line {
   top: 10px;
   position: absolute;
@@ -383,13 +414,15 @@
   height: 68px;
   box-sizing: border-box;
 }
-.line1{
+
+.line1 {
   top: 817px;
   left: 15.5px;
   border-top: 1px solid var(--greyscale-100);
   width: 219px;
   height: 1px;
 }
+
 .line2,
 .line3 {
   top: 819.5px;
@@ -398,6 +431,7 @@
   width: 219px;
   height: 1px;
 }
+
 .line4 {
   top: 935px;
   left: 15.5px;
@@ -405,13 +439,16 @@
   width: 219px;
   height: 1px;
 }
+
 .line2,
 .line3 {
   top: 366.5px;
 }
+
 .line3 {
   top: 87.5px;
 }
+
 .logo1Icon {
   position: absolute;
   top: 12px;
@@ -428,11 +465,13 @@
   font-size: 18px;
   font-weight: bold;
 }
+
 .addUser,
 .sidebar {
   height: 1000px;
   overflow: hidden;
 }
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -443,6 +482,7 @@
   font-size: var(--body-medium-regular-size);
   color: white;
 }
+
 .addUser {
   position: fixed;
   background-color: var(--color-gray-100);

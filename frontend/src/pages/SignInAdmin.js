@@ -19,37 +19,40 @@ const SignInAdmin = () => {
     navigate("/");
   }, [navigate]);
 
-  const onButtonLargePrimaryContainerClick = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost/Psi/backend/services/loginadmin.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: email, password: password }),
-        }
-      );
-
-      const data = await response.json();
-      //console.log(response.body);
-      //const data = await response.text();
-
-      if (data.status === "success") {
-        // Credenciais válidas, redirecionar para company-info
-        navigate("/company-info");
-      } else {
-        // Se a resposta não for bem-sucedida, mostrar o erro
-        const errorMessage = data.error || "Erro desconhecido";
-        console.error("Credenciais inválidas. Erro:", errorMessage);
+const onButtonLargePrimaryContainerClick = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost/Psi/backend/services/loginadmin.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password }),
       }
-    } catch (error) {
-      // Se ocorrer um erro durante a solicitação
-      console.error("Erro ao processar a solicitação:", error);
-    }
-  };
+    )
+    
+    const data = await response.json();
+    //console.log(response.body);
+    //const data = await response.text();
 
+    
+    if (data.status === "success") {
+      
+      // Credenciais válidas, redirecionar para company-info
+      navigate("/company-info");
+    } else {
+      // Se a resposta não for bem-sucedida, mostrar o erro
+      const errorMessage = data.error || "Erro desconhecido";
+      console.error("Credenciais inválidas. Erro:", errorMessage);
+    }
+  } catch (error) {
+    // Se ocorrer um erro durante a solicitação
+    console.error("Erro ao processar a solicitação:", error);
+  }
+}
+
+  
   const onSignUpTextClick = useCallback(() => {
     navigate("/sign-up-admin");
   }, [navigate]);

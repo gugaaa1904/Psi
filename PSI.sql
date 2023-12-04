@@ -1,138 +1,219 @@
-/*==============================================================*/
-/* Table: ADMIN                                                 */
-/*==============================================================*/
-CREATE TABLE ADMIN (
-   ADMIN_ID             INTEGER                        NOT NULL,
-   COMPANY_ID           INTEGER                        NOT NULL,
-   NAME                 VARCHAR(100)                   NOT NULL,
-   COMPANYNAME          VARCHAR(100)                   NOT NULL,
-   EMAIL                VARCHAR(100)                   NOT NULL,
-   PHONE                INTEGER                        NULL,
-   AGE                  INTEGER                        NULL,
-   GENDER               VARCHAR(30)                    NULL,
-   PASSWORD             VARCHAR(100)                   NOT NULL,
-   ADDRESS              VARCHAR(255)                   NULL,
-   CONSTRAINT PK_ADMIN PRIMARY KEY (ADMIN_ID)
-);
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 04-Dez-2023 às 16:29
+-- Versão do servidor: 10.4.28-MariaDB
+-- versão do PHP: 8.2.4
 
-/*==============================================================*/
-/* Index: ADMIN_PK                                              */
-/*==============================================================*/
-CREATE UNIQUE INDEX ADMIN_PK ON ADMIN (ADMIN_ID ASC);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-/*==============================================================*/
-/* Index: RELATIONSHIP_2_FK                                     */
-/*==============================================================*/
-CREATE INDEX RELATIONSHIP_2_FK ON ADMIN (COMPANY_ID ASC);
 
-/*==============================================================*/
-/* Table: COLLABORATOR                                          */
-/*==============================================================*/
-CREATE TABLE COLLABORATOR (
-   COLLABORATOR_ID      INTEGER                        NOT NULL,
-   COMPANY_ID           INTEGER                        NOT NULL,
-   ADMIN_ID             INTEGER                        NOT NULL,
-   NAME                 VARCHAR(100)                   NOT NULL,
-   COMPANYNAME          VARCHAR(100)                   NOT NULL,
-   EMAIL                VARCHAR(100)                   NOT NULL,
-   PHONE                INTEGER                        NULL,
-   AGE                  INTEGER                        NULL,
-   GENDER               VARCHAR(30)                    NULL,
-   PASSWORD             VARCHAR(100)                   NOT NULL,
-   ADDRESS              VARCHAR(255)                   NULL,
-   TARIFF               DECIMAL                        NOT NULL,
-   PLAFOND              DECIMAL                        NOT NULL,
-   START_DATE           DATE                           NOT NULL,
-   END_DATE             DATE                           NOT NULL,
-   CONSTRAINT PK_COLLABORATOR PRIMARY KEY (COLLABORATOR_ID)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-/*==============================================================*/
-/* Index: COLLABORATOR_PK                                       */
-/*==============================================================*/
-CREATE UNIQUE INDEX COLLABORATOR_PK ON COLLABORATOR (COLLABORATOR_ID ASC);
+--
+-- Banco de dados: `infocharge`
+--
 
-/*==============================================================*/
-/* Index: RELATIONSHIP_1_FK                                     */
-/*==============================================================*/
-CREATE INDEX RELATIONSHIP_1_FK ON COLLABORATOR (COMPANY_ID ASC);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: COMPANY                                               */
-/*==============================================================*/
-CREATE TABLE COMPANY (
-   COMPANY_ID           INTEGER                        NOT NULL,
-   NAME                 VARCHAR(100)                   NOT NULL,
-   ADDRESS              VARCHAR(255)                   NULL,
-   PHONE                INTEGER                        NULL,
-   NUMBER_EMPLOYEES     INTEGER                        NULL,
-   CNPJ                 INTEGER                        NULL,
-   EMAIL                VARCHAR(100)                   NOT NULL,
-   CONSTRAINT PK_COMPANY PRIMARY KEY (COMPANY_ID)
-);
+--
+-- Estrutura da tabela `admin`
+--
 
-/*==============================================================*/
-/* Index: COMPANY_PK                                            */
-/*==============================================================*/
-CREATE UNIQUE INDEX COMPANY_PK ON COMPANY (COMPANY_ID ASC);
+CREATE TABLE `admin` (
+  `ADMIN_ID` int(11) NOT NULL,
+  `COMPANY_ID` int(11) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `COMPANYNAME` varchar(100) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `PHONE` int(11) DEFAULT NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `GENDER` varchar(30) DEFAULT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*==============================================================*/
-/* Table: PLUG                                                  */
-/*==============================================================*/
-CREATE TABLE PLUG (
-   PLUG_ID              INTEGER                        NOT NULL,
-   COLLABORATOR_ID      INTEGER                        NOT NULL,
-   TAPO_USERNAME        VARCHAR(255)                   NOT NULL,
-   TAPO_PASSWORD        VARCHAR(255)                   NOT NULL,
-   IP_ADDRESS           VARCHAR(15)                    NOT NULL,
-   CONSTRAINT PK_PLUG PRIMARY KEY (PLUG_ID),
-   CONSTRAINT FK_PLUG_RELATIONS_COLLABOR FOREIGN KEY (COLLABORATOR_ID) REFERENCES COLLABORATOR (COLLABORATOR_ID) ON UPDATE RESTRICT ON DELETE RESTRICT
-);
+--
+-- Extraindo dados da tabela `admin`
+--
 
-/*==============================================================*/
-/* Index: PLUG_PK                                               */
-/*==============================================================*/
-CREATE UNIQUE INDEX PLUG_PK ON PLUG (PLUG_ID ASC);
+INSERT INTO `admin` (`ADMIN_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`) VALUES
+(3, 2, 'joao', 'pila', 'ffasfa@gmail.com', 968912443, 4324, '', 'momo', 'Av 8 De Marco'),
+(4, 2, 'JOAO', 'pila', 'joao57rafa@hotmail.com', 968912443, 323, '', 'FDSSD', 'Av 8 De Marco'),
+(5, 2, 'João', 'pila', 'ffasfa@gmail.com', 968912443, 43, '', 'pila', 'Av 8 De Marco'),
+(6, 5, 'puma dono', 'puma', 'pumadono@gmail.com', 968912443, 432, '', 'momo', 'fsfsdfsd'),
+(7, 6, 'joao', 'hluz', 'joao57rafa@hotmail.com', 968912443, 0, '', 'fdsfsd', 'Av 8 De Marco');
 
-/*==============================================================*/
-/* Table: CONSUMING                                             */
-/*==============================================================*/
-CREATE TABLE CONSUMING (
-   CONSUMING_ID         INTEGER                        NOT NULL,
-   PLUG_ID              INTEGER                        NOT NULL,
-   DAILY_USAGE          NUMERIC                        NOT NULL,
-   WEEKLY_USAGE         NUMERIC                        NOT NULL,
-   MONTHLY_USAGE        NUMERIC                        NOT NULL,
-   DAILY_RUNTIME        NUMERIC                        NOT NULL,
-   DAY                  NUMERIC                        NOT NULL,
-   MONTH_YEAR           VARCHAR(100)                   NOT NULL,
-   CONSTRAINT PK_CONSUMING PRIMARY KEY (CONSUMING_ID)
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Index: CONSUMING_PK                                          */
-/*==============================================================*/
-CREATE UNIQUE INDEX CONSUMING_PK ON CONSUMING (CONSUMING_ID ASC);
+--
+-- Estrutura da tabela `collaborator`
+--
 
-/*==============================================================*/
-/* Index: RELATIONSHIP_3_FK                                     */
-/*==============================================================*/
-CREATE INDEX RELATIONSHIP_3_FK ON CONSUMING (PLUG_ID ASC);
+CREATE TABLE `collaborator` (
+  `COLLABORATOR_ID` int(11) NOT NULL,
+  `COMPANY_ID` int(11) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `COMPANYNAME` varchar(100) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `PHONE` int(11) DEFAULT NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `GENDER` varchar(30) DEFAULT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `TARIFF` decimal(10,0) NOT NULL,
+  `PLAFOND` decimal(10,0) NOT NULL,
+  `START_DATE` date NOT NULL,
+  `END_DATE` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-ALTER TABLE ADMIN
-   ADD CONSTRAINT FK_ADMIN_RELATIONS_COMPANY FOREIGN KEY (COMPANY_ID)
-      REFERENCES COMPANY (COMPANY_ID)
-      ON UPDATE RESTRICT
-      ON DELETE RESTRICT;
+--
+-- Extraindo dados da tabela `collaborator`
+--
 
-ALTER TABLE COLLABORATOR
-   ADD CONSTRAINT FK_COLLABOR_RELATIONS_COMPANY FOREIGN KEY (COMPANY_ID)
-      REFERENCES COMPANY (COMPANY_ID)
-      ON UPDATE RESTRICT
-      ON DELETE RESTRICT;
+INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`) VALUES
+(3, 2, 'João', 'pila', 'joao57rafa@hotmail.com', 968912443, 5435345, 'Female', '4324234', 'Av 8 De Marco', 50, 432, '2023-10-31', '2023-11-15'),
+(4, 2, 'RandomName', 'RandomCompany', 'random@example.com', 6546456, 6546456, 'Male', 'RandomPassword', 'RandomAddress', 654, 654, '2023-12-01', '2023-12-15'),
+(5, 2, 'joni', 'pila', 'fdsf@gmail.com', 432423, 432, 'female', 'pila', 'gdfgdfg', 543, 543, '2023-12-13', '2023-12-21');
 
-ALTER TABLE CONSUMING
-   ADD CONSTRAINT FK_CONSUMING_RELATIONS_PLUG FOREIGN KEY (PLUG_ID)
-      REFERENCES PLUG (PLUG_ID)
-      ON UPDATE RESTRICT
-      ON DELETE RESTRICT;
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `company`
+--
+
+CREATE TABLE `company` (
+  `COMPANY_ID` int(11) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `PHONE` int(11) DEFAULT NULL,
+  `NUMBER_EMPLOYEES` int(11) DEFAULT NULL,
+  `CNPJ` int(11) DEFAULT NULL,
+  `EMAIL` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `company`
+--
+
+INSERT INTO `company` (`COMPANY_ID`, `NAME`, `ADDRESS`, `PHONE`, `NUMBER_EMPLOYEES`, `CNPJ`, `EMAIL`) VALUES
+(2, 'pila', 'Av 8 De Marco', 968912443, 432423, 423423, 'joao57rafa@hotmail.com'),
+(3, 'Numero 7 , 2*esquerdo', 'Av 8 De Marco', 968912443, 43242, 0, 'fdsfsd@gmail.com'),
+(4, 'nike', 'Av 8 De Marco', 968912443, 321, 232, 'nike@gmail.com'),
+(5, 'puma', 'puma street', 968912443, 2, 32, 'puma@gmail.com'),
+(6, 'hluz', 'Av 8 De Marco', 543543534, 543, 432, 'hluz@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `consuming`
+--
+
+CREATE TABLE `consuming` (
+  `CONSUMING_ID` int(11) NOT NULL,
+  `COLLABORATOR_ID` int(11) NOT NULL,
+  `DAILY_USAGE` decimal(10,0) NOT NULL,
+  `DAILY_RUNTIME` decimal(10,0) NOT NULL,
+  `DAY` decimal(10,0) NOT NULL,
+  `MONTH_YEAR` varchar(100) NOT NULL,
+  `WEEKLY_USAGE` int(11) DEFAULT NULL,
+  `MONTHLY_USAGE` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `consuming`
+--
+
+INSERT INTO `consuming` (`CONSUMING_ID`, `COLLABORATOR_ID`, `DAILY_USAGE`, `DAILY_RUNTIME`, `DAY`, `MONTH_YEAR`, `WEEKLY_USAGE`, `MONTHLY_USAGE`) VALUES
+(3, 3, 30, 30, 8, '8', 50, 80),
+(4, 35, 50, 60, 9, '8', 30, 40),
+(5, 35, 78, 90, 10, '9', 30, 65),
+(6, 11, 2, 3, 3, '3', 3, 3),
+(7, 35, 3, 3, 3, '3', 3, 3);
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`ADMIN_ID`),
+  ADD KEY `FK_ADMIN_RELATIONS_COMPANY` (`COMPANY_ID`);
+
+--
+-- Índices para tabela `collaborator`
+--
+ALTER TABLE `collaborator`
+  ADD PRIMARY KEY (`COLLABORATOR_ID`),
+  ADD KEY `FK_COLLABOR_RELATIONS_COMPANY` (`COMPANY_ID`);
+
+--
+-- Índices para tabela `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`COMPANY_ID`);
+
+--
+-- Índices para tabela `consuming`
+--
+ALTER TABLE `consuming`
+  ADD PRIMARY KEY (`CONSUMING_ID`),
+  ADD KEY `FK_CONSUMIN_RELATIONS_COLLABOR` (`COLLABORATOR_ID`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `collaborator`
+--
+ALTER TABLE `collaborator`
+  MODIFY `COLLABORATOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `company`
+--
+ALTER TABLE `company`
+  MODIFY `COMPANY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `consuming`
+--
+ALTER TABLE `consuming`
+  MODIFY `CONSUMING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `FK_ADMIN_RELATIONS_COMPANY` FOREIGN KEY (`COMPANY_ID`) REFERENCES `company` (`COMPANY_ID`);
+
+--
+-- Limitadores para a tabela `collaborator`
+--
+ALTER TABLE `collaborator`
+  ADD CONSTRAINT `FK_COLLABOR_RELATIONS_COMPANY` FOREIGN KEY (`COMPANY_ID`) REFERENCES `company` (`COMPANY_ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

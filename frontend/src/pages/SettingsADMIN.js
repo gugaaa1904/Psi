@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import styles from "./SettingsADMIN.module.css";
 
 const SettingsADMIN = () => {
-  const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] =
-    useState(false);
+  const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] = useState(false);
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState("");
+  const [userOldpassword, setUserOldpassword] = useState("");
+  const [userNewpassword, setUserNewpassword] = useState("");
 
   const onLogoutContainerClick = useCallback(() => {
     navigate("/");
@@ -55,6 +57,41 @@ const SettingsADMIN = () => {
     navigate("/add-user");
   }, [navigate]);
 
+  const onChangePassword = async (oldPassword, newPassword, confirmNewPassword) => {
+    try {
+      // Check if new password and confirm new password match
+      if (newPassword !== confirmNewPassword) {
+        console.error("New password and confirm new password do not match");
+        return;
+      }
+
+      // Call the PHP file to update the password
+      const response = await fetch(
+        "http://localhost/Psi/backend/services/changepasswordadmin.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail/* Add logic to get the user's email */,
+            oldPassword: userOldpassword,
+            newPassword: userNewpassword,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      // Handle the data response as needed
+      if (data.status === "success") {
+        console.log("Password changed successfully");
+      } else {
+        console.error("Failed to change password. Error:", data.error || "Unknown error");
+      }
+    } catch (error) {
+      console.error("Error changing password:", error);
+    }
+  };
   return (
     <>
       <div className={styles.settingsAdmin}>
@@ -110,7 +147,7 @@ const SettingsADMIN = () => {
           >
             <b className={styles.button1}>Change</b>
           </div>
-
+          
           <input
             className={styles.confirmNewPassword}
             name="Confirm new Password"
@@ -132,6 +169,14 @@ const SettingsADMIN = () => {
             placeholder="Enter your old Password"
             type="password"
           />
+          <div
+            className={styles.changePassword}
+            onClick={() => onChangePassword(
+              document.getElementById("old_password").value,
+              document.getElementById("new_password").value,
+              document.getElementById("confirm_new_password").value
+            )}
+></div>
           <div className={styles.changePassword}>
             <div className={styles.tittle}>Change your password</div>
           </div>

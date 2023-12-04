@@ -5,8 +5,10 @@ import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
 
+
 const AddUser = () => {
-  const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] = useState(false);
+  const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] =
+    useState(false);
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -23,7 +25,7 @@ const AddUser = () => {
     end_date: "",
     start_date: "",
   });
-  console.log(formData);
+
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
     fetch("http://localhost/Psi/backend/routes.php/collaborator", {
@@ -38,6 +40,7 @@ const AddUser = () => {
       .then((data) => {
         // Lógica para lidar com a resposta do backend
         console.log(data);
+        // If the response indicates success, open the PopUpAddCollaborator
       })
       .catch((error) => {
         console.error("Erro na solicitação:", error);

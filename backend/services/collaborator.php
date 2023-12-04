@@ -53,7 +53,7 @@ class CollaboratorService
 
             // Bind parameters
             $stmt->bind_param(
-                "isssiisssiiss",
+                "isssissssiiss",
                 $companyid,
                 $name,
                 $companyname,
@@ -93,8 +93,8 @@ class CollaboratorService
     }
 }
 
-$CollaboratorService = new CollaboratorService();
+$collaboratorService = new CollaboratorService();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'])) {
-    $CollaboratorService->insert_collaborator_post();
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['plafond'])) {
+    $collaboratorService->insert_collaborator_post();
 }

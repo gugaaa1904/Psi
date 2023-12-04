@@ -9,6 +9,7 @@
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
+
 .bigCard,
 .month {
   position: absolute;
@@ -17,6 +18,7 @@
   width: 691px;
   height: 394px;
 }
+
 .month {
   top: 349px;
   left: 309px;
@@ -24,6 +26,7 @@
   width: 73px;
   height: 21px;
 }
+
 .line,
 .line1,
 .line2,
@@ -37,24 +40,29 @@
   width: 563px;
   height: 1px;
 }
+
 .line1,
 .line2,
 .line3,
 .line4 {
   top: 175.8px;
 }
+
 .line2,
 .line3,
 .line4 {
   top: 117.5px;
 }
+
 .line3,
 .line4 {
   top: 57.8px;
 }
+
 .line4 {
   top: -0.5px;
 }
+
 .julBar,
 .julBar2 {
   position: relative;
@@ -63,11 +71,13 @@
   width: 41px;
   height: 147px;
 }
+
 .julBar {
   background-color: var(--color-steelblue-100);
   width: 42px;
   height: 115px;
 }
+
 .graph {
   position: absolute;
   top: 93px;
@@ -75,6 +85,7 @@
   width: 562px;
   height: 234.6px;
 }
+
 .div1 {
   top: 231px;
   left: 15px;
@@ -83,11 +94,13 @@
   width: 16px;
   height: 20.8px;
 }
+
 .div1,
 .div2,
 .div3 {
   position: absolute;
 }
+
 .div2 {
   top: 176px;
   left: 3px;
@@ -96,11 +109,13 @@
   width: 28px;
   height: 21px;
 }
+
 .div3 {
   top: 120px;
   left: 1px;
   width: 30px;
 }
+
 .div3,
 .div4,
 .div5 {
@@ -108,22 +123,26 @@
   display: inline-block;
   height: 21px;
 }
+
 .div4 {
   position: absolute;
   top: 64px;
   left: 2px;
   width: 29px;
 }
+
 .div5 {
   top: 0;
   left: 0;
   width: 31px;
 }
+
 .div,
 .div5,
 .months {
   position: absolute;
 }
+
 .div {
   top: 81px;
   left: 26px;
@@ -133,6 +152,7 @@
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);
 }
+
 .months {
   top: 18px;
   left: 548px;
@@ -140,6 +160,7 @@
   width: 102px;
   height: 49px;
 }
+
 .monthlyExpenses1 {
   position: absolute;
   top: 30px;
@@ -152,6 +173,7 @@
   width: 155px;
   height: 20px;
 }
+
 .monthlyExpenses {
   position: absolute;
   top: 482px;
@@ -162,6 +184,7 @@
   font-size: var(--body-medium-regular-size);
   color: var(--on-secondary-container30);
 }
+
 .backgroundIcon,
 .bigCard1 {
   position: absolute;
@@ -170,21 +193,25 @@
   width: 691px;
   height: 338px;
 }
+
 .backgroundIcon {
   border-radius: var(--br-xs);
   height: 340px;
 }
+
 .sinceLastMonth {
   top: 20px;
   left: 0;
   line-height: 160%;
   font-weight: 500;
 }
+
 .b,
 .percentage,
 .sinceLastMonth {
   position: absolute;
 }
+
 .b {
   top: 0;
   left: 48px;
@@ -196,12 +223,14 @@
   width: 38px;
   height: 20px;
 }
+
 .percentage {
   top: 26px;
   left: 39px;
   width: 134px;
   height: 39px;
 }
+
 .kwhCompletionRate1 {
   position: absolute;
   top: 7.5px;
@@ -209,6 +238,7 @@
   line-height: 160%;
   color: var(--greyscale-500);
 }
+
 .kwhCompletionRate {
   position: absolute;
   top: 76px;
@@ -217,6 +247,7 @@
   height: 72px;
   color: var(--secondary-algal-fuel-500-base);
 }
+
 .apr,
 .feb,
 .jan,
@@ -226,19 +257,23 @@
   left: 0;
   line-height: 160%;
 }
+
 .apr,
 .feb,
 .mar {
   left: 34.8px;
 }
+
 .apr,
 .mar {
   left: 69.6px;
 }
+
 .apr {
   left: 105.5px;
   font-weight: 500;
 }
+
 .aug,
 .dec,
 .jul,
@@ -252,6 +287,7 @@
   left: 140.3px;
   line-height: 160%;
 }
+
 .aug,
 .dec,
 .jul,
@@ -261,6 +297,7 @@
 .sep {
   left: 178.1px;
 }
+
 .aug,
 .dec,
 .jul,
@@ -269,6 +306,7 @@
 .sep {
   left: 212.9px;
 }
+
 .aug,
 .dec,
 .nov,
@@ -276,24 +314,29 @@
 .sep {
   left: 243.7px;
 }
+
 .dec,
 .nov,
 .oct,
 .sep {
   left: 280.5px;
 }
+
 .dec,
 .nov,
 .oct {
   left: 316.4px;
 }
+
 .dec,
 .nov {
   left: 351.2px;
 }
+
 .dec {
   left: 388px;
 }
+
 .graphIcon,
 .months1 {
   position: absolute;
@@ -302,12 +345,14 @@
   width: 411px;
   height: 45px;
 }
+
 .graphIcon {
   top: 147.6px;
   left: 137.2px;
   width: 400.1px;
   height: 102.7px;
 }
+
 .variationBasedOn {
   position: absolute;
   top: 25px;
@@ -320,12 +365,14 @@
   width: 495px;
   height: 30px;
 }
+
 .div6 {
   position: absolute;
   top: 199px;
   left: 98px;
   line-height: 160%;
 }
+
 .variationBasedOnContract {
   position: absolute;
   top: 112px;
@@ -334,6 +381,7 @@
   height: 340px;
   cursor: pointer;
 }
+
 .bigCard2,
 .powerChild {
   position: absolute;
@@ -342,19 +390,23 @@
   width: 401px;
   height: 394px;
 }
+
 .powerChild {
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
   height: 380.5px;
 }
+
 .kwh {
   margin: 0;
 }
+
 .blankLine {
   margin: 0;
   font-size: var(--body-small-medium-size);
   color: var(--color-dimgray-100);
 }
+
 .powerInKwhContainer {
   position: absolute;
   top: 303.2px;
@@ -364,6 +416,7 @@
   width: 170px;
   height: 46px;
 }
+
 .monthsDropDown {
   position: absolute;
   top: 16px;
@@ -372,6 +425,7 @@
   width: 102px;
   height: 49px;
 }
+
 .gauge2Icon {
   position: absolute;
   top: 0;
@@ -379,6 +433,7 @@
   width: 169px;
   height: 145.3px;
 }
+
 .divider11Icon,
 .divider40Icon {
   position: absolute;
@@ -387,12 +442,14 @@
   width: 111.1px;
   height: 90px;
 }
+
 .divider40Icon {
   top: 25.1px;
   left: 29.2px;
   width: 110.6px;
   height: 86.6px;
 }
+
 .div10,
 .div11,
 .div12,
@@ -413,6 +470,7 @@
   width: 9.3px;
   height: 15.9px;
 }
+
 .div10,
 .div11,
 .div12,
@@ -426,6 +484,7 @@
   top: 41.8px;
   left: 9.6px;
 }
+
 .div10,
 .div11,
 .div12,
@@ -439,6 +498,7 @@
   left: 0;
   width: 18.5px;
 }
+
 .div10,
 .div11,
 .div12,
@@ -450,6 +510,7 @@
   top: 13.9px;
   left: 4.3px;
 }
+
 .div10,
 .div11,
 .div12,
@@ -460,6 +521,7 @@
   top: 3.7px;
   left: 16.2px;
 }
+
 .div11,
 .div12,
 .div13,
@@ -469,6 +531,7 @@
   top: 0;
   left: 33px;
 }
+
 .div12,
 .div13,
 .div14,
@@ -477,6 +540,7 @@
   top: 3.7px;
   left: 49.2px;
 }
+
 .div13,
 .div14,
 .div15,
@@ -484,21 +548,25 @@
   top: 13.9px;
   left: 60.5px;
 }
+
 .div14,
 .div15,
 .div16 {
   top: 27.9px;
   left: 65.4px;
 }
+
 .div15,
 .div16 {
   top: 41.8px;
   left: 60.5px;
 }
+
 .div16 {
   top: 52px;
   left: 48.6px;
 }
+
 .point3Icon,
 .txts11 {
   position: absolute;
@@ -507,12 +575,14 @@
   width: 83.9px;
   height: 67.9px;
 }
+
 .point3Icon {
   top: 51px;
   left: 64.3px;
   width: 68.8px;
   height: 39.6px;
 }
+
 .graph1 {
   top: 93px;
   left: 111px;
@@ -522,11 +592,13 @@
   font-size: var(--body-medium-regular-size);
   font-family: var(--m-16);
 }
+
 .graph1,
 .power,
 .power1 {
   position: absolute;
 }
+
 .power1 {
   top: 27.4px;
   left: 169px;
@@ -535,6 +607,7 @@
   width: 54px;
   height: 19.7px;
 }
+
 .power {
   top: 482px;
   left: 23px;
@@ -543,6 +616,7 @@
   font-size: var(--font-size-16xl);
   color: var(--greyscale-900);
 }
+
 .backgroundIcon1,
 .bigCard3 {
   position: absolute;
@@ -551,9 +625,11 @@
   width: 401px;
   height: 338px;
 }
+
 .backgroundIcon1 {
   border-radius: var(--br-xs);
 }
+
 .lineChartIcon,
 .lineIcon {
   position: absolute;
@@ -562,12 +638,14 @@
   width: 318.8px;
   height: 186px;
 }
+
 .lineChartIcon {
   top: 103px;
   left: 69.9px;
   width: 319.8px;
   height: 156.3px;
 }
+
 .lineIndicatorIcon {
   position: absolute;
   top: 127.3px;
@@ -575,6 +653,7 @@
   width: 14px;
   height: 133.7px;
 }
+
 .mon,
 .sun {
   position: absolute;
@@ -582,12 +661,15 @@
   left: 0;
   line-height: 160%;
 }
+
 .mon {
   left: 50.1px;
 }
+
 .tue {
   left: 103.3px;
 }
+
 .fri,
 .sat,
 .thu,
@@ -597,67 +679,81 @@
   top: 0;
   line-height: 160%;
 }
+
 .wed {
   left: 152.4px;
   font-weight: 500;
   color: var(--color-steelblue-100);
 }
+
 .fri,
 .sat,
 .thu {
   left: 206.5px;
 }
+
 .fri,
 .sat {
   left: 256.7px;
 }
+
 .sat {
   left: 299.8px;
 }
+
 .days {
   top: 273.8px;
   left: 70.2px;
   width: 318.8px;
   height: 19px;
 }
+
 .days,
 .kwh2,
 .kwh3 {
   position: absolute;
 }
+
 .kwh2 {
   top: 0;
   left: 0.1px;
   line-height: 160%;
 }
+
 .kwh3 {
   top: 43px;
   left: 2.1px;
 }
+
 .kwh3,
 .kwh4,
 .kwh5 {
   line-height: 160%;
 }
+
 .kwh4 {
   position: absolute;
   top: 86px;
   left: 2.1px;
 }
+
 .kwh5 {
   top: 129px;
   left: 8.1px;
 }
+
 .kwh1,
 .kwh5,
 .kwh6 {
   position: absolute;
 }
+
 .kwh6 {
   top: 172px;
   left: 8.1px;
   line-height: 160%;
 }
+
 .kwh1 {
   top: 66.3px;
   left: 19px;
@@ -665,16 +761,19 @@
   height: 204.3px;
   text-align: right;
 }
+
 .kwh7 {
   top: 8px;
   left: 8px;
   line-height: 160%;
 }
+
 .activity1,
 .kwh7,
 .xY {
   position: absolute;
 }
+
 .xY {
   top: 107px;
   left: 249.6px;
@@ -688,6 +787,7 @@
   height: 39.4px;
   color: var(--additional-white);
 }
+
 .activity1 {
   top: 25px;
   left: 41px;
@@ -699,6 +799,7 @@
   width: 63.2px;
   height: 25.7px;
 }
+
 .activity {
   position: absolute;
   top: 112px;
@@ -716,6 +817,7 @@
   width: 1170px;
   height: 900px;
 }
+
 .notificationsIcon {
   position: fixed;
   top: 27px;
@@ -726,6 +828,7 @@
   background-color: white;
   cursor: pointer;
 }
+
 .dashboard1 {
   position: absolute;
   top: 29px;
@@ -733,6 +836,7 @@
   letter-spacing: 0.2px;
   line-height: 125%;
 }
+
 .header {
   position: fixed;
   top: 0;
@@ -744,6 +848,7 @@
   font-size: var(--heading-h3-size);
   color: white;
 }
+
 .settings1,
 .settingsIcon {
   position: absolute;
@@ -756,6 +861,7 @@
   line-height: 160%;
   font-weight: 500;
 }
+
 .settings {
   top: 877px;
   border-radius: var(--br-xs);
@@ -763,7 +869,7 @@
   height: 48px;
   cursor: pointer;
   position: absolute;
-    left: 16px;
+  left: 16px;
 }
 
 .help1 {
@@ -774,6 +880,7 @@
   line-height: 160%;
   font-weight: 500;
 }
+
 .help {
   position: absolute;
   top: 825px;
@@ -783,6 +890,7 @@
   height: 48px;
   cursor: pointer;
 }
+
 .profile {
   position: absolute;
   top: 765px;
@@ -792,10 +900,12 @@
   height: 48px;
   cursor: pointer;
 }
+
 .profile {
   top: 163px;
   left: 0;
 }
+
 .reportsTexto {
   position: absolute;
   top: 13px;
@@ -804,6 +914,7 @@
   line-height: 160%;
   font-weight: 500;
 }
+
 .reports,
 .timelines {
   position: absolute;
@@ -814,15 +925,18 @@
   height: 48px;
   cursor: pointer;
 }
+
 .timelines {
   top: 67px;
 }
+
 .dashboard3 {
   position: absolute;
   top: 13px;
   left: 16px;
   line-height: 160%;
 }
+
 .dashboard2 {
   top: 19px;
   left: 0;
@@ -832,11 +946,13 @@
   height: 48px;
   color: var(--color-steelblue-100);
 }
+
 .dashboard2,
 .menu,
 .menu1 {
   position: absolute;
 }
+
 .menu1 {
   top: -5px;
   left: 89px;
@@ -845,18 +961,21 @@
   line-height: 160%;
   color: white;
 }
+
 .menu {
   top: 108px;
   left: 16px;
   width: 218px;
   height: 211px;
 }
+
 .line5,
 .line6,
 .line7 {
   position: absolute;
   box-sizing: border-box;
 }
+
 .line5 {
   top: -0.5px;
   left: 249.5px;
@@ -864,6 +983,7 @@
   width: 1px;
   height: 901px;
 }
+
 .line6 {
   top: 874.5px;
   left: 15.5px;
@@ -871,19 +991,23 @@
   width: 219px;
   height: 1px;
 }
-.line7{
+
+.line7 {
   top: 819.5px;
   left: 15.5px;
   border-top: 1px solid var(--greyscale-100);
   width: 219px;
   height: 1px;
 }
-.line7{
+
+.line7 {
   top: 318.5px;
 }
+
 .line8 {
   top: 87.5px;
 }
+
 .logo1Icon {
   position: absolute;
   top: 18px;
@@ -900,11 +1024,13 @@
   font-size: 18px;
   font-weight: bold;
 }
+
 .dashboard,
 .sidebar {
   height: 1000px;
   overflow: hidden;
 }
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -915,6 +1041,7 @@
   font-size: var(--body-medium-regular-size);
   color: white;
 }
+
 .dashboard {
   position: fixed;
   background-color: var(--color-gray-100);

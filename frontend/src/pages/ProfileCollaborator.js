@@ -1,9 +1,21 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProfileCollaborator.module.css";
+import React, { Component, useState, useEffect } from 'react';
+
 
 const ProfileCollaborator = () => {
   const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [fullName, setFullName] = useState('');
+  const [Age , setAge] = useState('');
+  const [Gender , setGender] = useState('');
+  const [Phone , setPhone] = useState('');
+  const [Address , setAddress] = useState('');
+  const[Email, setEmail] = useState('');
+  const [CompanyName , setCompanyName] = useState('');
+  const [Tariff , setTariff] = useState('');
+  const [Plafond , setPlafond] = useState('');
   
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -29,6 +41,46 @@ const ProfileCollaborator = () => {
   const onDashboardContainerClick = useCallback(() => {
     navigate("/dashboard");
   }, [navigate]);
+
+  const [formData, setFormData] = useState({
+    COLLABORATOR: sessionStorage.getItem('id')
+  });
+
+  useEffect(() => {
+    const idString = sessionStorage.getItem('id');
+    if(!idString){
+      navigate("/sign-in-collaborator")
+    }
+
+    async function fetchData() {
+      const idString = sessionStorage.getItem('id');
+      console.log({id: idString});
+      try {
+        const response = await fetch(
+          'http://localhost/Psi/backend/services/profilecollaborator.php',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({id: idString})
+        })
+        const data = await response.json();
+        console.log(data);
+        setFullName(data.NAME);
+        setCompanyName(data.COMPANYNAME);
+        setEmail(data.EMAIL);
+        setPhone(data.PHONE);
+        setAge(data.AGE);
+        setGender(data.GENDER);
+        setAddress(data.ADDRESS);
+        setTariff(data.TARIFF);
+        setPlafond(data.PLAFOND);
+      }catch(error){
+          return [];
+      }
+    }
+    fetchData();
+    }, [formData, navigate]); 
+  
 
   return (
     <div className={styles.profileCollaborator}>
@@ -85,41 +137,35 @@ const ProfileCollaborator = () => {
           <div className={styles.fullNameContainer}>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>{`Full Name : `}</b>
-              <span className={styles.antnioMendes}>António Mendes</span>
+              <span className={styles.antnioMendes}>{fullName}</span>
             </p>
             <p className={styles.blankLine}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>Age:</b>
-              <span> 32</span>
+              <span> {Age}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b>Gender:</b>
-              <span className={styles.fullName}> Male</span>
+              <span className={styles.fullName}> {Gender}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>Phone Number:</b>
-              <span> + 351 932 146 183</span>
+              <span> {Phone}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>{`Address: `}</b>
-              <span>4 R. Abel Manta, Odivelas , Lisboa</span>
+              <span>  {Address}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>Company:</b>
-              <span> DHL Express Portugal</span>
+              <span> {CompanyName}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
-            <p className={styles.fullNameAntnioMendes}>
-              <b className={styles.fullName}>{`Company Address: `}</b>
-              <span>
-                Aeroporto de Lisboa, Edificio 124, 2º Piso-Gab.1A, 1700-008
-                Lisboa
-              </span>
-            </p>
+            
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>Contract:</b>
@@ -130,17 +176,17 @@ const ProfileCollaborator = () => {
                 <span>{`Type: Consultant `}</span>
               </li>
               <li className={styles.typeConsultant}>
-                <span>Tariff: 0.2 kWh/€</span>
+                <span>Tariff: {Tariff} kWh/€</span>
               </li>
               <li className={styles.typeConsultant}>
-                <span>Plafond: 50€</span>
+                <span>Plafond: {Plafond}€</span>
               </li>
             </ul>
             <p className={styles.fullNameAntnioMendes}>
               <b>&nbsp;</b>
             </p>
           </div>
-          <b className={styles.name}>António Mendes</b>
+          <b className={styles.name}>{fullName}</b>
           <div>
             <input
               type="file"

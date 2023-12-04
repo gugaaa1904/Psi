@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignInCollaborator.module.css";
 
+
 const SignInCollaborator = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
@@ -12,37 +13,35 @@ const SignInCollaborator = () => {
   }, [navigate]);
 
   const onButtonLargePrimaryContainerClick = async () => {
-    //navigate("/dashboard");
-    //}, [navigate]);
-    try {
-      const response = await fetch(
-        "http://localhost/Psi/backend/services/logincollaborator.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: email, password: password }),
-        }
-      );
-
-      const data = await response.json();
-      //console.log(response.body);
-      //const data = await response.text();
-
-      if (data.status === "success") {
-        // Credenciais válidas, redirecionar para company-info
-        navigate("/dashboard");
-      } else {
-        // Se a resposta não for bem-sucedida, mostrar o erro
-        const errorMessage = data.error || "Erro desconhecido";
-        console.error("Credenciais inválidas. Erro:", errorMessage);
+  try {
+    const response = await fetch(
+      "http://localhost/Psi/backend/services/logincollaborator.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password }),
       }
-    } catch (error) {
-      // Se ocorrer um erro durante a solicitação
-      console.error("Erro ao processar a solicitação:", error);
+    )
+      
+    const data = await response.json();
+    console.log(data.id);
+        
+    if (data.status === "success") {
+      sessionStorage.setItem('id', JSON.stringify(data.id));
+      // Credenciais válidas, redirecionar para company-info
+      navigate("/dashboard");
+    } else {
+          // Se a resposta não for bem-sucedida, mostrar o erro
+      const errorMessage = data.error || "Erro desconhecido";
+      console.error("Credenciais inválidas. Erro:", errorMessage);
     }
-  };
+  } catch (error) {
+        // Se ocorrer um erro durante a solicitação
+    console.error("Erro ao processar a solicitação:", error);
+  }
+}
 
   const onForgotPasswordTextClick = useCallback(() => {
     navigate("/forgot-password-collaborator");
@@ -57,7 +56,6 @@ const SignInCollaborator = () => {
           src="/back-button.svg"
           onClick={onBackButtonClick}
         />
-        
       </div>
       <div className={styles.signInCollaborator}>
         <div className={styles.content}>
