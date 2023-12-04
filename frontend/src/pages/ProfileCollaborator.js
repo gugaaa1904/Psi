@@ -12,6 +12,7 @@ const ProfileCollaborator = () => {
   const [Gender , setGender] = useState('');
   const [Phone , setPhone] = useState('');
   const [Address , setAddress] = useState('');
+  const[Email, setEmail] = useState('');
   const [CompanyName , setCompanyName] = useState('');
   const [Tariff , setTariff] = useState('');
   const [Plafond , setPlafond] = useState('');
@@ -64,6 +65,15 @@ const ProfileCollaborator = () => {
         })
         const data = await response.json();
         console.log(data);
+        setFullName(data.NAME);
+        setCompanyName(data.COMPANYNAME);
+        setEmail(data.EMAIL);
+        setPhone(data.PHONE);
+        setAge(data.AGE);
+        setGender(data.GENDER);
+        setAddress(data.ADDRESS);
+        setTariff(data.TARIFF);
+        setPlafond(data.PLAFOND);
       }catch(error){
           return [];
       }
