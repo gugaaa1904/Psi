@@ -336,14 +336,6 @@ const Dashboard = () => {
   const [selectedMonth, setSelectedMonth] = useState(1); // Valor padrão ou vazio
   const [monthlyUsageData, setMonthlyUsageData] = useState([]);
 
-  const onVariationBasedOnContractClick = useCallback(() => {
-    navigate("/variation-based-on-contract");
-  }, [navigate]);
-
-  const onActivityContainerClick = useCallback(() => {
-    navigate("/activity");
-  }, [navigate]);
-
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
   }, []);
