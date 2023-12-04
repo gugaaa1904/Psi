@@ -52,27 +52,17 @@ const ProfileCollaborator = () => {
     }
 
     async function fetchData() {
-      console.log(formData)
+      const idString = sessionStorage.getItem('id')
       try {
-        const requestOptions = {
+        const response = await fetch(
+          'http://localhost/Psi/backend/services/profilecollaborator.php',
+          {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({COLLABORATOR: sessionStorage.getItem('id')})
-        };
-        const response = await fetch('http://localhost/Psi/backend/services/profilecollaborator.php', requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          // Atualiza o estado com o valor retornado pela coluna NAME
-          console.log(data)
-          setFullName(data[0].NAME);
-          setAge(data[0].AGE);
-          setGender(data[0].GENDER);
-          setPhone(data[0].PHONE);
-          setAddress(data[0].ADDRESS);
-          setCompanyName(data[0].COMPANYNAME);
-          setTariff(data[0].TARIFF);
-          setPlafond(data[0].PLAFOND);
-        });
+            body: JSON.stringify({COLLABORATOR: idString})
+        })
+        const data = await response.json();
+        console.log(data);
       }catch(error){
           return [];
       }
