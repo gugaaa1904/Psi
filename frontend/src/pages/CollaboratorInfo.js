@@ -1,9 +1,129 @@
-import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CollaboratorInfo.module.css";
+import React, { useState, useEffect, useCallback , Component } from "react";
+import ReactApexChart from "react-apexcharts";
+import axios from 'axios';
+
+class ApexChartClass extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      series: [
+        {
+          name: "Expected Consume",
+          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
+        },
+        {
+          name: "Actually Charged",
+          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
+        },
+      ],
+      options: {
+        chart: {
+          type: "bar",
+          height: 350,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"],
+        },
+        title: {
+          text: "General Consuming",
+          align: "center",
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
+        },
+        xaxis: {
+          categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
+        },
+        yaxis: {
+          
+        },
+        fill: {
+          opacity: 1,
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "KW";
+            },
+          },
+        },
+      },
+    };
+  }
+
+  fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost/Psi/backend/services/consumingAdmin.php');
+      const dataFromServer = response.data;
+
+      // Preencher o array de Consuming multiplicando por 2.5
+      const consumingData = dataFromServer.map((item) => item.DAILY_USAGE );
+
+      // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
+      const plafondData = Array(consumingData.length).fill(50);
+
+      this.setState({
+        series: [
+          {
+            name: "Actually Charged",
+            data: consumingData,
+          },
+          {
+            name: "Expected Consume",
+            data: plafondData,
+          },
+        ],
+        options: {
+          ...this.state.options,
+          xaxis: {
+            ...this.state.options.xaxis,
+            categories: dataFromServer.map((item) => item.DAY),
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Erro ao buscar dados do servidor:", error);
+    }
+  };
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  render() {
+    return (
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={350}
+        />
+      </div>
+    );
+  }
+}
 
 const CollaboratorInfo = () => {
   const navigate = useNavigate();
+  const [averageWeeklyUsage, setAverageWeeklyUsage] = useState(null);
+  const [minDailyUsage, setMinDailyUsage] = useState(null);
+  const [maxDailyUsage, setMaxDailyUsage] = useState(null);
 
   const onMaxPowerAchieved1Click = useCallback(() => {
     navigate("/minmax-power-achived");
@@ -53,6 +173,27 @@ const CollaboratorInfo = () => {
     navigate("/add-user");
   }, [navigate]);
 
+  useEffect(() => {
+    // Função para buscar os dados do backend
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost/Psi/backend/services/consumingAdmin2.php'); // Substitua pelo caminho correto
+        const data = await response.json();
+        setAverageWeeklyUsage(data[0].average_weekly_usage);
+        setMinDailyUsage(data[0].min_daily_usage);
+        setMaxDailyUsage(data[0].max_daily_usage);
+
+
+      } catch (error) {
+        console.error('Erro ao buscar dados do backend:', error);
+      }
+    };
+
+    // Chama a função de busca de dados ao montar o componente
+    fetchData();
+  }, []); // O array vazio significa que isso só será executado uma vez, equivalente ao componentDidMount
+
+
   return (
     <div className={styles.collaboratorInfo}>
       <div className={styles.content}>
@@ -64,9 +205,8 @@ const CollaboratorInfo = () => {
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.bg} />
-          <div className={styles.percentage}>+8% since yesterday</div>
-          <div className={styles.numberOfCollaborators}>2 Collaborators</div>
-          <div className={styles.data}>5kW</div>
+          
+          <div className={styles.data}>{maxDailyUsage && `${maxDailyUsage} kWh`}</div>
           <img className={styles.redIcon} alt="" src="/red-icon1.svg" />
           <div className={styles.maxPowerAchieved1}>Max Power Achieved</div>
         </div>
@@ -78,9 +218,8 @@ const CollaboratorInfo = () => {
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.bg1} />
-          <div className={styles.percentage1}>-11,2% since yesterday</div>
-          <div className={styles.numberOfCollaborators1}>2 Collaborators</div>
-          <div className={styles.data1}>1 kW</div>
+          
+          <div className={styles.data1}>{minDailyUsage && `${minDailyUsage} kWh`}</div>
           <div className={styles.minPowerAchieved1}>Min Power Achieved</div>
           <img className={styles.greenIcon} alt="" src="/green-icon.svg" />
         </div>
@@ -89,7 +228,7 @@ const CollaboratorInfo = () => {
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.backgroundCopy2} />
-          <div className={styles.data2}>€0.85 per kWh</div>
+          <div className={styles.data2}>{averageWeeklyUsage && `${(averageWeeklyUsage * 0.2).toFixed(1)} €`}</div>
           <div className={styles.averageCostIn1}>{`Average Cost in € `}</div>
         </div>
         <div
@@ -100,7 +239,7 @@ const CollaboratorInfo = () => {
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.backgroundCopy2} />
-          <div className={styles.data3}>0.2 kWh</div>
+          <div className={styles.data3}>{averageWeeklyUsage && `${averageWeeklyUsage} kWh`}</div>
           <div
             className={styles.averageEnergyConsumption}
           >{`Average Energy Consumption in kWh `}</div>
@@ -172,93 +311,15 @@ const CollaboratorInfo = () => {
           <div className={styles.bigCard9}>
             <div className={styles.bigCardChild} />
           </div>
-          <div className={styles.background} />
-          <div className={styles.graph}>
-            <div className={styles.graph1}>
-              <div className={styles.kwhAndLines}>
-                <img
-                  className={styles.path2Copy}
-                  alt=""
-                  src="/path-2-copy.svg"
-                />
-                <img className={styles.path2Icon} alt="" src="/path-2.svg" />
-                <img
-                  className={styles.path2Copy2}
-                  alt=""
-                  src="/path-2-copy-2.svg"
-                />
-                <img
-                  className={styles.path2Copy3}
-                  alt=""
-                  src="/path-2-copy-3.svg"
-                />
-                <img
-                  className={styles.path2Copy4}
-                  alt=""
-                  src="/path-2-copy-4.svg"
-                />
-                <img
-                  className={styles.path2Copy5}
-                  alt=""
-                  src="/path-2-copy-5.svg"
-                />
-                <div className={styles.k}>50kWh</div>
-                <div className={styles.k1}>40kWh</div>
-                <div className={styles.k2}>20kWh</div>
-                <div className={styles.k3}>30kWh</div>
-                <div className={styles.k4}>10kWh</div>
-                <div className={styles.div}>0kWh</div>
+            <div className={styles.background} />
+              <ApexChartClass />
+            <div className={styles.graph}>
+              <div className={styles.graph1}>
+              
               </div>
-              <div className={styles.monday}>Monday</div>
-              <div className={styles.tuesday}>Tuesday</div>
-              <div className={styles.wednesday}>Wednesday</div>
-              <div className={styles.thursday}>Thursday</div>
-              <div className={styles.friday}>Friday</div>
-              <div className={styles.saturday}>Saturday</div>
-              <div className={styles.sunday}>Sunday</div>
-              <div className={styles.monday1}>
-                <div className={styles.rectangleCopy8} />
-                <div className={styles.rectangleCopy9} />
-              </div>
-              <div className={styles.tuesday1}>
-                <div className={styles.rectangleCopy8} />
-                <div className={styles.rectangleCopy91} />
-              </div>
-              <div className={styles.wednesday1}>
-                <div className={styles.rectangleCopy82} />
-                <div className={styles.rectangleCopy92} />
-              </div>
-              <div className={styles.thursday1}>
-                <div className={styles.rectangleCopy8} />
-                <div className={styles.rectangleCopy93} />
-              </div>
-              <div className={styles.friday1}>
-                <div className={styles.rectangleCopy8} />
-                <div className={styles.rectangleCopy94} />
-              </div>
-              <div className={styles.saturday1}>
-                <div className={styles.rectangleCopy85} />
-                <div className={styles.rectangleCopy95} />
-              </div>
-              <div className={styles.sunday1}>
-                <div className={styles.rectangleCopy8} />
-                <div className={styles.rectangleCopy96} />
-              </div>
-              <div className={styles.expected}>
-                <div className={styles.onlineSalesParent}>
-                  <div className={styles.onlineSales}>Expected</div>
-                  <div className={styles.rectangleCopy3} />
-                </div>
-              </div>
-              <div className={styles.actuallyCharged}>
-                <div className={styles.rectangleCopy5} />
-                <div className={styles.rectangleCopy31} />
-                <div className={styles.offlineSales}>Actually Charged</div>
-              </div>
+            
             </div>
-            <div className={styles.generalConsuming1}>General Consuming</div>
           </div>
-        </div>
         <div className={styles.generalOverview}>
           <div className={styles.divider} />
           <div className={styles.generalOverview1}>General Overview</div>
