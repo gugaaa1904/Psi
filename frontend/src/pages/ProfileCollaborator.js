@@ -57,13 +57,10 @@ const ProfileCollaborator = () => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: new URLSearchParams(formData)
+            body: JSON.stringify({COLLABORATOR: sessionStorage.getItem('id')})
         };
         const response = await fetch('http://localhost/Psi/backend/services/profilecollaborator.php', requestOptions)
-        .then((response) => {
-          console.log(response.json())
-          response.json()
-        })
+        .then((response) => response.json())
         .then((data) => {
           // Atualiza o estado com o valor retornado pela coluna NAME
           console.log(data)
@@ -81,7 +78,7 @@ const ProfileCollaborator = () => {
       }
     }
     fetchData();
-    }, []); 
+    }, [formData, navigate]); 
   
 
   return (
