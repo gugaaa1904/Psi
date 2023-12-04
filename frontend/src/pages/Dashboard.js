@@ -415,7 +415,6 @@ const Dashboard = () => {
           </div>
           <div
             className={styles.variationBasedOnContract}
-            onClick={onVariationBasedOnContractClick}
           >
             <div className={styles.bigCard1}>
               <div className={styles.bigCardChild} />
@@ -462,7 +461,7 @@ const Dashboard = () => {
             </div>
             <b className={styles.power1}>Power</b>
           </div>
-          <div className={styles.activity} onClick={onActivityContainerClick}>
+          <div className={styles.activity}>
             <div className={styles.bigCard3}>
               <div className={styles.bigCardChild} />
             </div>
