@@ -25,12 +25,12 @@ class ProfileCollaboratorService
             $dadosRecebidos = json_decode($jsonInput, true);
             $id = $dadosRecebidos['id'];
         
-            $stmt = $this->conn->prepare("SELECT NAME, COMPANYNAME, EMAIL, PHONE, AGE, GENDER , ADDRESS , TARIFF , PLAFOND FROM collaborator WHERE COLLABORATOR_ID = ?");
+            $stmt = $this->conn->prepare("SELECT NAME,COMPANYNAME,EMAIL,PHONE,AGE,GENDER,ADDRESS,TARIFF,PLAFOND FROM collaborator WHERE COLLABORATOR_ID = ?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $stmt->bind_result($name, $company_name, $email, $phone, $age, $gender, $address, $tariff, $plafond);
         
-            $result = $conn->query($sql);
+            $stmt->fetch();
         
             if ($result === FALSE) {
                 $this->response(array('status' => 'failed', 'error' => 'Invalid data received'));
