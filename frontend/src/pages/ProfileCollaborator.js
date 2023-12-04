@@ -52,7 +52,8 @@ const ProfileCollaborator = () => {
     }
 
     async function fetchData() {
-      const idString = sessionStorage.getItem('id')
+      const idString = sessionStorage.getItem('id');
+      console.log({id: idString});
       try {
         const response = await fetch(
           'http://localhost/Psi/backend/services/profilecollaborator.php',
