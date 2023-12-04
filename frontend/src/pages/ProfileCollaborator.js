@@ -62,20 +62,19 @@ const ProfileCollaborator = () => {
         const response = await fetch('http://localhost/Psi/backend/services/profilecollaborator.php', requestOptions)
         .then((response) => {
           console.log(response.json())
+          response.json()
         })
         .then((data) => {
           // Atualiza o estado com o valor retornado pela coluna NAME
-          if (data.length > 0) {
-            console.log(data)
-            setFullName(data[0].NAME);
-            setAge(data[0].AGE);
-            setGender(data[0].GENDER);
-            setPhone(data[0].PHONE);
-            setAddress(data[0].ADDRESS);
-            setCompanyName(data[0].COMPANYNAME);
-            setTariff(data[0].TARIFF);
-            setPlafond(data[0].PLAFOND);
-          }
+          console.log(data)
+          setFullName(data[0].NAME);
+          setAge(data[0].AGE);
+          setGender(data[0].GENDER);
+          setPhone(data[0].PHONE);
+          setAddress(data[0].ADDRESS);
+          setCompanyName(data[0].COMPANYNAME);
+          setTariff(data[0].TARIFF);
+          setPlafond(data[0].PLAFOND);
         });
       }catch(error){
           return [];

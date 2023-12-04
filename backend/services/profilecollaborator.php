@@ -25,32 +25,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jsonInput = file_get_contents("php://input");
     $dadosRecebidos = json_decode($jsonInput, true);
     $id = $dadosRecebidos['COLLABORATOR'];
-    // Consulta SQL para obter os dados desejados, com filtro opcional do mês
-    $sql = "SELECT NAME, COMPANYNAME, EMAIL, PHONE, AGE, GENDER , ADDRESS , TARIFF , PLAFOND FROM collaborator WHERE COLLABORATOR_ID = $id";
 
+    $stmt = $this->conn->prepare("SELECT NAME, COMPANYNAME, EMAIL, PHONE, AGE, GENDER , ADDRESS , TARIFF , PLAFOND FROM collaborator WHERE COLLABORATOR_ID = ?");
+    $stmt->bind_param("s", $id);
+    $stmt->execute();
+    $stmt->bind_result($name, $company_name, $email, $phone, $age, $gender, $address, $tariff, $plafond);
 
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $dados[] = array(
-                'NAME' => $row["NAME"],
-                'COMPANYNAME' => $row["COMPANYNAME"],
-                'EMAIL' => $row["EMAIL"],
-                'PHONE' => $row["PHONE"],
-                'AGE' => $row["AGE"],
-                'GENDER' => $row["GENDER"],
-                'ADDRESS' => $row["ADDRESS"],
-                'TARIFF' => $row["TARIFF"],
-                'PLAFOND' => $row["PLAFOND"],
-            );
-        }
-
-        echo json_encode($dados);
+    if ($result === FALSE) {
+        $this->response(array('status' => 'failed', 'error' => 'Invalid data received'));
     } else {
-        echo json_encode(array()); // Retorna um array vazio se não houver dados
+        $this->response(array(
+            'NAME' => $name, 
+            'COMPANYNAME'=> $company_name,
+            'EMAIL' => $email,
+            'PHONE' => $phone,
+            'AGE' => $age,
+            'GENDER' => $gender,
+            'ADDRESS' => $address,
+            'TARIFF' => $tariff,
+            'PLAFOND' => $plafond,
+        ));
     }
 }
 // Fecha a conexão com o banco de dados
 $conn->close();
+
+private function response($status, $data = array())
+    {
+        $response = array('status' => $status);
+        
+        if (!empty($data)) {
+            $response = array_merge($response, $data);
+        }
+
+        echo json_encode($response);
+        die();
+    }
+
 ?>
