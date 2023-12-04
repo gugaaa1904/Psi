@@ -12,8 +12,6 @@ import ProfileCollaborator from "./pages/ProfileCollaborator";
 import Timeline from "./pages/Timeline";
 import HelpCollaborator from "./pages/HelpCollaborator";
 import SettingsCollaborator from "./pages/SettingsCollaborator";
-import VariationBasedOnContract from "./pages/VariationBasedOnContract";
-import Activity from "./pages/Activity";
 import Dashboard from "./pages/Dashboard";
 import ForgotPasswordCollaborator from "./pages/ForgotPasswordCollaborator";
 import ForgotPasswordADMIN from "./pages/ForgotPasswordADMIN";
@@ -25,10 +23,6 @@ import SettingsADMIN from "./pages/SettingsADMIN";
 import RemoveUser from "./pages/RemoveUser";
 import AddUser from "./pages/AddUser";
 import SignUpCompany from "./pages/SignUpCompany";
-import MinMaxPowerAchived from "./pages/MinMaxPowerAchived";
-import AverageCostIn from "./pages/AverageCostIn";
-import AverageEnergyConsumptionIn from "./pages/AverageEnergyConsumptionIn";
-import GeneralConsuming from "./pages/GeneralConsuming";
 import FullReportsCollaborators from "./pages/FullReportsCollaborators";
 import CollaboratorInfo from "./pages/CollaboratorInfo";
 import CompanyInfo from "./pages/CompanyInfo";
@@ -78,14 +72,6 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/variation-based-on-contract":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/activity":
-        title = "";
-        metaDescription = "";
-        break;
       case "/dashboard":
         title = "";
         metaDescription = "";
@@ -130,22 +116,6 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/minmax-power-achived":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/average-cost-in":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/average-energy-consumption-in-kw":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/general-consuming":
-        title = "";
-        metaDescription = "";
-        break;
       case "/full-reports-collaborators":
         title = "";
         metaDescription = "";
@@ -187,11 +157,6 @@ function App() {
       <Route path="/timeline" element={<Timeline />} />
       <Route path="/help-collaborator" element={<HelpCollaborator />} />
       <Route path="/settings-collaborator" element={<SettingsCollaborator />} />
-      <Route
-        path="/variation-based-on-contract"
-        element={<VariationBasedOnContract />}
-      />
-      <Route path="/activity" element={<Activity />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route
         path="/forgot-password-collaborator"
@@ -209,13 +174,7 @@ function App() {
       <Route path="/remove-user" element={<RemoveUser />} />
       <Route path="/add-user" element={<AddUser />} />
       <Route path="/sign-up-company" element={<SignUpCompany />} />
-      <Route path="/minmax-power-achived" element={<MinMaxPowerAchived />} />
-      <Route path="/average-cost-in" element={<AverageCostIn />} />
-      <Route
-        path="/average-energy-consumption-in-kw"
-        element={<AverageEnergyConsumptionIn />}
-      />
-      <Route path="/general-consuming" element={<GeneralConsuming />} />
+
       <Route
         path="/full-reports-collaborators"
         element={<FullReportsCollaborators />}
