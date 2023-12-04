@@ -30,12 +30,8 @@ class ProfileCollaboratorService
             $stmt->execute();
             $stmt->bind_result($name, $company_name, $email, $phone, $age, $gender, $address, $tariff, $plafond);
         
-            $stmt->fetch();
-        
-            if ($result === FALSE) {
-                $this->response(array('status' => 'failed', 'error' => 'Invalid data received'));
-            } else {
-                $this->response(array(
+            if($stmt->fetch()){
+                $this->response('sucess', array(
                     'NAME' => $name, 
                     'COMPANYNAME'=> $company_name,
                     'EMAIL' => $email,
@@ -46,6 +42,8 @@ class ProfileCollaboratorService
                     'TARIFF' => $tariff,
                     'PLAFOND' => $plafond,
                 ));
+            }else{
+                $this->response('failed', array('error' => 'Collaborator not found for id: ' . $id));
             }
             $stmt->close();
         }
