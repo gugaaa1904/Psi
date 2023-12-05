@@ -70,7 +70,7 @@ class ApexChartClass extends Component {
     try {
       const response = await axios.get('http://localhost/Psi/backend/services/consumingAdmin.php');
       const dataFromServer = response.data;
-
+      console.log(dataFromServer)
       // Preencher o array de Consuming multiplicando por 2.5
       const consumingData = dataFromServer.map((item) => item.DAILY_USAGE );
 
