@@ -7,6 +7,7 @@
   font-weight: 500;
   opacity: 0.8;
 }
+
 .portuguese {
   position: absolute;
   top: calc(50% - 16px);
@@ -14,6 +15,7 @@
   width: 119px;
   height: 32px;
 }
+
 .english1 {
   position: absolute;
   top: 4px;
@@ -22,6 +24,7 @@
   line-height: 24px;
   font-weight: 500;
 }
+
 .english {
   top: calc(50% - 16px);
   left: 131px;
@@ -32,11 +35,13 @@
   height: 32px;
   color: var(--additional-white);
 }
+
 .english,
 .language,
 .tabs {
   position: absolute;
 }
+
 .tabs {
   top: 7px;
   left: 6.5px;
@@ -45,6 +50,7 @@
   width: 231px;
   height: 40px;
 }
+
 .language {
   top: 782px;
   left: 244px;
@@ -53,82 +59,125 @@
   color: var(--font-inactive);
   font-family: var(--m-16);
 }
-.button {
-  position: absolute;
-  top: 4.5px;
-  left: 38.5px;
-  letter-spacing: 0.2px;
-  line-height: 140%;
-}
+
 .regularEmployee {
   position: absolute;
-  top: 479px;
-  left: 287px;
+  top: 579px;
+  left: 269px;
   border-radius: var(--br-xs);
-  background-color: var(--color-steelblue-100);
-  width: 159px;
-  height: 31px;
+  background-color: rgb(22, 128, 160);
+  width: 199px;
+  height: 61px;
   cursor: pointer;
-  text-align: left;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  ;
 }
-.administrator1 {
-  position: absolute;
-  top: 5px;
-  left: 24px;
-  letter-spacing: 0.2px;
-  line-height: 140%;
-}
+
 .administrator {
   position: absolute;
-  top: 403px;
-  left: 286px;
+  top: 473px;
+  left: 269px;
   border-radius: var(--br-xs);
-  background-color: var(--color-steelblue-100);
-  width: 159px;
-  height: 31px;
+  background-color: rgb(22, 128, 160);
+  width: 199px;
+  height: 61px;
   cursor: pointer;
-  text-align: left;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  ;
 }
+
+.administrator:hover {
+  background-color: #3498db;
+}
+
+.regularEmployee:hover {
+  background-color: #3498db;
+}
+
+.background {
+  position: absolute;
+  top: 73px;
+  left: 15px;
+  border-radius: 12px;
+  /* Adjust as needed for rounded corners */
+  background-color: rgb(22, 128, 160);
+  /* Modern blue color, you can change this */
+  width: 699px;
+  height: 785px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add a subtle shadow for depth */
+  transition: background-color 0.3s ease;
+}
+
+
+
 .areYouAn {
   position: absolute;
-  top: 229px;
-  left: 116px;
+  top: 269px;
+  left: 90px;
   font-size: var(--heading-h3-size);
   letter-spacing: 0.2px;
   line-height: 125%;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .welcomePleaseSelect {
   position: absolute;
-  top: 295px;
-  left: 255px;
+  top: 365px;
+  left: 165px;
   font-size: var(--body-medium-regular-size);
-  line-height: 160%;
+  line-height: 200%;
   color: white;
   font-style: oblique;
-  display: inline-block;
-  width: 222px;
+  white-space: nowrap;
+  /* Prevent line breaks */
 }
+
 .logo1Icon {
   position: absolute;
-  top: 10px;
-  right: 0px;
-  left: -35px;
-  width: 303px;
-  height: 87px;
-  object-fit: cover;
+  top: 0px;
+  left: 303px;
+  width: 250px;
+  height: 90px;
+  background-color: #3498db;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
+
 .logo {
   position: absolute;
   top: 94px;
-  left: 243px;
+  left: 278px;
   width: 246px;
   height: 98px;
 }
 
 .content {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   left: 850px;
@@ -141,7 +190,7 @@
 }
 
 .chooseThe3TypesUser {
-  position: absolute;
+  position: fixed;
   background-color: var(--additional-white);
   width: 100%;
   height: 100%;
@@ -195,7 +244,7 @@
   }
 
   .content {
-    left: 850px;
+    left: 570px;
     /* Adjust as needed */
   }
 

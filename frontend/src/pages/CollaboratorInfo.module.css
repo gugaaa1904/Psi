@@ -82,7 +82,6 @@
   left: 496px;
   width: 229px;
   height: 165px;
-  cursor: pointer;
 }
 .bg1 {
   position: absolute;
@@ -149,7 +148,6 @@
   left: 496px;
   width: 229px;
   height: 165px;
-  cursor: pointer;
 }
 .backgroundCopy2,
 .bigCard2 {
@@ -197,7 +195,6 @@
   left: 32px;
   width: 431px;
   height: 165px;
-  cursor: pointer;
   font-size: var(--heading-h3-size);
   color: var(--color-tomato-100);
 }
@@ -228,7 +225,6 @@
   left: 32px;
   width: 431px;
   height: 165px;
-  cursor: pointer;
   font-size: var(--heading-h3-size);
   color: var(--color-mediumspringgreen-100);
 }
@@ -336,7 +332,6 @@
   left: 743px;
   width: 419px;
   height: 683px;
-  cursor: pointer;
   font-size: var(--heading-h6-size);
   color: var(--color-black);
   font-family: var(--body-medium-regular);
@@ -807,7 +802,6 @@
   left: 32px;
   width: 688px;
   height: 302px;
-  cursor: pointer;
   text-align: center;
   color: var(--primary-200);
 }

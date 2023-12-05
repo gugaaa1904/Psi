@@ -1,16 +1,18 @@
 .contentChild {
   position: absolute;
   top: 112px;
-  left: 20px;
+  left: 30px;
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
-  width: 1129px;
-  height: 764px;
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  width: 1565px;
+  height: 815px;
 }
+
 .createNewUser {
   position: absolute;
   top: 5px;
-  left: 42.5px;
+  left: 20px;
   font-size: var(--heading-h6-size);
   letter-spacing: 0.2px;
   line-height: 140%;
@@ -18,159 +20,226 @@
   color: var(--additional-white);
   text-align: center;
 }
+
 .createNewUserButton {
   cursor: pointer;
   border: 0;
   padding: 0;
   background-color: var(--color-steelblue-100);
   position: absolute;
-  top: 812px;
-  left: 485px;
+  top: 840px;
+  left: 955px;
   border-radius: var(--br-xs);
-  width: 220px;
+  width: 173px;
   height: 32px;
 }
-.password {
-  font-family: var(--body-medium-regular);
-  font-size: var(--heading-h6-size);
-  background-color: transparent;
-  top: 735px;
+
+.createNewUserButton:hover {
+  background-color: #2980b9;
+  border-color: #0463a1;
+  /* Darker shade on hover, adjust as needed */
 }
-.email,
-.gender,
-.password {
-  position: absolute;
-  left: 67px;
-  border-radius: var(--br-xs);
-  border: 1px solid var(--greyscale-200);
-  box-sizing: border-box;
-  width: 404px;
-  height: 56px;
-}
-.email {
-  font-family: var(--body-medium-regular);
-  font-size: var(--heading-h6-size);
-  background-color: transparent;
-  top: 657px;
-}
-.gender {
-  top: 577px;
-}
-.adress,
-.phoneNumber {
-  font-family: var(--body-medium-regular);
-  font-size: var(--heading-h6-size);
-  background-color: transparent;
-  position: absolute;
-  left: 67px;
-}
-.adress {
-  border: 1px solid var(--greyscale-200);
-  top: 501px;
-  border-radius: var(--br-xs);
-  box-sizing: border-box;
-  width: 404px;
-  height: 56px;
-}
-.phoneNumber {
-  top: 423px;
-}
+
 .age,
-.phoneNumber {
-  border: 1px solid var(--greyscale-200);
-  border-radius: var(--br-xs);
-  box-sizing: border-box;
-  width: 404px;
-  height: 56px;
-}
-.age {
-  font-family: var(--body-medium-regular);
-  font-size: var(--heading-h6-size);
-  background-color: transparent;
-  top: 345px;
-}
-.age,
-.enterTheFields,
 .name,
-.companyname {
+.companyname,
+.phoneNumber,
+.adress,
+.gender,
+.email,
+.password {
   position: absolute;
-  left: 67px;
+  left: 267px;
 }
-.name {
+
+.age,
+.name,
+.companyname,
+.phoneNumber,
+.adress,
+.gender,
+.email,
+.password {
+  position: relative;
+  /* Ensures positioning relative to the parent */
   border: 1px solid var(--greyscale-200);
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
-  background-color: transparent;
-  top: 187px;
-  border-radius: var(--br-xs);
-  box-sizing: border-box;
-  width: 404px;
-  height: 56px;
-}
-.companyname {
-  border: 1px solid var(--greyscale-200);
-  font-family: var(--body-medium-regular);
-  font-size: var(--heading-h6-size);
-  background-color: transparent;
+  background-color: white;
+  /* White background for a cleaner look */
   top: 267px;
-  border-radius: var(--br-xs);
+  border-radius: 8px;
+  /* Adjust as needed for rounded corners */
   box-sizing: border-box;
   width: 404px;
   height: 56px;
+  padding: 12px;
+  /* Add padding for a more comfortable input area */
+  display: flex;
+  align-items: center;
+
+  /* Optional: Add box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* Style the input inside the container */
+.age,
+.name,
+.companyname,
+.phoneNumber,
+.adress,
+.gender,
+.email,
+.password,
+input {
+  border: none;
+  outline: none;
+  padding: 0 12px;
+  background-color: transparent;
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+}
+
+/* Optional: Add a transition effect for smoother interactions */
+.age,
+.name,
+.companyname,
+.phoneNumber,
+.adress,
+.gender,
+.email,
+.password,
+input:focus {
+  border: 1px solid rgb(22, 128, 160);
+  /* Adjust focus border color */
+}
+
 .enterTheFields {
-  top: 140px;
+  top: 150px;
+  left: 350px;
+  position: absolute;
   line-height: 160%;
   font-weight: 600;
   display: inline-block;
   width: 276px;
 }
+
+.name {
+  top: 200px;
+}
+
+.email {
+  top: 220px;
+}
+
+.password {
+  top: 240px;
+}
+
+.companyname {
+  top: 260px;
+}
+
+.adress {
+  top: 280px;
+}
+
+.phoneNumber {
+  top: 300px;
+}
+
+.gender {
+  top: 320px;
+}
+
+.age {
+  top: 340px;
+}
+
+/**/
+
 .endDate,
 .plafond,
 .startDate,
 .tariff {
+  position: absolute;
+  /* Ensures positioning relative to the parent */
   border: 1px solid var(--greyscale-200);
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
-  background-color: transparent;
-  position: absolute;
-  top: 432px;
-  left: 681px;
-  border-radius: var(--br-xs);
+  background-color: white;
+  /* White background for a cleaner look */
+  border-radius: 8px;
+  /* Adjust as needed for rounded corners */
   box-sizing: border-box;
   width: 404px;
   height: 56px;
+  padding: 12px;
+  /* Add padding for a more comfortable input area */
+  display: flex;
+  align-items: center;
+  /* Optional: Add box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  left: 1190px;
 }
+
 .endDate,
+.plafond,
 .startDate,
-.tariff {
-  top: 356px;
+.tariff input {
+  border: none;
+  outline: none;
+  padding: 0 12px;
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+  background-color: transparent;
 }
+
+/* Optional: Add a transition effect for smoother interactions */
 .endDate,
-.startDate {
-  top: 274px;
+.plafond,
+.startDate,
+.tariff,
+input:focus {
+  border: 1px solid rgb(22, 128, 160);
+  /* Adjust focus border color */
 }
+
 .startDate {
-  top: 196px;
+  top: 200px;
 }
+
+.endDate {
+  top: 280px;
+}
+
+.plafond {
+  top: 360px;
+}
+
+.tariff {
+  top: 440px;
+}
+
 .contractOfThis {
   position: absolute;
-  top: 146px;
-  left: 778px;
+  top: 150px;
+  left: 1080px;
   line-height: 160%;
   font-weight: 600;
   display: inline-block;
   width: 210px;
 }
+
 .content {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 0px;
   left: 250px;
   background-color: var(--greyscale-50);
-  width: 1190px;
-  height: 900px;
-  overflow: hidden;
+  width: 1670px;
+  height: 1000px;
 }
+
 .addUser1 {
   position: absolute;
   top: 29px;
@@ -178,80 +247,79 @@
   letter-spacing: 0.2px;
   line-height: 125%;
 }
+
 .header {
   position: fixed;
   top: 0;
   left: 250px;
-  background-color: var(--additional-white);
+  background-color: rgb(22, 128, 160);
   width: 1690px;
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
-  color: var(--greyscale-900);
+  color: white;
 }
+
 .settings1,
 .settingsIcon {
   position: absolute;
   top: 13px;
 }
-.settingsIcon {
-  left: 16px;
-  width: 22px;
-  height: 22px;
-  overflow: hidden;
-}
+
 .settings1 {
-  left: 54px;
+  left: 24px;
   letter-spacing: 0.2px;
   line-height: 160%;
   font-weight: 500;
 }
+
 .iconshelp,
 .settings {
   position: absolute;
   left: 16px;
 }
+
 .settings {
-  top: 827px;
+  position: absolute;
+  top: 880px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
-.iconshelp {
-  top: 12px;
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
-}
+
 .help1 {
   position: absolute;
   top: 13px;
-  left: 56px;
+  left: 24px;
   letter-spacing: 0.2px;
   line-height: 160%;
   font-weight: 500;
 }
+
 .help,
 .profile1 {
   position: absolute;
   left: 16px;
 }
+
 .help {
-  top: 765px;
+  position: absolute;
+  top: 825px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
+
 .notificationsIcon {
   position: absolute;
   top: 27px;
-  left: 1459px;
+  left: 1509px;
   border-radius: var(--br-981xl);
   width: 40px;
   height: 40px;
-  overflow: hidden;
+  background-color: white;
   cursor: pointer;
 }
 
@@ -261,6 +329,7 @@
   line-height: 160%;
   font-weight: 500;
 }
+
 .collaboratorInformation,
 .companyInformation,
 .profile,
@@ -273,24 +342,29 @@
   height: 48px;
   cursor: pointer;
 }
+
 .collaboratorInformation,
 .companyInformation,
 .removeUser {
   top: 163px;
 }
+
 .companyInformation,
 .removeUser {
   top: 115px;
 }
+
 .removeUser {
   top: 67px;
 }
+
 .addUser3 {
   position: absolute;
   top: 13px;
   left: 16px;
   line-height: 160%;
 }
+
 .addUser2 {
   top: 19px;
   left: 0;
@@ -300,40 +374,55 @@
   height: 48px;
   color: var(--color-steelblue-100);
 }
+
 .addUser2,
 .menu,
 .menu1 {
   position: absolute;
 }
+
 .menu1 {
-  top: -5px;
+  top: -10px;
   left: 89px;
   font-size: var(--body-small-medium-size);
   letter-spacing: 1px;
   line-height: 160%;
-  color: var(--color-lightslategray-200);
+  color: white;
 }
+
 .menu {
   top: 108px;
   left: 16px;
   width: 218px;
   height: 259px;
 }
-.line,
+
 .line1,
 .line2,
-.line3 {
+.line3,
+.line4 {
   position: absolute;
   box-sizing: border-box;
 }
+
 .line {
-  top: -0.5px;
-  left: 249.5px;
+  top: 10px;
+  position: absolute;
+  left: 1px;
   border-right: 1px solid var(--greyscale-100);
   width: 1px;
-  height: 901px;
+  height: 68px;
+  box-sizing: border-box;
 }
-.line1,
+
+.line1 {
+  top: 817px;
+  left: 15.5px;
+  border-top: 1px solid var(--greyscale-100);
+  width: 219px;
+  height: 1px;
+}
+
 .line2,
 .line3 {
   top: 819.5px;
@@ -342,42 +431,64 @@
   width: 219px;
   height: 1px;
 }
+
+.line4 {
+  top: 935px;
+  left: 15.5px;
+  border-top: 1px solid var(--greyscale-100);
+  width: 219px;
+  height: 1px;
+}
+
 .line2,
 .line3 {
   top: 366.5px;
 }
+
 .line3 {
   top: 87.5px;
 }
+
 .logo1Icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 88px;
-  object-fit: cover;
+  top: 12px;
+  left: 38px;
+  width: 170px;
+  height: 60px;
+  background-color: rgb(22, 128, 160);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
+
 .addUser,
 .sidebar {
   height: 1000px;
   overflow: hidden;
 }
+
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--additional-white);
+  background-color: rgb(22, 128, 160);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
   width: 250px;
-}
-.addUser {
-  position: relative;
-  background-color: var(--color-gray-100);
-  left: 200px;
-  width: 2000px;
-  height: 1000px;
-  text-align: left;
   font-size: var(--body-medium-regular-size);
+  color: white;
+}
+
+.addUser {
+  position: fixed;
+  background-color: var(--color-gray-100);
+  width: 1900px;
+  text-align: left;
+  font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);
   font-family: var(--body-medium-regular);
 }

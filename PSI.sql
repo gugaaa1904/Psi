@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2023 às 23:47
+-- Tempo de geração: 04-Dez-2023 às 16:29
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -132,10 +132,10 @@ CREATE TABLE `consuming` (
 --
 
 INSERT INTO `consuming` (`CONSUMING_ID`, `COLLABORATOR_ID`, `DAILY_USAGE`, `DAILY_RUNTIME`, `DAY`, `MONTH_YEAR`, `WEEKLY_USAGE`, `MONTHLY_USAGE`) VALUES
-(3, 3, 30, 30, 8, '8', 20, 80),
+(3, 3, 30, 30, 8, '8', 50, 80),
 (4, 35, 50, 60, 9, '8', 30, 40),
-(5, 35, 60, 90, 10, '9', 30, 65),
-(6, 11, 3, 3, 3, '3', 3, 3),
+(5, 35, 78, 90, 10, '9', 30, 65),
+(6, 11, 2, 3, 3, '3', 3, 3),
 (7, 35, 3, 3, 3, '3', 3, 3);
 
 --

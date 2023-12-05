@@ -1,9 +1,12 @@
-import { useCallback } from "react";
+import React, { useState, useEffect, useCallback , Component } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CompanyInfo.module.css";
 
 const CompanyInfo = () => {
   const navigate = useNavigate();
+  const [averageWeeklyUsage, setAverageWeeklyUsage] = useState(null);
+  const [averageMonthlyUsage, setAverageMonthlyUsage] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('Weekly');
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
@@ -28,6 +31,25 @@ const CompanyInfo = () => {
   const onAddUserContainerClick = useCallback(() => {
     navigate("/add-user");
   }, [navigate]);
+
+  useEffect(() => {
+    // Função para buscar os dados do backend
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost/Psi/backend/services/companyinfo.php'); // Substitua pelo caminho correto
+        const data = await response.json();
+        setAverageWeeklyUsage(data[0].average_weekly_usage);
+        setAverageMonthlyUsage(data[0].average_monthly_usage);
+
+
+      } catch (error) {
+        console.error('Erro ao buscar dados do backend:', error);
+      }
+    };
+
+    // Chama a função de busca de dados ao montar o componente
+    fetchData();
+  }, []);
 
   return (
     <div className={styles.companyInfo}>
@@ -97,26 +119,42 @@ const CompanyInfo = () => {
         </div>
         <div className={styles.totalSpendingsIn}>
           <div className={styles.background} />
-          <div className={styles.value}>1000€</div>
+          <div className={styles.value}>
+            {selectedOption === 'Weekly' && averageWeeklyUsage && `${(averageWeeklyUsage * 0.2).toFixed(1)} €`}
+            {selectedOption === 'Monthly' && averageMonthlyUsage && `${(averageMonthlyUsage * 0.2).toFixed(1)} €`}
+          </div>
           <div
             className={styles.text}
           >{`The Total Spendings in euros (€) represent the cumulative sum of all expenditures incurred by various collaborators within the company. `}</div>
           <div className={styles.totalSpendingsIn1}>Total Spendings in €</div>
-          <select className={styles.monthsDropDown} id="select_weekly_monthly">
+          <select
+            className={styles.monthsDropDown}
+            id="select_weekly_monthly"
+            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption}
+          >
             <option value="Weekly">Weekly</option>
             <option value="Monthly">Monthly</option>
           </select>
         </div>
         <div className={styles.totalConsumedInKwh}>
           <div className={styles.background} />
-          <div className={styles.kwh}>336 kWh</div>
+          <div className={styles.kwh}>
+            {selectedOption === 'Weekly' && averageWeeklyUsage && `${averageWeeklyUsage} kWh`}
+            {selectedOption === 'Monthly' && averageMonthlyUsage && `${averageMonthlyUsage} kWh`}
+          </div>
           <div className={styles.text}>
             The Total Energy Consumed in kilowatt-hours (kWh) is the sum of
             energy consumed by all individuals or entities associated with the
             company.
           </div>
           <div className={styles.totalConsumedIn}>Total Consumed in kWh</div>
-          <select className={styles.monthsDropDown} id="select_weekly_monthly">
+          <select
+            className={styles.monthsDropDown}
+            id="select_weekly_monthly"
+            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption}
+          >
             <option value="Weekly">Weekly</option>
             <option value="Monthly">Monthly</option>
           </select>
