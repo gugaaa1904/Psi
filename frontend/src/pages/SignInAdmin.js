@@ -38,7 +38,7 @@ const onButtonLargePrimaryContainerClick = async () => {
 
     
     if (data.status === "success") {
-      
+      sessionStorage.setItem('admin_id', JSON.stringify(data.id));
       // Credenciais válidas, redirecionar para company-info
       navigate("/company-info");
     } else {

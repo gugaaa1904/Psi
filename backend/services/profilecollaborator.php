@@ -23,7 +23,7 @@ class ProfileCollaboratorService
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $jsonInput = file_get_contents("php://input");
             $dadosRecebidos = json_decode($jsonInput, true);
-            $id = $dadosRecebidos['id'];
+            $id = $dadosRecebidos['collaborator_id'];
         
             $stmt = $this->conn->prepare("SELECT NAME,COMPANYNAME,EMAIL,PHONE,AGE,GENDER,ADDRESS,TARIFF,PLAFOND FROM collaborator WHERE COLLABORATOR_ID = ?");
             $stmt->bind_param("i", $id);
