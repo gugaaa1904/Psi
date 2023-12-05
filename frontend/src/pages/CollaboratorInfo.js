@@ -69,7 +69,9 @@ class ApexChartClass extends Component {
   fetchData = async () => {
     try {
       const response = await axios.get('http://localhost/Psi/backend/services/consumingAdmin.php');
-      const dataFromServer = response.data;
+      //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
+      //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
+      const dataFromServer = response.data; 
       console.log(dataFromServer)
       // Preencher o array de Consuming multiplicando por 2.5
       const consumingData = dataFromServer.map((item) => item.DAILY_USAGE );
