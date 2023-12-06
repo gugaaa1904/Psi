@@ -46,7 +46,8 @@ const ApexChart = () => {
   const fetchData = useCallback(async () => {
     try {
       // Substitua a URL abaixo pela URL correta do seu arquivo PHP
-      const response = await axios.get('http://localhost/Psi/backend/services/consuming.php');
+      const collaboratorId = sessionStorage.getItem('collaborator_id');
+      const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}`);
       console.log(response.data);
       // Extrai os dados da resposta
       const dataFromServer = response.data;
@@ -156,7 +157,8 @@ class ApexChartClass extends Component {
 
   fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost/Psi/backend/services/consuming.php');
+      const collaboratorId = sessionStorage.getItem('collaborator_id');
+      const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}`);
       const dataFromServer = response.data;
 
       // Preencher o array de Consuming multiplicando por 2.5
@@ -367,21 +369,28 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost/Psi/backend/services/consuming.php?month=${selectedMonth}`);
-        const data = await response.json();
-
-        if (data.length > 0) {
-          setMonthlyUsageData(data);
+        const collaboratorId = sessionStorage.getItem('collaborator_id');
+        console.log(selectedMonth);
+        const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}&month=${selectedMonth}`);
+  
+        const data = response.data;
+        console.log('Data from server:', data); // Adiciona esta linha para verificar a estrutura dos dados
+  
+        if (Array.isArray(data)) {
+          const monthlyUsage = data.map((item) => item.MONTHLY_USAGE);
+          setMonthlyUsageData(monthlyUsage);
         } else {
-          console.error(`Nenhum resultado encontrado para o mês ${selectedMonth}`);
+          console.error(`Resposta do servidor não é um array para o mês ${selectedMonth}`);
         }
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
     };
-
+  
     fetchData();
-  }, [selectedMonth]); // Execute sempre que o mês selecionado mudar
+}, [selectedMonth]);
+
+  
 
   const handleMonthChange = (event) => {
     setSelectedMonth(event.target.value);

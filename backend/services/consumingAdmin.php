@@ -13,12 +13,15 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
+$companyId = $_GET['company_id'];
 // Consulta SQL para obter a soma total da coluna DAILY_USAGE para todos os IDs
 $sql = "SELECT 
-            DAY,
-            SUM(DAILY_USAGE) AS total_daily_usage
-        FROM consuming
-        GROUP BY DAY";
+DAY,
+COALESCE(SUM(DAILY_USAGE), 0) AS total_daily_usage
+FROM consuming c
+JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
+WHERE col.COMPANY_ID = $companyId
+GROUP BY DAY";
 
 $result = $conn->query($sql);
 

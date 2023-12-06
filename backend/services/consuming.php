@@ -5,9 +5,6 @@ $username = "root";
 $password = "";
 $dbname = "infocharge";
 
-// ID do colaborador que você deseja consultar
-$collaboratorId = 35; // Substitua pelo ID desejado
-
 // Parâmetro do mês (verifica se foi passado na solicitação)
 $selectedMonth = isset($_GET['month']) ? intval($_GET['month']) : null;
 
@@ -16,39 +13,59 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verifica a conexão
 if ($conn->connect_error) {
-    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+    // Em caso de erro na conexão, envia uma resposta JSON indicando o erro
+    header('Content-Type: application/json');
+    echo json_encode(array('error' => 'Erro na conexão com o banco de dados: ' . $conn->connect_error));
+    exit;
 }
 
+$collaboratorId = $_GET['company_id'];
 // Consulta SQL para obter os dados desejados, com filtro opcional do mês
-$sql = "SELECT DAY, MONTH_YEAR, DAILY_USAGE, DAILY_RUNTIME, WEEKLY_USAGE, MONTHLY_USAGE FROM consuming WHERE COLLABORATOR_ID = $collaboratorId";
+$sql = "SELECT DAY, MONTH_YEAR, DAILY_USAGE, DAILY_RUNTIME, WEEKLY_USAGE, MONTHLY_USAGE FROM consuming WHERE COLLABORATOR_ID = ?";
 if ($selectedMonth !== null) {
-    $sql .= " AND MONTH_YEAR = $selectedMonth";
+    $sql .= " AND MONTH_YEAR = ?";
 }
 
-$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // Inicializa um array associativo para armazenar os dados
-    $dados = array();
+// Prepara a declaração SQL
+$stmt = $conn->prepare($sql);
 
-    // Loop sobre os resultados e adiciona cada linha ao array
-    while($row = $result->fetch_assoc()) {
-        $dados[] = array(
-            'MONTH_YEAR' => $row["MONTH_YEAR"],
-            'DAY' => $row["DAY"],
-            'DAILY_USAGE' => $row["DAILY_USAGE"],
-            'DAILY_RUNTIME' => $row["DAILY_RUNTIME"],
-            'WEEKLY_USAGE' => $row["WEEKLY_USAGE"],
-            'MONTHLY_USAGE' => $row["MONTHLY_USAGE"],
-        );
-    }
-
-    // Usa json_encode para converter o array em JSON e imprime
-    echo json_encode($dados);
-} else {
-    echo "Nenhum resultado encontrado para o COLLABORATOR_ID $collaboratorId";
+// Verifica se a preparação foi bem-sucedida
+if ($stmt === false) {
+    // Em caso de erro na preparação, envia uma resposta JSON indicando o erro
+    header('Content-Type: application/json');
+    echo json_encode(array('error' => 'Erro na preparação da consulta SQL: ' . $conn->error));
+    exit;
 }
 
-// Fecha a conexão com o banco de dados
-$conn->close();
+// Vincula o parâmetro COLLABORATOR_ID
+// Vincula o parâmetro COLLABORATOR_ID
+$stmt->bind_param('s', $collaboratorId);
+
+// Vincula o parâmetro MONTH_YEAR, se fornecido
+if ($selectedMonth !== null) {
+    $stmt->bind_param('s', $selectedMonth);
+}
+
+
+// Executa a consulta
+$stmt->execute();
+
+// Obtém o resultado da consulta
+$result = $stmt->get_result();
+
+// Se houver um erro, envia uma resposta JSON indicando o erro
+if ($result === false) {
+    header('Content-Type: application/json');
+    echo json_encode(array('error' => 'Erro ao executar a consulta: ' . $stmt->error));
+    exit;
+}
+
+// Obtém os dados do resultado
+$dataFromServer = $result->fetch_all(MYSQLI_ASSOC);
+
+// Envia a resposta como JSON
+header('Content-Type: application/json');
+echo json_encode($dataFromServer);
+exit;
 ?>

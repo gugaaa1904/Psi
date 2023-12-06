@@ -65,10 +65,11 @@ class ApexChartClass extends Component {
       },
     };
   }
-
+  
   fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost/Psi/backend/services/consumingAdmin.php');
+      const companyID = sessionStorage.getItem('company_id');
+      const response = await axios.get(`http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`);
       //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
       //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
       const dataFromServer = response.data; 
@@ -152,10 +153,12 @@ const CollaboratorInfo = () => {
   }, [navigate]);
 
   useEffect(() => {
+    const companyID = sessionStorage.getItem('company_id');
     // Função para buscar os dados do backend
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost/Psi/backend/services/consumingAdmin2.php'); // Substitua pelo caminho correto
+        const companyId = sessionStorage.getItem('company_id');
+        const response = await fetch(`http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}`); 
         const data = await response.json();
         setAverageWeeklyUsage(data[0].average_weekly_usage);
         setMinDailyUsage(data[0].min_daily_usage);

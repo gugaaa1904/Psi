@@ -13,13 +13,17 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
+$companyId = $_GET['company_id'];
+
 // Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE
 $sql = "SELECT 
-            AVG(DAILY_USAGE) AS average_daily_usage,
-            MIN(DAILY_USAGE) AS min_daily_usage,
-            MAX(DAILY_USAGE) AS max_daily_usage,
-            AVG(WEEKLY_USAGE) AS average_weekly_usage
-        FROM consuming";
+    AVG(c.DAILY_USAGE) AS average_daily_usage,
+    MIN(c.DAILY_USAGE) AS min_daily_usage,
+    MAX(c.DAILY_USAGE) AS max_daily_usage,
+    AVG(c.WEEKLY_USAGE) AS average_weekly_usage
+FROM consuming c
+JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
+WHERE col.COMPANY_ID = $companyId";
 
 $result = $conn->query($sql);
 

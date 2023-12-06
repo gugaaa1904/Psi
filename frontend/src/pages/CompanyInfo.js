@@ -36,7 +36,8 @@ const CompanyInfo = () => {
     // Função para buscar os dados do backend
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost/Psi/backend/services/companyinfo.php'); // Substitua pelo caminho correto
+        const companyId = sessionStorage.getItem('company_id');
+        const response = await fetch(`http://localhost/Psi/backend/services/companyinfo.php?company_id=${companyId}`);
         const data = await response.json();
         setAverageWeeklyUsage(data[0].average_weekly_usage);
         setAverageMonthlyUsage(data[0].average_monthly_usage);
