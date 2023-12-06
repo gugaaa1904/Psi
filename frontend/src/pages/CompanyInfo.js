@@ -4,72 +4,131 @@ import styles from "./CompanyInfo.module.css";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 
-class ApexChart extends React.Component {
+class ApexChartClass extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       series: [
         {
-          name: "Value",
-          data: [44, 55, 41, 67, 22, 43],
+          name: "Expected Consume",
+          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
-          name: "Expected",
-          data: [13, 23, 20, 8, 13, 27],
+          name: "Actually Charged",
+          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
       ],
       options: {
         chart: {
-          type: "bar", // Set to "bar" for a bar graph
+          type: "bar",
           height: 350,
-          stacked: true,
-          stackType: "100%",
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"],
+        },
+        title: {
+          text: "General Consuming",
+          align: "center",
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
         },
         xaxis: {
-          categories: ["June", "July", "August", "September", "October", "November"],
+          categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
+        },
+        yaxis: {
+          
         },
         fill: {
           opacity: 1,
         },
-        legend: {
-          position: "bottom",
-          offsetX: 0,
-          offsetY: 0,
-        },
-        grid: {
-          show: false, 
-        },
-        yaxis: {
-          show: false, 
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val ;
+            },
+          },
         },
       },
     };
   }
+  
+  fetchData = async () => {
+    try {
+      const companyID = sessionStorage.getItem('company_id');
+      const response = await axios.get(`http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`);
+      //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
+      //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
+      const dataFromServer = response.data; 
+      console.log(dataFromServer)
+      // Preencher o array de Consuming multiplicando por 2.5
+      const consumingData = dataFromServer.map((item) => (item.DAILY_USAGE / 0.2) *0.245 );
+
+      // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
+      const plafondData = Array(consumingData.length).fill(20);
+
+      this.setState({
+        series: [
+          {
+            name: "Value",
+            data: consumingData,
+          },
+          {
+            name: "Expected",
+            data: plafondData,
+          },
+        ],
+        options: {
+          ...this.state.options,
+          xaxis: {
+            ...this.state.options.xaxis,
+            categories: dataFromServer.map((item) => item.DAY),
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Erro ao buscar dados do servidor:", error);
+    }
+  };
+
+  componentDidMount() {
+    this.fetchData();
+  }
 
   render() {
     return (
-      <div
-        id="chart"
-        style={{
-          position: "absolute",
-          top: 250,
-          bottom: 40,
-          width: 400,
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
-      >
+      <div id="chart" style={{
+        position: "absolute",
+        top: 250,
+        bottom: 40,
+        width: 400,
+        left: "50%",
+        transform: "translateX(-50%)",
+      }}>
         <ReactApexChart
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={400}
+          height={350}
         />
       </div>
     );
   }
 }
+
 
 
 const CompanyInfo = () => {
@@ -137,7 +196,7 @@ const CompanyInfo = () => {
             fossil-fueled car. An electric car might need approximately 0.2 kWh
             of electricity to travel 1 kilometer.
           </div>
-          <ApexChart />
+          <ApexChartClass />
         </div>
         <div className={styles.totalSpendingsIn}>
           <div className={styles.background} />

@@ -13,31 +13,36 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-$company_id = $_GET['company_id'];
-// Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE
+$companyId = $_GET['company_id'];
+// Consulta SQL para obter os dados necessários para o gráfico
 $sql = "SELECT 
-            AVG(WEEKLY_USAGE) AS average_weekly_usage,
-            AVG(MONTHLY_USAGE) AS average_monthly_usage
+            MONTH_YEAR,
+            MONTHLY_USAGE
         FROM consuming c
         JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
-        WHERE col.COMPANY_ID = $company_id";
+        WHERE col.COMPANY_ID = $companyId";
 
 $result = $conn->query($sql);
 
 if ($result) {
-    // Inicializa um array associativo para armazenar os dados
-    $dados = array();
+    // Inicializa arrays para armazenar os dados
+    $categories = array();
+    $monthlyUsageData = array();
 
-    // Loop sobre os resultados e adiciona cada linha ao array
+    // Loop sobre os resultados e adiciona cada linha aos arrays
     while ($row = $result->fetch_assoc()) {
-        $dados[] = array(
-            'average_weekly_usage' => number_format($row["average_weekly_usage"], 1),
-            'average_monthly_usage' => number_format($row["average_monthly_usage"], 1),
-        );
+        $categories[] = $row["MONTH_YEAR"];
+        $monthlyUsageData[] = $row["MONTHLY_USAGE"];
     }
 
+    // Cria um array para o gráfico com os dados formatados
+    $chartData = array(
+        'categories' => $categories,
+        'monthlyUsageData' => $monthlyUsageData,
+    );
+
     // Usa json_encode para converter o array em JSON e imprime
-    echo json_encode($dados);
+    echo json_encode($chartData);
 } else {
     echo "Erro na consulta: " . $conn->error;
 }
