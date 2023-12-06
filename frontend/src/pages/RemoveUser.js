@@ -3,6 +3,7 @@ import PopUpRemoveUser from "../components/PopUpRemoveUser";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./RemoveUser.module.css";
+import axios from "axios";
 
 const RemoveUser = () => {
   const [isPopUpRemoveUserOpen, setPopUpRemoveUserOpen] = useState(false);
@@ -40,15 +41,32 @@ const RemoveUser = () => {
     navigate("/add-user");
   }, [navigate]);
 
+  const handleRemoveUser = useCallback(async () => {
+    // Obtenha os valores dos campos de input
+    const name = document.getElementById("admin_name").value;
+    const email = document.getElementById("email").value;
+
+    try {
+      // Envie uma solicitação para remover o colaborador com base nos dados inseridos
+      const response = await axios.delete(`http://localhost/Psi/backend/services/removecollaborator.php?name=${name}&email=${email}`);
+      
+      // Verifique se a solicitação foi bem-sucedida
+      if (response.status === 200) {
+        // Coloque aqui qualquer lógica adicional após a remoção bem-sucedida
+        console.log("Colaborador removido com sucesso!");
+      }
+    } catch (error) {
+      console.error("Erro ao remover colaborador:", error);
+    }
+  }, []);
+
+
   return (
     <>
       <div className={styles.removeUser}>
         <div className={styles.content}>
           <div className={styles.contentChild} />
-          <div
-            className={styles.removeUserButton}
-            onClick={openPopUpRemoveUser}
-          >
+          <div className={styles.removeUserButton} onClick={handleRemoveUser}>
             <b className={styles.removeUser1}>Remove User</b>
           </div>
           <input

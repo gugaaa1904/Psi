@@ -5,8 +5,6 @@ $username = "root";
 $password = "";
 $dbname = "infocharge";
 
-// ID do colaborador que você deseja consultar
-$collaboratorId = 35; // Substitua pelo ID desejado
 
 // Parâmetro do mês (verifica se foi passado na solicitação)
 //$selectedMonth = isset($_GET['month']) ? intval($_GET['month']) : null;
@@ -19,8 +17,9 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
+$collaboratorId = $_GET['company_id'];
 // Consulta SQL para obter os dados desejados, com filtro opcional do mês
-$sql = "SELECT DAY, MONTH_YEAR, DAILY_USAGE, DAILY_RUNTIME, WEEKLY_USAGE, MONTHLY_USAGE FROM consuming WHERE COLLABORATOR_ID = $collaboratorId";
+$sql = "SELECT DAY, MONTH_YEAR, DAILY_USAGE, DAILY_RUNTIME, WEEKLY_USAGE, MONTHLY_USAGE FROM consuming WHERE WHERE COLLABORATOR_ID = ?";
 
 
 $result = $conn->query($sql);

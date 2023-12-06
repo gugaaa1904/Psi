@@ -28,13 +28,13 @@ class LogINAdminService
                 $dadosRecebidos = json_decode($jsonInput, true);
                 $email = $dadosRecebidos["email"];
                 $password = $dadosRecebidos["password"];
-                $stmt = $this->conn->prepare("SELECT ADMIN_ID, EMAIL, PASSWORD FROM admin WHERE EMAIL = ? AND PASSWORD =?");
+                $stmt = $this->conn->prepare("SELECT ADMIN_ID,COMPANY_ID, EMAIL, PASSWORD FROM admin WHERE EMAIL = ? AND PASSWORD =?");
                 $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
-                $stmt->bind_result($admin_id,$emailDb, $passwordDb);
+                $stmt->bind_result($admin_id,$company_id,$emailDb, $passwordDb);
                 
                 if ($stmt->fetch()) {
-                        $this->response('success' , array('id' => $admin_id));
+                        $this->response('success' , array('id' => $admin_id,'company' => $company_id));
                     
                 } else {
                     // Admin not found

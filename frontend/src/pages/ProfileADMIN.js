@@ -50,21 +50,21 @@ const ProfileADMIN = () => {
   });
 
   useEffect(() => {
-    const idString = sessionStorage.getItem('id');
+    const idString = sessionStorage.getItem('admin_id');
     if(!idString){
       navigate("/sign-in-admin")
     }
     
     async function fetchData() {
-      const idString = sessionStorage.getItem('id');
-      console.log({id: idString});
+      const idString = sessionStorage.getItem('admin_id');
+      console.log({admin_id: idString});
       try {
         const response = await fetch(
           'http://localhost/Psi/backend/services/profileadmin.php',
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({id: idString})
+            body: JSON.stringify({admin_id: idString})
         })
         const data = await response.json();
         console.log(data);

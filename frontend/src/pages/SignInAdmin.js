@@ -33,12 +33,13 @@ const onButtonLargePrimaryContainerClick = async () => {
     )
     
     const data = await response.json();
-    //console.log(response.body);
+    console.log(data);
     //const data = await response.text();
 
     
     if (data.status === "success") {
-      
+      sessionStorage.setItem('admin_id', JSON.stringify(data.id));
+      sessionStorage.setItem('company_id', JSON.stringify(data.company));
       // Credenciais válidas, redirecionar para company-info
       navigate("/company-info");
     } else {

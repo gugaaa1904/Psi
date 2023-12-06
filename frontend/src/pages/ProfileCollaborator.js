@@ -47,21 +47,21 @@ const ProfileCollaborator = () => {
   });
 
   useEffect(() => {
-    const idString = sessionStorage.getItem('id');
+    const idString = sessionStorage.getItem('collaborator_id');
     if(!idString){
       navigate("/sign-in-collaborator")
     }
 
     async function fetchData() {
-      const idString = sessionStorage.getItem('id');
-      console.log({id: idString});
+      const idString = sessionStorage.getItem('collaborator_id');
+      console.log({collaborator_id: idString});
       try {
         const response = await fetch(
           'http://localhost/Psi/backend/services/profilecollaborator.php',
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({id: idString})
+            body: JSON.stringify({collaborator_id: idString})
         })
         const data = await response.json();
         console.log(data);

@@ -14,14 +14,13 @@ if ($conn->connect_error) {
 }
 
 $companyId = $_GET['company_id'];
-// Consulta SQL para obter a soma total da coluna DAILY_USAGE para todos os IDs
+// Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE
 $sql = "SELECT 
-DAY,
-COALESCE(SUM(DAILY_USAGE), 0) AS total_daily_usage
-FROM consuming c
-JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
-WHERE col.COMPANY_ID = $companyId
-GROUP BY DAY";
+            AVG(WEEKLY_USAGE) AS average_weekly_usage,
+            AVG(MONTHLY_USAGE) AS average_monthly_usage
+        FROM consuming c
+        JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
+        WHERE col.COMPANY_ID = $companyId";
 
 $result = $conn->query($sql);
 
@@ -32,8 +31,8 @@ if ($result) {
     // Loop sobre os resultados e adiciona cada linha ao array
     while ($row = $result->fetch_assoc()) {
         $dados[] = array(
-            'DAY' => $row["DAY"],
-            'DAILY_USAGE' => $row["total_daily_usage"],
+            'average_weekly_usage' => number_format($row["average_weekly_usage"], 1),
+            'average_monthly_usage' => number_format($row["average_monthly_usage"], 1),
         );
     }
 

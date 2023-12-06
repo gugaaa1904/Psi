@@ -41,7 +41,8 @@ const Timeline = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost/Psi/backend/services/timeline.php');
+        const collaboratorId = sessionStorage.getItem('collaborator_id');
+        const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}`);
         setTimelineData(response.data);
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
