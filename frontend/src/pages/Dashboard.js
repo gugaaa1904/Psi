@@ -47,7 +47,7 @@ const ApexChart = () => {
     try {
       // Substitua a URL abaixo pela URL correta do seu arquivo PHP
       const collaboratorId = sessionStorage.getItem('collaborator_id');
-      const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}`);
+      const response = await axios.get(`http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`);
       console.log(response.data);
       // Extrai os dados da resposta
       const dataFromServer = response.data;
@@ -158,7 +158,7 @@ class ApexChartClass extends Component {
   fetchData = async () => {
     try {
       const collaboratorId = sessionStorage.getItem('collaborator_id');
-      const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}`);
+      const response = await axios.get(`http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`);
       const dataFromServer = response.data;
 
       // Preencher o array de Consuming multiplicando por 2.5
@@ -371,16 +371,34 @@ const Dashboard = () => {
       try {
         const collaboratorId = sessionStorage.getItem('collaborator_id');
         console.log(selectedMonth);
-        const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}&month=${selectedMonth}`);
-  
-        const data = response.data;
+        const response = await fetch(
+          "http://localhost/Psi/backend/services/powermonthly.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ collaborator_id: collaboratorId, month: selectedMonth }),
+          }
+        )
+          
+        const data = await response.json();
+
         console.log('Data from server:', data); // Adiciona esta linha para verificar a estrutura dos dados
   
-        if (Array.isArray(data)) {
-          const monthlyUsage = data.map((item) => item.MONTHLY_USAGE);
-          setMonthlyUsageData(monthlyUsage);
+        if (data.status === 'sucess') {
+          const monthlyUsage = {
+            DAY: data.DAY,
+            MONTH_YEAR: data.MONTH_YEAR,
+            DAILY_USAGE: data.DAILY_USAGE,
+            DAILY_RUNTIME: data.DAILY_RUNTIME,
+            WEEKLY_USAGE: data.WEEKLY_USAGE,
+            MONTHLY_USAGE: data.MONTHLY_USAGE,
+          };
+
+          setMonthlyUsageData([monthlyUsage]);
         } else {
-          console.error(`Resposta do servidor não é um array para o mês ${selectedMonth}`);
+          console.error(`Erro ao obter dados para o mês ${selectedMonth}:`, data.error);
         }
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
@@ -388,7 +406,7 @@ const Dashboard = () => {
     };
   
     fetchData();
-}, [selectedMonth]);
+  }, [selectedMonth])
 
   
 
@@ -434,7 +452,9 @@ const Dashboard = () => {
             <div>
               <div className={styles.powerChild} />
               <div className={styles.powerInKwhContainer}>
-                <p className={styles.kwh}>{monthlyUsageData.length > 0 ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh` : 'Loading...'}</p>
+                <p className={styles.kwh}>{monthlyUsageData.length > 0
+                  ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh`
+                  : 'Loading...'}</p>
                 <p className={styles.blankLine}>&nbsp;</p>
               </div>
               <select className={styles.monthsDropDown} id="meses" onChange={handleMonthChange} value={selectedMonth}>
