@@ -127,6 +127,8 @@ const CollaboratorInfo = () => {
   const [averageWeeklyUsage, setAverageWeeklyUsage] = useState(null);
   const [minDailyUsage, setMinDailyUsage] = useState(null);
   const [maxDailyUsage, setMaxDailyUsage] = useState(null);
+  const [collaborators, setCollaborators] = useState([]);
+  
   
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
@@ -172,7 +174,23 @@ const CollaboratorInfo = () => {
 
     // Chama a função de busca de dados ao montar o componente
     fetchData();
-  }, []); // O array vazio significa que isso só será executado uma vez, equivalente ao componentDidMount
+  }, []); 
+
+  useEffect(() => {
+    const companyID = sessionStorage.getItem('company_id');
+    const fetchCollaborators = async () => {
+      try {
+        const response = await fetch(`http://localhost/Psi/backend/services/listcollaborator.php?company_id=${companyID}`);
+        const data = await response.json();
+        setCollaborators(data);
+        console.log(data); // Adicione esta linha para verificar os dados recebidos
+      } catch (error) {
+        console.error('Erro ao buscar dados do backend:', error);
+      }
+    };
+  
+    fetchCollaborators();
+  }, []);
 
 
   return (
@@ -222,65 +240,25 @@ const CollaboratorInfo = () => {
             className={styles.averageEnergyConsumption}
           >{`Average Energy Consumption in kWh `}</div>
         </div>
-        <div
-          className={styles.listOfCollaborators}
-        >
-          <div className={styles.bigCard4}>
-            <div className={styles.bigCardChild} />
-          </div>
-          <div className={styles.backgroundCopy2} />
-          <div className={styles.employee4}>
-            <div className={styles.bigCard5}>
-              <div className={styles.bigCardChild} />
-            </div>
-            <div className={styles.employee4Child} />
-            <b className={styles.name}>Nuno Bernardino</b>
-            <div className={styles.position}>
-              <p className={styles.dhlEmployee}>DHL - Employee</p>
-            </div>
-            <img
-              className={styles.image21Icon}
-              alt=""
-              src="/image-211@2x.png"
-            />
-          </div>
-          <div className={styles.employee3}>
-            <div className={styles.bigCard5}>
-              <div className={styles.bigCardChild} />
-            </div>
-            <div className={styles.employee4Child} />
-            <img className={styles.image18Icon} alt="" src="/image-18@2x.png" />
-            <b className={styles.name}>Diogo Correia</b>
-            <div className={styles.position}>
-              <p className={styles.dhlEmployee}>DHL - Employee</p>
-            </div>
-          </div>
-          <div className={styles.employee2}>
-            <div className={styles.bigCard5}>
-              <div className={styles.bigCardChild} />
-            </div>
-            <div className={styles.employee4Child} />
-            <b className={styles.name}>João Santos</b>
-            <div className={styles.position}>
-              <p className={styles.dhlEmployee}>DHL - Employee</p>
-            </div>
-            <img className={styles.image21Icon} alt="" src="/image-19@2x.png" />
-          </div>
-          <div className={styles.employee}>
-            <div className={styles.bigCard5}>
-              <div className={styles.bigCardChild} />
-            </div>
-            <div className={styles.employee4Child} />
-            <b className={styles.name}>Afonso Mendes</b>
-            <div className={styles.position}>
-              <p className={styles.dhlEmployee}>DHL - Employee</p>
-            </div>
-            <img className={styles.image21Icon} alt="" src="/image-20@2x.png" />
-          </div>
-          <div className={styles.listOfCollaborators1}>
-            List of Collaborators
-          </div>
+        <div className={styles.listOfCollaborators}>
+          {collaborators.map((collaborator, index) => {
+            console.log(collaborator); // Adicione esta linha para verificar cada colaborador
+            return (
+              <div key={index} className={styles.employee}>
+                <div className={styles.bigCard5}>
+                  <div className={styles.bigCardChild} />
+                </div>
+                <div className={styles.employee4Child} />
+                <b className={styles.name}>{collaborator.NAME}</b>
+                <div className={styles.position}>
+                  <p className={styles.dhlEmployee}>{collaborator.COMPANYNAME} - Employee</p>
+                </div>
+                <img className={styles.image21Icon} alt="" src="/image-21@2x.png" />
+              </div>
+            );
+          })}
         </div>
+
         <div
           className={styles.generalConsuming}
         >

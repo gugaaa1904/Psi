@@ -1,6 +1,76 @@
 import React, { useState, useEffect, useCallback , Component } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CompanyInfo.module.css";
+import ReactApexChart from "react-apexcharts";
+import axios from "axios";
+
+class ApexChart extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      series: [
+        {
+          name: "Value",
+          data: [44, 55, 41, 67, 22, 43],
+        },
+        {
+          name: "Expected",
+          data: [13, 23, 20, 8, 13, 27],
+        },
+      ],
+      options: {
+        chart: {
+          type: "bar", // Set to "bar" for a bar graph
+          height: 350,
+          stacked: true,
+          stackType: "100%",
+        },
+        xaxis: {
+          categories: ["June", "July", "August", "September", "October", "November"],
+        },
+        fill: {
+          opacity: 1,
+        },
+        legend: {
+          position: "bottom",
+          offsetX: 0,
+          offsetY: 0,
+        },
+        grid: {
+          show: false, 
+        },
+        yaxis: {
+          show: false, 
+        },
+      },
+    };
+  }
+
+  render() {
+    return (
+      <div
+        id="chart"
+        style={{
+          position: "absolute",
+          top: 250,
+          bottom: 40,
+          width: 400,
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={400}
+        />
+      </div>
+    );
+  }
+}
+
 
 const CompanyInfo = () => {
   const navigate = useNavigate();
@@ -57,55 +127,8 @@ const CompanyInfo = () => {
       <div className={styles.content}>
         <div className={styles.reductionOfCo2Emissions}>
           <div className={styles.background} />
-          <div className={styles.graph}>
-            <div className={styles.background} />
-            <div className={styles.uiElements6Line1pxCopy5Parent}>
-              <div className={styles.uiElements6Line1pxCopy5}>
-                <div className={styles.rectangle} />
-              </div>
-              <div className={styles.groupParent}>
-                <div className={styles.parent}>
-                  <div className={styles.div}>38 %</div>
-                  <div className={styles.services}>Expected</div>
-                  <img
-                    className={styles.rectangleCopy3}
-                    alt=""
-                    src="/rectangle-copy-3.svg"
-                  />
-                </div>
-                <div className={styles.group}>
-                  <div className={styles.div1}>41 %</div>
-                  <div className={styles.volume}>Values</div>
-                  <div className={styles.rectangleCopy5} />
-                  <div className={styles.rectangleCopy31} />
-                </div>
-                <div className={styles.rectangle1} />
-              </div>
-            </div>
-            <div className={styles.rectangleCopy8Parent}>
-              <div className={styles.rectangleCopy8} />
-              <div className={styles.rectangleCopy9} />
-            </div>
-            <div className={styles.group11Copy2}>
-              <div className={styles.rectangleCopy81} />
-              <div className={styles.rectangleCopy91} />
-            </div>
-            <div className={styles.group11Copy3}>
-              <div className={styles.rectangleCopy92} />
-              <div className={styles.rectangleCopy82} />
-            </div>
-            <div className={styles.group11Copy5}>
-              <div className={styles.rectangleCopy92} />
-              <div className={styles.rectangleCopy83} />
-            </div>
-            <div className={styles.group11Copy4}>
-              <div className={styles.rectangleCopy92} />
-              <div className={styles.rectangleCopy84} />
-            </div>
-            <div className={styles.group11Copy}>
-              <div className={styles.rectangleCopy85} />
-              <div className={styles.rectangleCopy95} />
-            </div>
+          <div className={styles.reductionOfCo2}>
+            Reduction of CO2 Emissions
           </div>
           <div className={styles.totalRevenue}>
             The Reduction of CO2 Emissions signifies the overall decrease in the
@@ -114,15 +137,17 @@ const CompanyInfo = () => {
             fossil-fueled car. An electric car might need approximately 0.2 kWh
             of electricity to travel 1 kilometer.
           </div>
-          <div className={styles.reductionOfCo2}>
-            Reduction of CO2 Emissions
-          </div>
+          <ApexChart />
         </div>
         <div className={styles.totalSpendingsIn}>
           <div className={styles.background} />
           <div className={styles.value}>
-            {selectedOption === 'Weekly' && averageWeeklyUsage && `${(averageWeeklyUsage * 0.2).toFixed(1)} €`}
-            {selectedOption === 'Monthly' && averageMonthlyUsage && `${(averageMonthlyUsage * 0.2).toFixed(1)} €`}
+            {selectedOption === "Weekly" &&
+              averageWeeklyUsage &&
+              `${(averageWeeklyUsage * 0.2).toFixed(1)} €`}
+            {selectedOption === "Monthly" &&
+              averageMonthlyUsage &&
+              `${(averageMonthlyUsage * 0.2).toFixed(1)} €`}
           </div>
           <div
             className={styles.text}
@@ -141,8 +166,12 @@ const CompanyInfo = () => {
         <div className={styles.totalConsumedInKwh}>
           <div className={styles.background} />
           <div className={styles.kwh}>
-            {selectedOption === 'Weekly' && averageWeeklyUsage && `${averageWeeklyUsage} kWh`}
-            {selectedOption === 'Monthly' && averageMonthlyUsage && `${averageMonthlyUsage} kWh`}
+            {selectedOption === "Weekly" &&
+              averageWeeklyUsage &&
+              `${averageWeeklyUsage} kWh`}
+            {selectedOption === "Monthly" &&
+              averageMonthlyUsage &&
+              `${averageMonthlyUsage} kWh`}
           </div>
           <div className={styles.text}>
             The Total Energy Consumed in kilowatt-hours (kWh) is the sum of

@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import PopUpChangePassword from "../components/PopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
 import Notifications from "../components/Notifications";
@@ -10,6 +10,12 @@ const SettingsCollaborator = () => {
     useState(false);
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
+  const [message, setMessage] = useState('');
+
 
   const onLogoutContainerClick = useCallback(() => {
     navigate("/");
@@ -50,6 +56,44 @@ const SettingsCollaborator = () => {
   const onDashboardContainerClick = useCallback(() => {
     navigate("/dashboard");
   }, [navigate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Verifica se as senhas novas coincidem
+    if (newPassword !== confirmNewPassword) {
+      setMessage('As novas senhas não coincidem');
+      return;
+    }
+    
+    // Chama a API para verificar a senha antiga e trocar a senha
+    try {
+      const collaboratorId = sessionStorage.getItem('collaborator_id');
+      const response = await fetch('http://localhost/Psi/backend/services/changepasswordcollaborator.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          collaboratorId:collaboratorId,
+          oldPassword:oldPassword,
+          newPassword:newPassword,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage('Senha alterada com sucesso');
+      } else {
+        setMessage(data.error || 'Erro ao alterar a senha');
+      }
+    } catch (error) {
+      console.error('Erro ao chamar a API:', error);
+      setMessage('Erro ao alterar a senha');
+    }
+  };
+
 
   return (
     <>
@@ -99,33 +143,44 @@ const SettingsCollaborator = () => {
             <div className={styles.divider} />
             <div className={styles.title}>Privacy</div>
           </div>
-          <div
-            className={styles.changeButton}
-            onClick={openPopUpChangePassword}
-          >
-            <b className={styles.button1}>Change</b>
-          </div>
-          <input
-            className={styles.confirmNewPassword}
-            name="Confirm new Password"
-            id="confirm_new_password"
-            placeholder="Confirm your new Password"
-            type="password"
-          />
-          <input
-            className={styles.newPassword}
-            name="New Password"
-            id="new_password"
-            placeholder="Enter your new Password"
-            type="password"
-          />
-          <input
-            className={styles.oldPassword}
-            name="Old Password"
-            id="old_password"
-            placeholder="Enter your old Password"
-            type="password"
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              className={styles.oldPassword}
+              name="Old Password"
+              id="old_password"
+              placeholder="Enter your old Password"
+              type="password"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+            />
+            <input
+              className={styles.newPassword}
+              name="New Password"
+              id="new_password"
+              placeholder="Enter your new Password"
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+            <input
+              className={styles.confirmNewPassword}
+              name="Confirm new Password"
+              id="confirm_new_password"
+              placeholder="Confirm your new Password"
+              type="password"
+              value={confirmNewPassword}
+              onChange={(e) => setConfirmNewPassword(e.target.value)}
+            />
+
+            <div className={styles.changeButton}>
+              <button type="submit">
+                <b className={styles.button1}>Change</b>
+              </button>
+            </div>
+
+            {/* Exibe mensagens de erro/sucesso */}
+            {message && <p>{message}</p>}
+          </form>
           <div className={styles.changePassword}>
             <div className={styles.tittle}>Change your password</div>
           </div>
