@@ -119,7 +119,7 @@ const HelpADMIN = () => {
           />
           <b className={styles.help}>Help</b>
         </div>
-        
+
         <div className={styles.ifYouHaveContainer}>
           <span>
             If you have any additional question send a e-mail to our support
@@ -132,11 +132,9 @@ const HelpADMIN = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help1}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp1.svg" />
             <b className={styles.help2}>Help</b>
           </div>
           <div className={styles.menu}>
@@ -166,11 +164,9 @@ const HelpADMIN = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
+
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
           <div className={styles.line} />
-          <div className={styles.line1} />
-          <div className={styles.line2} />
-          <div className={styles.line3} />
-          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
       {isNotificationsOpen && (

@@ -184,8 +184,8 @@ const CompanyInfo = () => {
   return (
     <div className={styles.companyInfo}>
       <div className={styles.content}>
+        <div className={styles.background1} />
         <div className={styles.reductionOfCo2Emissions}>
-          <div className={styles.background} />
           <div className={styles.reductionOfCo2}>
             Reduction of CO2 Emissions
           </div>
@@ -198,8 +198,8 @@ const CompanyInfo = () => {
           </div>
           <ApexChartClass />
         </div>
+        <div className={styles.background3} />
         <div className={styles.totalSpendingsIn}>
-          <div className={styles.background} />
           <div className={styles.value}>
             {selectedOption === "Weekly" &&
               averageWeeklyUsage &&
@@ -222,8 +222,8 @@ const CompanyInfo = () => {
             <option value="Monthly">Monthly</option>
           </select>
         </div>
+        <div className={styles.background2} />
         <div className={styles.totalConsumedInKwh}>
-          <div className={styles.background} />
           <div className={styles.kwh}>
             {selectedOption === "Weekly" &&
               averageWeeklyUsage &&
@@ -249,7 +249,6 @@ const CompanyInfo = () => {
           </select>
         </div>
         <div className={styles.header}>
-          <div className={styles.divider} />
           <div className={styles.generalOverview}>General Overview</div>
         </div>
       </div>
@@ -258,11 +257,9 @@ const CompanyInfo = () => {
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <img className={styles.settingsIcon} alt="" src="/settings.svg" />
           <div className={styles.settings1}>Settings</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
           <div className={styles.help1}>Help</div>
         </div>
         <div className={styles.menu}>
@@ -289,11 +286,8 @@ const CompanyInfo = () => {
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>
+        <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         <div className={styles.line} />
-        <div className={styles.line1} />
-        <div className={styles.line2} />
-        <div className={styles.line3} />
-        <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
       </div>
     </div>
   );

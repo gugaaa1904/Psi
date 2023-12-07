@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import Notifications from "../components/Notifications";
 import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,6 @@ import styles from "./AddUser.module.css";
 const AddUser = () => {
   const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] =
     useState(false);
-  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -63,13 +61,6 @@ const AddUser = () => {
     setPopUpAddCollaboratorOpen(false);
   }, []);
 
-  const openNotifications = useCallback(() => {
-    setNotificationsOpen(true);
-  }, []);
-
-  const closeNotifications = useCallback(() => {
-    setNotificationsOpen(false);
-  }, []);
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
@@ -239,12 +230,6 @@ const AddUser = () => {
 
         <div className={styles.header}>
           <div className={styles.line} />
-          <img
-            className={styles.notificationsIcon}
-            alt=""
-            src="/notifications.svg"
-            onClick={openNotifications}
-          />
           <b className={styles.addUser1}>Add User</b>
         </div>
         <div className={styles.sidebar}>
@@ -281,11 +266,8 @@ const AddUser = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
-
-          <div className={styles.line1} />
-          <div className={styles.line2} />
-          <div className={styles.line3} />
-          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+          <div className={styles.line} />
         </div>
       </div>
       {isPopUpAddCollaboratorOpen && (
@@ -295,15 +277,6 @@ const AddUser = () => {
           onOutsideClick={closePopUpAddCollaborator}
         >
           <CollaboratorAddedSucessfullyHR onClose={closePopUpAddCollaborator} />
-        </PortalPopup>
-      )}
-      {isNotificationsOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeNotifications}
-        >
-          <Notifications onClose={closeNotifications} />
         </PortalPopup>
       )}
     </>

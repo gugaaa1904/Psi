@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./CollaboratorInfo.module.css";
-import React, { useState, useEffect, useCallback , Component } from "react";
+import React, { useState, useEffect, useCallback, Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import axios from 'axios';
+import axios from "axios";
 
 class ApexChartClass extends Component {
   constructor(props) {
@@ -49,9 +49,7 @@ class ApexChartClass extends Component {
         xaxis: {
           categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
         },
-        yaxis: {
-          
-        },
+        yaxis: {},
         fill: {
           opacity: 1,
         },
@@ -65,17 +63,19 @@ class ApexChartClass extends Component {
       },
     };
   }
-  
+
   fetchData = async () => {
     try {
-      const companyID = sessionStorage.getItem('company_id');
-      const response = await axios.get(`http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`);
+      const companyID = sessionStorage.getItem("company_id");
+      const response = await axios.get(
+        `http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`
+      );
       //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
       //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
-      const dataFromServer = response.data; 
-      console.log(dataFromServer)
+      const dataFromServer = response.data;
+
       // Preencher o array de Consuming multiplicando por 2.5
-      const consumingData = dataFromServer.map((item) => item.DAILY_USAGE );
+      const consumingData = dataFromServer.map((item) => item.DAILY_USAGE);
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
       const plafondData = Array(consumingData.length).fill(50);
@@ -129,9 +129,8 @@ const CollaboratorInfo = () => {
   const [minDailyUsage, setMinDailyUsage] = useState(null);
   const [maxDailyUsage, setMaxDailyUsage] = useState(null);
   const [collaborators, setCollaborators] = useState([]);
-  const [selectedInterval, setSelectedInterval] = useState('weekly');
-  
-  
+  const [selectedInterval, setSelectedInterval] = useState("weekly");
+
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
   }, [navigate]);
@@ -156,19 +155,27 @@ const CollaboratorInfo = () => {
     navigate("/add-user");
   }, [navigate]);
 
+  function addCollaborators(data) {
+    for (let i = 0; i < data.length; i++) {
+      collaborators.push(data[i]);
+    }
+  }
+
   useEffect(() => {
-    const companyID = sessionStorage.getItem('company_id');
+    const companyID = sessionStorage.getItem("company_id");
     const fetchData = async () => {
       try {
-        const companyId = sessionStorage.getItem('company_id');
-        const response = await fetch(`http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}&interval=${selectedInterval}`);
+        const companyId = sessionStorage.getItem("company_id");
+        const response = await fetch(
+          `http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}&interval=${selectedInterval}`
+        );
         const data = await response.json();
         setAverageWeeklyUsage(data[0].average_weekly_usage);
         setAverageMonthlyUsage(data[0].average_monthly_usage);
         setMinDailyUsage(data[0].min_daily_usage);
         setMaxDailyUsage(data[0].max_daily_usage);
       } catch (error) {
-        console.error('Erro ao buscar dados do backend:', error);
+        console.error("Erro ao buscar dados do backend:", error);
       }
     };
 
@@ -176,64 +183,72 @@ const CollaboratorInfo = () => {
   }, [selectedInterval]); // Adicione selectedInterval à lista de dependências
 
   useEffect(() => {
-    const companyID = sessionStorage.getItem('company_id');
+    const companyID = sessionStorage.getItem("company_id");
     const fetchCollaborators = async () => {
       try {
-        const response = await fetch(`http://localhost/Psi/backend/services/listcollaborator.php?company_id=${companyID}`);
+        const response = await fetch(
+          `http://localhost/Psi/backend/services/listcollaborator.php?company_id=${companyID}`
+        );
         const data = await response.json();
-        setCollaborators(data);
-        console.log(data);
+        addCollaborators(data);
+        setCollaborators(collaborators);
       } catch (error) {
-        console.error('Erro ao buscar dados do backend:', error);
+        console.error("Erro ao buscar dados do backend:", error);
       }
     };
-  
+
     fetchCollaborators();
   }, []);
-
 
   return (
     <div className={styles.collaboratorInfo}>
       <div className={styles.content}>
-        <div
-          className={styles.maxPowerAchieved}
-        >
+        <div className={styles.maxPowerAchieved}>
           <div className={styles.bigCard}>
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.bg} />
-          
-          <div className={styles.data}>{maxDailyUsage && `${maxDailyUsage} kW`}</div>
+
+          <div className={styles.data}>
+            {maxDailyUsage && `${maxDailyUsage} kW`}
+          </div>
           <img className={styles.redIcon} alt="" src="/red-icon1.svg" />
           <div className={styles.maxPowerAchieved1}>Max Power Achieved</div>
         </div>
-        <div
-          className={styles.minPowerAchieved}
-        >
+        <div className={styles.minPowerAchieved}>
           <div className={styles.bigCard}>
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.bg1} />
-          
-          <div className={styles.data1}>{minDailyUsage && `${minDailyUsage} kW`}</div>
+
+          <div className={styles.data1}>
+            {minDailyUsage && `${minDailyUsage} kW`}
+          </div>
           <div className={styles.minPowerAchieved1}>Min Power Achieved</div>
           <img className={styles.greenIcon} alt="" src="/green-icon.svg" />
         </div>
-        <div className={styles.averageEnergyConsumptionIn} style={{ position: 'relative', zIndex: '2' }}>
+        <div
+          className={styles.averageEnergyConsumptionIn}
+          style={{ position: "relative", zIndex: "2" }}
+        >
           <div className={styles.bigCard2}>
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.backgroundCopy2} />
           <div className={styles.data3}>
-            {selectedInterval === 'weekly' ? (averageWeeklyUsage && `${averageWeeklyUsage} kWh`) : (averageMonthlyUsage && `${averageMonthlyUsage} kWh`)}
+            {selectedInterval === "weekly"
+              ? averageWeeklyUsage && `${averageWeeklyUsage} kWh`
+              : averageMonthlyUsage && `${averageMonthlyUsage} kWh`}
           </div>
-          <div className={styles.averageEnergyConsumption}>{`Average Energy Consumption in kWh `}</div>
+          <div
+            className={styles.averageEnergyConsumption}
+          >{`Average Energy Consumption in kWh `}</div>
 
           {/* Seletor para escolher entre 'monthly' e 'weekly' */}
-          <select 
+          <select
             value={selectedInterval}
             onChange={(e) => setSelectedInterval(e.target.value)}
-            style={{ position: 'absolute', zIndex: '1' }}
+            style={{ position: "absolute", zIndex: "1" }}
           >
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -246,15 +261,17 @@ const CollaboratorInfo = () => {
           </div>
           <div className={styles.backgroundCopy2} />
           <div className={styles.data2}>
-            {selectedInterval === 'weekly' ? (averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`) : (averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`)}
+            {selectedInterval === "weekly"
+              ? averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`
+              : averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`}
           </div>
           <div className={styles.averageCostIn1}>{`Average Cost in € `}</div>
-          
+
           {/* Seletor para escolher entre 'weekly' e 'monthly' */}
-          <select 
+          <select
             value={selectedInterval}
             onChange={(e) => setSelectedInterval(e.target.value)}
-            style={{ position: 'absolute', right: '0', top: '0', zIndex: '1' }}
+            style={{ position: "absolute", right: "0", top: "0", zIndex: "1" }}
           >
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -262,39 +279,37 @@ const CollaboratorInfo = () => {
         </div>
 
         <div className={styles.listOfCollaborators}>
-          {collaborators.map((collaborator, index) => {
-            console.log(collaborator); // Adicione esta linha para verificar cada colaborador
-            return (
-              <div key={index} className={styles.employee}>
-                <div className={styles.bigCard5}>
-                  <div className={styles.bigCardChild} />
-                </div>
-                <div className={styles.employee4Child} />
-                <b className={styles.name}>{collaborator.NAME}</b>
-                <div className={styles.position}>
-                  <p className={styles.dhlEmployee}>{collaborator.COMPANYNAME} - Employee</p>
-                </div>
-                <img className={styles.image21Icon} alt="" src="/image-21@2x.png" />
+          {collaborators.map((collaborator, index) => (
+            <div key={index} className={styles.employee}>
+              <div className={styles.bigCard5}>
+                <div className={styles.bigCardChild} />
               </div>
-            );
-          })}
+              <div className={styles.employee4Child} />
+              <b className={styles.name}>{collaborator.NAME}</b>
+              <div className={styles.position}>
+                <p className={styles.dhlEmployee}>
+                  {collaborator.COMPANYNAME} - Employee
+                </p>
+              </div>
+              <img
+                className={styles.image21Icon}
+                alt=""
+                src="/image-21@2x.png"
+              />
+            </div>
+          ))}
         </div>
 
-        <div
-          className={styles.generalConsuming}
-        >
+        <div className={styles.generalConsuming}>
           <div className={styles.bigCard9}>
             <div className={styles.bigCardChild} />
           </div>
-            <div className={styles.background} />
-              <ApexChartClass />
-            <div className={styles.graph}>
-              <div className={styles.graph1}>
-              
-              </div>
-            
-            </div>
+          <div className={styles.background} />
+          <ApexChartClass />
+          <div className={styles.graph}>
+            <div className={styles.graph1}></div>
           </div>
+        </div>
         <div className={styles.generalOverview}>
           <div className={styles.divider} />
           <div className={styles.generalOverview1}>General Overview</div>
