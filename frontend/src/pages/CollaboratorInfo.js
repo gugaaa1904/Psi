@@ -125,9 +125,11 @@ class ApexChartClass extends Component {
 const CollaboratorInfo = () => {
   const navigate = useNavigate();
   const [averageWeeklyUsage, setAverageWeeklyUsage] = useState(null);
+  const [averageMonthlyUsage, setAverageMonthlyUsage] = useState(null);
   const [minDailyUsage, setMinDailyUsage] = useState(null);
   const [maxDailyUsage, setMaxDailyUsage] = useState(null);
   const [collaborators, setCollaborators] = useState([]);
+  const [selectedInterval, setSelectedInterval] = useState('weekly');
   
   
   const onSettingsContainerClick = useCallback(() => {
@@ -156,25 +158,22 @@ const CollaboratorInfo = () => {
 
   useEffect(() => {
     const companyID = sessionStorage.getItem('company_id');
-    // Função para buscar os dados do backend
     const fetchData = async () => {
       try {
         const companyId = sessionStorage.getItem('company_id');
-        const response = await fetch(`http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}`); 
+        const response = await fetch(`http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}&interval=${selectedInterval}`);
         const data = await response.json();
         setAverageWeeklyUsage(data[0].average_weekly_usage);
+        setAverageMonthlyUsage(data[0].average_monthly_usage);
         setMinDailyUsage(data[0].min_daily_usage);
         setMaxDailyUsage(data[0].max_daily_usage);
-
-
       } catch (error) {
         console.error('Erro ao buscar dados do backend:', error);
       }
     };
 
-    // Chama a função de busca de dados ao montar o componente
     fetchData();
-  }, []); 
+  }, [selectedInterval]); // Adicione selectedInterval à lista de dependências
 
   useEffect(() => {
     const companyID = sessionStorage.getItem('company_id');
@@ -183,7 +182,7 @@ const CollaboratorInfo = () => {
         const response = await fetch(`http://localhost/Psi/backend/services/listcollaborator.php?company_id=${companyID}`);
         const data = await response.json();
         setCollaborators(data);
-        console.log(data); // Adicione esta linha para verificar os dados recebidos
+        console.log(data);
       } catch (error) {
         console.error('Erro ao buscar dados do backend:', error);
       }
@@ -204,7 +203,7 @@ const CollaboratorInfo = () => {
           </div>
           <div className={styles.bg} />
           
-          <div className={styles.data}>{maxDailyUsage && `${maxDailyUsage} kWh`}</div>
+          <div className={styles.data}>{maxDailyUsage && `${maxDailyUsage} kW`}</div>
           <img className={styles.redIcon} alt="" src="/red-icon1.svg" />
           <div className={styles.maxPowerAchieved1}>Max Power Achieved</div>
         </div>
@@ -216,30 +215,52 @@ const CollaboratorInfo = () => {
           </div>
           <div className={styles.bg1} />
           
-          <div className={styles.data1}>{minDailyUsage && `${minDailyUsage} kWh`}</div>
+          <div className={styles.data1}>{minDailyUsage && `${minDailyUsage} kW`}</div>
           <div className={styles.minPowerAchieved1}>Min Power Achieved</div>
           <img className={styles.greenIcon} alt="" src="/green-icon.svg" />
         </div>
+        <div className={styles.averageEnergyConsumptionIn} style={{ position: 'relative', zIndex: '2' }}>
+          <div className={styles.bigCard2}>
+            <div className={styles.bigCardChild} />
+          </div>
+          <div className={styles.backgroundCopy2} />
+          <div className={styles.data3}>
+            {selectedInterval === 'weekly' ? (averageWeeklyUsage && `${averageWeeklyUsage} kWh`) : (averageMonthlyUsage && `${averageMonthlyUsage} kWh`)}
+          </div>
+          <div className={styles.averageEnergyConsumption}>{`Average Energy Consumption in kWh `}</div>
+
+          {/* Seletor para escolher entre 'monthly' e 'weekly' */}
+          <select 
+            value={selectedInterval}
+            onChange={(e) => setSelectedInterval(e.target.value)}
+            style={{ position: 'absolute', zIndex: '1' }}
+          >
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+
         <div className={styles.averageCostIn}>
           <div className={styles.bigCard2}>
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.backgroundCopy2} />
-          <div className={styles.data2}>{averageWeeklyUsage && `${(averageWeeklyUsage * 0.2).toFixed(1)} €`}</div>
-          <div className={styles.averageCostIn1}>{`Average Cost in € `}</div>
-        </div>
-        <div
-          className={styles.averageEnergyConsumptionIn}
-        >
-          <div className={styles.bigCard2}>
-            <div className={styles.bigCardChild} />
+          <div className={styles.data2}>
+            {selectedInterval === 'weekly' ? (averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`) : (averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`)}
           </div>
-          <div className={styles.backgroundCopy2} />
-          <div className={styles.data3}>{averageWeeklyUsage && `${averageWeeklyUsage} kWh`}</div>
-          <div
-            className={styles.averageEnergyConsumption}
-          >{`Average Energy Consumption in kWh `}</div>
+          <div className={styles.averageCostIn1}>{`Average Cost in € `}</div>
+          
+          {/* Seletor para escolher entre 'weekly' e 'monthly' */}
+          <select 
+            value={selectedInterval}
+            onChange={(e) => setSelectedInterval(e.target.value)}
+            style={{ position: 'absolute', right: '0', top: '0', zIndex: '1' }}
+          >
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
         </div>
+
         <div className={styles.listOfCollaborators}>
           {collaborators.map((collaborator, index) => {
             console.log(collaborator); // Adicione esta linha para verificar cada colaborador

@@ -20,7 +20,8 @@ $sql = "SELECT
     AVG(c.DAILY_USAGE) AS average_daily_usage,
     MIN(c.DAILY_USAGE) AS min_daily_usage,
     MAX(c.DAILY_USAGE) AS max_daily_usage,
-    AVG(c.WEEKLY_USAGE) AS average_weekly_usage
+    AVG(c.WEEKLY_USAGE) AS average_weekly_usage,
+    AVG(c.MONTHLY_USAGE) AS average_monthly_usage
 FROM consuming c
 JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
 WHERE col.COMPANY_ID = $companyId";
@@ -38,6 +39,7 @@ if ($result) {
             'min_daily_usage' => number_format($row["min_daily_usage"], 1),
             'max_daily_usage' => number_format($row["max_daily_usage"], 1),
             'average_weekly_usage' => number_format($row["average_weekly_usage"], 1),
+            'average_monthly_usage' => number_format($row["average_monthly_usage"], 1),
         );
     }
 
