@@ -37,8 +37,20 @@ const ApexChart = () => {
         opacity: 0.5,
       },
     },
+    yaxis: {
+      title: {
+        text: " € (EURO) ",
+      },
+    },
     xaxis: {
       categories: [], // Preencheremos isso com os valores da coluna "DAY"
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+          return " € " + val;
+        },
+      },
     },
   });
 
@@ -56,7 +68,7 @@ const ApexChart = () => {
       setSeries([
         {
           name: 'Consuming',
-          data: dataFromServer.map(item => item.DAILY_USAGE), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
+          data: dataFromServer.map(item => item.DAILY_USAGE * 2.5), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
         },
       ]);
 

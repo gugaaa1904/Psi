@@ -13,14 +13,14 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-$companyId = $_GET['company_id'];
+$company_id = $_GET['company_id'];
 // Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE
 $sql = "SELECT 
             AVG(WEEKLY_USAGE) AS average_weekly_usage,
             AVG(MONTHLY_USAGE) AS average_monthly_usage
         FROM consuming c
         JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
-        WHERE col.COMPANY_ID = $companyId";
+        WHERE col.COMPANY_ID = $company_id";
 
 $result = $conn->query($sql);
 

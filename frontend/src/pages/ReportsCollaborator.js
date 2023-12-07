@@ -1,12 +1,218 @@
-import { useState, useCallback } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./ReportsCollaborator.module.css";
+import React, { useState, useEffect, useCallback , Component } from "react";
+import ReactApexChart from "react-apexcharts";
+import axios from 'axios';
+
+const ApexChart = () => {
+  const [series, setSeries] = useState([]);
+  const [options, setOptions] = useState({
+    chart: {
+      height: 350,
+      type: "line",
+      zoom: {
+        enabled: false,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "straight",
+    },
+    title: {
+      text: "Daily Activity",
+      align: "center",
+      style: {
+        fontFamily: "Inter, sans-serif",
+      },
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5,
+      },
+    },
+    xaxis: {
+      categories: [], // Preencheremos isso com os valores da coluna "DAY"
+    },
+  });
+
+  // Função para buscar dados do servidor
+  const fetchData = useCallback(async () => {
+    try {
+      // Substitua a URL abaixo pela URL correta do seu arquivo PHP
+      const collaboratorId = sessionStorage.getItem('collaborator_id');
+      const response = await axios.get(`http://localhost/Psi/backend/services/report.php?collaborator_id=${collaboratorId}`);
+      console.log(response.data);
+      // Extrai os dados da resposta
+      const dataFromServer = response.data;
+
+      // Atualiza o estado da série com os dados do servidor
+      setSeries([
+        {
+          name: 'Consuming',
+          data: dataFromServer.map(item => item.DAILY_USAGE), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
+        },
+      ]);
+
+      // Atualiza o estado das opções com os valores da coluna "DAY" no eixo X
+      setOptions(prevOptions => ({
+        ...prevOptions,
+        xaxis: {
+          ...prevOptions.xaxis,
+          categories: dataFromServer.map(item => item.DAY), // Usamos os valores da coluna "DAY" no eixo X
+        },
+      }));
+    } catch (error) {
+      console.error('Erro ao buscar dados do servidor:', error);
+    }
+  }, []);
+
+  // Chama a função para buscar dados ao montar o componente
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height={350}
+      />
+    </div>
+  );
+};
+
+
+class ApexChartClass extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      series: [
+        {
+          name: "Consuming",
+          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
+        },
+        {
+          name: "Plafond based on Contract",
+          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
+        },
+      ],
+      options: {
+        chart: {
+          type: "bar",
+          height: 350,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"],
+        },
+        title: {
+          text: "Monthly Expenses",
+          align: "center",
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
+        },
+        xaxis: {
+          categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
+        },
+        yaxis: {
+          title: {
+            text: " € (EURO) ",
+          },
+        },
+        fill: {
+          opacity: 1,
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return " € " + val;
+            },
+          },
+        },
+      },
+    };
+  }
+
+  fetchData = async () => {
+    try {
+      const collaboratorId = sessionStorage.getItem('collaborator_id');
+      const response = await axios.get(`http://localhost/Psi/backend/services/report.php?collaborator_id=${collaboratorId}`);
+      const dataFromServer = response.data;
+
+      // Preencher o array de Consuming multiplicando por 2.5
+      const consumingData = dataFromServer.map((item) => item.MONTHLY_USAGE * 2.5);
+
+      // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
+      const plafondData = Array(consumingData.length).fill(50);
+
+      this.setState({
+        series: [
+          {
+            name: "Consuming",
+            data: consumingData,
+          },
+          {
+            name: "Plafond based on Contract",
+            data: plafondData,
+          },
+        ],
+        options: {
+          ...this.state.options,
+          xaxis: {
+            ...this.state.options.xaxis,
+            categories: dataFromServer.map((item) => item.MONTH_YEAR),
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Erro ao buscar dados do servidor:", error);
+    }
+  };
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  render() {
+    return (
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={350}
+        />
+      </div>
+    );
+  }
+}
+
 
 const ReportsCollaborator = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
+  const [selectedMonth, setSelectedMonth] = useState(1); // Valor padrão ou vazio
+  const [monthlyUsageData, setMonthlyUsageData] = useState([]);
 
   const onActivityContainerClick = useCallback(() => {
     navigate("/activity");
@@ -44,6 +250,59 @@ const ReportsCollaborator = () => {
     navigate("/dashboard");
   }, [navigate]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem('collaborator_id');
+        console.log(selectedMonth);
+        const response = await fetch(
+          "http://localhost/Psi/backend/services/reportpowermonthly.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ collaborator_id: collaboratorId, month: selectedMonth }),
+          }
+        )
+          
+        const data = await response.json();
+
+        console.log('Data from server:', data); // Adiciona esta linha para verificar a estrutura dos dados
+  
+        if (data.status === 'sucess') {
+          const monthlyUsage = {
+            DAY: data.DAY,
+            MONTH_YEAR: data.MONTH_YEAR,
+            DAILY_USAGE: data.DAILY_USAGE,
+            DAILY_RUNTIME: data.DAILY_RUNTIME,
+            WEEKLY_USAGE: data.WEEKLY_USAGE,
+            MONTHLY_USAGE: data.MONTHLY_USAGE,
+          };
+
+          setMonthlyUsageData([monthlyUsage]);
+        } else {
+          console.error(`Erro ao obter dados para o mês ${selectedMonth}:`, data.error);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    };
+  
+    fetchData();
+  }, [selectedMonth])
+
+  
+
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+  };
+
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
   return (
     <>
       <div className={styles.reportsCollaborator}>
@@ -61,13 +320,7 @@ const ReportsCollaborator = () => {
               kWh the user needs to be careful with the number of charges and
               how long the plug is on.
             </b>
-            <b className={styles.analysisIfTheContainer}>
-              <p className={styles.analysisIfThe}>
-                Analysis: If the line is below the 100% mark means the user
-                spent below the contract´s plafond, and above the 100% mark
-                means the user spent more then the contract plafond.
-              </p>
-            </b>
+            
             <b className={styles.analysisIfTheContainer1}>
               <p className={styles.analysisIfThe}>
                 Analysis: If the socket is consuming 0 KwH and has not been
@@ -81,11 +334,21 @@ const ReportsCollaborator = () => {
                 <div className={styles.bigCardChild} />
               </div>
               <div className={styles.powerChild} />
-              <div className={styles.kwh}>
-                <p className={styles.analysisIfThe}>1526 kWh</p>
+              <div>
+              <div className={styles.powerChild} />
+              <div className={styles.powerInKwhContainer}>
+                <p className={styles.kwh}>{monthlyUsageData.length > 0
+                  ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh`
+                  : 'Loading...'}</p>
                 <p className={styles.blankLine}>&nbsp;</p>
               </div>
-              <b className={styles.power1}>Power</b>
+              <select className={styles.monthsDropDown} id="meses" onChange={handleMonthChange} value={selectedMonth} style={{ zIndex: 9999 }}>
+                {/* Gera as opções do select usando os nomes dos meses */}
+                {monthNames.map((monthName, index) => (
+                  <option key={index} value={index + 1}>{monthName}</option>
+                ))}
+              </select>
+            </div>
               <div className={styles.nbChartsGauge5Wrapper}>
                 <div className={styles.gauge2Icon}>
                   <img
@@ -103,19 +366,6 @@ const ReportsCollaborator = () => {
                     alt=""
                     src="/divider-40.svg"
                   />
-                  <div className={styles.txts11}>
-                    <div className={styles.div}>0</div>
-                    <div className={styles.div1}>6</div>
-                    <div className={styles.w}>w</div>
-                    <div className={styles.div2}>18</div>
-                    <div className={styles.div3}>24</div>
-                    <div className={styles.div4}>30</div>
-                    <div className={styles.div5}>36</div>
-                    <div className={styles.div6}>42</div>
-                    <div className={styles.div7}>48</div>
-                    <div className={styles.div8}>54</div>
-                    <div className={styles.div9}>60</div>
-                  </div>
                   <img
                     className={styles.point3Icon}
                     alt=""
@@ -125,58 +375,10 @@ const ReportsCollaborator = () => {
               </div>
             </div>
             <div className={styles.monthlyExpenses}>
-              <div className={styles.bigCard1}>
-                <div className={styles.bigCardChild} />
-              </div>
-              <div className={styles.november}>November</div>
-              <div className={styles.monthlyExpenses1}>Monthly Expenses</div>
-              <div className={styles.line}>
-                <div className={styles.line1} />
-                <div className={styles.line2} />
-                <div className={styles.line3} />
-                <div className={styles.line4} />
-                <div className={styles.line5} />
-                <div className={styles.julBar2} />
-                <div className={styles.julBar} />
-              </div>
-              <div className={styles.div10}>50€</div>
-              <div className={styles.div11}>25€</div>
-              <div className={styles.div12}>0€</div>
-              <div className={styles.div13}>100€</div>
-              <div className={styles.div14}>75€</div>
+              <ApexChartClass />
             </div>
             <div className={styles.activity} onClick={onActivityContainerClick}>
-              <div className={styles.bigCard2}>
-                <div className={styles.bigCardChild} />
-              </div>
-              <img
-                className={styles.backgroundIcon}
-                alt=""
-                src="/background.svg"
-              />
-              <img className={styles.lineIcon} alt="" src="/line.svg" />
-              <img
-                className={styles.lineChartIcon}
-                alt=""
-                src="/line-chart.svg"
-              />
-              <div className={styles.days}>
-                <div className={styles.sun}>Sun</div>
-                <div className={styles.mon}>Mon</div>
-                <div className={styles.tue}>Tue</div>
-                <div className={styles.wed}>Wed</div>
-                <div className={styles.thu}>Thu</div>
-                <div className={styles.fri}>Fri</div>
-                <div className={styles.sat}>Sat</div>
-              </div>
-              <div className={styles.kwh2}>
-                <div className={styles.kwh3}>20 kWh</div>
-                <div className={styles.kwh4}>15 kWh</div>
-                <div className={styles.kwh5}>10 kWh</div>
-                <div className={styles.kwh6}>5 kWh</div>
-                <div className={styles.kwh7}>0 kWh</div>
-              </div>
-              <b className={styles.activity1}>Activity</b>
+              <ApexChart />
             </div>
             <div
               className={styles.variationBasedOnContract}
@@ -191,34 +393,6 @@ const ReportsCollaborator = () => {
                 src="/background1.svg"
               />
               <div className={styles.kwhCompletionRate} />
-              <div className={styles.months}>
-                <div className={styles.jan}>Jan</div>
-                <div className={styles.jan}>Feb</div>
-                <div className={styles.jan}>Mar</div>
-                <div className={styles.jan}>Apr</div>
-                <div className={styles.jan}>May</div>
-                <div className={styles.jan}>Jun</div>
-                <div className={styles.jan}>Jul</div>
-                <div className={styles.jan}>Aug</div>
-                <div className={styles.jan}>Sep</div>
-                <div className={styles.jan}>Oct</div>
-                <div className={styles.jan}>Nov</div>
-                <div className={styles.jan}>Dec</div>
-              </div>
-              <div className={styles.percentage}>
-                <div className={styles.sinceLastMonth}>
-                  +2,5% since last month
-                </div>
-                <b className={styles.b}>85%</b>
-              </div>
-              <div className={styles.kwhCompletionRate1}>
-                kWh Completion Rate - Contract
-              </div>
-              <img className={styles.graphIcon} alt="" src="/graph.svg" />
-              <b className={styles.variationBasedOn}>
-                Variation based on Contract
-              </b>
-              <div className={styles.div15}>100%</div>
             </div>
           </div>
           <div className={styles.header}>

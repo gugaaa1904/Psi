@@ -3,12 +3,28 @@ import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Timeline.module.css";
-import axios from 'axios';
+import axios from "axios";
 
 const Timeline = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [timelineData, setTimelineData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem("collaborator_id");
+        const response = await axios.get(
+          `http://localhost/Psi/backend/services/timeline.php?collaborator_id=${collaboratorId}`
+        );
+        setTimelineData(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar dados da API:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
@@ -37,29 +53,6 @@ const Timeline = () => {
   const onDashboardContainerClick = useCallback(() => {
     navigate("/dashboard");
   }, [navigate]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const collaboratorId = sessionStorage.getItem('collaborator_id');
-        const response = await axios.get(`http://localhost/Psi/backend/services/consuming.php?company_id=${collaboratorId}`);
-        setTimelineData(response.data);
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const renderTimeline = () => {
-    return timelineData.map((entry, index) => (
-      <li key={index} className={styles.noData}>
-        <b>{`${entry.DAY}/${entry.MONTH_YEAR} -`}</b>
-        <span className={styles.span11}>{` ${(entry.DAILY_USAGE * 2.5).toFixed(2)}€`}</span>
-      </li>
-    ));
-  };
 
   return (
     <>
@@ -290,7 +283,12 @@ const Timeline = () => {
             <div className={styles.line} />
             <div className={styles.tuesday23Container}>
               <ul className={styles.november5October6Septemb}>
-                {renderTimeline()}
+                {timelineData.map((item) => (
+                  <li key={item.DATE_USAGE}>
+                    <span>{item.DATE_USAGE} - </span>
+                    <span className={styles.span}>{item.DAILY_USAGE}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -301,64 +299,6 @@ const Timeline = () => {
               src="/background4.svg"
             />
             <div className={styles.lastChargesMadeLast5DaysChild} />
-            <div className={styles.div30}>
-              <div className={styles.div31}>Tuesday , 23</div>
-              <div className={styles.content1}>
-                <img className={styles.contentChild} alt="" src="/line-2.svg" />
-                <div className={styles.div32}>2,46€</div>
-              </div>
-              <img className={styles.pointIcon} alt="" src="/point.svg" />
-            </div>
-            <div className={styles.div33}>
-              <div className={styles.div31}>Thursday, 11</div>
-              <div className={styles.content1}>
-                <img className={styles.contentChild} alt="" src="/line-2.svg" />
-                <div className={styles.div32}>0,96€</div>
-              </div>
-              <img className={styles.pointIcon} alt="" src="/point.svg" />
-            </div>
-            <div className={styles.div36}>
-              <div className={styles.content3}>
-                <div className={styles.div37}>5,90€</div>
-                <img
-                  className={styles.contentChild}
-                  alt=""
-                  src="/line-21.svg"
-                />
-              </div>
-              <div className={styles.div38}>Friday, 19</div>
-              <img className={styles.pointIcon2} alt="" src="/point.svg" />
-            </div>
-            <div className={styles.div39}>
-              <div className={styles.content3}>
-                <div className={styles.div37}>1,17€</div>
-                <img
-                  className={styles.contentChild}
-                  alt=""
-                  src="/line-21.svg"
-                />
-              </div>
-              <div className={styles.div41}>Saturday, 6</div>
-              <img className={styles.pointIcon2} alt="" src="/point.svg" />
-            </div>
-            <div className={styles.div42}>
-              <div className={styles.div43}>Monday, 1</div>
-              <div className={styles.content5}>
-                <img className={styles.contentChild} alt="" src="/line-2.svg" />
-                <div className={styles.div44}>0,10€</div>
-              </div>
-              <img className={styles.pointIcon} alt="" src="/point.svg" />
-            </div>
-            <div className={styles.lastChargesMadeContainer}>
-              <b>Last Charges Made</b>
-              <span>{` `}</span>
-              <span className={styles.last5Days}>(Last 5 days charges)</span>
-            </div>
-            <img
-              className={styles.chevronDoubleRightIcon}
-              alt=""
-              src="/chevrondoubleright.svg"
-            />
           </div>
         </div>
         <div className={styles.header}>

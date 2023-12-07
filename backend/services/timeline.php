@@ -5,10 +5,6 @@ $username = "root";
 $password = "";
 $dbname = "infocharge";
 
-
-// Parâmetro do mês (verifica se foi passado na solicitação)
-//$selectedMonth = isset($_GET['month']) ? intval($_GET['month']) : null;
-
 // Criando a conexão com o banco de dados
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -17,19 +13,32 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-$collaboratorId = $_GET['company_id'];
+$collaboratorId = $_GET['collaborator_id'];
+
 // Consulta SQL para obter os dados desejados, com filtro opcional do mês
-$sql = "SELECT DAY, MONTH_YEAR, DAILY_USAGE, DAILY_RUNTIME, WEEKLY_USAGE, MONTHLY_USAGE FROM consuming WHERE WHERE COLLABORATOR_ID = ?";
+$sql = "SELECT DAY, MONTH_YEAR, DAILY_USAGE, DAILY_RUNTIME, WEEKLY_USAGE, MONTHLY_USAGE FROM consuming WHERE COLLABORATOR_ID = ?";
+$stmt = $conn->prepare($sql);
 
+// Vincula o valor do parâmetro
+$stmt->bind_param("s", $collaboratorId);
 
-$result = $conn->query($sql);
+// Executa a consulta
+$stmt->execute();
+
+// Obtém os resultados
+$result = $stmt->get_result();
+
+$dados = array();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        // Formatação desejada
+        $formattedDate = $row["DAY"] . '/' . $row["MONTH_YEAR"];
+        $formattedUsage = $row["DAILY_USAGE"] . ' kW';
+
         $dados[] = array(
-            'DAY' => $row["DAY"],
-            'MONTH_YEAR' => $row["MONTH_YEAR"],
-            'DAILY_USAGE' => $row["DAILY_USAGE"],
+            'DATE_USAGE' => $formattedDate,
+            'DAILY_USAGE' => $formattedUsage,
         );
     }
 
@@ -38,7 +47,5 @@ if ($result->num_rows > 0) {
     echo json_encode(array()); // Retorna um array vazio se não houver dados
 }
 
-
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>
