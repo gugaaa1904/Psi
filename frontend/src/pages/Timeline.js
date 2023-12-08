@@ -9,6 +9,7 @@ const Timeline = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [timelineData, setTimelineData] = useState([]);
+  const [monthlyChargeData, setMonthlyChargeData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,6 +54,23 @@ const Timeline = () => {
   const onDashboardContainerClick = useCallback(() => {
     navigate("/dashboard");
   }, [navigate]);
+
+  useEffect(() => {
+    // Função para obter dados do backend
+    const fetchData = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem("collaborator_id");
+        const response = await axios.get(
+          `http://localhost/Psi/backend/services/timeline2.php?collaborator_id=${collaboratorId}`
+        );
+        setMonthlyChargeData(response.data);
+      } catch (error) {
+        console.error("Erro ao obter dados do backend:", error);
+      }
+    };
+
+    fetchData(); // Chama a função ao montar o componente
+  }, []);
 
   return (
     <>
@@ -224,54 +242,15 @@ const Timeline = () => {
               Number of Charges Made Monthly
             </b>
             <div className={styles.line} />
-            <b className={styles.november5OctoberContainer}>
-              <ul className={styles.november5October6Septemb}>
-                <li className={styles.noData}>
-                  <span>{`November: `}</span>
-                  <span className={styles.span}>5</span>
+
+            <ul className={styles.november5October6Septembb}>
+              {monthlyChargeData.map((monthData, index) => (
+                <li key={index} className={styles.noData}>
+                  <span>{`${monthData.DATE_USAGE}: `}</span>
+                  <span className={styles.span}>{monthData.TOTAL_CHARGES}</span>
                 </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`October: `}</span>
-                  <span className={styles.span1}>6</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`September: `}</span>
-                  <span className={styles.span2}>4</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`August: `}</span>
-                  <span className={styles.span3}>2</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`July: `}</span>
-                  <span className={styles.span3}>2</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`June: `}</span>
-                  <span className={styles.span}>6</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`May: `}</span>
-                  <span className={styles.span}>5</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`April: `}</span>
-                  <span className={styles.span}>6</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`March: `}</span>
-                  <span className={styles.span2}>4</span>
-                </li>
-                <li className={styles.noData}>
-                  <span className={styles.october}>{`February: `}</span>
-                  <span className={styles.span}>6</span>
-                </li>
-                <li>
-                  <span className={styles.october}>{`January: `}</span>
-                  <span className={styles.span3}>2</span>
-                </li>
-              </ul>
-            </b>
+              ))}
+            </ul>
           </div>
           <div className={styles.historyOfCharges}>
             <img

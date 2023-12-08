@@ -23,35 +23,34 @@ class PowerMonthlyService
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $jsonInput = file_get_contents("php://input");
             $dadosRecebidos = json_decode($jsonInput, true);
-        
+
             $collaboratorId = $dadosRecebidos['collaborator_id'];
             $selectedMonth = $dadosRecebidos['month'];
             $stmt = $this->conn->prepare("SELECT DAY,MONTH_YEAR,DAILY_USAGE,DAILY_RUNTIME,WEEKLY_USAGE,MONTHLY_USAGE FROM consuming WHERE COLLABORATOR_ID=? AND MONTH_YEAR=?");
-            $stmt->bind_param("is", $collaboratorId,$selectedMonth);
+            $stmt->bind_param("is", $collaboratorId, $selectedMonth);
             $stmt->execute();
             $stmt->bind_result($day, $month_year, $daily_usage, $daily_runtime, $weekly_usage, $monthly_usage);
 
-            if($stmt->fetch()){
+            if ($stmt->fetch()) {
                 $this->response('sucess', array(
-                    'DAY' => $day, 
-                    'MONTH_YEAR'=> $month_year,
+                    'DAY' => $day,
+                    'MONTH_YEAR' => $month_year,
                     'DAILY_USAGE' => $daily_usage,
                     'DAILY_RUNTIME' => $daily_runtime,
                     'WEEKLY_USAGE' => $weekly_usage,
                     'MONTHLY_USAGE' => $monthly_usage,
                 ));
-            }else{
+            } else {
                 $this->response('failed', array('error' => 'Consuming not found for id: ' . $collaboratorId));
             }
             $stmt->close();
         }
-            
     }
 
     private function response($status, $data = array())
     {
         $response = array('status' => $status);
-        
+
         if (!empty($data)) {
             $response = array_merge($response, $data);
         }

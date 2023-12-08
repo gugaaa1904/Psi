@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useCallback , Component } from "react";
+import React, { useState, useEffect, useCallback, Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import ReactApexChart from "react-apexcharts";
-import axios from 'axios';
-
-
+import axios from "axios";
 
 const ApexChart = () => {
   const [series, setSeries] = useState([]);
@@ -58,8 +56,10 @@ const ApexChart = () => {
   const fetchData = useCallback(async () => {
     try {
       // Substitua a URL abaixo pela URL correta do seu arquivo PHP
-      const collaboratorId = sessionStorage.getItem('collaborator_id');
-      const response = await axios.get(`http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`);
+      const collaboratorId = sessionStorage.getItem("collaborator_id");
+      const response = await axios.get(
+        `http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`
+      );
       console.log(response.data);
       // Extrai os dados da resposta
       const dataFromServer = response.data;
@@ -67,21 +67,23 @@ const ApexChart = () => {
       // Atualiza o estado da série com os dados do servidor
       setSeries([
         {
-          name: 'Consuming',
-          data: dataFromServer.map(item => item.DAILY_USAGE * 2.5), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
+          name: "Consuming",
+          data: dataFromServer.map((item) =>
+            parseFloat((item.DAILY_USAGE * 0.2).toFixed(1))
+          ), // Arredonda para a primeira casa decimal
         },
       ]);
 
       // Atualiza o estado das opções com os valores da coluna "DAY" no eixo X
-      setOptions(prevOptions => ({
+      setOptions((prevOptions) => ({
         ...prevOptions,
         xaxis: {
           ...prevOptions.xaxis,
-          categories: dataFromServer.map(item => item.DAY), // Usamos os valores da coluna "DAY" no eixo X
+          categories: dataFromServer.map((item) => item.DAY), // Usamos os valores da coluna "DAY" no eixo X
         },
       }));
     } catch (error) {
-      console.error('Erro ao buscar dados do servidor:', error);
+      console.error("Erro ao buscar dados do servidor:", error);
     }
   }, []);
 
@@ -101,7 +103,6 @@ const ApexChart = () => {
     </div>
   );
 };
-
 
 class ApexChartClass extends Component {
   constructor(props) {
@@ -169,12 +170,16 @@ class ApexChartClass extends Component {
 
   fetchData = async () => {
     try {
-      const collaboratorId = sessionStorage.getItem('collaborator_id');
-      const response = await axios.get(`http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`);
+      const collaboratorId = sessionStorage.getItem("collaborator_id");
+      const response = await axios.get(
+        `http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`
+      );
       const dataFromServer = response.data;
 
       // Preencher o array de Consuming multiplicando por 2.5
-      const consumingData = dataFromServer.map((item) => item.MONTHLY_USAGE * 2.5);
+      const consumingData = dataFromServer.map(
+        (item) => item.MONTHLY_USAGE * 0.2
+      );
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
       const plafondData = Array(consumingData.length).fill(50);
@@ -342,8 +347,6 @@ class ApexChartt extends React.Component {
   }
 }
 
-
-
 const Dashboard = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
@@ -381,7 +384,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const collaboratorId = sessionStorage.getItem('collaborator_id');
+        const collaboratorId = sessionStorage.getItem("collaborator_id");
         console.log(selectedMonth);
         const response = await fetch(
           "http://localhost/Psi/backend/services/powermonthly.php",
@@ -390,15 +393,18 @@ const Dashboard = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ collaborator_id: collaboratorId, month: selectedMonth }),
+            body: JSON.stringify({
+              collaborator_id: collaboratorId,
+              month: selectedMonth,
+            }),
           }
-        )
-          
+        );
+
         const data = await response.json();
 
-        console.log('Data from server:', data); // Adiciona esta linha para verificar a estrutura dos dados
-  
-        if (data.status === 'sucess') {
+        console.log("Data from server:", data); // Adiciona esta linha para verificar a estrutura dos dados
+
+        if (data.status === "sucess") {
           const monthlyUsage = {
             DAY: data.DAY,
             MONTH_YEAR: data.MONTH_YEAR,
@@ -410,25 +416,36 @@ const Dashboard = () => {
 
           setMonthlyUsageData([monthlyUsage]);
         } else {
-          console.error(`Erro ao obter dados para o mês ${selectedMonth}:`, data.error);
+          console.error(
+            `Erro ao obter dados para o mês ${selectedMonth}:`,
+            data.error
+          );
         }
       } catch (error) {
-        console.error('Erro ao buscar dados:', error);
+        console.error("Erro ao buscar dados:", error);
       }
     };
-  
-    fetchData();
-  }, [selectedMonth])
 
-  
+    fetchData();
+  }, [selectedMonth]);
 
   const handleMonthChange = (event) => {
     setSelectedMonth(event.target.value);
   };
 
   const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   return (
@@ -444,9 +461,7 @@ const Dashboard = () => {
               {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
             </div>
           </div>
-          <div
-            className={styles.variationBasedOnContract}
-          >
+          <div className={styles.variationBasedOnContract}>
             <div className={styles.bigCard1}>
               <div className={styles.bigCardChild} />
             </div>
@@ -464,15 +479,24 @@ const Dashboard = () => {
             <div>
               <div className={styles.powerChild} />
               <div className={styles.powerInKwhContainer}>
-                <p className={styles.kwh}>{monthlyUsageData.length > 0
-                  ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh`
-                  : 'Loading...'}</p>
+                <p className={styles.kwh}>
+                  {monthlyUsageData.length > 0
+                    ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh`
+                    : "Loading..."}
+                </p>
                 <p className={styles.blankLine}>&nbsp;</p>
               </div>
-              <select className={styles.monthsDropDown} id="meses" onChange={handleMonthChange} value={selectedMonth}>
+              <select
+                className={styles.monthsDropDown}
+                id="meses"
+                onChange={handleMonthChange}
+                value={selectedMonth}
+              >
                 {/* Gera as opções do select usando os nomes dos meses */}
                 {monthNames.map((monthName, index) => (
-                  <option key={index} value={index + 1}>{monthName}</option>
+                  <option key={index} value={index + 1}>
+                    {monthName}
+                  </option>
                 ))}
               </select>
             </div>
