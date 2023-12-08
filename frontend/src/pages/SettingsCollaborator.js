@@ -69,9 +69,9 @@ const SettingsCollaborator = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            collaboratorId:collaboratorId,
-            oldPassword:oldPassword,
-            newPassword:newPassword
+            col:collaboratorId,
+            old:oldPassword,
+            new:newPassword
           })
         }
       )
@@ -151,33 +151,42 @@ const SettingsCollaborator = () => {
             <label>
               <p>Old Password</p>
               <input
-                type="password"
                 className={styles.oldPassword}
+                name="Old Password"
+                id="old_password"
                 placeholder="Enter your old Password"
+                type="password"
                 onChange={(e) => setOldPassword(e.target.value)}
               />
             </label>
             <label>
               <p>New Password</p>
               <input
-                type="password"
                 className={styles.newPassword}
+                name="New Password"
+                id="new_password"
                 placeholder="Enter your new Password"
+                type="password"
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </label>
             <label>
               <p>Confirm new Password</p>
               <input
-                type="password"
                 className={styles.confirmNewPassword}
+                name="Confirm new Password"
+                id="confirm_new_password"
                 placeholder="Confirm your new Password"
+                type="password"
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
-            <div>
-              <button type="submit">Change</button>
+             <div className={styles.changeButton}>
+              <button type="submit">
+                <b className={styles.button1}>Change</b>
+              </button>
             </div>
+
 
             {/* Exibe mensagens de erro/sucesso */}
             {message && <p>{message}</p>}

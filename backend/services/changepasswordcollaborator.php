@@ -17,9 +17,9 @@ class ChangePasswordService
 
     public function change_password()
     {
-        $collaboratorId = $_POST['collaboratorId'];
-        $oldPassword = $_POST['oldPassword'];
-        $newPassword = $_POST['newPassword'];
+        $collaboratorId = $_POST['col'];
+        $oldPassword = $_POST['old'];
+        $newPassword = $_POST['new'];
 
         $stmt = $this->conn->prepare("SELECT PASSWORD FROM collaborator WHERE COLLABORATOR_ID = ? AND PASSWORD = ?");
         $stmt->bind_param("is", $collaboratorId, $oldPassword);
