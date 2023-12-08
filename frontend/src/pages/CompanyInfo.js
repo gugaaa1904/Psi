@@ -256,7 +256,7 @@ const CompanyInfo = () => {
           </select>
         </div>
         <div className={styles.header}>
-          <div className={styles.generalOverview}>General Overview</div>
+          <div className={styles.generalOverview}>Company Information</div>
         </div>
       </div>
       <div className={styles.header1}>

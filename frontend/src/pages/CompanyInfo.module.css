@@ -272,16 +272,6 @@
   cursor: pointer;
 }
 
-.notificationsIcon {
-  position: absolute;
-  top: 27px;
-  left: 1509px;
-  border-radius: var(--br-981xl);
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  cursor: pointer;
-}
 .profile1 {
   top: 13px;
   letter-spacing: 0.2px;
