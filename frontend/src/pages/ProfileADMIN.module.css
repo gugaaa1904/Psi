@@ -19,30 +19,31 @@
 }
 .button {
   position: absolute;
-  top: 5px;
-  left: 24px;
+  top: 8px;
+  left: 25px;
   letter-spacing: 0.2px;
   line-height: 140%;
+  font-size: 16px;
 }
 
 .editPhotoButton {
   position: absolute;
-  top: 321px;
-  left: 220px;
+  top: 361px;
+  left: 300px;
   border-radius: var(--br-xs);
   background-color: var(--color-steelblue-100);
-  width: 111px;
+  width: 130px;
   cursor: pointer;
-  height: 27px;
+  height: 37px;
   color: var(--additional-white);
 }
 
 .profileIcon {
   position: absolute;
   top: 246px;
-  left: 77px;
-  width: 108px;
-  height: 111px;
+  left: 107px;
+  width: 158px;
+  height: 151px;
 }
 
 .profileInfoChild {
@@ -89,23 +90,24 @@
   top: 148px;
   left: 58px;
   display: inline-block;
-  width: 671px;
-  height: 384px;
+  width: 400px;
+  height: 304px;
+  font-size: 15px;
 }
 
 .name {
   position: absolute;
   top: 101px;
   left: 58px;
-  font-size: var(--heading-h4-size);
+  font-size: 25px;
   line-height: 125%;
 }
 
 .profileInfo {
   position: absolute;
-  top: 300px;
-  width: 200px;
-  height: 800px;
+  top: 350px;
+  width: 600px;
+  height: 450px;
   left: 100px;
   overflow: hidden;
 }
