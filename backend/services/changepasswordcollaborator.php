@@ -31,7 +31,7 @@ class ChangePasswordService
             $stmt->bind_result($passwordDb);
             if($stmt->fetch()){
                 $stmt2 = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
-                $stmt2->bind_param("si", $newPassword, $collaboratorId);
+                $stmt2->bind_param("is",$collaboratorId,$newPassword);
                 $stmt2->execute();
                 if($stmt2->fetch()){
                     $this->response('sucess');
