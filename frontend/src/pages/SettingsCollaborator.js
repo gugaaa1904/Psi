@@ -58,6 +58,7 @@ const SettingsCollaborator = () => {
   }, [navigate]);
 
   const handleSubmit = async () => {
+    e.preventDefault();
     try {
       const collaboratorId = sessionStorage.getItem('collaborator_id');
       const response = await fetch(
@@ -177,7 +178,7 @@ const SettingsCollaborator = () => {
 
             <div className={styles.changeButton}>
               <button type="submit">
-                <b className={styles.button1}>Change</b>
+                <b className={styles.changeButton}>Change</b>
               </button>
             </div>
 
