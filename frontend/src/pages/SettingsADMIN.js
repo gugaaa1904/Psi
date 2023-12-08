@@ -1,13 +1,11 @@
 import { useState, useCallback } from "react";
 import PopUpChangePassword from "../components/PopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
-import Notifications from "../components/Notifications";
 import { useNavigate } from "react-router-dom";
 import styles from "./SettingsADMIN.module.css";
 
 const SettingsADMIN = () => {
   const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] = useState(false);
-  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
   const [userOldpassword, setUserOldpassword] = useState("");
@@ -23,14 +21,6 @@ const SettingsADMIN = () => {
 
   const closePopUpChangePassword = useCallback(() => {
     setPopUpChangePasswordOpen(false);
-  }, []);
-
-  const openNotifications = useCallback(() => {
-    setNotificationsOpen(true);
-  }, []);
-
-  const closeNotifications = useCallback(() => {
-    setNotificationsOpen(false);
   }, []);
 
   const onHelpContainerClick = useCallback(() => {
@@ -137,7 +127,7 @@ const SettingsADMIN = () => {
                 your data is handled.
               </p>
             </div>
-            <div className={styles.divider} />
+            <div className={styles.divider1} />
             <div className={styles.title}>Privacy</div>
           </div>
 
@@ -147,7 +137,7 @@ const SettingsADMIN = () => {
           >
             <b className={styles.button1}>Change</b>
           </div>
-          
+
           <input
             className={styles.confirmNewPassword}
             name="Confirm new Password"
@@ -171,12 +161,14 @@ const SettingsADMIN = () => {
           />
           <div
             className={styles.changePassword}
-            onClick={() => onChangePassword(
-              document.getElementById("old_password").value,
-              document.getElementById("new_password").value,
-              document.getElementById("confirm_new_password").value
-            )}
-></div>
+            onClick={() =>
+              onChangePassword(
+                document.getElementById("old_password").value,
+                document.getElementById("new_password").value,
+                document.getElementById("confirm_new_password").value
+              )
+            }
+          ></div>
           <div className={styles.changePassword}>
             <div className={styles.tittle}>Change your password</div>
           </div>
@@ -196,21 +188,13 @@ const SettingsADMIN = () => {
           </div>
         </div>
         <div className={styles.header}>
-          <img
-            className={styles.notificationsIcon}
-            alt=""
-            src="/notifications.svg"
-            onClick={openNotifications}
-          />
           <b className={styles.settings}>Settings</b>
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings1}>
-            <img className={styles.settingsIcon} alt="" src="/settings1.svg" />
             <b className={styles.settings2}>Settings</b>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
             <div className={styles.help1}>Help</div>
           </div>
           <div className={styles.menu}>
@@ -240,11 +224,8 @@ const SettingsADMIN = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
           <div className={styles.line} />
-          <div className={styles.line1} />
-          <div className={styles.line2} />
-          <div className={styles.line3} />
-          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
       {isPopUpChangePasswordOpen && (
@@ -253,15 +234,6 @@ const SettingsADMIN = () => {
           onOutsideClick={closePopUpChangePassword}
         >
           <PopUpChangePassword onClose={closePopUpChangePassword} />
-        </PortalPopup>
-      )}
-      {isNotificationsOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeNotifications}
-        >
-          <Notifications onClose={closeNotifications} />
         </PortalPopup>
       )}
     </>

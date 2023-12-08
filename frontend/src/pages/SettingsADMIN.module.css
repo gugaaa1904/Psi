@@ -1,25 +1,28 @@
 .contentChild {
-  top: 168px;
-  left: 25px;
+  position: absolute;
+  top: 170px;
+  left: 32px;
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
-  width: 1139px;
-  height: 940px;
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  width: 1565px;
+  height: 900px;
 }
 .button,
-.contentChild,
 .logout {
   position: absolute;
 }
 .button {
   top: 4.5px;
-  left: 25.5px;
+  left: 28px;
   letter-spacing: 0.2px;
   line-height: 140%;
+  font-size: 14px;
+  color: white;
 }
 .logout {
-  top: 1038px;
-  left: 60px;
+  top: 928px;
+  left: 80px;
   border-radius: var(--br-xs);
   background-color: var(--color-tomato-100);
   width: 114px;
@@ -32,41 +35,56 @@
 .yourPrivacyIsContainer {
   position: absolute;
   top: 86px;
-  left: 14px;
-  font-weight: 300;
+  left: 44px;
+  font-weight: 500;
+  font-size: 13px;
   display: inline-block;
-  width: 1082px;
-  height: 298px;
+  width: 1282px;
+  height: 258px;
 }
 .divider {
-  width: 1200px;
-    height: 100px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: var(--border);
-    height: 1px;
-    overflow: hidden;
+  position: absolute;
+  width: 1560px;
+  height: 100px;
+  right: 0;
+  bottom: 0;
+  left: 5px;
+  background-color: var(--border);
+  height: 1px;
+  overflow: hidden;
 }
-.divider,
+
+.divider1 {
+  position: absolute;
+  width: 1480px;
+  height: 100px;
+  right: 0;
+  bottom: 0;
+  left: 40px;
+  background-color: var(--border);
+  height: 1px;
+  overflow: hidden;
+}
+
 .privacy,
 .title {
   position: absolute;
 }
 .title {
   top: calc(50% - 12px);
-  left: 24px;
+  left: 44px;
   line-height: 24px;
   font-weight: 600;
-  color: var(--font-primary);
+  font-size: 18px;
+  color: #005c7d;
 }
 .privacy {
   width: calc(100% - 104px);
-  top: 613px;
+  top: 583px;
   right: 65px;
   left: 39px;
   height: 64px;
-  color: var(--greyscale-900);
+  color: black;
 }
 .button1 {
   position: relative;
@@ -74,20 +92,22 @@
   line-height: 140%;
   text-align: center;
   top: 5px;
+  color: white;
+  font-size: 14px;
 }
 .changeButton,
 .confirmNewPassword,
 .newPassword,
 .oldPassword {
   position: absolute;
-  left: 60px;
+  left: 80px;
   border-radius: var(--br-xs);
   box-sizing: border-box;
 }
 .changeButton {
   top: 550px;
-  background-color: var(--color-steelblue-100);
-  width: 129px;
+  background-color: #005c7d;
+  width: 119px;
   text-align: center;
   height: 30px;
   align-items: center;
@@ -115,7 +135,7 @@
 .tittle {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 20px;
   letter-spacing: 0.2px;
   line-height: 125%;
   font-weight: 600;
@@ -128,8 +148,8 @@
   left: 60px;
   width: 217px;
   height: 23px;
-  font-size: var(--font-size-lg);
-  color: var(--greyscale-900);
+  font-size: 18px;
+  color: #005c7d;
 }
 .title1 {
   top: 4px;
@@ -159,9 +179,9 @@
 }
 .tab1 {
   top: calc(50% - 16px);
-  left: 131px;
+  left: 101px;
   border-radius: var(--br-9xs);
-  background-color: var(--color-steelblue-100);
+  background-color: #005c7d;
   box-shadow: var(--dp-elevation);
   width: 96px;
   height: 32px;
@@ -177,12 +197,12 @@
   left: 6.5px;
   border-radius: var(--br-5xs);
   background-color: var(--blue-grey-50);
-  width: 231px;
+  width: 201px;
   height: 40px;
 }
 .language {
   top: 202px;
-  left: 53px;
+  left: 73px;
   width: 244px;
   height: 55px;
   text-align: center;
@@ -194,36 +214,30 @@
   top: calc(50% - 12px);
   left: 24px;
   line-height: 24px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 15px;
 }
 .accessSecurity {
   position: absolute;
   width: calc(100% - 51px);
   top: 88px;
   right: 26px;
-  left: 25px;
+  left: 28px;
   height: 64px;
-  color: var(--font-primary);
+
 }
 .content {
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 250px;
-  background-color: var(--greyscale-50);
-  width: 1190px;
-  height: 900px;
+  background-color: #f5f5f5;
+  /* Light gray background */
+  width: 100%;
+  height: 1000px;
+  padding: 20px;
   overflow-y: auto;
 }
-.notificationsIcon {
-  position: absolute;
-  top: 27px;
-  left: 1459px;
-  border-radius: var(--br-981xl);
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-  cursor: pointer;
-}
+
 .settings {
   position: absolute;
   top: 29px;
@@ -235,67 +249,60 @@
   position: fixed;
   top: 0;
   left: 250px;
-  background-color: var(--additional-white);
-  width: 1790px;
+  background-color: #005c7d;
+  width: 1690px;
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
-  color: var(--greyscale-900);
+  color: white;
 }
 .settings2,
 .settingsIcon {
   position: absolute;
   top: 13px;
 }
-.settingsIcon {
-  left: 16px;
-  width: 22px;
-  height: 22px;
-  overflow: hidden;
-}
+
 .settings2 {
-  left: 54px;
+  left: 24px;
+  letter-spacing: 0.2px;
   line-height: 160%;
+  font-weight: 700;
 }
-.iconshelp,
+
 .settings1 {
-  position: absolute;
   left: 16px;
-}
-.settings1 {
-  top: 827px;
+  position: absolute;
+  top: 880px;
   border-radius: var(--br-xs);
-  background-color: var(--greyscale-50);
   width: 218px;
   height: 48px;
+  background-color: var(--greyscale-50);
   color: var(--color-steelblue-100);
 }
-.iconshelp {
-  top: 12px;
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
-}
+
 .help1 {
   position: absolute;
   top: 13px;
-  left: 56px;
+  left: 24px;
   letter-spacing: 0.2px;
-  line-height: 160%;
-  font-weight: 500;
+  width: 40px;
+  height: 16px;
 }
+
 .help,
 .profile1 {
   position: absolute;
   left: 16px;
 }
 .help {
-  top: 765px;
+  position: absolute;
+  top: 825px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
+
 .profile1 {
   top: 13px;
   letter-spacing: 0.2px;
@@ -335,85 +342,92 @@
 .addUser {
   top: 19px;
 }
+
+.help,
+.profile1,
+.collaboratorInformation,
+.companyInformation,
+.removeUser,
+.addUser {
+  transition: background-color 0.3s ease;
+}
+
+.help:hover,
+.profile:hover,
+.collaboratorInformation:hover,
+.companyInformation:hover,
+.removeUser:hover,
+.addUser:hover {
+  background-color: #005c7d;
+  /* Change to your desired hover color */
+}
+
 .addUser,
 .menu,
 .menu1 {
   position: absolute;
 }
 .menu1 {
-  top: -5px;
+  top: -10px;
   left: 89px;
   font-size: var(--body-small-medium-size);
   letter-spacing: 1px;
   line-height: 160%;
-  color: var(--color-lightslategray-200);
+  color: white;
 }
 .menu {
-  top: 108px;
+  top: 148px;
   left: 16px;
   width: 218px;
   height: 259px;
 }
-.line,
-.line1,
-.line2,
-.line3 {
-  position: absolute;
-  box-sizing: border-box;
-}
-.line {
-  top: -0.5px;
-  left: 249.5px;
+.line{
+  top: 0px;
+  position: fixed;
+  left: 250px;
   border-right: 1px solid var(--greyscale-100);
   width: 1px;
-  height: 901px;
+  height: 88px;
+  box-sizing: border-box;
 }
-.line1,
-.line2,
-.line3 {
-  top: 819.5px;
-  left: 15.5px;
-  border-top: 1px solid var(--greyscale-100);
-  width: 219px;
-  height: 1px;
-}
-.line2,
-.line3 {
-  top: 366.5px;
-}
-.line3 {
-  top: 87.5px;
-}
+
 .logo1Icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 88px;
-  object-fit: cover;
+  top: 12px;
+  left: 53px;
+  width: 140px;
+  height: 90px;
+  background-color: rgb(22, 128, 160);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
-.settingsAdmin{
-  height: 900px;
+.settingsAdmin,
+.sidebar {
+  height: 1200px;
   overflow: hidden;
 }
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 1000px;
-  background-color: var(--additional-white);
+  background-color: rgb(22, 128, 160);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
   width: 250px;
   font-size: var(--body-medium-regular-size);
-  color: var(--greyscale-500);
+  color: white;
 }
 .settingsAdmin {
-  position: relative;
+  position: fixed;
   background-color: var(--color-gray-100);
-  width: 1600px;
-  left: 200px;
+  width: 1900px;
   text-align: left;
-  font-size: var(--heading-h6-size);
-  color: var(--additional-white);
+  font-size: var(--body-small-medium-size);
+  color: var(--greyscale-500);
   font-family: var(--body-medium-regular);
 }
