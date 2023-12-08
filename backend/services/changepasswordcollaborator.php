@@ -35,8 +35,7 @@ class ChangePasswordService
 
         $sql = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
         $sql->bind_param("si",$newPassword, $collaboratorId);
-        $sql->execute();
-        if($sql->fetch()){
+        if($stmt->execute()){
             $this->response('sucess');
         }else{
             $this->response('failed', array('error' => 'Password não foi atualizada: ' . $collaboratorId));
