@@ -57,7 +57,7 @@ const SettingsCollaborator = () => {
     navigate("/dashboard");
   }, [navigate]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async e => {
     e.preventDefault();
     try {
       const collaboratorId = sessionStorage.getItem('collaborator_id');
@@ -71,7 +71,7 @@ const SettingsCollaborator = () => {
           body: JSON.stringify({
             collaboratorId:collaboratorId,
             oldPassword:oldPassword,
-            newPassword:newPassword,
+            newPassword:newPassword
           }),
         }
       )
@@ -148,38 +148,20 @@ const SettingsCollaborator = () => {
             <div className={styles.title}>Privacy</div>
           </div>
           <form onSubmit={handleSubmit}>
-            <input
-              className={styles.oldPassword}
-              name="Old Password"
-              id="old_password"
-              placeholder="Enter your old Password"
-              type="password"
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
-            <input
-              className={styles.newPassword}
-              name="New Password"
-              id="new_password"
-              placeholder="Enter your new Password"
-              type="password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-            <input
-              className={styles.confirmNewPassword}
-              name="Confirm new Password"
-              id="confirm_new_password"
-              placeholder="Confirm your new Password"
-              type="password"
-              value={confirmNewPassword}
-              onChange={(e) => setConfirmNewPassword(e.target.value)}
-            />
-
-            <div className={styles.changeButton}>
-              <button type="submit">
-                <b className={styles.changeButton}>Change</b>
-              </button>
+            <label>
+            <p>Old Password</p>
+            <input type="text" placeholder="Enter your old Password" onChange={e => setOldPassword(e.target.value)}/>
+          </label>
+          <label>
+            <p>New Password</p>
+            <input type="password" placeholder="Enter your new Password" onChange={e => setNewPassword(e.target.value)}/>
+          </label>
+          <label>
+            <p>Confirm new Password</p>
+            <input type="password" placeholder="Confirm your new Password" onChange={e => setConfirmNewPassword(e.target.value)}/>
+          </label>
+            <div>
+              <button type="submit">Change</button>
             </div>
 
             {/* Exibe mensagens de erro/sucesso */}
