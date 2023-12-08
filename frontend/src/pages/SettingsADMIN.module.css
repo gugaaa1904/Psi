@@ -6,7 +6,7 @@
   background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
   width: 1565px;
-  height: 900px;
+  height: 950px;
 }
 .button,
 .logout {
@@ -21,8 +21,8 @@
   color: white;
 }
 .logout {
-  top: 928px;
-  left: 80px;
+  top: 958px;
+  left: 100px;
   border-radius: var(--br-xs);
   background-color: var(--color-tomato-100);
   width: 114px;
@@ -34,8 +34,8 @@
 }
 .yourPrivacyIsContainer {
   position: absolute;
-  top: 86px;
-  left: 44px;
+  top: 706px;
+  left: 100px;
   font-weight: 500;
   font-size: 13px;
   display: inline-block;
@@ -56,11 +56,25 @@
 
 .divider1 {
   position: absolute;
-  width: 1480px;
+  width: 1420px;
   height: 100px;
   right: 0;
   bottom: 0;
-  left: 40px;
+  top: 690px;
+  left: 100px;
+  background-color: var(--border);
+  height: 1px;
+  overflow: hidden;
+}
+
+.divider2 {
+  position: absolute;
+  width: 1420px;
+  height: 100px;
+  right: 0;
+  bottom: 0;
+  top: 320px;
+  left: 100px;
   background-color: var(--border);
   height: 1px;
   overflow: hidden;
@@ -71,8 +85,8 @@
   position: absolute;
 }
 .title {
-  top: calc(50% - 12px);
-  left: 44px;
+  top: 650px;
+  left: 100px;
   line-height: 24px;
   font-weight: 600;
   font-size: 18px;
@@ -95,47 +109,64 @@
   color: white;
   font-size: 14px;
 }
-.changeButton,
+
 .confirmNewPassword,
 .newPassword,
 .oldPassword {
-  position: absolute;
   left: 80px;
-  border-radius: var(--br-xs);
   box-sizing: border-box;
 }
 .changeButton {
-  top: 550px;
+  top: 590px;
   background-color: #005c7d;
   width: 119px;
+  position: absolute;
   text-align: center;
+  border-radius: 10px;
   height: 30px;
+  left: 100px;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   cursor: pointer;
 }
 .confirmNewPassword,
 .newPassword,
 .oldPassword {
-  border: 1px solid var(--color-steelblue-100);
+  position: relative;
+  /* Ensures positioning relative to the parent */
+  border: 1px solid var(--greyscale-200);
   font-family: var(--body-medium-regular);
-  font-size: var(--body-medium-regular-size);
-  background-color: transparent;
-  top: 465px;
-  width: 373px;
+  font-size: var(--heading-h6-size);
+  background-color: white;
+  /* White background for a cleaner look */
+  border-radius: 8px;
+  /* Adjust as needed for rounded corners */
+  box-sizing: border-box;
+  width: 404px;
   height: 56px;
+  padding: 12px;
+  /* Add padding for a more comfortable input area */
+  display: flex;
+  align-items: center;
+  /* Optional: Add box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.newPassword,
+
 .oldPassword {
-  top: 391px;
+  top: 320px;
 }
-.oldPassword {
-  top: 317px;
+.newPassword{
+  top: 340px;
 }
+.confirmNewPassword {
+  top: 360px;
+}
+
 .tittle {
   position: absolute;
   top: 0;
-  left: 20px;
+  left: 40px;
   letter-spacing: 0.2px;
   line-height: 125%;
   font-weight: 600;
@@ -144,7 +175,7 @@
 }
 .changePassword {
   position: absolute;
-  top: 275px;
+  top: 285px;
   left: 60px;
   width: 217px;
   height: 23px;
@@ -202,7 +233,7 @@
 }
 .language {
   top: 202px;
-  left: 73px;
+  left: 100px;
   width: 244px;
   height: 55px;
   text-align: center;

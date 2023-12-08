@@ -87,91 +87,14 @@ const SettingsADMIN = () => {
       <div className={styles.settingsAdmin}>
         <div className={styles.content}>
           <div className={styles.contentChild} />
-          <div className={styles.logout} onClick={onLogoutContainerClick}>
-            <b className={styles.button}>Log Out</b>
+          <div className={styles.accessSecurity}>
+            <div className={styles.divider} />
+            <div className={styles.accessSecurity1}>{`Access & Security`}</div>
           </div>
-          <div className={styles.privacy}>
-            <div className={styles.yourPrivacyIsContainer}>
-              <p
-                className={styles.yourPrivacyIs}
-              >{`Your privacy is important to us, and we want to ensure that you have control over who can access your information on this platform. Below, you can adjust your privacy settings to customize your experience. `}</p>
-              <p className={styles.yourPrivacyIs}>&nbsp;</p>
-              <p className={styles.yourPrivacyIs}>Account Security</p>
-              <p className={styles.yourPrivacyIs}>
-                Change Password: Regularly update your password to enhance the
-                security of your account.
-              </p>
-              <p className={styles.yourPrivacyIs}>&nbsp;</p>
-              <p className={styles.yourPrivacyIs}>Data Sharing</p>
-              <p className={styles.yourPrivacyIs}>
-                Information Sharing: Choose the level of information you are
-                comfortable sharing with others. [Minimal/Basic/Detailed/Custom]
-              </p>
-              <p className={styles.yourPrivacyIs}>
-                Third-Party Apps: Manage which third-party apps can access your
-                data and revoke access at any time.
-              </p>
-              <p className={styles.yourPrivacyIs}>&nbsp;</p>
-              <p className={styles.yourPrivacyIs}>Visibility</p>
-              <p className={styles.yourPrivacyIs}>
-                Profile Visibility: Control who can see your profile and your
-                posts. [Public/Friends Only/Private]
-              </p>
-              <p className={styles.yourPrivacyIs}>
-                Search Engine Indexing: Allow search engines to index your
-                profile? [Yes/No]
-              </p>
-              <p className={styles.yourPrivacyIs}>Privacy Policy</p>
-              <p className={styles.yourPrivacyIs}>
-                Review our privacy policy for a detailed understanding of how
-                your data is handled.
-              </p>
-            </div>
-            <div className={styles.divider1} />
-            <div className={styles.title}>Privacy</div>
+          <div className={styles.header}>
+            <b className={styles.settings}>Settings</b>
           </div>
 
-          <div
-            className={styles.changeButton}
-            onClick={openPopUpChangePassword}
-          >
-            <b className={styles.button1}>Change</b>
-          </div>
-
-          <input
-            className={styles.confirmNewPassword}
-            name="Confirm new Password"
-            id="confirm_new_password"
-            placeholder="Confirm your new Password"
-            type="password"
-          />
-          <input
-            className={styles.newPassword}
-            name="New Password"
-            id="new_password"
-            placeholder="Enter your new Password"
-            type="password"
-          />
-          <input
-            className={styles.oldPassword}
-            name="Old Password"
-            id="old_password"
-            placeholder="Enter your old Password"
-            type="password"
-          />
-          <div
-            className={styles.changePassword}
-            onClick={() =>
-              onChangePassword(
-                document.getElementById("old_password").value,
-                document.getElementById("new_password").value,
-                document.getElementById("confirm_new_password").value
-              )
-            }
-          ></div>
-          <div className={styles.changePassword}>
-            <div className={styles.tittle}>Change your password</div>
-          </div>
           <div className={styles.language}>
             <div className={styles.tabs}>
               <div className={styles.tab}>
@@ -182,14 +105,94 @@ const SettingsADMIN = () => {
               </div>
             </div>
           </div>
-          <div className={styles.accessSecurity}>
-            <div className={styles.divider} />
-            <div className={styles.accessSecurity1}>{`Access & Security`}</div>
+
+          <div className={styles.changePassword}>
+            <div className={styles.tittle}>Change your password</div>
           </div>
+          <input
+            className={styles.oldPassword}
+            name="Old Password"
+            id="old_password"
+            placeholder="Enter your old Password"
+            type="password"
+          />
+          <input
+            className={styles.newPassword}
+            name="New Password"
+            id="new_password"
+            placeholder="Enter your new Password"
+            type="password"
+          />
+          <input
+            className={styles.confirmNewPassword}
+            name="Confirm new Password"
+            id="confirm_new_password"
+            placeholder="Confirm your new Password"
+            type="password"
+          />
+          <div
+            className={styles.changeButton}
+            onClick={openPopUpChangePassword}
+          >
+            <b className={styles.button1}>Change</b>
+          </div>
+
+          <div
+            className={styles.changePassword}
+            onClick={() =>
+              onChangePassword(
+                document.getElementById("old_password").value,
+                document.getElementById("new_password").value,
+                document.getElementById("confirm_new_password").value
+              )
+            }
+          ></div>
+          <div className={styles.logout} onClick={onLogoutContainerClick}>
+            <b className={styles.button}>Log Out</b>
+          </div>
+          <div className={styles.yourPrivacyIsContainer}>
+            <p
+              className={styles.yourPrivacyIs}
+            >{`Your privacy is important to us, and we want to ensure that you have control over who can access your information on this platform. Below, you can adjust your privacy settings to customize your experience. `}</p>
+            <p className={styles.yourPrivacyIs}>&nbsp;</p>
+            <p className={styles.yourPrivacyIs}>Account Security</p>
+            <p className={styles.yourPrivacyIs}>
+              Change Password: Regularly update your password to enhance the
+              security of your account.
+            </p>
+            <p className={styles.yourPrivacyIs}>&nbsp;</p>
+            <p className={styles.yourPrivacyIs}>Data Sharing</p>
+            <p className={styles.yourPrivacyIs}>
+              Information Sharing: Choose the level of information you are
+              comfortable sharing with others. [Minimal/Basic/Detailed/Custom]
+            </p>
+            <p className={styles.yourPrivacyIs}>
+              Third-Party Apps: Manage which third-party apps can access your
+              data and revoke access at any time.
+            </p>
+            <p className={styles.yourPrivacyIs}>&nbsp;</p>
+            <p className={styles.yourPrivacyIs}>Visibility</p>
+            <p className={styles.yourPrivacyIs}>
+              Profile Visibility: Control who can see your profile and your
+              posts. [Public/Friends Only/Private]
+            </p>
+            <p className={styles.yourPrivacyIs}>
+              Search Engine Indexing: Allow search engines to index your
+              profile? [Yes/No]
+            </p>
+            <p className={styles.yourPrivacyIs}>Privacy Policy</p>
+            <p className={styles.yourPrivacyIs}>
+              Review our privacy policy for a detailed understanding of how your
+              data is handled.
+            </p>
+          </div>
+
+          <div className={styles.title}>Privacy</div>
+          <div className={styles.divider} />
+          <div className={styles.divider1} />
+          <div className={styles.divider2} />
         </div>
-        <div className={styles.header}>
-          <b className={styles.settings}>Settings</b>
-        </div>
+
         <div className={styles.sidebar}>
           <div className={styles.settings1}>
             <b className={styles.settings2}>Settings</b>

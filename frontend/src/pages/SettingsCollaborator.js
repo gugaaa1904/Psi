@@ -58,14 +58,20 @@ const SettingsCollaborator = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const collaboratorId = sessionStorage.getItem("collaborator_id");
+
+      console.log("Colaborador ID:", collaboratorId);
+      console.log("Senha Antiga:", oldPassword);
+      console.log("Nova Senha:", newPassword);
       const response = await fetch(
         "http://localhost/Psi/backend/services/changepasswordcollaborator.php",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify({
             col: collaboratorId,
@@ -74,27 +80,43 @@ const SettingsCollaborator = () => {
           }),
         }
       );
-      sessionStorage.setItem("collaboratorId", JSON.stringify(collaboratorId));
-      sessionStorage.setItem("oldPassword", JSON.stringify(oldPassword));
-      sessionStorage.setItem("newPassword", JSON.stringify(newPassword));
-      if (newPassword !== confirmNewPassword) {
-        setMessage("As novas senhas não coincidem");
-        return;
-      }
-      const data = await response.json();
-      console.log(data.status);
 
-      if (data.status === "success") {
-        sessionStorage.setItem("collaborator_id", JSON.stringify(data.id));
-        // Credenciais válidas, redirecionar para company-info
-      } else {
-        // Se a resposta não for bem-sucedida, mostrar o erro
-        const errorMessage = data.error || "Erro desconhecido";
-        console.error("Erro ao alterar a senha", errorMessage);
+      try {
+        if (!response.ok) {
+          // Se a resposta não estiver ok, mostrar o erro
+          const text = await response.text();
+          console.error(`Request failed with status: ${response.status}`, text);
+          setMessage(text);
+          return;
+        }
+
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          console.log(data.status);
+
+          if (data.status === "success") {
+            // Realizar redirecionamento para a página desejada
+            navigate("/dashboard");
+          } else {
+            // Se a resposta não for bem-sucedida, mostrar o erro
+            const errorMessage = data.error || "Erro desconhecido";
+            console.error("Erro ao alterar a senha", errorMessage);
+            setMessage(errorMessage);
+          }
+        } else {
+          // Conteúdo não é JSON válido
+          const text = await response.text();
+          console.error("Resposta não contém JSON válido:", text);
+          setMessage(text);
+        }
+      } catch (error) {
+        console.error("Erro ao processar a resposta:", error);
+        setMessage("Erro ao processar a resposta");
       }
     } catch (error) {
-      // Se ocorrer um erro durante a solicitação
-      console.error("Erro ao processar a solicitação:", error);
+      console.error("Erro ao realizar a solicitação:", error);
+      setMessage("Erro ao realizar a solicitação");
     }
   };
 
@@ -146,7 +168,7 @@ const SettingsCollaborator = () => {
             <div className={styles.divider} />
             <div className={styles.title}>Privacy</div>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} method="POST">
             <label>
               <p>Old Password</p>
               <input

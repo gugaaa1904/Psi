@@ -17,10 +17,10 @@ class ChangePasswordService
 
     public function change_password()
     {
-        $collaboratorId = $_POST['col'];
-        $oldPassword = $_POST['old'];
-        $newPassword = $_POST['new'];
-
+        $data = json_decode(file_get_contents("php://input"), true);
+        $collaboratorId = isset($data['col']) ? $data['col'] : null;
+        $oldPassword = isset($data['old']) ? $data['old'] : null;
+        $newPassword = isset($data['new']) ? $data['new'] : null;
         $stmt = $this->conn->prepare("SELECT PASSWORD FROM collaborator WHERE COLLABORATOR_ID = ? AND PASSWORD = ?");
         $stmt->bind_param("is", $collaboratorId, $oldPassword);
         $stmt->execute();
@@ -28,6 +28,8 @@ class ChangePasswordService
         if ($stmt->fetch()) {
             $ola = 1;
         } else {
+            error_log("Senha do banco de dados: " . $passwordDb);
+            error_log("Senha fornecida: " . $oldPassword);
             $this->response('failed', array('error' => 'oldPassword errada: ' . $collaboratorId . $oldPassword));
         }
         $stmt->close();
