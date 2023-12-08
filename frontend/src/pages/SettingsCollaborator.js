@@ -72,7 +72,7 @@ const SettingsCollaborator = () => {
             collaboratorId:collaboratorId,
             oldPassword:oldPassword,
             newPassword:newPassword
-          }),
+          })
         }
       )
       sessionStorage.setItem('collaboratorId', JSON.stringify(collaboratorId)); 
