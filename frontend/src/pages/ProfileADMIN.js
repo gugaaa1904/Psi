@@ -92,13 +92,24 @@ const ProfileADMIN = () => {
             src="/unsplash-nwaetf6qo0@2x.png"
           />
         </div>
+        <div>
+          <input
+            type="file"
+            id="uploadInput"
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
+          <label htmlFor="uploadInput" className={styles.editPhotoButton}>
+            <b className={styles.button}>Edit Photo</b>
+          </label>
+        </div>
         <div className={styles.profileInfo}>
           <div className={styles.profileInfoChild} />
           <div className={styles.fullNameContainer}>
-            <p className={styles.fullNameJosAlbertoDosS}>
+
               <b className={styles.fullName}>{`Full Name : `}</b>
               <span className={styles.josAlbertoDos}>{fullName}</span>
-            </p>
+
             <p className={styles.blankLine}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>
               <b className={styles.fullName}>Age:</b>
@@ -125,24 +136,14 @@ const ProfileADMIN = () => {
               <span> {CompanyName}</span>
             </p>
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
-            
+
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>
               <b>&nbsp;</b>
             </p>
           </div>
-          <div>
-          <input
-            type="file"
-            id="uploadInput"
-            style={{ display: 'none' }}
-            onChange={handleFileChange}
-          />
-          <label htmlFor="uploadInput" className={styles.editPhotoButton}>
-            <b className={styles.button}>Edit Photo</b>
-          </label>
-        </div>
+
           <b className={styles.name}>{fullName}</b>
         </div>
         <img className={styles.profileIcon} alt="" src="/profile.svg" />
@@ -152,11 +153,9 @@ const ProfileADMIN = () => {
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <img className={styles.settingsIcon} alt="" src="/settings.svg" />
           <div className={styles.settings1}>Settings</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
           <div className={styles.help1}>Help</div>
         </div>
         <div className={styles.menu}>
@@ -190,11 +189,9 @@ const ProfileADMIN = () => {
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>
+
+        <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         <div className={styles.line} />
-        <div className={styles.line1} />
-        <div className={styles.line2} />
-        <div className={styles.line3} />
-        <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
       </div>
     </div>
   );
