@@ -12,32 +12,43 @@ const SignUpCompany = () => {
     email: "",
     funcs: "",
     cnpj: "",
+    fileInput:"",
   });
 
   const onSignInTextClick = useCallback(() => {
     navigate("/sign-in-admin");
   }, [navigate]);
-console.log(formData)
-const onSignUpClick = useCallback(() => {
-  // Aqui você deve fazer a requisição para o backend
-  fetch("http://localhost/Psi/backend/routes.php/company", {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: new URLSearchParams(formData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // Lógica para lidar com a resposta do backend
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Erro na solicitação:", error);
+
+  const onSignUpClick = useCallback(() => {
+    const formDataToSend = new FormData();
+
+    // Adiciona os dados do formulário ao objeto FormData
+    Object.keys(formData).forEach((key) => {
+      formDataToSend.append(key, formData[key]);
     });
-  navigate("/sign-in-admin");
-}, [formData, navigate]);
+
+    // Adiciona a imagem ao objeto FormData
+    if (formData.companyImage) {
+      formDataToSend.append("companyImage", formData.companyImage);
+    }
+
+    // Aqui você deve fazer a requisição para o backend
+    fetch("http://localhost/Psi/backend/routes.php/company", {
+      method: "POST",
+      mode: "no-cors",
+      body: formDataToSend,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Lógica para lidar com a resposta do backend
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Erro na solicitação:", error);
+      });
+
+    navigate("/sign-in-admin");
+  }, [formData, navigate]);
 
   const onBackButtonClick = useCallback(() => {
     navigate("/");
@@ -113,6 +124,7 @@ const onSignUpClick = useCallback(() => {
           type="file"
           accept="image/*"
           id="fileInput"
+          name="companyImage"  // Certifique-se de que o name seja "companyImage"
           style={{ display: "none" }}
           onChange={handleImageChange}
         />

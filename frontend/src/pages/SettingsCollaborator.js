@@ -71,6 +71,7 @@ const SettingsCollaborator = () => {
       const collaboratorId = sessionStorage.getItem('collaborator_id');
       const response = await fetch('http://localhost/Psi/backend/services/changepasswordcollaborator.php', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },

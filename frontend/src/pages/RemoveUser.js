@@ -92,9 +92,11 @@ const RemoveUser = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
+            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
+            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
             <div className={styles.help1}>Help</div>
           </div>
           <div className={styles.menu}>
@@ -121,8 +123,11 @@ const RemoveUser = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
-          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
           <div className={styles.line} />
+          <div className={styles.line1} />
+          <div className={styles.line2} />
+          <div className={styles.line3} />
+          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
       {isPopUpRemoveUserOpen && (

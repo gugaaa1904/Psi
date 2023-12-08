@@ -1,277 +1,251 @@
-.background1 {
-  height: 815px;
-  /* Adjust height */
-  width: 800px;
-  /* Adjust width */
-  top: 112px;
-  left: 30px;
-  border-radius: var(--br-mini);
+.background {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--br-7xl);
   background-color: var(--additional-white);
-  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  box-shadow: 0 4px 20px rgba(238, 238, 238, 0.5);
+  border: 1px solid var(--color-aliceblue-100);
   box-sizing: border-box;
 }
-
-.background2 {
-  height: 400px;
-  /* Adjust height */
-  width: 750px;
-  /* Adjust width */
-  top: 112px;
-  left: 850px;
-  border-radius: var(--br-mini);
-  background-color: var(--additional-white);
-  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  box-sizing: border-box;
-}
-
-.background3 {
-  height: 400px;
-  /* Adjust height */
-  width: 750px;
-  /* Adjust width */
-  top: 530px;
-  left: 850px;
-  border-radius: var(--br-mini);
-  background-color: var(--additional-white);
-  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  box-sizing: border-box;
-}
-
-.background1,
-.background2,
-.background3 {
+.background,
+.rectangle,
+.uiElements6Line1pxCopy5 {
   position: absolute;
+  width: 100%;
+  right: 0;
+  left: 0;
 }
 
+.group11Copy {
+  position: absolute;
+  height: 56.53%;
+  width: 2.5%;
+  top: 12.03%;
+  right: 66.67%;
+  bottom: 31.45%;
+  left: 30.83%;
+}
 .reductionOfCo2 {
   position: absolute;
   width: 81.83%;
   line-height: 32px;
   display: inline-block;
   height: 156px;
-  top: 50px;
-  left: 27%;
-  font-size: 25px;
+  top: 30px;
+  left: 25.3%;
+  font-size: var(--xl-semibold-size);
   font-weight: 600;
   height: 33px;
-  color: #005c7d;
 }
-
-
 .totalRevenue {
   position: absolute;
-  width: 640px;
-  top: 110px;
-  left: 6.9%;
+  width: 84.83%;
+  top: 80px;
+  left: 8.17%;
   line-height: 32px;
   display: inline-block;
-  height: 86px;
-  font-size: 17px;
-  color: black;
+  height: 156px;
 }
 
 .reductionOfCo2Emissions {
   position: absolute;
   height: 78.22%;
-  width: 40.8%;
-  top: 130px;
+  width: 45.8%;
+  top: 19.11%;
   right: 51.51%;
   bottom: 2.67%;
   left: 2.69%;
   font-size: var(--body-medium-regular-size);
 }
-
-.totalSpendingsIn1 {
-  position: absolute;
-  line-height: 32px;
-  display: inline-block;
-}
-
-.kwh {
-  position: absolute;
-  top: 280px;
-  left: 280px;
-  font-weight: 600;
-  color: rgb(58, 207, 108);
-  font-size: 25px;
-  line-height: 1.5;
-  text-decoration: underline;
-}
-
+.text,
+.totalSpendingsIn1,
 .value {
   position: absolute;
-  top: 280px;
-  left: 310px;
-  font-weight: 600;
-  color: rgb(58, 207, 108);
-  font-size: 25px;
-  line-height: 1.5;
-    text-decoration: underline;
+  line-height: 32px;
+  display: inline-block;
 }
-
+.value {
+  top: 253px;
+  left: 228px;
+  font-weight: 600;
+  color: var(--color-mediumspringgreen-100);
+  width: 77px;
+  height: 29px;
+}
+.text,
+.totalSpendingsIn1 {
+  width: 83.52%;
+  top: calc(50% - 78px);
+  left: 8.24%;
+  font-size: var(--body-medium-regular-size);
+  height: 164px;
+}
+.totalSpendingsIn1 {
+  width: 40.07%;
+  top: calc(50% - 138px);
+  left: 30.71%;
+  font-size: var(--xl-semibold-size);
+  font-weight: 600;
+  height: 31px;
+}
 .monthsDropDown {
   position: absolute;
-  top: 210px;
-  left: 300px;
-  width: 75px;
-  height: 40px;
-  padding-left: 13.5px;
-  border: 1px solid;
-  background-color: #fff;
-  font-size: 14px;
-  color: #005c7d;
-  outline: none;
-  cursor: pointer;
-  border-radius: 10px;
-  appearance: none;
-  background:  no-repeat right center;
-  background-size: 20px 20px;
+  top: 199px;
+  left: 216px;
+  border-radius: var(--br-5xs);
+  width: 102px;
+  height: 49px;
 }
-
-.text {
-  position: absolute;
-  width: 590px;
-  top: 110px;
-  left: 7.17%;
-  line-height: 32px;
-  display: inline-block;
-  height: 86px;
-  font-size: 17px;
-  color: black;
-}
-
-.totalSpendingsIn1 {
-  position: absolute;
-  width: 81.83%;
-  line-height: 32px;
-  display: inline-block;
-  height: 156px;
-  top: 50px;
-  left: 220px;
-  font-size: 25px;
-  font-weight: 600;
-  height: 33px;
-  color: #005c7d;
-}
-
 .totalSpendingsIn {
   position: absolute;
-  height: 300px;
-  width: 700px;
-  top: 540px;
+  height: 37.33%;
+  width: 44.87%;
+  top: 60%;
   right: 4.12%;
-  left: 46.01%;
+  bottom: 2.67%;
+  left: 51.01%;
 }
-
+.kwh,
 .totalConsumedIn {
   position: absolute;
-  width: 300px;
   line-height: 32px;
-  display: inline-block;
-  height: 40px;
-  top: 50px;
-  left: 200px;
-  font-size: 25px;
   font-weight: 600;
-  height: 33px;
-  color: #005c7d;
+  display: inline-block;
 }
-
+.kwh {
+  top: 253px;
+  left: 212px;
+  color: var(--color-mediumspringgreen-100);
+  width: 109px;
+  height: 30px;
+}
+.totalConsumedIn {
+  width: 47.57%;
+  top: calc(50% - 143px);
+  left: 26.22%;
+  font-size: var(--xl-semibold-size);
+  height: 31px;
+}
 .totalConsumedInKwh {
   position: absolute;
-  width: 700px;
-  top: 13.11%;
+  height: 37.33%;
+  width: 44.87%;
+  top: 19.11%;
   right: 4.12%;
-  left: 46.01%;
+  bottom: 43.56%;
+  left: 51.01%;
 }
-
+.divider {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--border);
+  height: 1px;
+  overflow: hidden;
+}
 .generalOverview {
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 24px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.header {
+  position: absolute;
+  width: calc(100% - 62px);
+  top: 91px;
+  right: 30px;
+  left: 32px;
+  height: 64px;
+  font-size: var(--heading-h6-size);
+  color: var(--font-primary);
+  font-family: var(--body-medium-regular);
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  background-color: var(--greyscale-50);
+  width: 1190px;
+  height: 900px;
+  overflow: hidden;
+  font-family: var(--xl-semibold);
+}
+.companyInformation {
   position: absolute;
   top: 29px;
   left: 32px;
   letter-spacing: 0.2px;
   line-height: 125%;
-  font-family: var(--body-medium-regular);
-  font-weight: bold
 }
-
-.content {
-  position: absolute;
-  top: 0px;
-  left: 250px;
-  background-color: #f5f5f5;
-  /* Light gray background */
-  width: 100%;
-  height: 100vh;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.header {
+.header1 {
   position: fixed;
   top: 0;
   left: 250px;
-  background-color: #005c7d;
-  width: 1690px;
+  background-color: var(--additional-white);
+  width: 1190px;
   height: 88px;
   overflow: hidden;
-  font-size: var(--heading-h3-size);
-  font-family: var(--body-medium-regular);
-  color: white;
+  color: var(--greyscale-900);
 }
-
 .settings1,
 .settingsIcon {
   position: absolute;
   top: 13px;
 }
-
+.settingsIcon {
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+}
 .settings1 {
-  left: 24px;
+  left: 54px;
   letter-spacing: 0.2px;
   line-height: 160%;
   font-weight: 500;
 }
-
 .iconshelp,
 .settings {
   position: absolute;
   left: 16px;
 }
-
 .settings {
-  position: absolute;
-  top: 880px;
+  top: 827px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
-
+.iconshelp {
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
 .help1 {
   position: absolute;
   top: 13px;
-  left: 24px;
+  left: 56px;
   letter-spacing: 0.2px;
   line-height: 160%;
   font-weight: 500;
 }
-
 .help,
 .profile1 {
   position: absolute;
   left: 16px;
 }
-
 .help {
-  position: absolute;
-  top: 825px;
+  top: 765px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
-
 .profile1 {
   top: 13px;
   letter-spacing: 0.2px;
@@ -322,70 +296,62 @@
 .addUser {
   top: 19px;
 }
-
-.settings,
-.profile1,
-.help,
-.collaboratorInformation,
-.removeUser,
-.addUser {
-  transition: background-color 0.3s ease;
-}
-
-.settings:hover,
-.profile:hover,
-.help:hover,
-.collaboratorInformation:hover,
-.removeUser:hover,
-.addUser:hover {
-  background-color: #005c7d;
-  /* Change to your desired hover color */
-}
-
 .addUser,
 .menu,
 .menu1 {
   position: absolute;
 }
 .menu1 {
-  top: -10px;
+  top: -5px;
   left: 89px;
   font-size: var(--body-small-medium-size);
   letter-spacing: 1px;
   line-height: 160%;
-  color: white;
+  color: var(--color-lightslategray-200);
 }
 .menu {
-  top: 148px;
+  top: 108px;
   left: 16px;
   width: 218px;
   height: 259px;
 }
-.line{
-  top: 0px;
-  position: fixed;
-  left: 250px;
-  border-right: 1px solid var(--greyscale-100);
-  width: 1px;
-  height: 88px;
+.line,
+.line1,
+.line2,
+.line3 {
+  position: absolute;
   box-sizing: border-box;
 }
-
+.line {
+  top: -0.5px;
+  left: 249.5px;
+  border-right: 1px solid var(--greyscale-100);
+  width: 1px;
+  height: 901px;
+}
+.line1,
+.line2,
+.line3 {
+  top: 819.5px;
+  left: 15.5px;
+  border-top: 1px solid var(--greyscale-100);
+  width: 219px;
+  height: 1px;
+}
+.line2,
+.line3 {
+  top: 366.5px;
+}
+.line3 {
+  top: 87.5px;
+}
 .logo1Icon {
   position: absolute;
-  top: 12px;
-  left: 53px;
-  width: 140px;
-  height: 90px;
-  background-color: rgb(22, 128, 160);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  font-family: 'Arial', sans-serif;
-  font-size: 18px;
-  font-weight: bold
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 88px;
+  object-fit: cover;
 }
 .companyInfo,
 .sidebar {
@@ -396,18 +362,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgb(22, 128, 160);
+  background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
   width: 250px;
   font-size: var(--body-medium-regular-size);
-  color: white;
+  color: var(--greyscale-500);
 }
 .companyInfo {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 1990px;
+  left: 200px;
   text-align: left;
-  font-size: var(--body-small-medium-size);
-  color: var(--greyscale-500);
+  font-size: var(--heading-h3-size);
+  color: var(--primary-dark-shade);
   font-family: var(--body-medium-regular);
 }

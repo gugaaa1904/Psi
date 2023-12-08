@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./CollaboratorInfo.module.css";
-import React, { useState, useEffect, useCallback, Component } from "react";
+import React, { useState, useEffect, useCallback , Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import axios from "axios";
+import axios from 'axios';
 
 class ApexChartClass extends Component {
   constructor(props) {
@@ -12,13 +12,11 @@ class ApexChartClass extends Component {
       series: [
         {
           name: "Expected Consume",
-          data: [],
-          color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
+          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
           name: "Actually Charged",
-          data: [],
-          color: "rgb(58, 207, 108)", // Array dinâmico com o mesmo comprimento da série "Consuming"
+          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
       ],
       options: {
@@ -45,16 +43,15 @@ class ApexChartClass extends Component {
           text: "General Consuming",
           align: "center",
           style: {
-            fontSize: "18px", // Adjust font size
-            color: "#005c7d", // Adjust text color
-            fontFamily: "var(--body-medium-regular)", // Adjust font family
-            fontWeight: "bold", // Adjust font weight
+            fontFamily: "Inter, sans-serif",
           },
         },
         xaxis: {
           categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
         },
-        yaxis: {},
+        yaxis: {
+          
+        },
         fill: {
           opacity: 1,
         },
@@ -68,19 +65,17 @@ class ApexChartClass extends Component {
       },
     };
   }
-
+  
   fetchData = async () => {
     try {
-      const companyID = sessionStorage.getItem("company_id");
-      const response = await axios.get(
-        `http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`
-      );
+      const companyID = sessionStorage.getItem('company_id');
+      const response = await axios.get(`http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`);
       //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
       //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
-      const dataFromServer = response.data;
-
+      const dataFromServer = response.data; 
+      
       // Preencher o array de Consuming multiplicando por 2.5
-      const consumingData = dataFromServer.map((item) => item.DAILY_USAGE);
+      const consumingData = dataFromServer.map((item) => item.DAILY_USAGE );
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
       const plafondData = Array(consumingData.length).fill(50);
@@ -115,17 +110,7 @@ class ApexChartClass extends Component {
 
   render() {
     return (
-      <div
-        id="chart"
-        style={{
-          position: "absolute",
-          top: 0,
-          bottom: 40,
-          width: 600,
-          left: "47%",
-          transform: "translateX(-50%)",
-        }}
-      >
+      <div id="chart">
         <ReactApexChart
           options={this.state.options}
           series={this.state.series}
@@ -144,8 +129,9 @@ const CollaboratorInfo = () => {
   const [minDailyUsage, setMinDailyUsage] = useState(null);
   const [maxDailyUsage, setMaxDailyUsage] = useState(null);
   const [collaborators, setCollaborators] = useState([]);
-  const [selectedInterval, setSelectedInterval] = useState("weekly");
-
+  const [selectedInterval, setSelectedInterval] = useState('weekly');
+  
+  
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
   }, [navigate]);
@@ -171,26 +157,24 @@ const CollaboratorInfo = () => {
   }, [navigate]);
 
   function addCollaborators(data) {
-    for (let i = 0; i < data.length; i++) {
-      collaborators.push(data[i]);
+    for (let i = 0; i< data.length; i++) {
+      collaborators.push(data[i])
     }
   }
 
   useEffect(() => {
-    const companyID = sessionStorage.getItem("company_id");
+    const companyID = sessionStorage.getItem('company_id');
     const fetchData = async () => {
       try {
-        const companyId = sessionStorage.getItem("company_id");
-        const response = await fetch(
-          `http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}&interval=${selectedInterval}`
-        );
+        const companyId = sessionStorage.getItem('company_id');
+        const response = await fetch(`http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}&interval=${selectedInterval}`);
         const data = await response.json();
         setAverageWeeklyUsage(data[0].average_weekly_usage);
         setAverageMonthlyUsage(data[0].average_monthly_usage);
         setMinDailyUsage(data[0].min_daily_usage);
         setMaxDailyUsage(data[0].max_daily_usage);
       } catch (error) {
-        console.error("Erro ao buscar dados do backend:", error);
+        console.error('Erro ao buscar dados do backend:', error);
       }
     };
 
@@ -198,72 +182,65 @@ const CollaboratorInfo = () => {
   }, [selectedInterval]); // Adicione selectedInterval à lista de dependências
 
   useEffect(() => {
-    const companyID = sessionStorage.getItem("company_id");
+    const companyID = sessionStorage.getItem('company_id');
     const fetchCollaborators = async () => {
       try {
-        const response = await fetch(
-          `http://localhost/Psi/backend/services/listcollaborator.php?company_id=${companyID}`
-        );
+        const response = await fetch(`http://localhost/Psi/backend/services/listcollaborator.php?company_id=${companyID}`);
         const data = await response.json();
         addCollaborators(data);
         setCollaborators(collaborators);
+        
       } catch (error) {
-        console.error("Erro ao buscar dados do backend:", error);
+        console.error('Erro ao buscar dados do backend:', error);
       }
     };
-
+  
     fetchCollaborators();
   }, []);
+
 
   return (
     <div className={styles.collaboratorInfo}>
       <div className={styles.content}>
-        <div className={styles.maxPowerAchieved}>
+        <div
+          className={styles.maxPowerAchieved}
+        >
           <div className={styles.bigCard}>
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.bg} />
-
-          <div className={styles.data}>
-            {maxDailyUsage && `${maxDailyUsage} kW`}
-          </div>
+          
+          <div className={styles.data}>{maxDailyUsage && `${maxDailyUsage} kW`}</div>
           <img className={styles.redIcon} alt="" src="/red-icon1.svg" />
           <div className={styles.maxPowerAchieved1}>Max Power Achieved</div>
         </div>
-        <div className={styles.minPowerAchieved}>
+        <div
+          className={styles.minPowerAchieved}
+        >
           <div className={styles.bigCard}>
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.bg1} />
-
-          <div className={styles.data1}>
-            {minDailyUsage && `${minDailyUsage} kW`}
-          </div>
+          
+          <div className={styles.data1}>{minDailyUsage && `${minDailyUsage} kW`}</div>
           <div className={styles.minPowerAchieved1}>Min Power Achieved</div>
           <img className={styles.greenIcon} alt="" src="/green-icon.svg" />
         </div>
-        <div
-          className={styles.averageEnergyConsumptionIn}
-          style={{ position: "relative", zIndex: "2" }}
-        >
+        <div className={styles.averageEnergyConsumptionIn} style={{ position: 'relative', zIndex: '2' }}>
           <div className={styles.bigCard2}>
             <div className={styles.bigCardChild} />
           </div>
           <div className={styles.backgroundCopy2} />
           <div className={styles.data3}>
-            {selectedInterval === "weekly"
-              ? averageWeeklyUsage && `${averageWeeklyUsage} kWh`
-              : averageMonthlyUsage && `${averageMonthlyUsage} kWh`}
+            {selectedInterval === 'weekly' ? (averageWeeklyUsage && `${averageWeeklyUsage} kWh`) : (averageMonthlyUsage && `${averageMonthlyUsage} kWh`)}
           </div>
-          <div
-            className={styles.averageEnergyConsumption}
-          >{`Average Energy Consumption in kWh `}</div>
+          <div className={styles.averageEnergyConsumption}>{`Average Energy Consumption in kWh `}</div>
 
           {/* Seletor para escolher entre 'monthly' e 'weekly' */}
-          <select
+          <select 
             value={selectedInterval}
             onChange={(e) => setSelectedInterval(e.target.value)}
-            style={{ position: "absolute", zIndex: "1" }}
+            style={{ position: 'absolute', zIndex: '1' }}
           >
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -276,17 +253,15 @@ const CollaboratorInfo = () => {
           </div>
           <div className={styles.backgroundCopy2} />
           <div className={styles.data2}>
-            {selectedInterval === "weekly"
-              ? averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`
-              : averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`}
+            {selectedInterval === 'weekly' ? (averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`) : (averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`)}
           </div>
           <div className={styles.averageCostIn1}>{`Average Cost in € `}</div>
-
+          
           {/* Seletor para escolher entre 'weekly' e 'monthly' */}
-          <select
+          <select 
             value={selectedInterval}
             onChange={(e) => setSelectedInterval(e.target.value)}
-            style={{ position: "absolute", right: "0", top: "0", zIndex: "1" }}
+            style={{ position: 'absolute', right: '0', top: '0', zIndex: '1' }}
           >
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -302,30 +277,31 @@ const CollaboratorInfo = () => {
               <div className={styles.employee4Child} />
               <b className={styles.name}>{collaborator.NAME}</b>
               <div className={styles.position}>
-                <p className={styles.dhlEmployee}>
-                  {collaborator.COMPANYNAME} - Employee
-                </p>
+                <p className={styles.dhlEmployee}>{collaborator.COMPANYNAME} - Employee</p>
               </div>
-              <img
-                className={styles.image21Icon}
-                alt=""
-                src="/image-21@2x.png"
-              />
+              <img className={styles.image21Icon} alt="" src="/image-21@2x.png" />
             </div>
           ))}
         </div>
 
-        <div className={styles.generalConsuming}>
+
+        <div
+          className={styles.generalConsuming}
+        >
           <div className={styles.bigCard9}>
             <div className={styles.bigCardChild} />
           </div>
-          <div className={styles.background} />
-          <ApexChartClass />
-          <div className={styles.graph}>
-            <div className={styles.graph1}></div>
+            <div className={styles.background} />
+              <ApexChartClass />
+            <div className={styles.graph}>
+              <div className={styles.graph1}>
+              
+              </div>
+            
+            </div>
           </div>
-        </div>
         <div className={styles.generalOverview}>
+          <div className={styles.divider} />
           <div className={styles.generalOverview1}>General Overview</div>
         </div>
       </div>
@@ -336,9 +312,11 @@ const CollaboratorInfo = () => {
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
+          <img className={styles.settingsIcon} alt="" src="/settings.svg" />
           <div className={styles.settings1}>Settings</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
+          <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
           <div className={styles.help1}>Help</div>
         </div>
         <div className={styles.menu}>
@@ -367,9 +345,11 @@ const CollaboratorInfo = () => {
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>
-
-        <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         <div className={styles.line} />
+        <div className={styles.line1} />
+        <div className={styles.line2} />
+        <div className={styles.line3} />
+        <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
       </div>
     </div>
   );
