@@ -78,14 +78,15 @@ const SettingsCollaborator = () => {
           }),
         }
       )
-        
+      console.log(collaboratorId); 
+      console.log(oldPassword); 
+      console.log(newPassword); 
       const data = await response.json();
       console.log(data.id);
           
       if (data.status === "success") {
         sessionStorage.setItem('collaborator_id', JSON.stringify(data.id));
         // Credenciais válidas, redirecionar para company-info
-        navigate("/dashboard");
       } else {
             // Se a resposta não for bem-sucedida, mostrar o erro
         const errorMessage = data.error || "Erro desconhecido";
