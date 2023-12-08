@@ -74,9 +74,9 @@ const SettingsCollaborator = () => {
           }),
         }
       )
-      console.log(collaboratorId); 
-      console.log(oldPassword); 
-      console.log(newPassword);
+      sessionStorage.setItem('collaboratorId', collaboratorId); 
+      sessionStorage.setItem('oldPassword', oldPassword); 
+      sessionStorage.setItem('newPassword', newPassword);
       if (newPassword !== confirmNewPassword) {
         setMessage('As novas senhas não coincidem');
         return;
