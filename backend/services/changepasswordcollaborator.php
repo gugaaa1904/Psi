@@ -30,15 +30,15 @@ class ChangePasswordService
         }
         $stmt->close();
 
-        $stmt2 = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
-        $stmt2->bind_param("si",$newPassword, $collaboratorId);
-        $stmt2->execute();
-        if($stmt2->fetch()){
+        $stmt = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
+        $stmt->bind_param("si",$newPassword, $collaboratorId);
+        $stmt->execute();
+        if($stmt->fetch()){
             $this->response('sucess');
         }else{
-            $this->response('failed', array('error' => 'Collaborator not found for id: ' . $collaboratorId));
+            $this->response('failed', array('error' => 'Password não foi atualizada: ' . $collaboratorId));
         }
-        $stmt2->close();  
+        $stmt->close();  
     }
 
     private function response($status, $data = array())
