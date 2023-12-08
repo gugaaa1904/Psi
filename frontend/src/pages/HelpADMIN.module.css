@@ -128,17 +128,6 @@
   overflow-y: auto;
 }
 
-.notificationsIcon {
-  position: absolute;
-  top: 27px;
-  left: 1509px;
-  border-radius: var(--br-981xl);
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  cursor: pointer;
-}
-
 .help {
   position: absolute;
 }

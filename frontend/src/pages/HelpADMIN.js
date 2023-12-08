@@ -1,20 +1,11 @@
 import { useState, useCallback } from "react";
-import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./HelpADMIN.module.css";
 
 const HelpADMIN = () => {
-  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const openNotifications = useCallback(() => {
-    setNotificationsOpen(true);
-  }, []);
-
-  const closeNotifications = useCallback(() => {
-    setNotificationsOpen(false);
-  }, []);
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
@@ -111,12 +102,6 @@ const HelpADMIN = () => {
         </div>
 
         <div className={styles.header}>
-          <img
-            className={styles.notificationsIcon}
-            alt=""
-            src="/notifications.svg"
-            onClick={openNotifications}
-          />
           <b className={styles.help}>Help</b>
         </div>
 
@@ -169,15 +154,6 @@ const HelpADMIN = () => {
           <div className={styles.line} />
         </div>
       </div>
-      {isNotificationsOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeNotifications}
-        >
-          <Notifications onClose={closeNotifications} />
-        </PortalPopup>
-      )}
     </>
   );
 };
