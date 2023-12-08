@@ -57,7 +57,7 @@ const SettingsCollaborator = () => {
     navigate("/dashboard");
   }, [navigate]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     try {
       const collaboratorId = sessionStorage.getItem('collaborator_id');
       const response = await fetch(
@@ -74,9 +74,9 @@ const SettingsCollaborator = () => {
           }),
         }
       )
-      sessionStorage.setItem('collaboratorId', collaboratorId); 
-      sessionStorage.setItem('oldPassword', oldPassword); 
-      sessionStorage.setItem('newPassword', newPassword);
+      sessionStorage.setItem('collaboratorId', JSON.stringify(collaboratorId)); 
+      sessionStorage.setItem('oldPassword', JSON.stringify(oldPassword)); 
+      sessionStorage.setItem('newPassword', JSON.stringify(newPassword));
       if (newPassword !== confirmNewPassword) {
         setMessage('As novas senhas não coincidem');
         return;
@@ -96,8 +96,7 @@ const SettingsCollaborator = () => {
           // Se ocorrer um erro durante a solicitação
       console.error("Erro ao processar a solicitação:", error);
     }
-  };
-
+  }
 
   return (
     <>
