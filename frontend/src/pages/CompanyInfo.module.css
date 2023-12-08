@@ -50,17 +50,19 @@
   display: inline-block;
   height: 156px;
   top: 50px;
-  left: 28%;
+  left: 27%;
   font-size: 25px;
   font-weight: 600;
   height: 33px;
   color: #005c7d;
 }
+
+
 .totalRevenue {
   position: absolute;
-  width: 590px;
+  width: 640px;
   top: 110px;
-  left: 7.17%;
+  left: 6.9%;
   line-height: 32px;
   display: inline-block;
   height: 86px;
@@ -79,20 +81,51 @@
   font-size: var(--body-medium-regular-size);
 }
 
-.totalSpendingsIn1,
-.value {
+.totalSpendingsIn1 {
   position: absolute;
   line-height: 32px;
   display: inline-block;
 }
-.value {
-  top: 253px;
-  left: 228px;
+
+.kwh {
+  position: absolute;
+  top: 280px;
+  left: 280px;
   font-weight: 600;
-  color: var(--color-mediumspringgreen-100);
-  width: 77px;
-  height: 29px;
+  color: rgb(58, 207, 108);
+  font-size: 25px;
+  line-height: 1.5;
 }
+
+.value {
+  position: absolute;
+  top: 280px;
+  left: 310px;
+  font-weight: 600;
+  color: rgb(58, 207, 108);
+  font-size: 25px;
+  line-height: 1.5;
+}
+
+.monthsDropDown {
+  position: absolute;
+  top: 210px;
+  left: 300px;
+  width: 75px;
+  height: 40px;
+  padding-left: 13.5px;
+  border: 1px solid;
+  background-color: #fff;
+  font-size: 14px;
+  color: #005c7d;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  appearance: none;
+  background:  no-repeat right center;
+  background-size: 20px 20px;
+}
+
 .text {
   position: absolute;
   width: 590px;
@@ -118,14 +151,7 @@
   height: 33px;
   color: #005c7d;
 }
-.monthsDropDown {
-  position: absolute;
-  top: 199px;
-  left: 216px;
-  border-radius: var(--br-5xs);
-  width: 72px;
-  height: 29px;
-}
+
 .totalSpendingsIn {
   position: absolute;
   height: 300px;
@@ -134,19 +160,7 @@
   right: 4.12%;
   left: 46.01%;
 }
-.kwh {
-  position: absolute;
-  line-height: 32px;
-  font-weight: 600;
-  display: inline-block;
-}
-.kwh {
-  top: 253px;
-  left: 212px;
-  color: var(--color-mediumspringgreen-100);
-  width: 109px;
-  height: 30px;
-}
+
 .totalConsumedIn {
   position: absolute;
   width: 300px;
