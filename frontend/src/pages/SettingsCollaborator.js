@@ -59,10 +59,6 @@ const SettingsCollaborator = () => {
 
   const handleSubmit = async (e) => {
     try {
-      if (newPassword !== confirmNewPassword) {
-        setMessage('As novas senhas não coincidem');
-        return;
-      }
       const collaboratorId = sessionStorage.getItem('collaborator_id');
       const response = await fetch(
         "http://localhost/Psi/backend/services/changepasswordcollaborator.php",
@@ -80,10 +76,14 @@ const SettingsCollaborator = () => {
       )
       console.log(collaboratorId); 
       console.log(oldPassword); 
-      console.log(newPassword); 
+      console.log(newPassword);
+      if (newPassword !== confirmNewPassword) {
+        setMessage('As novas senhas não coincidem');
+        return;
+      }
       const data = await response.json();
-      console.log(data.id);
-          
+      console.log(data.status);
+      
       if (data.status === "success") {
         sessionStorage.setItem('collaborator_id', JSON.stringify(data.id));
         // Credenciais válidas, redirecionar para company-info
