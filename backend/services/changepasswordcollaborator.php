@@ -26,6 +26,7 @@ class ChangePasswordService
         $stmt->execute();
         $stmt->bind_result($passwordDb);
         if($stmt->fetch()){
+            $stmt->close();
             $stmt2 = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
             $stmt2->bind_param("si",$newPassword, $collaboratorId);
             $stmt2->execute();
@@ -34,6 +35,7 @@ class ChangePasswordService
             }else{
                 $this->response('failed', array('error' => 'Collaborator not found for id: ' . $collaboratorId));
             }
+            $stmt2->close();
         }else{
             $this->response('failed', array('error' => 'Collaborator not found for id: ' . $collaboratorId));
         }
