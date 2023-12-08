@@ -4,76 +4,71 @@ header("Access-Control-Allow-Methods: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
+require_once '../config.php';
 
+class ChangePasswordService
+{
+    private $conn;
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "infocharge";
-
-// Criando a conexão com o banco de dados
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verifica a conexão
-if ($conn->connect_error) {
-    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recebe os dados do corpo da requisição
-    $data = json_decode(file_get_contents('php://input'));
-
-    // Obtém os valores
-    $collaboratorId = $data->collaboratorId;
-    $oldPassword = $data->oldPassword;
-    $newPassword = $data->newPassword;
-
-    // Verifica se a senha antiga está correta
-    $oldPasswordHash = getPasswordFromDatabase($collaboratorId);
-
-    if (password_verify($oldPassword, $oldPasswordHash)) {
-        // Senha antiga correta, atualiza a senha na tabela collaborator
-        $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
-        updatePasswordInDatabase($collaboratorId, $newPasswordHash);
-
-        // Envie uma resposta de sucesso
-        http_response_code(200);
-        echo json_encode(['message' => 'Senha alterada com sucesso']);
-    } else {
-        // Senha antiga incorreta, envie uma resposta de erro
-        http_response_code(400);
-        echo json_encode(['error' => 'Senha antiga incorreta']);
+    public function __construct()
+    {
+        $this->conn = connect();
     }
-} else {
-    // Método de requisição não suportado, envie uma resposta de erro
-    http_response_code(405);
-    echo json_encode(['error' => 'Método não permitido']);
+
+    public function change_password()
+    {
+        error_log('Request Method: ' . $_SERVER["REQUEST_METHOD"]);
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $jsonInput = file_get_contents("php://input");
+            $dadosRecebidos = json_decode($jsonInput, true);
+            $collaboratorId = $dadosRecebidos['collaboratorId'];
+            $oldPassword = $dadosRecebidos['oldPassword'];
+            $newPassword = $dadosRecebidos['newPassword'];
+            $stmt = $this->conn->prepare("SELECT PASSWORD FROM collaborator WHERE COLLABORATOR_ID = ? AND PASSWORD = ?");
+            $stmt->bind_param("is", $collaboratorId, $oldPassword);
+            $stmt->execute();
+            $stmt->bind_result($passwordDb);
+            if($stmt->fetch()){
+                $stmt2 = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
+                $stmt2->bind_param("si", $newPassword, $collaboratorId);
+                $stmt2->execute();
+                if($stmt2->fetch()){
+                    $this->response('sucess');
+                }else{
+                    $this->response('failed', array('error' => 'Collaborator not found for id: ' . $id));
+                }
+            }else{
+                $this->response('failed', array('error' => 'Collaborator not found for id: ' . $id));
+            }
+            $stmt->close();
+        }
+            
+    }
+
+    private function response($status, $data = array())
+    {
+        $response = array('status' => $status);
+        
+        if (!empty($data)) {
+            $response = array_merge($response, $data);
+        }
+
+        echo json_encode($response);
+        die();
+    }
+
+    private function sanitize($input)
+    {
+        // Implement your sanitization logic if needed
+        return $input;
+    }
 }
 
-// Função para obter a senha do banco de dados com base no ID do colaborador
-function getPasswordFromDatabase($collaboratorId) {
-    global $mysqli;
+$changePasswordService = new ChangePasswordService();
 
-    $query = "SELECT PASSWORD FROM collaborator WHERE COLLABORATOR_ID = ?";
-    $stmt = $mysqli->prepare($query);
-    $stmt->bind_param('s', $collaboratorId);
-    $stmt->execute();
-    $stmt->bind_result($password);
-    $stmt->fetch();
-    $stmt->close();
-
-    return $password;
-}
-
-// Função para atualizar a senha no banco de dados
-function updatePasswordInDatabase($collaboratorId, $newPasswordHash) {
-    global $mysqli;
-
-    $query = "UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?";
-    $stmt = $mysqli->prepare($query);
-    $stmt->bind_param('ss', $newPasswordHash, $collaboratorId);
-    $stmt->execute();
-    $stmt->close();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $changePasswordService->change_password();
 }
 
 ?>

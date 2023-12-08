@@ -58,40 +58,42 @@ const SettingsCollaborator = () => {
   }, [navigate]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Verifica se as senhas novas coincidem
-    if (newPassword !== confirmNewPassword) {
-      setMessage('As novas senhas não coincidem');
-      return;
-    }
-    
-    // Chama a API para verificar a senha antiga e trocar a senha
     try {
+      if (newPassword !== confirmNewPassword) {
+        setMessage('As novas senhas não coincidem');
+        return;
+      }
       const collaboratorId = sessionStorage.getItem('collaborator_id');
-      const response = await fetch('http://localhost/Psi/backend/services/changepasswordcollaborator.php', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          collaboratorId:collaboratorId,
-          oldPassword:oldPassword,
-          newPassword:newPassword,
-        }),
-      });
-
+      const response = await fetch(
+        "http://localhost/Psi/backend/services/changepasswordcollaborator.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            collaboratorId:collaboratorId,
+            oldPassword:oldPassword,
+            newPassword:newPassword,
+          }),
+        }
+      )
+        
       const data = await response.json();
-
-      if (response.ok) {
-        setMessage('Senha alterada com sucesso');
+      console.log(data.id);
+          
+      if (data.status === "success") {
+        sessionStorage.setItem('collaborator_id', JSON.stringify(data.id));
+        // Credenciais válidas, redirecionar para company-info
+        navigate("/dashboard");
       } else {
-        setMessage(data.error || 'Erro ao alterar a senha');
+            // Se a resposta não for bem-sucedida, mostrar o erro
+        const errorMessage = data.error || "Erro desconhecido";
+        console.error("Erro ao alterar a senha", errorMessage);
       }
     } catch (error) {
-      console.error('Erro ao chamar a API:', error);
-      setMessage('Erro ao alterar a senha');
+          // Se ocorrer um erro durante a solicitação
+      console.error("Erro ao processar a solicitação:", error);
     }
   };
 
