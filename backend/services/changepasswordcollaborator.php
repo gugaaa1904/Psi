@@ -26,7 +26,7 @@ class ChangePasswordService
             $collaboratorId = $dadosRecebidos['collaboratorId'];
             $oldPassword = $dadosRecebidos['oldPassword'];
             $newPassword = $dadosRecebidos['newPassword'];
-            
+
             $stmt = $this->conn->prepare("SELECT PASSWORD FROM collaborator WHERE COLLABORATOR_ID = ? AND PASSWORD = ?");
             $stmt->bind_param("is", $collaboratorId, $oldPassword);
             $stmt->execute();
@@ -38,10 +38,10 @@ class ChangePasswordService
                 if($stmt2->fetch()){
                     $this->response('sucess');
                 }else{
-                    $this->response('failed', array('error' => 'Collaborator not found for id: ' . $id));
+                    $this->response('failed', array('error' => 'Collaborator not found for id: ' . $collaboratorId));
                 }
             }else{
-                $this->response('failed', array('error' => 'Collaborator not found for id: ' . $id));
+                $this->response('failed', array('error' => 'Collaborator not found for id: ' . $collaboratorId));
             }
             $stmt->close();
         }
