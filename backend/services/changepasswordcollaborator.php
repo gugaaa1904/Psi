@@ -22,16 +22,18 @@ class ChangePasswordService
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $jsonInput = file_get_contents("php://input");
             $dadosRecebidos = json_decode($jsonInput, true);
+
             $collaboratorId = $dadosRecebidos['collaboratorId'];
             $oldPassword = $dadosRecebidos['oldPassword'];
             $newPassword = $dadosRecebidos['newPassword'];
+            
             $stmt = $this->conn->prepare("SELECT PASSWORD FROM collaborator WHERE COLLABORATOR_ID = ? AND PASSWORD = ?");
             $stmt->bind_param("is", $collaboratorId, $oldPassword);
             $stmt->execute();
             $stmt->bind_result($passwordDb);
             if($stmt->fetch()){
                 $stmt2 = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
-                $stmt2->bind_param("is",$collaboratorId,$newPassword);
+                $stmt2->bind_param("si",$newPassword, $collaboratorId);
                 $stmt2->execute();
                 if($stmt2->fetch()){
                     $this->response('sucess');
