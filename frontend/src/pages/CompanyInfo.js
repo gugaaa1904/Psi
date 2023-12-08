@@ -12,11 +12,14 @@ class ApexChartClass extends Component {
       series: [
         {
           name: "Expected Consume",
-          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
+          data: [],
+          color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
           name: "Actually Charged",
-          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
+          data: [],
+          color: "rgb(58, 207, 108)",
+          // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
       ],
       options: {
@@ -43,22 +46,23 @@ class ApexChartClass extends Component {
           text: "General Consuming",
           align: "center",
           style: {
-            fontFamily: "Inter, sans-serif",
+            fontSize: "18px", // Adjust font size
+            color: "#005c7d", // Adjust text color
+            fontFamily: "var(--body-medium-regular)", // Adjust font family
+            fontWeight: "bold", // Adjust font weight
           },
         },
         xaxis: {
           categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
         },
-        yaxis: {
-          
-        },
+        yaxis: {},
         fill: {
           opacity: 1,
         },
         tooltip: {
           y: {
             formatter: function (val) {
-              return val ;
+              return val;
             },
           },
         },
@@ -110,19 +114,22 @@ class ApexChartClass extends Component {
 
   render() {
     return (
-      <div id="chart" style={{
-        position: "absolute",
-        top: 250,
-        bottom: 40,
-        width: 400,
-        left: "50%",
-        transform: "translateX(-50%)",
-      }}>
+      <div
+        id="chart"
+        style={{
+          position: "absolute",
+          top: 300,
+          bottom: 40,
+          width: 600,
+          left: "47%",
+          transform: "translateX(-50%)",
+        }}
+      >
         <ReactApexChart
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={350}
+          height={425}
         />
       </div>
     );
@@ -184,8 +191,8 @@ const CompanyInfo = () => {
   return (
     <div className={styles.companyInfo}>
       <div className={styles.content}>
+        <div className={styles.background1} />
         <div className={styles.reductionOfCo2Emissions}>
-          <div className={styles.background} />
           <div className={styles.reductionOfCo2}>
             Reduction of CO2 Emissions
           </div>
@@ -198,8 +205,8 @@ const CompanyInfo = () => {
           </div>
           <ApexChartClass />
         </div>
+        <div className={styles.background3} />
         <div className={styles.totalSpendingsIn}>
-          <div className={styles.background} />
           <div className={styles.value}>
             {selectedOption === "Weekly" &&
               averageWeeklyUsage &&
@@ -222,8 +229,8 @@ const CompanyInfo = () => {
             <option value="Monthly">Monthly</option>
           </select>
         </div>
+        <div className={styles.background2} />
         <div className={styles.totalConsumedInKwh}>
-          <div className={styles.background} />
           <div className={styles.kwh}>
             {selectedOption === "Weekly" &&
               averageWeeklyUsage &&
@@ -249,8 +256,7 @@ const CompanyInfo = () => {
           </select>
         </div>
         <div className={styles.header}>
-          <div className={styles.divider} />
-          <div className={styles.generalOverview}>General Overview</div>
+          <div className={styles.generalOverview}>Company Information</div>
         </div>
       </div>
       <div className={styles.header1}>
@@ -258,11 +264,9 @@ const CompanyInfo = () => {
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <img className={styles.settingsIcon} alt="" src="/settings.svg" />
           <div className={styles.settings1}>Settings</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
           <div className={styles.help1}>Help</div>
         </div>
         <div className={styles.menu}>
@@ -289,11 +293,8 @@ const CompanyInfo = () => {
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>
+        <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         <div className={styles.line} />
-        <div className={styles.line1} />
-        <div className={styles.line2} />
-        <div className={styles.line3} />
-        <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
       </div>
     </div>
   );

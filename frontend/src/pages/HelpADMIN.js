@@ -1,20 +1,11 @@
 import { useState, useCallback } from "react";
-import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./HelpADMIN.module.css";
 
 const HelpADMIN = () => {
-  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const openNotifications = useCallback(() => {
-    setNotificationsOpen(true);
-  }, []);
-
-  const closeNotifications = useCallback(() => {
-    setNotificationsOpen(false);
-  }, []);
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
@@ -111,15 +102,9 @@ const HelpADMIN = () => {
         </div>
 
         <div className={styles.header}>
-          <img
-            className={styles.notificationsIcon}
-            alt=""
-            src="/notifications.svg"
-            onClick={openNotifications}
-          />
           <b className={styles.help}>Help</b>
         </div>
-        
+
         <div className={styles.ifYouHaveContainer}>
           <span>
             If you have any additional question send a e-mail to our support
@@ -132,11 +117,9 @@ const HelpADMIN = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help1}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp1.svg" />
             <b className={styles.help2}>Help</b>
           </div>
           <div className={styles.menu}>
@@ -166,22 +149,11 @@ const HelpADMIN = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
+
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
           <div className={styles.line} />
-          <div className={styles.line1} />
-          <div className={styles.line2} />
-          <div className={styles.line3} />
-          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
-      {isNotificationsOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeNotifications}
-        >
-          <Notifications onClose={closeNotifications} />
-        </PortalPopup>
-      )}
     </>
   );
 };

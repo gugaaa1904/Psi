@@ -1,40 +1,89 @@
 .unsplashNwaetf6qo0Icon {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 20;
   border-radius: var(--br-xs) var(--br-xs) 0 0;
-  width: 1090px;
-  height: 192px;
+  width: 1565px;
+  height: 212px;
   object-fit: cover;
 }
-.backgroundImage,
+.backgroundImage {
+  position: absolute;
+  top: 112px;
+  left: 30px;
+  border-radius: var(--br-mini);
+  background-color: var(--additional-white);
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  width: 1565px;
+  height: 815px;
+}
+.button {
+  position: absolute;
+  top: 5px;
+  left: 24px;
+  letter-spacing: 0.2px;
+  line-height: 140%;
+}
+
+.editPhotoButton {
+  position: absolute;
+  top: 321px;
+  left: 220px;
+  border-radius: var(--br-xs);
+  background-color: var(--color-steelblue-100);
+  width: 111px;
+  cursor: pointer;
+  height: 27px;
+  color: var(--additional-white);
+}
+
+.profileIcon {
+  position: absolute;
+  top: 246px;
+  left: 77px;
+  width: 108px;
+  height: 111px;
+}
+
 .profileInfoChild {
   position: absolute;
-  top: 110px;
+  top: 610px;
   left: 50px;
   width: 1090px;
-  height: 192px;
-}
-.profileInfoChild {
-  top: -19px;
-  left: 15px;
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
   height: 592px;
+  padding: 20px;
+  /* Add padding for a more modern look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Add a subtle box shadow for depth */
 }
+
 .fullName {
   font-family: var(--body-medium-regular);
+  font-size: 14px;
+  /* Increase font size for full name */
+  margin-bottom: 10px;
+  /* Add spacing below full name */
 }
+
 .josAlbertoDos {
   font-weight: 300;
+  font-size: 14px;
+  /* Increase font size for additional information */
+  margin-bottom: 10px;
+  /* Add spacing below additional information */
 }
+
 .fullNameJosAlbertoDosS {
   margin: 0;
 }
+
 .blankLine {
   margin: 0;
   font-weight: 300;
 }
+
 .fullNameContainer {
   position: absolute;
   top: 148px;
@@ -43,24 +92,7 @@
   width: 671px;
   height: 384px;
 }
-.button {
-  position: absolute;
-  top: 2.5px;
-  left: 14px;
-  letter-spacing: 0.2px;
-  line-height: 140%;
-}
-.editPhotoButton {
-  position: absolute;
-  top: 21px;
-  left: 165px;
-  border-radius: var(--br-xs);
-  background-color: var(--color-steelblue-100);
-  width: 111px;
-  cursor: pointer;
-  height: 27px;
-  color: var(--additional-white);
-}
+
 .name {
   position: absolute;
   top: 101px;
@@ -68,30 +100,28 @@
   font-size: var(--heading-h4-size);
   line-height: 125%;
 }
+
 .profileInfo {
   position: absolute;
-  top: 302px;
-  left: 35px;
-  width: 1120px;
-  height: 583px;
+  top: 300px;
+  width: 200px;
+  height: 800px;
+  left: 100px;
   overflow: hidden;
 }
-.content,
-.profileIcon {
-  position: absolute;
-  top: 246px;
-  left: 77px;
-  width: 108px;
-  height: 111px;
-}
+
 .content {
-  top: 0;
-  left: 251px;
-  background-color: var(--greyscale-50);
-  width: 1189px;
-  height: 900px;
-  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 250px;
+  background-color: #f5f5f5;
+  /* Light gray background */
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: auto;
 }
+
 .profile {
   position: absolute;
   top: 29px;
@@ -99,74 +129,74 @@
   letter-spacing: 0.2px;
   line-height: 125%;
 }
+
 .header {
   position: fixed;
   top: 0;
   left: 250px;
-  background-color: var(--additional-white);
-  width: 1191px;
+  background-color: #005c7d;
+  width: 1690px;
   height: 88px;
   overflow: hidden;
   font-size: var(--heading-h3-size);
-  color: var(--greyscale-900);
+  color: white;
 }
+
 .settings1,
 .settingsIcon {
   position: absolute;
   top: 13px;
 }
-.settingsIcon {
-  left: 16px;
-  width: 22px;
-  height: 22px;
-  overflow: hidden;
-}
+
 .settings1 {
-  left: 54px;
+  left: 24px;
   letter-spacing: 0.2px;
   line-height: 160%;
   font-weight: 500;
 }
+
 .iconshelp,
 .settings {
   position: absolute;
   left: 16px;
 }
+
 .settings {
-  top: 827px;
+  position: absolute;
+  top: 880px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
-.iconshelp {
-  top: 12px;
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
-}
+
 .help1 {
   position: absolute;
   top: 13px;
-  left: 56px;
+  left: 24px;
   letter-spacing: 0.2px;
   line-height: 160%;
   font-weight: 500;
 }
+
 .help,
-.profile2 {
+.profile1 {
   position: absolute;
   left: 16px;
 }
+
 .help {
-  top: 765px;
+  position: absolute;
+  top: 825px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
 .profile2 {
+  position: absolute;
   top: 13px;
+  left: 16px;
   line-height: 160%;
 }
 .profile1 {
@@ -216,62 +246,71 @@
 .addUser {
   top: 19px;
 }
+
+.settings,
+.companyInformation,
+.help,
+.collaboratorInformation,
+.companyInformation,
+.addUser {
+  transition: background-color 0.3s ease;
+}
+
+.settings:hover,
+.companyInformation:hover,
+.help:hover,
+.collaboratorInformation:hover,
+.companyInformation:hover,
+.addUser:hover {
+  background-color: #005c7d;
+  /* Change to your desired hover color */
+}
+
 .addUser,
 .menu,
 .menu1 {
   position: absolute;
 }
 .menu1 {
-  top: -5px;
+  top: -10px;
   left: 89px;
   font-size: var(--body-small-medium-size);
   letter-spacing: 1px;
   line-height: 160%;
-  color: var(--color-lightslategray-200);
+  color: white;
 }
 .menu {
-  top: 108px;
+  top: 148px;
   left: 16px;
   width: 218px;
   height: 259px;
 }
-.line,
-.line1,
-.line2,
-.line3 {
-  position: absolute;
-  box-sizing: border-box;
-}
+
 .line {
-  top: -0.5px;
-  left: 249.5px;
+  top: 0px;
+  position: fixed;
+  left: 250px;
   border-right: 1px solid var(--greyscale-100);
   width: 1px;
-  height: 901px;
+  height: 88px;
+  box-sizing: border-box;
 }
-.line1,
-.line2,
-.line3 {
-  top: 819.5px;
-  left: 15.5px;
-  border-top: 1px solid var(--greyscale-100);
-  width: 219px;
-  height: 1px;
-}
-.line2,
-.line3 {
-  top: 366.5px;
-}
-.line3 {
-  top: 87.5px;
-}
+
 .logo1Icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 88px;
-  object-fit: cover;
+  top: 12px;
+  left: 53px;
+  width: 140px;
+  height: 90px;
+  background-color: rgb(22, 128, 160);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold
 }
 .profileAdmin,
 .sidebar {
@@ -282,19 +321,18 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--additional-white);
+  background-color: rgb(22, 128, 160);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
   width: 250px;
   font-size: var(--body-medium-regular-size);
-  color: var(--greyscale-500);
+  color: white;
 }
 .profileAdmin {
-  position: relative;
+  position: fixed;
   background-color: var(--color-gray-100);
   width: 1900px;
-  left: 200px;
   text-align: left;
-  font-size: var(--heading-h6-size);
-  color: var(--color-black);
+  font-size: var(--body-small-medium-size);
+  color: black;
   font-family: var(--body-medium-regular);
 }

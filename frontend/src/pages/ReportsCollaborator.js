@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useCallback , Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./Dashboard.module.css";
+import styles from "./ReportsCollaborator.module.css";
+import React, { useState, useEffect, useCallback , Component } from "react";
 import ReactApexChart from "react-apexcharts";
 import axios from 'axios';
-
-
 
 const ApexChart = () => {
   const [series, setSeries] = useState([]);
@@ -37,20 +35,8 @@ const ApexChart = () => {
         opacity: 0.5,
       },
     },
-    yaxis: {
-      title: {
-        text: " € (EURO) ",
-      },
-    },
     xaxis: {
       categories: [], // Preencheremos isso com os valores da coluna "DAY"
-    },
-    tooltip: {
-      y: {
-        formatter: function (val) {
-          return " € " + val;
-        },
-      },
     },
   });
 
@@ -68,10 +54,10 @@ const ApexChart = () => {
       setSeries([
         {
           name: 'Consuming',
-          data: dataFromServer.map(item => parseFloat((item.DAILY_USAGE * 0.2).toFixed(1))), // Arredonda para a primeira casa decimal
+          data: dataFromServer.map(item => item.DAILY_USAGE), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
         },
       ]);
-      
+
       // Atualiza o estado das opções com os valores da coluna "DAY" no eixo X
       setOptions(prevOptions => ({
         ...prevOptions,
@@ -174,7 +160,7 @@ class ApexChartClass extends Component {
       const dataFromServer = response.data;
 
       // Preencher o array de Consuming multiplicando por 2.5
-      const consumingData = dataFromServer.map((item) => item.MONTHLY_USAGE * 0.2);
+      const consumingData = dataFromServer.map((item) => item.MONTHLY_USAGE * 2.5);
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
       const plafondData = Array(consumingData.length).fill(50);
@@ -222,30 +208,19 @@ class ApexChartClass extends Component {
 }
 
 
-
-
-const Dashboard = () => {
+const ReportsCollaborator = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [selectedMonth, setSelectedMonth] = useState(1); // Valor padrão ou vazio
   const [monthlyUsageData, setMonthlyUsageData] = useState([]);
-  const [timelineData, setTimelineData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const collaboratorId = sessionStorage.getItem("collaborator_id");
-        const response = await axios.get(
-          `http://localhost/Psi/backend/services/report2.php?collaborator_id=${collaboratorId}`
-        );
-        setTimelineData(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar dados da API:", error);
-      }
-    };
+  const onActivityContainerClick = useCallback(() => {
+    navigate("/activity");
+  }, [navigate]);
 
-    fetchData();
-  }, []);
+  const onVariationBasedOnContractClick = useCallback(() => {
+    navigate("/variation-based-on-contract");
+  }, [navigate]);
 
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
@@ -267,99 +242,168 @@ const Dashboard = () => {
     navigate("/profile-collaborator");
   }, [navigate]);
 
-  const onReportsContainerClick = useCallback(() => {
-    navigate("/reports-collaborator");
-  }, [navigate]);
-
   const onTimelinesContainerClick = useCallback(() => {
     navigate("/timeline");
   }, [navigate]);
 
+  const onDashboardContainerClick = useCallback(() => {
+    navigate("/dashboard");
+  }, [navigate]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem('collaborator_id');
+        console.log(selectedMonth);
+        const response = await fetch(
+          "http://localhost/Psi/backend/services/reportpowermonthly.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ collaborator_id: collaboratorId, month: selectedMonth }),
+          }
+        )
+          
+        const data = await response.json();
+
+        console.log('Data from server:', data); // Adiciona esta linha para verificar a estrutura dos dados
   
+        if (data.status === 'sucess') {
+          const monthlyUsage = {
+            DAY: data.DAY,
+            MONTH_YEAR: data.MONTH_YEAR,
+            DAILY_USAGE: data.DAILY_USAGE,
+            DAILY_RUNTIME: data.DAILY_RUNTIME,
+            WEEKLY_USAGE: data.WEEKLY_USAGE,
+            MONTHLY_USAGE: data.MONTHLY_USAGE,
+          };
+
+          setMonthlyUsageData([monthlyUsage]);
+        } else {
+          console.error(`Erro ao obter dados para o mês ${selectedMonth}:`, data.error);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    };
+  
+    fetchData();
+  }, [selectedMonth])
+
+  
+
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+  };
+
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
   return (
     <>
-      <div className={styles.dashboard}>
+      <div className={styles.reportsCollaborator}>
         <div className={styles.content}>
-          <div className={styles.monthlyExpenses}>
-            <div className={styles.bigCard}>
-              <div className={styles.bigCardChild} />
+          <div className={styles.fullReport}>
+            <div className={styles.fullReportChild} />
+            <b className={styles.analysisTheBlue}>
+              Analysis: The blue bar is correlated with the plafond of the
+              user´s contract, based on the “Variation Based on Contract”
+              graphic, this is a specific month version.
+            </b>
+            <b className={styles.analysisTheAccumulated}>
+              Analysis: The accumulated energy used since the first day of the
+              month until the last day of the month, if the value is above 1000
+              kWh the user needs to be careful with the number of charges and
+              how long the plug is on.
+            </b>
+            
+            <b className={styles.analysisIfTheContainer1}>
+              <p className={styles.analysisIfThe}>
+                Analysis: If the socket is consuming 0 KwH and has not been
+                switched on, the value shown in the line graph represents what
+                the socket has consumed over the week.
+              </p>
+            </b>
+            <b className={styles.report}>Report</b>
+            <div className={styles.power}>
+              <div className={styles.bigCard}>
+                <div className={styles.bigCardChild} />
+              </div>
+              <div className={styles.powerChild} />
+              <div>
+              <div className={styles.powerChild} />
+              <div className={styles.powerInKwhContainer}>
+                <p className={styles.kwh}>{monthlyUsageData.length > 0
+                  ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh`
+                  : 'Loading...'}</p>
+                <p className={styles.blankLine}>&nbsp;</p>
+              </div>
+              <select className={styles.monthsDropDown} id="meses" onChange={handleMonthChange} value={selectedMonth} style={{ zIndex: 9999 }}>
+                {/* Gera as opções do select usando os nomes dos meses */}
+                {monthNames.map((monthName, index) => (
+                  <option key={index} value={index + 1}>{monthName}</option>
+                ))}
+              </select>
+            </div>
+              <div className={styles.nbChartsGauge5Wrapper}>
+                <div className={styles.gauge2Icon}>
+                  <img
+                    className={styles.gauge2Icon}
+                    alt=""
+                    src="/gauge-2.svg"
+                  />
+                  <img
+                    className={styles.divider11Icon}
+                    alt=""
+                    src="/divider-11.svg"
+                  />
+                  <img
+                    className={styles.divider40Icon}
+                    alt=""
+                    src="/divider-40.svg"
+                  />
+                  <img
+                    className={styles.point3Icon}
+                    alt=""
+                    src="/point-3.svg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles.monthlyExpenses}>
               <ApexChartClass />
             </div>
-            <div className={styles.graph}>
-              {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
+            <div className={styles.activity} onClick={onActivityContainerClick}>
+              <ApexChart />
+            </div>
+            <div
+              className={styles.variationBasedOnContract}
+              onClick={onVariationBasedOnContractClick}
+            >
+              <div className={styles.bigCard3}>
+                <div className={styles.rectangleDiv} />
+              </div>
+              <img
+                className={styles.backgroundIcon1}
+                alt=""
+                src="/background1.svg"
+              />
+              <div className={styles.kwhCompletionRate} />
             </div>
           </div>
-          <div
-            className={styles.variationBasedOnContract}
-          >
-            <div className={styles.bigCard1}>
-              <div className={styles.bigCardChild} />
-            </div>
+          <div className={styles.header}>
             <img
-              className={styles.backgroundIcon}
+              className={styles.notificationsIcon}
               alt=""
-              src="/background7.svg"
+              src="/notifications.svg"
+              onClick={openNotifications}
             />
-            
-            <ApexChart />
+            <b className={styles.reports}>Reports</b>
           </div>
-          <div className={styles.power}>
-            <b >You loaded it on the following days and got the following results:</b>
-            <ul className={styles.november5October6Septemb}>
-                {timelineData.map((item) => (
-                  <li key={item.DATE_USAGE}>
-                  <span>In month <strong style={{ color: 'rgb(51, 153, 255)' }}>{item.MONTH_USAGE}</strong> consumed </span>
-                  <span className={styles.span}>
-                    <strong style={{ color: 'rgb(51, 153, 255)' }}>{item.MONTHLY_USAGE}</strong> what converted to money is{' '}
-                    <strong style={{ color: 'rgb(51, 153, 255)' }}>{item.MONTHLY_USAGEE}</strong>
-                  </span>
-                </li>
-                ))}
-              </ul> 
-            
-            
-              
-              
-              
-            
-          </div>
-          <div className={styles.activity}>
-            <div className={styles.bigCard3}>
-              
-            </div>
-            <div className={styles.apexChartContainer}>
-              <b className={styles.textletf}>You loaded it on the following days and got the following results:</b>
-              <b className={styles.textletf}> 
-              <ul className={styles.november5October6Septemb}>
-                {timelineData.map((item) => (
-                  <li key={item.DATE_USAGE}>
-                  <span>In day <strong style={{ color: 'rgb(51, 153, 255)' }}>{item.DATE_USAGE}</strong> consumed </span>
-                  <span className={styles.span}>
-                    <strong style={{ color: 'rgb(51, 153, 255)' }}>{item.DAILY_USAGE}</strong> what converted to money is{' '}
-                    <strong style={{ color: 'rgb(51, 153, 255)' }}>{item.DAILY_USAGEE}</strong>
-                  </span>
-                </li>
-                ))}
-              </ul> 
-              </b>
-              
-
-
-
-
-
-            </div>
-          </div>
-        </div>
-        <div className={styles.header}>
-          <img
-            className={styles.notificationsIcon}
-            alt=""
-            src="/notifications.svg"
-            onClick={openNotifications}
-          />
-          <b className={styles.dashboard1}>Dashboard</b>
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
@@ -372,26 +416,32 @@ const Dashboard = () => {
           </div>
           <div className={styles.menu}>
             <div className={styles.profile} onClick={onProfileContainerClick}>
-              <div className={styles.reportsTexto}>Profile</div>
+              <div className={styles.profile1}>Profile</div>
             </div>
-            <div className={styles.reports} onClick={onReportsContainerClick}>
-              <div className={styles.reportsTexto}>Reports</div>
+            <div className={styles.reports1}>
+              <b className={styles.reportsTexto}>
+                <span className={styles.rep}>Rep</span>o
+                <span className={styles.rep}>rts</span>
+              </b>
             </div>
             <div
               className={styles.timelines}
               onClick={onTimelinesContainerClick}
             >
-              <div className={styles.reportsTexto}>Timelines</div>
+              <div className={styles.profile1}>Timelines</div>
             </div>
-            <div className={styles.dashboard2}>
-              <b className={styles.dashboard3}>Dashboard</b>
+            <div
+              className={styles.dashboard}
+              onClick={onDashboardContainerClick}
+            >
+              <div className={styles.profile1}>Dashboard</div>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
-          <div className={styles.line5} />
           <div className={styles.line6} />
           <div className={styles.line7} />
           <div className={styles.line8} />
+          <div className={styles.line9} />
           <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
         </div>
       </div>
@@ -408,4 +458,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ReportsCollaborator;

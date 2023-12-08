@@ -10,12 +10,11 @@ const SettingsCollaborator = () => {
     useState(false);
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
-  const [message, setMessage] = useState('');
-
+  const [message, setMessage] = useState("");
 
   const onLogoutContainerClick = useCallback(() => {
     navigate("/");
@@ -57,10 +56,10 @@ const SettingsCollaborator = () => {
     navigate("/dashboard");
   }, [navigate]);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const collaboratorId = sessionStorage.getItem('collaborator_id');
+      const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await fetch(
         "http://localhost/Psi/backend/services/changepasswordcollaborator.php",
         {
@@ -69,35 +68,35 @@ const SettingsCollaborator = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            col:collaboratorId,
-            old:oldPassword,
-            new:newPassword
-          })
+            col: collaboratorId,
+            old: oldPassword,
+            new: newPassword,
+          }),
         }
-      )
-      sessionStorage.setItem('collaboratorId', JSON.stringify(collaboratorId)); 
-      sessionStorage.setItem('oldPassword', JSON.stringify(oldPassword)); 
-      sessionStorage.setItem('newPassword', JSON.stringify(newPassword));
+      );
+      sessionStorage.setItem("collaboratorId", JSON.stringify(collaboratorId));
+      sessionStorage.setItem("oldPassword", JSON.stringify(oldPassword));
+      sessionStorage.setItem("newPassword", JSON.stringify(newPassword));
       if (newPassword !== confirmNewPassword) {
-        setMessage('As novas senhas não coincidem');
+        setMessage("As novas senhas não coincidem");
         return;
       }
       const data = await response.json();
       console.log(data.status);
-      
+
       if (data.status === "success") {
-        sessionStorage.setItem('collaborator_id', JSON.stringify(data.id));
+        sessionStorage.setItem("collaborator_id", JSON.stringify(data.id));
         // Credenciais válidas, redirecionar para company-info
       } else {
-            // Se a resposta não for bem-sucedida, mostrar o erro
+        // Se a resposta não for bem-sucedida, mostrar o erro
         const errorMessage = data.error || "Erro desconhecido";
         console.error("Erro ao alterar a senha", errorMessage);
       }
     } catch (error) {
-          // Se ocorrer um erro durante a solicitação
+      // Se ocorrer um erro durante a solicitação
       console.error("Erro ao processar a solicitação:", error);
     }
-  }
+  };
 
   return (
     <>
@@ -181,12 +180,11 @@ const SettingsCollaborator = () => {
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
-             <div className={styles.changeButton}>
+            <div className={styles.changeButton}>
               <button type="submit">
                 <b className={styles.button1}>Change</b>
               </button>
             </div>
-
 
             {/* Exibe mensagens de erro/sucesso */}
             {message && <p>{message}</p>}

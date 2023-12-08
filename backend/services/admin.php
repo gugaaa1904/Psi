@@ -40,34 +40,12 @@ class AdminService
 
             $sql->close();
 
-            // Processar a imagem
-            $photo = isset($_FILES['companyImage']) ? $_FILES['companyImage'] : null;
-
-            // Verificar se uma imagem foi enviada
-            if ($photo && $photo['error'] == 0) {
-                // Defina o caminho onde a imagem será armazenada no servidor
-                $uploadDir = "caminho/para/o/diretorio/onde/armazenar/as/imagens/";
-                $uploadFile = $uploadDir . basename($photo['name']);
-
-                // Mova o arquivo para o diretório de destino
-                if (move_uploaded_file($photo['tmp_name'], $uploadFile)) {
-                    // Imagem movida com sucesso, continue com a inserção no banco de dados
-
-                    // Inclua a coluna PHOTO no INSERT e vincule o parâmetro correspondente
-                    $stmt = $this->conn->prepare("INSERT INTO `Admin` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`, `PHOTO`) 
-                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    $stmt->bind_param("issiisssss", $companyid, $name, $email, $phone, $age, $gender, $password, $companyname, $address, $uploadFile);
-                } else {
-                    // Falha ao mover o arquivo, retorne uma resposta adequada
-                    $this->response(array('status' => 'failed', 'error' => 'Failed to move uploaded file'));
-                    return;
-                }
-            } else {
-                // Nenhuma imagem enviada, continue com a inserção no banco de dados
-                $stmt = $this->conn->prepare("INSERT INTO `Admin` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`) 
+            // Use prepared statements to prevent SQL injection
+            $stmt = $this->conn->prepare("INSERT INTO `Admin` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`) 
                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("issiissss", $companyid, $name, $email, $phone, $age, $gender, $password, $companyname, $address);
-            }
+
+            // Bind parameters
+            $stmt->bind_param("issiissss", $companyid, $name, $email, $phone, $age, $gender, $password, $companyname, $address);
 
             // Execute the statement
             $result = $stmt->execute();
@@ -81,6 +59,7 @@ class AdminService
 
             $stmt->close();
         }
+    
     }
 
     private function response($data)
@@ -90,7 +69,7 @@ class AdminService
 
     private function sanitize($input)
     {
-        // Implemente sua lógica de saneamento se necessário
+        // Implement your sanitization logic if needed
         return $input;
     }
 }
@@ -100,4 +79,3 @@ $adminService = new AdminService();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['admin_name'])) {
     $adminService->insert_admin_post();
 }
-?>

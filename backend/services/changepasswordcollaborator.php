@@ -25,28 +25,27 @@ class ChangePasswordService
         $stmt->bind_param("is", $collaboratorId, $oldPassword);
         $stmt->execute();
         $stmt->bind_result($passwordDb);
-        if($stmt->fetch()){
+        if ($stmt->fetch()) {
             $ola = 1;
-        }
-        else{
+        } else {
             $this->response('failed', array('error' => 'oldPassword errada: ' . $collaboratorId . $oldPassword));
         }
         $stmt->close();
 
         $sql = $this->conn->prepare("UPDATE collaborator SET PASSWORD = ? WHERE COLLABORATOR_ID = ?");
-        $sql->bind_param("si",$newPassword, $collaboratorId);
-        if($sql->execute()){
+        $sql->bind_param("si", $newPassword, $collaboratorId);
+        if ($sql->execute()) {
             $this->response('sucess');
-        }else{
+        } else {
             $this->response('failed', array('error' => 'Password não foi atualizada: ' . $collaboratorId));
         }
-        $sql->close();  
+        $sql->close();
     }
 
     private function response($status, $data = array())
     {
         $response = array('status' => $status);
-        
+
         if (!empty($data)) {
             $response = array_merge($response, $data);
         }
@@ -65,7 +64,5 @@ class ChangePasswordService
 $changePasswordService = new ChangePasswordService();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $changePasswordService -> change_password();
+    $changePasswordService->change_password();
 }
-
-?>

@@ -68,10 +68,10 @@ const ApexChart = () => {
       setSeries([
         {
           name: 'Consuming',
-          data: dataFromServer.map(item => parseFloat((item.DAILY_USAGE * 0.2).toFixed(1))), // Arredonda para a primeira casa decimal
+          data: dataFromServer.map(item => item.DAILY_USAGE * 2.5), // Usamos os valores da coluna "DAILY_USAGE" no eixo Y
         },
       ]);
-      
+
       // Atualiza o estado das opções com os valores da coluna "DAY" no eixo X
       setOptions(prevOptions => ({
         ...prevOptions,
@@ -174,7 +174,7 @@ class ApexChartClass extends Component {
       const dataFromServer = response.data;
 
       // Preencher o array de Consuming multiplicando por 2.5
-      const consumingData = dataFromServer.map((item) => item.MONTHLY_USAGE * 0.2);
+      const consumingData = dataFromServer.map((item) => item.MONTHLY_USAGE * 2.5);
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
       const plafondData = Array(consumingData.length).fill(50);
