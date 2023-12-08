@@ -17,12 +17,9 @@ class ChangePasswordService
 
     public function change_password()
     {
-        $jsonInput = file_get_contents("php://input");
-        $dadosRecebidos = json_decode($jsonInput, true);
-        $this->response('failed', array('error' => 'dadosRecebidos: ' . $dadosRecebidos));
-        $collaboratorId = $dadosRecebidos['collaboratorId'];
-        $oldPassword = $dadosRecebidos['oldPassword'];
-        $newPassword = $dadosRecebidos['newPassword'];
+        $collaboratorId = $_POST['collaboratorId'];
+        $oldPassword = $_POST['oldPassword'];
+        $newPassword = $_POST['newPassword'];
 
         $stmt = $this->conn->prepare("SELECT PASSWORD FROM collaborator WHERE COLLABORATOR_ID = ? AND PASSWORD = ?");
         $stmt->bind_param("is", $collaboratorId, $oldPassword);
