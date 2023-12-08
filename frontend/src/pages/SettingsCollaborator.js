@@ -149,17 +149,32 @@ const SettingsCollaborator = () => {
           </div>
           <form onSubmit={handleSubmit}>
             <label>
-            <p>Old Password</p>
-            <input type="text" placeholder="Enter your old Password" onChange={e => setOldPassword(e.target.value)}/>
-          </label>
-          <label>
-            <p>New Password</p>
-            <input type="password" placeholder="Enter your new Password" onChange={e => setNewPassword(e.target.value)}/>
-          </label>
-          <label>
-            <p>Confirm new Password</p>
-            <input type="password" placeholder="Confirm your new Password" onChange={e => setConfirmNewPassword(e.target.value)}/>
-          </label>
+              <p>Old Password</p>
+              <input
+                type="password"
+                className={styles.oldPassword}
+                placeholder="Enter your old Password"
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+            </label>
+            <label>
+              <p>New Password</p>
+              <input
+                type="password"
+                className={styles.newPassword}
+                placeholder="Enter your new Password"
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </label>
+            <label>
+              <p>Confirm new Password</p>
+              <input
+                type="password"
+                className={styles.confirmNewPassword}
+                placeholder="Confirm your new Password"
+                onChange={(e) => setConfirmNewPassword(e.target.value)}
+              />
+            </label>
             <div>
               <button type="submit">Change</button>
             </div>
