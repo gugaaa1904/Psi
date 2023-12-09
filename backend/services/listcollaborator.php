@@ -18,7 +18,10 @@ if ($conn->connect_error) {
 }
 
 $companyId = $_GET['company_id'];
-$sql = "SELECT NAME, COMPANYNAME, PHONE FROM collaborator WHERE COMPANY_ID = ?";
+$sql = "SELECT c.NAME, c.COMPANYNAME, c.PHONE, c.COLLABORATOR_ID, cn.WEEKLY_USAGE, cn.MONTHLY_USAGE
+        FROM collaborator c
+        LEFT JOIN consuming cn ON c.COLLABORATOR_ID = cn.COLLABORATOR_ID
+        WHERE c.COMPANY_ID = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $companyId);
 $stmt->execute();
@@ -30,6 +33,9 @@ if ($result->num_rows > 0) {
             'NAME' => $row["NAME"],
             'COMPANYNAME' => $row["COMPANYNAME"],
             'PHONE' => $row["PHONE"],
+            'COLLABORATOR_ID' => $row["COLLABORATOR_ID"],
+            'WEEKLY_USAGE' => $row["WEEKLY_USAGE"],
+            'MONTHLY_USAGE' => $row["MONTHLY_USAGE"],
         );
     }
 

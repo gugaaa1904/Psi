@@ -293,12 +293,15 @@ const CollaboratorInfo = () => {
         <div className={styles.listtitle}>List of Collaborators</div>
         <div className={styles.listOfCollaborators}>
           {collaborators.map((collaborator, index) => (
-            <div key={index} className={styles.employee}>
-              <div className={styles.employee4Child} />
+            <div key={index}>
               <b className={styles.name}>{collaborator.NAME}</b>
               <div className={styles.position}>
                 <p className={styles.dhlEmployee}>
                   {collaborator.COMPANYNAME} - Employee
+                </p>
+                <p className={styles.dhlEmployee}>
+                  Monthly Expenses: {collaborator.MONTHLY_USAGE} kwh -{" "}
+                  {collaborator.MONTHLY_USAGE * 0.2} EUR
                 </p>
               </div>
               <img
