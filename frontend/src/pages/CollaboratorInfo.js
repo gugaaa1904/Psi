@@ -119,10 +119,9 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: 0,
-          bottom: 40,
-          width: 600,
-          left: "47%",
+          top: 25,
+          width: 640,
+          left: 390,
           transform: "translateX(-50%)",
         }}
       >
@@ -218,10 +217,17 @@ const CollaboratorInfo = () => {
   return (
     <div className={styles.collaboratorInfo}>
       <div className={styles.content}>
+        <div className={styles.header}>
+          <b className={styles.collaboratorInformation}>
+            Collaborator Information
+          </b>
+        </div>
+
+        <div className={styles.generalOverview}>
+          <div className={styles.generalOverview1}>General Overview</div>
+        </div>
+
         <div className={styles.maxPowerAchieved}>
-          <div className={styles.bigCard}>
-            <div className={styles.bigCardChild} />
-          </div>
           <div className={styles.bg} />
 
           <div className={styles.data}>
@@ -231,9 +237,6 @@ const CollaboratorInfo = () => {
           <div className={styles.maxPowerAchieved1}>Max Power Achieved</div>
         </div>
         <div className={styles.minPowerAchieved}>
-          <div className={styles.bigCard}>
-            <div className={styles.bigCardChild} />
-          </div>
           <div className={styles.bg1} />
 
           <div className={styles.data1}>
@@ -246,9 +249,6 @@ const CollaboratorInfo = () => {
           className={styles.averageEnergyConsumptionIn}
           style={{ position: "relative", zIndex: "2" }}
         >
-          <div className={styles.bigCard2}>
-            <div className={styles.bigCardChild} />
-          </div>
           <div className={styles.backgroundCopy2} />
           <div className={styles.data3}>
             {selectedInterval === "weekly"
@@ -261,9 +261,9 @@ const CollaboratorInfo = () => {
 
           {/* Seletor para escolher entre 'monthly' e 'weekly' */}
           <select
+            className={styles.monthsDropDown1}
             value={selectedInterval}
             onChange={(e) => setSelectedInterval(e.target.value)}
-            style={{ position: "absolute", zIndex: "1" }}
           >
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -271,9 +271,6 @@ const CollaboratorInfo = () => {
         </div>
 
         <div className={styles.averageCostIn}>
-          <div className={styles.bigCard2}>
-            <div className={styles.bigCardChild} />
-          </div>
           <div className={styles.backgroundCopy2} />
           <div className={styles.data2}>
             {selectedInterval === "weekly"
@@ -286,7 +283,7 @@ const CollaboratorInfo = () => {
           <select
             value={selectedInterval}
             onChange={(e) => setSelectedInterval(e.target.value)}
-            style={{ position: "absolute", right: "0", top: "0", zIndex: "1" }}
+            className={styles.monthsDropDown2}
           >
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -296,9 +293,6 @@ const CollaboratorInfo = () => {
         <div className={styles.listOfCollaborators}>
           {collaborators.map((collaborator, index) => (
             <div key={index} className={styles.employee}>
-              <div className={styles.bigCard5}>
-                <div className={styles.bigCardChild} />
-              </div>
               <div className={styles.employee4Child} />
               <b className={styles.name}>{collaborator.NAME}</b>
               <div className={styles.position}>
@@ -316,24 +310,14 @@ const CollaboratorInfo = () => {
         </div>
 
         <div className={styles.generalConsuming}>
-          <div className={styles.bigCard9}>
-            <div className={styles.bigCardChild} />
-          </div>
           <div className={styles.background} />
           <ApexChartClass />
           <div className={styles.graph}>
             <div className={styles.graph1}></div>
           </div>
         </div>
-        <div className={styles.generalOverview}>
-          <div className={styles.generalOverview1}>General Overview</div>
-        </div>
       </div>
-      <div className={styles.header}>
-        <b className={styles.collaboratorInformation}>
-          Collaborator Information
-        </b>
-      </div>
+
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
           <div className={styles.settings1}>Settings</div>

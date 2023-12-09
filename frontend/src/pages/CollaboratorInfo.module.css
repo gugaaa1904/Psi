@@ -1,27 +1,13 @@
-.bg,
-.bigCard,
-.bigCardChild {
+.bg{
   position: absolute;
-  top: 0;
-  left: 0;
-}
-.bigCardChild {
-  height: 100%;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
-}
-.bg,
-.bigCard {
-  width: 224px;
-  height: 165px;
-}
-.bg {
   border-radius: var(--br-base);
   background-color: #ffe2e5;
+  top: 0px;
+  left: -50px;
+  width: 400px;
+  height: 155px;
 }
+
 .numberOfCollaborators,
 .percentage {
   position: absolute;
@@ -42,33 +28,32 @@
   width: 172px;
   height: 22px;
 }
-.data,
-.redIcon {
-  position: absolute;
-}
+
 .data {
-  top: 68px;
-  left: 83px;
+  top: 75px;
+  left: 100px;
+  position: absolute;
   font-size: var(--heading-h3-size);
   line-height: 32px;
   font-weight: 600;
-  color: var(--greys-blue-grey-900);
+  color: #005c7d;
   display: inline-block;
-  width: 57px;
-  height: 29px;
+  width: 150px;
+  height: 30px;
 }
 .redIcon {
   top: 16px;
-  left: 16px;
-  width: 25px;
-  height: 21.1px;
+  position: absolute;
+  left: -30px;
+  width: 30px;
+  height: 30px;
 }
 .maxPowerAchieved1 {
   position: absolute;
   width: 90.39%;
-  top: calc(50% - 71.5px);
-  left: 9.61%;
-  font-size: var(--body-medium-regular-size);
+  top: 15px;
+  left: 48px;
+  font-size: 16px;
   line-height: 32px;
   font-weight: 600;
   color: var(--primary-dark-shade);
@@ -78,20 +63,63 @@
 }
 .maxPowerAchieved {
   position: absolute;
-  top: 708px;
+  top: 758px;
   left: 496px;
   width: 229px;
-  height: 165px;
+  height: 155px;
 }
+
+
+
 .bg1 {
   position: absolute;
-  top: 1px;
-  left: 0;
+  top: 0px;
+  left: -30px;
   border-radius: var(--br-base);
   background-color: var(--colors-green-100);
-  width: 224px;
-  height: 164px;
+  width: 400px;
+  height: 155px;
 }
+
+.monthsDropDown1 {
+  position: absolute;
+  top: 70px;
+  left: 70px;
+  width: 75px;
+  height: 40px;
+  padding-left: 13.5px;
+  border: 1px solid;
+  background-color: #fff;
+  font-size: 14px;
+  color: #005c7d;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  appearance: none;
+  background: no-repeat right center;
+  background-size: 20px 20px;
+}
+
+.monthsDropDown2 {
+  position: absolute;
+  top: 70px;
+  left: 70px;
+  width: 75px;
+  height: 40px;
+  padding-left: 13.5px;
+  border: 1px solid;
+  background-color: #fff;
+  font-size: 14px;
+  color: #005c7d;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  appearance: none;
+  background: no-repeat right center;
+  background-size: 20px 20px;
+}
+
+
 .numberOfCollaborators1,
 .percentage1 {
   position: absolute;
@@ -119,18 +147,18 @@
   display: inline-block;
 }
 .data1 {
-  top: 67px;
-  left: 82px;
+  top: 75px;
+  left: 120px;
   font-size: var(--heading-h3-size);
-  color: var(--greys-blue-grey-900);
-  width: 60px;
-  height: 29px;
+  color: #005c7d;
+  width: 150px;
+  height: 30px;
 }
 .minPowerAchieved1 {
   width: 90.39%;
-  top: calc(50% - 70.5px);
-  left: 9.61%;
-  font-size: var(--body-medium-regular-size);
+  top: 15px;
+  left: 65px;
+  font-size: 16px;
   color: var(--primary-dark-shade);
   text-align: center;
   height: 59px;
@@ -138,24 +166,23 @@
 .greenIcon {
   position: absolute;
   top: 17px;
-  left: 17px;
-  width: 27.1px;
-  height: 25.2px;
+  left: -10px;
+  width: 30px;
+  height: 30px;
 }
 .minPowerAchieved {
   position: absolute;
-  top: 517px;
-  left: 496px;
+  top: 590px;
+  left: 476px;
   width: 229px;
-  height: 165px;
+  height: 155px;
 }
-.backgroundCopy2,
-.bigCard2 {
+.backgroundCopy2 {
   position: absolute;
   top: 0;
   left: 0;
   width: 431px;
-  height: 165px;
+  height: 155px;
 }
 .backgroundCopy2 {
   height: 100%;
@@ -168,6 +195,7 @@
   border: 1px solid var(--color-aliceblue-100);
   box-sizing: border-box;
 }
+
 .averageCostIn1,
 .data2 {
   position: absolute;
@@ -176,25 +204,25 @@
   display: inline-block;
 }
 .data2 {
-  top: 83px;
-  left: 128px;
-  width: 188px;
+  top: 75px;
+  left: 220px;
+  width: 150px;
   height: 29px;
 }
 .averageCostIn1 {
   width: 44.55%;
   top: calc(50% - 56.5px);
-  left: 27.61%;
-  font-size: var(--xl-semibold-size);
+  left: 120px;
+  font-size: 16px;
   color: var(--primary-dark-shade);
   height: 27px;
 }
 .averageCostIn {
   position: absolute;
-  top: 708px;
+  top: 758px;
   left: 32px;
-  width: 431px;
-  height: 165px;
+  width: 400px;
+  height: 155px;
   font-size: var(--heading-h3-size);
   color: var(--color-tomato-100);
 }
@@ -206,36 +234,31 @@
   display: inline-block;
 }
 .data3 {
-  top: 83px;
-  left: 166px;
-  width: 100px;
+  top: 75px;
+  left: 220px;
+  width: 150px;
   height: 29px;
 }
+
+
 .averageEnergyConsumption {
   width: 89.1%;
   top: calc(50% - 60.5px);
-  left: 5.34%;
-  font-size: var(--xl-semibold-size);
+  left: 50px;
+  font-size: 16px;
   color: var(--primary-dark-shade);
   height: 27px;
 }
 .averageEnergyConsumptionIn {
   position: absolute;
-  top: 518px;
-  left: 32px;
-  width: 431px;
-  height: 165px;
+  top: 570px;
+  left: 12px;
+  width: 400px;
+  height: 155px;
   font-size: var(--heading-h3-size);
   color: var(--color-mediumspringgreen-100);
 }
-.bigCard4 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 419px;
-  height: 683px;
-}
-.bigCard5,
+
 .employee4Child {
   position: absolute;
   top: 0;
@@ -316,6 +339,9 @@
 .employee {
   top: 73px;
 }
+
+
+
 .listOfCollaborators1 {
   position: absolute;
   width: 49.16%;
@@ -333,7 +359,7 @@
 .listOfCollaborators {
   position: absolute;
   top: 190px;
-  left: 743px;
+  left: 863px;
   width: 419px;
   font-size: var(--heading-h6-size);
   color: var(--color-black);
@@ -344,8 +370,10 @@
   flex-direction: column;
   align-items: flex-start; /* Alinhar os colaboradores à esquerda */
 }
-.background,
-.bigCard9 {
+
+
+
+.background{
   position: absolute;
   top: 0;
   left: 0;
@@ -806,10 +834,10 @@
 }
 .generalConsuming {
   position: absolute;
-  top: 190px;
+  top: 170px;
   left: 32px;
-  width: 688px;
-  height: 302px;
+  width: 808px;
+  height: 400px;
   text-align: center;
   color: var(--primary-200);
 }
