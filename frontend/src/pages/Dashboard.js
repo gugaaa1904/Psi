@@ -270,6 +270,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [selectedMonth, setSelectedMonth] = useState(1); // Valor padrão ou vazio
   const [monthlyUsageData, setMonthlyUsageData] = useState([]);
+  const [monthlyChargeData, setMonthlyChargeData] = useState([]);
+  const [timelineData, setTimelineData] = useState([]);
+
 
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
@@ -298,6 +301,39 @@ const Dashboard = () => {
   const onTimelinesContainerClick = useCallback(() => {
     navigate("/timeline");
   }, [navigate]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem("collaborator_id");
+        const response = await axios.get(
+          `http://localhost/Psi/backend/services/timeline.php?collaborator_id=${collaboratorId}`
+        );
+        setTimelineData(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar dados da API:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // Função para obter dados do backend
+    const fetchData = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem("collaborator_id");
+        const response = await axios.get(
+          `http://localhost/Psi/backend/services/timeline2.php?collaborator_id=${collaboratorId}`
+        );
+        setMonthlyChargeData(response.data);
+      } catch (error) {
+        console.error("Erro ao obter dados do backend:", error);
+      }
+    };
+
+    fetchData(); // Chama a função ao montar o componente
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -402,6 +438,44 @@ const Dashboard = () => {
                 ))}
               </select>
             </div>
+
+            <div className={styles.bigCardChild4} />
+            <div className={styles.numberOfChargesMadeMonthly}>
+              <b className={styles.numberOfCharges}>
+                Number of Charges Made Monthly
+              </b>
+              <div className={styles.line} />
+
+              <ul className={styles.monthlyChargesList}>
+                {monthlyChargeData.map((monthData, index) => (
+                  <li key={index} className={styles.chargeListItem}>
+                    <span
+                      className={styles.date}
+                    >{`${monthData.DATE_USAGE}: `}</span>
+                    <span className={styles.totalCharges}>
+                      {monthData.TOTAL_CHARGES}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className={styles.bigCardChild5} />
+            <div className={styles.historyOfCharges}>
+              <b className={styles.historyOfCharges1}>History of Charges</b>
+              <div className={styles.line} />
+              <div className={styles.tuesday23Container}>
+                <ul className={styles.november5October6Septemb}>
+                  {timelineData.map((item) => (
+                    <li key={item.DATE_USAGE}>
+                      <span className={styles.date}>{item.DATE_USAGE} - </span>
+                      <span className={styles.span}>{item.DAILY_USAGE}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
             <b className={styles.power1}>Power</b>
           </div>
           <div className={styles.activity}>
@@ -413,6 +487,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+
         <div className={styles.header}>
           <img
             className={styles.notificationsIcon}
@@ -422,6 +497,7 @@ const Dashboard = () => {
           />
           <b className={styles.dashboard1}>Dashboard</b>
         </div>
+
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
             <div className={styles.settings1}>Settings</div>
@@ -436,12 +512,6 @@ const Dashboard = () => {
             <div className={styles.reports} onClick={onReportsContainerClick}>
               <div className={styles.reportsTexto}>Reports</div>
             </div>
-            <div
-              className={styles.timelines}
-              onClick={onTimelinesContainerClick}
-            >
-              <div className={styles.reportsTexto}>Timelines</div>
-            </div>
             <div className={styles.dashboard2}>
               <b className={styles.dashboard3}>Dashboard</b>
             </div>
@@ -451,6 +521,7 @@ const Dashboard = () => {
           <div className={styles.line} />
         </div>
       </div>
+
       {isNotificationsOpen && (
         <PortalPopup
           overlayColor="rgba(113, 113, 113, 0.3)"

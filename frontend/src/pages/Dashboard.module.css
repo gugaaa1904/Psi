@@ -37,35 +37,129 @@
 
 .bigCardChild4 {
   position: absolute;
-  height: 343px;
+  height: 340px;
   width: 350px;
-  top: 570px;
+  top: 90px;
   right: 0;
   bottom: 0;
-  left: 40px;
+  left: 390px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
 .bigCardChild5 {
   position: absolute;
-  height: 343px;
+  height: 420px;
   width: 350px;
-  top: 570px;
+  top: -360px;
   right: 0;
   bottom: 0;
-  left: 40px;
+  left: 390px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
-.graph {
+.numberOfChargesMadeMonthly {
   position: absolute;
-  top: 93px;
-  left: 77px;
-  width: 562px;
-  height: 234.6px;
+  left: 410px;
+  top: 110px;
+  border-radius: 8px;
+  width: 320px;
+  height: 310px;
 }
+
+.numberOfCharges {
+  position: absolute;
+  font-size: 20px;
+  color: #005c7d;
+  width: 200px;
+  left: 58px;
+  top: 10px;
+  text-align: center;
+}
+
+.monthlyChargesList {
+  position: absolute;
+  top: 35px;
+  list-style: none;
+  padding: 0;
+}
+
+.chargeListItem {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 20px;
+  left: 18px;
+  width: 280px;
+  border-bottom: 1px solid #ddd;
+}
+
+.date {
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.totalCharges {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+
+
+
+.historyOfCharges {
+  position: absolute;
+  left: 405px;
+  top: -340px;
+  border-radius: 8px;
+  width: 320px;
+  height: 380px;
+}
+
+.historyOfCharges1 {
+  position: absolute;
+  font-size: 20px;
+  color: #005c7d;
+  width: 200px;
+  left: 58px;
+  top: 10px;
+  text-align: center;
+}
+
+.november5October6Septemb {
+  position: absolute;
+  top: 35px;
+  list-style: none;
+  padding: 0;
+}
+
+.november5October6Septemb li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 20px;
+  left: 18px;
+  width: 280px;
+  border-bottom: 1px solid #ddd;
+}
+
+.november5October6Septemb .date {
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.november5October6Septemb .span {
+  color: #005c7d;
+}
+
+
+
+
 
 .div1 {
   top: 231px;
@@ -549,7 +643,7 @@
 }
 
 .profile {
-  top: 163px;
+  top: 145px;
   left: 0;
 }
 
@@ -562,10 +656,9 @@
   font-weight: 500;
 }
 
-.reports,
-.timelines {
+.reports {
   position: absolute;
-  top: 115px;
+  top: 90px;
   left: 0;
   border-radius: var(--br-xs);
   width: 218px;
@@ -573,9 +666,7 @@
   cursor: pointer;
 }
 
-.timelines {
-  top: 67px;
-}
+
 
 .dashboard3 {
   position: absolute;
@@ -585,7 +676,7 @@
 }
 
 .dashboard2 {
-  top: 19px;
+  top: 30px;
   left: 0;
   border-radius: var(--br-xs);
   background-color: var(--greyscale-50);
@@ -595,7 +686,7 @@
 }
 
 
-.timelines,
+
 .reports,
 .help,
 .profile,
@@ -603,7 +694,6 @@
   transition: background-color 0.3s ease;
 }
 
-.timelines:hover,
 .profile:hover,
 .reports:hover,
 .help:hover,
@@ -628,7 +718,7 @@
 }
 
 .menu {
-  top: 148px;
+  top: 140px;
   left: 16px;
   width: 218px;
   height: 259px;
@@ -650,7 +740,7 @@
   top: 12px;
   left: 53px;
   width: 140px;
-  height: 90px;
+  height: 100px;
   background-color: rgb(22, 128, 160);
   border-radius: 10px;
   display: flex;
