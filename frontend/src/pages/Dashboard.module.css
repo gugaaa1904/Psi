@@ -1,20 +1,20 @@
 .bigCardChild {
   position: absolute;
   height: 420px;
-  width: 800px;
-  top: 0px;
+  width: 350px;
+  top: 10px;
   right: 0;
   bottom: 0;
-  left: 320px;
+  left: 20px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
 .bigCardChild1 {
   position: absolute;
-  height: 420px;
+  height: 790px;
   width: 800px;
-  top: 10px;
+  top: -360px;
   right: 0;
   bottom: 0;
   left: 320px;
@@ -22,83 +22,41 @@
   background-color: var(--additional-white);
 }
 
-.bigCardChild2 {
+.bigCardChild3 {
   position: absolute;
-  height: 420px;
-  width: 800px;
-  top: 10px;
+  height: 343px;
+  width: 350px;
+  top: 570px;
   right: 0;
   bottom: 0;
-  left: 320px;
+  left: 40px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
-.month {
+
+.bigCardChild4 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 691px;
-  height: 394px;
+  height: 343px;
+  width: 350px;
+  top: 570px;
+  right: 0;
+  bottom: 0;
+  left: 40px;
+  border-radius: var(--br-5xl);
+  background-color: var(--additional-white);
 }
 
-.month {
-  top: 349px;
-  left: 309px;
-  display: inline-block;
-  width: 73px;
-  height: 21px;
-}
-
-.line,
-.line1,
-.line2,
-.line3,
-.line4 {
+.bigCardChild5 {
   position: absolute;
-  top: 234.1px;
-  left: -0.5px;
-  border-top: 1px solid var(--greyscale-100);
-  box-sizing: border-box;
-  width: 563px;
-  height: 1px;
-}
-
-.line1,
-.line2,
-.line3,
-.line4 {
-  top: 175.8px;
-}
-
-.line2,
-.line3,
-.line4 {
-  top: 117.5px;
-}
-
-.line3,
-.line4 {
-  top: 57.8px;
-}
-
-.line4 {
-  top: -0.5px;
-}
-
-.julBar,
-.julBar2 {
-  position: relative;
-  border-radius: var(--br-10xs);
-  background-color: var(--color-orangered);
-  width: 41px;
-  height: 147px;
-}
-
-.julBar {
-  background-color: var(--color-steelblue-100);
-  width: 42px;
-  height: 115px;
+  height: 343px;
+  width: 350px;
+  top: 570px;
+  right: 0;
+  bottom: 0;
+  left: 40px;
+  border-radius: var(--br-5xl);
+  background-color: var(--additional-white);
 }
 
 .graph {
@@ -234,200 +192,46 @@
 
 .powerInKwhContainer {
   position: absolute;
-  top: 303.2px;
-  left: 111px;
+  top: 220px;
+  left: 130px;
   font-weight: 600;
   display: inline-block;
+  text-align: left;
+  font-size: 35px;
   width: 170px;
   height: 46px;
+  color: #005c7d;
 }
 
 .monthsDropDown {
   position: absolute;
-  top: 16px;
-  left: 277px;
-  border-radius: var(--br-5xs);
+  top: 330px;
+  left: 140px;
   width: 102px;
   height: 49px;
-}
-
-.gauge2Icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 169px;
-  height: 145.3px;
-}
-
-.divider11Icon,
-.divider40Icon {
-  position: absolute;
-  top: 24.9px;
-  left: 28.9px;
-  width: 111.1px;
-  height: 90px;
-}
-
-.divider40Icon {
-  top: 25.1px;
-  left: 29.2px;
-  width: 110.6px;
-  height: 86.6px;
-}
-
-.div10,
-.div11,
-.div12,
-.div13,
-.div14,
-.div15,
-.div16,
-.div7,
-.div8,
-.div9,
-.w {
-  position: absolute;
-  top: 52px;
-  left: 21.4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 9.3px;
-  height: 15.9px;
-}
-
-.div10,
-.div11,
-.div12,
-.div13,
-.div14,
-.div15,
-.div16,
-.div8,
-.div9,
-.w {
-  top: 41.8px;
-  left: 9.6px;
-}
-
-.div10,
-.div11,
-.div12,
-.div13,
-.div14,
-.div15,
-.div16,
-.div9,
-.w {
-  top: 27.9px;
-  left: 0;
-  width: 18.5px;
-}
-
-.div10,
-.div11,
-.div12,
-.div13,
-.div14,
-.div15,
-.div16,
-.div9 {
-  top: 13.9px;
-  left: 4.3px;
-}
-
-.div10,
-.div11,
-.div12,
-.div13,
-.div14,
-.div15,
-.div16 {
-  top: 3.7px;
-  left: 16.2px;
-}
-
-.div11,
-.div12,
-.div13,
-.div14,
-.div15,
-.div16 {
-  top: 0;
-  left: 33px;
-}
-
-.div12,
-.div13,
-.div14,
-.div15,
-.div16 {
-  top: 3.7px;
-  left: 49.2px;
-}
-
-.div13,
-.div14,
-.div15,
-.div16 {
-  top: 13.9px;
-  left: 60.5px;
-}
-
-.div14,
-.div15,
-.div16 {
-  top: 27.9px;
-  left: 65.4px;
-}
-
-.div15,
-.div16 {
-  top: 41.8px;
-  left: 60.5px;
-}
-
-.div16 {
-  top: 52px;
-  left: 48.6px;
-}
-
-.point3Icon,
-.txts11 {
-  position: absolute;
-  top: 36.3px;
-  left: 42.2px;
-  width: 83.9px;
-  height: 67.9px;
-}
-
-.point3Icon {
-  top: 51px;
-  left: 64.3px;
-  width: 68.8px;
-  height: 39.6px;
-}
-
-.graph1 {
-  top: 93px;
-  left: 111px;
-  width: 169px;
-  height: 145.3px;
+  border: 1px solid;
+  background-color: #fff;
+  font-size: 14px;
+  color: #005c7d;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
   text-align: center;
-  font-size: var(--body-medium-regular-size);
-  font-family: var(--m-16);
+  appearance: none;
+  background: no-repeat right center;
+  background-size: 20px 20px;
 }
 
-.graph1,
 .power,
 .power1 {
   position: absolute;
 }
 
 .power1 {
-  top: 27.4px;
-  left: 169px;
-  font-size: var(--heading-h6-size);
+  top: 130px;
+  left: 155px;
+  color: #005c7d;
+  font-size: 24px;
   display: inline-block;
   width: 54px;
   height: 19.7px;

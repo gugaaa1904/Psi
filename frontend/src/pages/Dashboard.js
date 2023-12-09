@@ -7,13 +7,20 @@ import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 
 const ApexChart = () => {
-  const [series, setSeries] = useState([]);
+  const [series, setSeries] = useState([
+    {
+      color: "#005c7d", // Change this color to your desired color
+    },
+  ]);
   const [options, setOptions] = useState({
     chart: {
       height: 350,
       type: "line",
       zoom: {
         enabled: false,
+      },
+      style: {
+        color: "#005c7d",
       },
     },
     dataLabels: {
@@ -26,7 +33,10 @@ const ApexChart = () => {
       text: "Daily Activity",
       align: "center",
       style: {
-        fontFamily: "Inter, sans-serif",
+        fontSize: "18px", // Adjust font size
+        color: "#005c7d", // Adjust text color
+        fontFamily: "var(--body-medium-regular)", // Adjust font family
+        fontWeight: "bold", // Adjust font weight
       },
     },
     grid: {
@@ -38,10 +48,14 @@ const ApexChart = () => {
     yaxis: {
       title: {
         text: " € (EURO) ",
+        style: {
+          color: "#005c7d",
+        },
       },
     },
     xaxis: {
-      categories: [], // Preencheremos isso com os valores da coluna "DAY"
+      categories: [],
+      // Preencheremos isso com os valores da coluna "DAY"
     },
     tooltip: {
       y: {
@@ -93,7 +107,16 @@ const ApexChart = () => {
   }, [fetchData]);
 
   return (
-    <div id="chart">
+    <div
+      id="chart"
+      style={{
+        position: "absolute",
+        top: 40,
+        width: 300,
+        left: 190,
+        transform: "translateX(-50%)",
+      }}
+    >
       <ReactApexChart
         options={options}
         series={series}
@@ -223,7 +246,7 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: 40,
+          top: -320,
           width: 640,
           left:720,
           transform: "translateX(-50%)",
@@ -233,133 +256,14 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={350}
+          height={700}
         />
       </div>
     );
   }
 }
 
-class ApexChartt extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      series: [
-        {
-          name: "Percentage of Consumption",
-          data: [120, 122, 96, 95, 150, 26, 81, 80, 120, 76, 134, 80],
-        },
-        {
-          name: "100%",
-          data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
-        },
-      ],
-      options: {
-        chart: {
-          height: 350,
-          type: "line",
-          zoom: {
-            enabled: false,
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          width: [5, 7, 5],
-          curve: "straight",
-          dashArray: [0, 8, 5],
-        },
-        title: {
-          text: "Variation based on Contract",
-          align: "center",
-          style: {
-            fontFamily: "Inter, sans-serif",
-          },
-        },
-        legend: {
-          tooltipHoverFormatter: function (val, opts) {
-            return (
-              val +
-              " - " +
-              opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
-              ""
-            );
-          },
-        },
-        markers: {
-          size: 0,
-          hover: {
-            sizeOffset: 6,
-          },
-        },
-        xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dez",
-          ],
-        },
-        yaxis: {
-          title: {
-            text: " % (PERCENTAGE) ",
-          },
-        },
-        tooltip: {
-          y: [
-            {
-              title: {
-                formatter: function (val) {
-                  return val + " (mins)";
-                },
-              },
-            },
-            {
-              title: {
-                formatter: function (val) {
-                  return val + " per session";
-                },
-              },
-            },
-            {
-              title: {
-                formatter: function (val) {
-                  return val;
-                },
-              },
-            },
-          ],
-        },
-        grid: {
-          borderColor: "#f1f1f1",
-        },
-      },
-    };
-  }
-
-  render() {
-    return (
-      <div id="chart">
-        <ReactApexChart
-          options={this.state.options}
-          series={this.state.series}
-          type="line"
-          height={350}
-        />
-      </div>
-    );
-  }
-}
 
 const Dashboard = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
@@ -467,14 +371,14 @@ const Dashboard = () => {
       <div className={styles.dashboard}>
         <div className={styles.content}>
           <div className={styles.monthlyExpenses}>
-              <div className={styles.bigCardChild1} />
-              <ApexChartClass />
+            <div className={styles.bigCardChild1} />
+            <ApexChartClass />
             <div className={styles.graph}>
               {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
             </div>
           </div>
+          <div className={styles.bigCardChild3} />
           <div className={styles.power}>
-              <div className={styles.bigCardChild3} />
             <div>
               <div className={styles.powerInKwhContainer}>
                 <p className={styles.kwh}>
@@ -498,26 +402,10 @@ const Dashboard = () => {
                 ))}
               </select>
             </div>
-            <div className={styles.graph1}>
-              <div className={styles.gauge2Icon}>
-                <img className={styles.gauge2Icon} alt="" src="/gauge-21.svg" />
-                <img
-                  className={styles.divider11Icon}
-                  alt=""
-                  src="/divider-111.svg"
-                />
-                <img
-                  className={styles.divider40Icon}
-                  alt=""
-                  src="/divider-401.svg"
-                />
-                <img className={styles.point3Icon} alt="" src="/point-31.svg" />
-              </div>
-            </div>
             <b className={styles.power1}>Power</b>
           </div>
           <div className={styles.activity}>
-              <div className={styles.bigCardChild} />
+            <div className={styles.bigCardChild} />
 
             {/* <img className={styles.lineIcon} alt="" src="/line.svg" />*/}
             <div className={styles.apexChartContainer}>
