@@ -2,18 +2,25 @@ import React, { useState, useEffect, useCallback, Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./Dashboard.module.css";
+import styles from "./ReportsCollaborator.module.css";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 
 const ApexChart = () => {
-  const [series, setSeries] = useState([]);
+  const [series, setSeries] = useState([
+    {
+      color: "#005c7d", // Change this color to your desired color
+    },
+  ]);
   const [options, setOptions] = useState({
     chart: {
       height: 350,
       type: "line",
       zoom: {
         enabled: false,
+      },
+      style: {
+        color: "#005c7d",
       },
     },
     dataLabels: {
@@ -26,7 +33,10 @@ const ApexChart = () => {
       text: "Daily Activity",
       align: "center",
       style: {
-        fontFamily: "Inter, sans-serif",
+        fontSize: "18px", // Adjust font size
+        color: "#005c7d", // Adjust text color
+        fontFamily: "var(--body-medium-regular)", // Adjust font family
+        fontWeight: "bold", // Adjust font weight
       },
     },
     grid: {
@@ -38,10 +48,14 @@ const ApexChart = () => {
     yaxis: {
       title: {
         text: " € (EURO) ",
+        style: {
+          color: "#005c7d",
+        },
       },
     },
     xaxis: {
-      categories: [], // Preencheremos isso com os valores da coluna "DAY"
+      categories: [],
+      // Preencheremos isso com os valores da coluna "DAY"
     },
     tooltip: {
       y: {
@@ -58,7 +72,7 @@ const ApexChart = () => {
       // Substitua a URL abaixo pela URL correta do seu arquivo PHP
       const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/report.php?collaborator_id=${collaboratorId}`
+        `http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`
       );
       console.log(response.data);
       // Extrai os dados da resposta
@@ -93,7 +107,16 @@ const ApexChart = () => {
   }, [fetchData]);
 
   return (
-    <div id="chart">
+    <div
+      id="chart"
+      style={{
+        position: "absolute",
+        top: 40,
+        width: 300,
+        left: 190,
+        transform: "translateX(-50%)",
+      }}
+    >
       <ReactApexChart
         options={options}
         series={series}
@@ -112,11 +135,13 @@ class ApexChartClass extends Component {
       series: [
         {
           name: "Consuming",
-          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
+          data: [],
+          color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
           name: "Plafond based on Contract",
-          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
+          data: [],
+          color: "rgb(58, 207, 108)", // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
       ],
       options: {
@@ -143,7 +168,10 @@ class ApexChartClass extends Component {
           text: "Monthly Expenses",
           align: "center",
           style: {
-            fontFamily: "Inter, sans-serif",
+            fontSize: "18px", // Adjust font size
+            color: "#005c7d", // Adjust text color
+            fontFamily: "var(--body-medium-regular)", // Adjust font family
+            fontWeight: "bold", // Adjust font weight
           },
         },
         xaxis: {
@@ -172,7 +200,7 @@ class ApexChartClass extends Component {
     try {
       const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/report.php?collaborator_id=${collaboratorId}`
+        `http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`
       );
       const dataFromServer = response.data;
 
@@ -214,12 +242,21 @@ class ApexChartClass extends Component {
 
   render() {
     return (
-      <div id="chart">
+      <div
+        id="chart"
+        style={{
+          position: "absolute",
+          top: -320,
+          width: 640,
+          left: 720,
+          transform: "translateX(-50%)",
+        }}
+      >
         <ReactApexChart
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={350}
+          height={700}
         />
       </div>
     );
@@ -274,100 +311,87 @@ const Dashboard = () => {
     navigate("/profile-collaborator");
   }, [navigate]);
 
-  const onReportsContainerClick = useCallback(() => {
-    navigate("/reports-collaborator");
-  }, [navigate]);
-
-  const onTimelinesContainerClick = useCallback(() => {
-    navigate("/timeline");
-  }, [navigate]);
 
   return (
     <>
       <div className={styles.dashboard}>
         <div className={styles.content}>
           <div className={styles.monthlyExpenses}>
-            <div className={styles.bigCard}>
-              <div className={styles.bigCardChild} />
-              <ApexChartClass />
-            </div>
+            <div className={styles.bigCardChild1} />
+            <ApexChartClass />
             <div className={styles.graph}>
               {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
             </div>
           </div>
-          <div className={styles.variationBasedOnContract}>
-            <div className={styles.bigCard1}>
-              <div className={styles.bigCardChild} />
-            </div>
-            <img
-              className={styles.backgroundIcon}
-              alt=""
-              src="/background7.svg"
-            />
 
-            <ApexChart />
+          <div className={styles.activity}>
+            <div className={styles.bigCardChild} />
+            {/* <img className={styles.lineIcon} alt="" src="/line.svg" />*/}
+            <div className={styles.apexChartContainer}>
+              <ApexChart />
+            </div>
           </div>
-          <div className={styles.power}>
-            <b>
+
+          <div className={styles.analysis1}>
+            <b className={styles.textletf}>
               You loaded it on the following days and got the following results:
             </b>
-            <ul className={styles.november5October6Septemb}>
-              {timelineData.map((item) => (
-                <li key={item.DATE_USAGE}>
-                  <span>
-                    In month{" "}
-                    <strong style={{ color: "rgb(51, 153, 255)" }}>
-                      {item.MONTH_USAGE}
-                    </strong>{" "}
-                    consumed{" "}
-                  </span>
-                  <span className={styles.span}>
-                    <strong style={{ color: "rgb(51, 153, 255)" }}>
-                      {item.MONTHLY_USAGE}
-                    </strong>{" "}
-                    what converted to money is{" "}
-                    <strong style={{ color: "rgb(51, 153, 255)" }}>
-                      {item.MONTHLY_USAGEE}
-                    </strong>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={styles.activity}>
-            <div className={styles.bigCard3}></div>
-            <div className={styles.apexChartContainer}>
-              <b className={styles.textletf}>
-                You loaded it on the following days and got the following
-                results:
-              </b>
-              <b className={styles.textletf}>
-                <ul className={styles.november5October6Septemb}>
-                  {timelineData.map((item) => (
-                    <li key={item.DATE_USAGE}>
-                      <span>
-                        In day{" "}
-                        <strong style={{ color: "rgb(51, 153, 255)" }}>
-                          {item.DATE_USAGE}
-                        </strong>{" "}
-                        consumed{" "}
-                      </span>
-                      <span className={styles.span}>
-                        <strong style={{ color: "rgb(51, 153, 255)" }}>
-                          {item.DAILY_USAGE}
-                        </strong>{" "}
-                        what converted to money is{" "}
-                        <strong style={{ color: "rgb(51, 153, 255)" }}>
-                          {item.DAILY_USAGEE}
-                        </strong>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </b>
-            </div>
+            <b className={styles.textletf}>
+              <ul className={styles.anlaysischild}>
+                {timelineData.map((item) => (
+                  <li key={item.DATE_USAGE}>
+                    <span>
+                      In day{" "}
+                      <strong style={{ color: "rgb(51, 153, 255)" }}>
+                        {item.DATE_USAGE}
+                      </strong>{" "}
+                      consumed{" "}
+                    </span>
+                    <span className={styles.span}>
+                      <strong style={{ color: "rgb(51, 153, 255)" }}>
+                        {item.DAILY_USAGE}
+                      </strong>{" "}
+                      what converted to money is{" "}
+                      <strong style={{ color: "rgb(51, 153, 255)" }}>
+                        {item.DAILY_USAGEE}
+                      </strong>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </b>
           </div>
         </div>
+
+        
+        <div className={styles.analysis2}>
+          <b>
+            You loaded it on the following days and got the following results:
+          </b>
+          <ul className={styles.november5October6Septemb}>
+            {timelineData.map((item) => (
+              <li key={item.DATE_USAGE}>
+                <span>
+                  In month{" "}
+                  <strong style={{ color: "rgb(51, 153, 255)" }}>
+                    {item.MONTH_USAGE}
+                  </strong>{" "}
+                  consumed{" "}
+                </span>
+                <span className={styles.span}>
+                  <strong style={{ color: "rgb(51, 153, 255)" }}>
+                    {item.MONTHLY_USAGE}
+                  </strong>{" "}
+                  what converted to money is{" "}
+                  <strong style={{ color: "rgb(51, 153, 255)" }}>
+                    {item.MONTHLY_USAGEE}
+                  </strong>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className={styles.header}>
           <img
             className={styles.notificationsIcon}
@@ -375,7 +399,7 @@ const Dashboard = () => {
             src="/notifications.svg"
             onClick={openNotifications}
           />
-          <b className={styles.dashboard1}>Dashboard</b>
+          <b className={styles.dashboard1}>Reports</b>
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
@@ -388,28 +412,19 @@ const Dashboard = () => {
             <div className={styles.profile} onClick={onProfileContainerClick}>
               <div className={styles.reportsTexto}>Profile</div>
             </div>
-            <div className={styles.reports} onClick={onReportsContainerClick}>
-              <div className={styles.reportsTexto}>Reports</div>
+            <div className={styles.dashboard2}>
+              <div className={styles.reportsTexto1}>Reports</div>
             </div>
             <div
-              className={styles.timelines}
-              onClick={onTimelinesContainerClick}
-            >
-              <div className={styles.reportsTexto}>Timelines</div>
-            </div>
-            <div
-              className={styles.dashboard1}
+              className={styles.dashboard3}
               onClick={onDashboardContainerClick}
             >
               <div className={styles.reportsTexto}>Dashboard</div>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
-          <div className={styles.line5} />
-          <div className={styles.line6} />
-          <div className={styles.line7} />
-          <div className={styles.line8} />
-          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
+          <div className={styles.line} />
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         </div>
       </div>
       {isNotificationsOpen && (

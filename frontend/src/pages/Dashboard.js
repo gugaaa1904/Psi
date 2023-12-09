@@ -298,10 +298,6 @@ const Dashboard = () => {
     navigate("/reports-collaborator");
   }, [navigate]);
 
-  const onTimelinesContainerClick = useCallback(() => {
-    navigate("/timeline");
-  }, [navigate]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -406,6 +402,7 @@ const Dashboard = () => {
     <>
       <div className={styles.dashboard}>
         <div className={styles.content}>
+
           <div className={styles.monthlyExpenses}>
             <div className={styles.bigCardChild1} />
             <ApexChartClass />
@@ -413,6 +410,7 @@ const Dashboard = () => {
               {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
             </div>
           </div>
+          
           <div className={styles.bigCardChild3} />
           <div className={styles.power}>
             <div>
