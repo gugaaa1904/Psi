@@ -643,7 +643,7 @@
 }
 
 .profile {
-  top: 145px;
+  top: 140px;
   left: 0;
 }
 
@@ -658,7 +658,7 @@
 
 .reports {
   position: absolute;
-  top: 90px;
+  top: 85px;
   left: 0;
   border-radius: var(--br-xs);
   width: 218px;
