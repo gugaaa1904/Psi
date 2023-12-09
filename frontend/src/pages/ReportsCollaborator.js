@@ -112,8 +112,8 @@ const ApexChart = () => {
       style={{
         position: "absolute",
         top: 40,
-        width: 300,
-        left: 190,
+        width: 700,
+        left: 400,
         transform: "translateX(-50%)",
       }}
     >
@@ -121,7 +121,7 @@ const ApexChart = () => {
         options={options}
         series={series}
         type="line"
-        height={350}
+        height={320}
       />
     </div>
   );
@@ -246,8 +246,8 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: -320,
-          width: 640,
+          top: 80,
+          width: 700,
           left: 720,
           transform: "translateX(-50%)",
         }}
@@ -256,7 +256,7 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={700}
+          height={320}
         />
       </div>
     );
@@ -316,6 +316,9 @@ const Dashboard = () => {
     <>
       <div className={styles.dashboard}>
         <div className={styles.content}>
+          <div className={styles.bigCardChild4} />
+          <div className={styles.bigCardChild3} />
+
           <div className={styles.monthlyExpenses}>
             <div className={styles.bigCardChild1} />
             <ApexChartClass />
@@ -333,37 +336,34 @@ const Dashboard = () => {
           </div>
 
           <div className={styles.analysis1}>
-            <b className={styles.textletf}>
+            <b className={styles.textLeft}>
               You loaded it on the following days and got the following results:
             </b>
-            <b className={styles.textletf}>
-              <ul className={styles.anlaysischild}>
-                {timelineData.map((item) => (
-                  <li key={item.DATE_USAGE}>
-                    <span>
-                      In day{" "}
-                      <strong style={{ color: "rgb(51, 153, 255)" }}>
-                        {item.DATE_USAGE}
-                      </strong>{" "}
-                      consumed{" "}
-                    </span>
-                    <span className={styles.span}>
-                      <strong style={{ color: "rgb(51, 153, 255)" }}>
-                        {item.DAILY_USAGE}
-                      </strong>{" "}
-                      what converted to money is{" "}
-                      <strong style={{ color: "rgb(51, 153, 255)" }}>
-                        {item.DAILY_USAGEE}
-                      </strong>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </b>
+            <ul className={styles.analysisChild}>
+              {timelineData.map((item) => (
+                <li key={item.DATE_USAGE}>
+                  <span>
+                    In day{" "}
+                    <strong className={styles.dateUsage}>
+                      {item.DATE_USAGE}
+                    </strong>{" "}
+                    consumed{" "}
+                  </span>
+                  <span className={styles.span}>
+                    <strong className={styles.dailyUsage}>
+                      {item.DAILY_USAGE}
+                    </strong>{" "}
+                    what converted to money is{" "}
+                    <strong className={styles.dailyUsageE}>
+                      {item.DAILY_USAGEE}
+                    </strong>
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        
         <div className={styles.analysis2}>
           <b>
             You loaded it on the following days and got the following results:
@@ -373,17 +373,17 @@ const Dashboard = () => {
               <li key={item.DATE_USAGE}>
                 <span>
                   In month{" "}
-                  <strong style={{ color: "rgb(51, 153, 255)" }}>
+                  <strong className={styles.monthUsage}>
                     {item.MONTH_USAGE}
                   </strong>{" "}
                   consumed{" "}
                 </span>
                 <span className={styles.span}>
-                  <strong style={{ color: "rgb(51, 153, 255)" }}>
+                  <strong className={styles.monthlyUsage}>
                     {item.MONTHLY_USAGE}
                   </strong>{" "}
                   what converted to money is{" "}
-                  <strong style={{ color: "rgb(51, 153, 255)" }}>
+                  <strong className={styles.monthlyUsageE}>
                     {item.MONTHLY_USAGEE}
                   </strong>
                 </span>

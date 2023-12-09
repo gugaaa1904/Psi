@@ -1,35 +1,39 @@
 .bigCardChild {
   position: absolute;
-  height: 420px;
-  width: 350px;
-  top: 10px;
+  height: 350px;
+  width: 750px;
+  top: 20px;
   right: 0;
   bottom: 0;
-  left: 20px;
+  left: 35px;
   border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #005c7d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bigCardChild1 {
   position: absolute;
-  height: 790px;
-  width: 800px;
-  top: -360px;
+  height: 360px;
+  width: 750px;
+  top: 62px;
   right: 0;
   bottom: 0;
-  left: 320px;
+  left: 350px;
   border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #005c7d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bigCardChild3 {
   position: absolute;
-  height: 343px;
-  width: 350px;
-  top: 570px;
+  height: 390px;
+  width: 1540px;
+  top: 530px;
   right: 0;
   bottom: 0;
-  left: 40px;
+  left: 45px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
@@ -37,27 +41,17 @@
 
 .bigCardChild4 {
   position: absolute;
-  height: 340px;
-  width: 350px;
-  top: 90px;
+  height: 380px;
+  width: 1540px;
+  top: 120px;
   right: 0;
   bottom: 0;
-  left: 390px;
+  left: 45px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
-.bigCardChild5 {
-  position: absolute;
-  height: 420px;
-  width: 350px;
-  top: -360px;
-  right: 0;
-  bottom: 0;
-  left: 390px;
-  border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
-}
+
 
 .numberOfChargesMadeMonthly {
   position: absolute;
@@ -158,7 +152,110 @@
 }
 
 
+.analysis1 {
+  position: absolute;
+  left: 840px;
+  top: 140px;
+  width: 680px;
+  height: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.textLeft {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.analysisChild {
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  list-style: none;
+  padding: 0;
+  width: 550px;
+}
+
+.analysisChild li {
+  position: relative;
+  margin-bottom: 15px;
+  width: 500px;
+  font-size: 16px;
+  color: #333;
+}
+
+.dateUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.dailyUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.dailyUsageE {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+
+
+
+.analysis2 {
+  position: absolute;
+  left: 320px;
+  top: 550px;
+  width: 680px;
+  height: 310px;
+  padding: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.analysis2 b {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.november5October6Septemb {
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  list-style: none;
+  padding: 0;
+  width: 550px;
+}
+
+.november5October6Septemb li {
+  position: relative;
+  margin-bottom: 15px;
+  width: 500px;
+  font-size: 16px;
+  color: #333;
+}
+
+.monthUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.monthlyUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.monthlyUsageE {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
 
 
 .div1 {
