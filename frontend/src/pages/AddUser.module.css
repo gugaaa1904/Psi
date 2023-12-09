@@ -205,6 +205,65 @@ input:focus {
   top: 440px;
 }
 
+
+.emailplug,
+.passwordplug,
+.ipplug {
+  position: absolute;
+  /* Ensures positioning relative to the parent */
+  border: 1px solid var(--greyscale-200);
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+  background-color: white;
+  /* White background for a cleaner look */
+  border-radius: 8px;
+  /* Adjust as needed for rounded corners */
+  box-sizing: border-box;
+  width: 404px;
+  height: 56px;
+  padding: 12px;
+  /* Add padding for a more comfortable input area */
+  display: flex;
+  align-items: center;
+  /* Optional: Add box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  left: 1190px;
+}
+
+.emailplug,
+.passwordplug,
+.ipplug,
+input {
+  outline: none;
+  padding: 0 12px;
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+  background-color: transparent;
+}
+
+/* Optional: Add a transition effect for smoother interactions */
+.emailplug,
+.passwordplug,
+.ipplug,
+input:focus {
+  border: 1px solid rgb(22, 128, 160);
+  /* Adjust focus border color */
+}
+
+.emailplug {
+  top: 540px;
+}
+
+.passwordplug {
+  top: 620px;
+}
+
+.ipplug {
+  top: 700px;
+}
+
+
+
 .contractOfThis {
   position: absolute;
   top: 150px;

@@ -22,6 +22,10 @@ const AddUser = () => {
     tariff: "",
     end_date: "",
     start_date: "",
+    
+    emailplug: "",
+    passwordplug: "",
+    ipplug: "",
   });
 
   const onAddUserClick = useCallback(() => {
@@ -219,6 +223,40 @@ const AddUser = () => {
           onChange={handleInputChange}
           value={formData.tariff}
         />
+
+       
+
+
+        <input
+          className={styles.emailplug}
+          name="emailplug"
+          id="emailplug"
+          placeholder="Email of Tapo Account"
+          type="text"
+          onChange={handleInputChange}
+        />
+
+        <input
+          className={styles.passwordplug}
+          name="passwordplug"
+          id="passwordplug"
+          placeholder="Password of Tapo Account"
+          type="text"
+          onChange={handleInputChange}
+        />
+
+        <input
+          className={styles.ipplug}
+          name="ipplug"
+          id="ipplug"
+          placeholder="IP of Tapo Plug"
+          type="number"
+          onChange={handleInputChange}
+        />
+
+        
+
+
 
         <button
           className={styles.createNewUserButton}
