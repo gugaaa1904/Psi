@@ -7,9 +7,10 @@ import styles from "./SettingsADMIN.module.css";
 const SettingsADMIN = () => {
   const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] = useState(false);
   const navigate = useNavigate();
-  const [userEmail, setUserEmail] = useState("");
-  const [userOldpassword, setUserOldpassword] = useState("");
-  const [userNewpassword, setUserNewpassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const onLogoutContainerClick = useCallback(() => {
     navigate("/");
@@ -47,41 +48,72 @@ const SettingsADMIN = () => {
     navigate("/add-user");
   }, [navigate]);
 
-  const onChangePassword = async (oldPassword, newPassword, confirmNewPassword) => {
-    try {
-      // Check if new password and confirm new password match
-      if (newPassword !== confirmNewPassword) {
-        console.error("New password and confirm new password do not match");
-        return;
-      }
+  const handleSubmit = async (e) => {
+     e.preventDefault();
 
-      // Call the PHP file to update the password
-      const response = await fetch(
-        "http://localhost/Psi/backend/services/changepasswordadmin.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: userEmail/* Add logic to get the user's email */,
-            oldPassword: userOldpassword,
-            newPassword: userNewpassword,
-          }),
-        }
-      );
+     try {
+       const adminId = sessionStorage.getItem("admin_id");
 
-      const data = await response.json();
-      // Handle the data response as needed
-      if (data.status === "success") {
-        console.log("Password changed successfully");
-      } else {
-        console.error("Failed to change password. Error:", data.error || "Unknown error");
-      }
-    } catch (error) {
-      console.error("Error changing password:", error);
-    }
-  };
+       console.log("Admin ID:", adminId);
+       console.log("Senha Antiga:", oldPassword);
+       console.log("Nova Senha:", newPassword);
+       const response = await fetch(
+         "http://localhost/Psi/backend/services/changepasswordadmin.php",
+         {
+           method: "POST",
+           headers: {
+             "Content-Type": "application/json",
+             Accept: "application/json",
+           },
+           body: JSON.stringify({
+             col: adminId,
+             old: oldPassword,
+             new: newPassword,
+           }),
+         }
+       );
+
+       try {
+         if (!response.ok) {
+           // Se a resposta não estiver ok, mostrar o erro
+           const text = await response.text();
+           console.error(
+             `Request failed with status: ${response.status}`,
+             text
+           );
+           setMessage(text);
+           return;
+         }
+
+         const contentType = response.headers.get("content-type");
+         if (contentType && contentType.includes("application/json")) {
+           const data = await response.json();
+           console.log(data.status);
+
+           if (data.status === "success") {
+             // Realizar redirecionamento para a página desejada
+             navigate("/dashboard");
+           } else {
+             // Se a resposta não for bem-sucedida, mostrar o erro
+             const errorMessage = data.error || "Erro desconhecido";
+             console.error("Erro ao alterar a senha", errorMessage);
+             setMessage(errorMessage);
+           }
+         } else {
+           // Conteúdo não é JSON válido
+           const text = await response.text();
+           console.error("Resposta não contém JSON válido:", text);
+           setMessage(text);
+         }
+       } catch (error) {
+         console.error("Erro ao processar a resposta:", error);
+         setMessage("Erro ao processar a resposta");
+       }
+     } catch (error) {
+       console.error("Erro ao realizar a solicitação:", error);
+       setMessage("Erro ao realizar a solicitação");
+     }
+   };
   return (
     <>
       <div className={styles.settingsAdmin}>
@@ -109,32 +141,48 @@ const SettingsADMIN = () => {
           <div className={styles.changePassword}>
             <div className={styles.tittle}>Change your password</div>
           </div>
-          <input
-            className={styles.oldPassword}
-            name="Old Password"
-            id="old_password"
-            placeholder="Enter your old Password"
-            type="password"
-          />
-          <input
-            className={styles.newPassword}
-            name="New Password"
-            id="new_password"
-            placeholder="Enter your new Password"
-            type="password"
-          />
-          <input
-            className={styles.confirmNewPassword}
-            name="Confirm new Password"
-            id="confirm_new_password"
-            placeholder="Confirm your new Password"
-            type="password"
-          />
-          <div
-            className={styles.changeButton}
-            onClick={openPopUpChangePassword}
-          >
-            <b className={styles.button1}>Change</b>
+          <form onSubmit={handleSubmit} method="POST">
+            <label>
+              <input
+                className={styles.oldPassword}
+                name="Old Password"
+                id="old_password"
+                placeholder="Enter your old Password"
+                type="password"
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+            </label>
+            <label>
+              <input
+                className={styles.newPassword}
+                name="New Password"
+                id="new_password"
+                placeholder="Enter your new Password"
+                type="password"
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </label>
+            <label>
+              <input
+                className={styles.confirmNewPassword}
+                name="Confirm new Password"
+                id="confirm_new_password"
+                placeholder="Confirm your new Password"
+                type="password"
+                onChange={(e) => setConfirmNewPassword(e.target.value)}
+              />
+            </label>
+            <div className={styles.changeButton}>
+              <button type="submit">
+                <b className={styles.button1}>Change</b>
+              </button>
+            </div>
+
+            {/* Exibe mensagens de erro/sucesso */}
+            {message && <p>{message}</p>}
+          </form>
+          <div className={styles.changePassword}>
+            <div className={styles.tittle}>Change your password</div>
           </div>
 
           <div
@@ -190,7 +238,7 @@ const SettingsADMIN = () => {
           <div className={styles.title}>Privacy</div>
           <div className={styles.divider} />
           <div className={styles.divider1} />
-          <div className={styles.divider2} />
+          <div className={styles.divider1} />
         </div>
 
         <div className={styles.sidebar}>

@@ -454,7 +454,7 @@ const Dashboard = () => {
         <div className={styles.content}>
           <div className={styles.monthlyExpenses}>
             <div className={styles.bigCard}>
-              <div className={styles.bigCardChild} />
+              <div className={styles.bigCardChild1} />
               <ApexChartClass />
             </div>
             <div className={styles.graph}>
@@ -463,7 +463,7 @@ const Dashboard = () => {
           </div>
           <div className={styles.variationBasedOnContract}>
             <div className={styles.bigCard1}>
-              <div className={styles.bigCardChild} />
+              <div className={styles.bigCardChild2} />
             </div>
             <img
               className={styles.backgroundIcon}
@@ -474,7 +474,7 @@ const Dashboard = () => {
           </div>
           <div className={styles.power}>
             <div className={styles.bigCard2}>
-              <div className={styles.bigCardChild} />
+              <div className={styles.bigCardChild3} />
             </div>
             <div>
               <div className={styles.powerChild} />
@@ -544,11 +544,9 @@ const Dashboard = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
             <div className={styles.help1}>Help</div>
           </div>
           <div className={styles.menu}>
@@ -569,11 +567,8 @@ const Dashboard = () => {
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
-          <div className={styles.line5} />
-          <div className={styles.line6} />
-          <div className={styles.line7} />
-          <div className={styles.line8} />
-          <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+          <div className={styles.line} />
         </div>
       </div>
       {isNotificationsOpen && (
