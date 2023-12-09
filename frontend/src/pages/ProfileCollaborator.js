@@ -12,7 +12,7 @@ const ProfileCollaborator = () => {
   const [Gender , setGender] = useState('');
   const [Phone , setPhone] = useState('');
   const [Address , setAddress] = useState('');
-  const[Email, setEmail] = useState('');
+  const [Email, setEmail] = useState('');
   const [CompanyName , setCompanyName] = useState('');
   const [Tariff , setTariff] = useState('');
   const [Plafond , setPlafond] = useState('');
@@ -32,10 +32,6 @@ const ProfileCollaborator = () => {
 
   const onReportsContainerClick = useCallback(() => {
     navigate("/reports-collaborator");
-  }, [navigate]);
-
-  const onTimelinesContainerClick = useCallback(() => {
-    navigate("/timeline");
   }, [navigate]);
 
   const onDashboardContainerClick = useCallback(() => {
@@ -94,46 +90,7 @@ const ProfileCollaborator = () => {
         </div>
         <div className={styles.profileInfo}>
           <div className={styles.profileInfoChild} />
-          <div className={styles.notifications}>
-            <div className={styles.line} />
-            <b className={styles.notifications1}>Notifications</b>
-            <div className={styles.rectangleParent}>
-              <div className={styles.groupChild} />
-              <img
-                className={styles.dangerSquareIcon}
-                alt=""
-                src="/dangersquare.svg"
-              />
-              <div className={styles.alertExcessiveUse}>
-                Alert: Excessive use of energy!
-              </div>
-            </div>
-            <div className={styles.rectangleGroup}>
-              <div className={styles.groupChild} />
-              <img
-                className={styles.dangerSquareIcon}
-                alt=""
-                src="/dangersquare1.svg"
-              />
-              <div className={styles.alertExcessiveUse}>
-                Alert: Excessive use of energy!
-              </div>
-            </div>
-            <div className={styles.notificationsChild} />
-            <div className={styles.notificationsItem} />
-            <div className={styles.pleaseUnplugYour}>
-              Please unplug your electric car charger to prevent overloading the
-              grid and conserve energy. By taking this action, you are not only
-              contributing to a sustainable energy future but also preventing
-              potential service disruptions.
-            </div>
-            <div className={styles.pleaseUnplugYour1}>
-              Please unplug your electric car charger to prevent overloading the
-              grid and conserve energy. By taking this action, you are not only
-              contributing to a sustainable energy future but also preventing
-              potential service disruptions.
-            </div>
-          </div>
+
           <div className={styles.fullNameContainer}>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>{`Full Name : `}</b>
@@ -157,7 +114,7 @@ const ProfileCollaborator = () => {
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>{`Address: `}</b>
-              <span>  {Address}</span>
+              <span> {Address}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
@@ -165,7 +122,7 @@ const ProfileCollaborator = () => {
               <span> {CompanyName}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
-            
+
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
               <b className={styles.fullName}>Contract:</b>
@@ -191,7 +148,7 @@ const ProfileCollaborator = () => {
             <input
               type="file"
               id="uploadInput"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               onChange={handleFileChange}
             />
             <label htmlFor="uploadInput" className={styles.editPhotoButton}>
@@ -204,17 +161,68 @@ const ProfileCollaborator = () => {
           alt=""
           src="/profile-photo.svg"
         />
+
+        <div className={styles.notifications}>
+          <div className={styles.notificationsHeader}>
+            <div className={styles.line} />
+            <b className={styles.notificationsTitle}>Notifications</b>
+          </div>
+
+          <div className={styles.notificationGroup}>
+            <div className={styles.groupChild} />
+            <img
+              className={styles.notificationIcon}
+              alt=""
+              src="/dangersquare.svg"
+            />
+            <div className={styles.alertExcessiveUse}>
+              Alert: Excessive use of energy!
+            </div>
+          </div>
+
+          <div className={styles.notificationGroup}>
+            <div className={styles.notificationsContent}>
+              <div className={styles.pleaseUnplugYour}>
+                Please unplug your electric car charger to prevent overloading
+                the grid and conserve energy. By taking this action, you are not
+                only contributing to a sustainable energy future but also
+                preventing potential service disruptions.
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.notificationGroup}>
+            <div className={styles.groupChild} />
+            <img
+              className={styles.notificationIcon}
+              alt=""
+              src="/dangersquare1.svg"
+            />
+            <div className={styles.alertExcessiveUse}>
+              Alert: Excessive use of energy!
+            </div>
+          </div>
+
+          <div className={styles.notificationGroup}>
+            <div className={styles.notificationsContent}>
+              <div className={styles.pleaseUnplugYour1}>
+                Please unplug your electric car charger to prevent overloading
+                the grid and conserve energy. By taking this action, you are not
+                only contributing to a sustainable energy future but also
+                preventing potential service disruptions.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className={styles.header}>
         <b className={styles.profile}>Profile</b>
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <img className={styles.settingsIcon} alt="" src="/settings.svg" />
           <div className={styles.settings1}>Settings</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
           <div className={styles.help1}>Help</div>
         </div>
         <div className={styles.menu}>
@@ -224,19 +232,17 @@ const ProfileCollaborator = () => {
           <div className={styles.reports} onClick={onReportsContainerClick}>
             <div className={styles.reportsTexto}>Reports</div>
           </div>
-          <div className={styles.timelines} onClick={onTimelinesContainerClick}>
-            <div className={styles.timelines1}>Timelines</div>
-          </div>
-          <div className={styles.dashboard} onClick={onDashboardContainerClick}>
-            <div className={styles.timelines1}>Dashboard</div>
+          <div
+            className={styles.dashboard3}
+            onClick={onDashboardContainerClick}
+          >
+            <div className={styles.dashboard2}>Dashboard</div>
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>
-        <div className={styles.line1} />
-        <div className={styles.line2} />
-        <div className={styles.line3} />
-        <div className={styles.line4} />
-        <img className={styles.logo1Icon} alt="" src="/logo-11@2x.png" />
+
+        <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+        <div className={styles.line} />
       </div>
     </div>
   );
