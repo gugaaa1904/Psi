@@ -50,7 +50,7 @@
   top: 694px;
   left: 140px;
   border-radius: var(--br-xs);
-  background-color: var(--color-steelblue-100);
+  background-color: #005c7d;
   width: 126px;
   height: 56px;
   font-size: var(--heading-h6-size);
@@ -65,20 +65,20 @@
 }
 .forgotPassword {
   position: absolute;
-  top: 539px;
+  top: 559px;
   left: 131.5px;
   width: 143px;
   height: 42px;
   text-align: right;
   font-size: var(--body-medium-regular-size);
-  color: var(--color-steelblue-100);
+  color: #005c7d;
 }
 .email {
   border: 1px solid var(--greyscale-200);
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 0;
+  top: 20px;
   left: 0;
   border-radius: var(--br-xs);
   box-sizing: border-box;
@@ -95,7 +95,7 @@
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 72px;
+  top: 102px;
   left: 0;
   border-radius: var(--br-xs);
   box-sizing: border-box;
@@ -125,7 +125,7 @@
   color: var(--greyscale-500);
 }
 .header {
-  top: 181px;
+  top: 211px;
   left: 64px;
   width: 278px;
   height: 64px;
@@ -134,11 +134,19 @@
 }
 .logo1Icon {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 233px;
-  height: 87px;
-  object-fit: cover;
+  top: 32px;
+  left: 40px;
+  width: 180px;
+  height: 120px;
+  background-color: #005c7d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold
 }
 .content,
 .logo {

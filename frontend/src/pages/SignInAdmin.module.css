@@ -1,10 +1,18 @@
 .logo1Icon {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 233px;
-  height: 87px;
-  object-fit: cover;
+  top: 12px;
+  left: 40px;
+  width: 180px;
+  height: 120px;
+  background-color: #005c7d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold
 }
 .logo {
   position: absolute;
@@ -14,6 +22,7 @@
   height: 98px;
 }
 .tittle {
+  left: 13px;
   letter-spacing: 0.2px;
   line-height: 120%;
 }
@@ -30,7 +39,7 @@
   color: var(--greyscale-500);
 }
 .header {
-  top: 181px;
+  top: 201px;
   left: 198px;
   width: 300px;
   height: 64px;
@@ -84,7 +93,7 @@
   height: 42px;
   cursor: pointer;
   text-align: right;
-  color: var(--color-steelblue-100);
+  color: #005c7d;
 }
 .backButtonIcon {
   position: absolute;
@@ -112,7 +121,7 @@
   top: 694px;
   left: 274px;
   border-radius: var(--br-xs);
-  background-color: var(--color-steelblue-100);
+  background-color: #005c7d;
   width: 126px;
   height: 56px;
   font-size: var(--heading-h6-size);
@@ -122,7 +131,7 @@
   top: 556px;
   left: 391px;
   line-height: 160%;
-  color: #189ec7;
+  color: #005c7d;
   text-align: right;
 }
 .span {
@@ -138,16 +147,16 @@
 }
 .signUpCompany1 {
   position: absolute;
-  top: 625px;
+  top: 615px;
   left: 357px;
   line-height: 160%;
-  color: #189ec7;
+  color: #005c7d;
   cursor: pointer;
 }
 
 .dontHaveAContainer {
   position: absolute;
-  top: 625px;
+  top: 615px;
   left: 195px;
   line-height: 160%;
   text-align: center;
@@ -155,7 +164,7 @@
 .content {
   position: absolute;
   top: 40px;
-  left: 19px;
+  left: 49px;
   width: 806px;
   height: 847px;
   overflow: hidden;

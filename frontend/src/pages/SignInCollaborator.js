@@ -98,7 +98,7 @@ const SignInCollaborator = () => {
             </div>
           </div>
           <div className={styles.logo}>
-            <img className={styles.logo1Icon} alt="" src="/logo-1@2x.png" />
+            <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
           </div>
         </div>
       </div>
