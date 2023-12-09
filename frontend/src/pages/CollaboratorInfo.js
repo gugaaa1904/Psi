@@ -289,7 +289,8 @@ const CollaboratorInfo = () => {
             <option value="monthly">Monthly</option>
           </select>
         </div>
-
+        <div className={styles.backgroundlist} />
+        <div className={styles.listtitle}>List of Collaborators</div>
         <div className={styles.listOfCollaborators}>
           {collaborators.map((collaborator, index) => (
             <div key={index} className={styles.employee}>
