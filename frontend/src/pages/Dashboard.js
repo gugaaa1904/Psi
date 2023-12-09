@@ -112,11 +112,13 @@ class ApexChartClass extends Component {
       series: [
         {
           name: "Consuming",
-          data: [], // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
+          data: [],
+          color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
           name: "Plafond based on Contract",
-          data: [], // Array dinâmico com o mesmo comprimento da série "Consuming"
+          data: [],
+          color: "rgb(58, 207, 108)", // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
       ],
       options: {
@@ -143,7 +145,10 @@ class ApexChartClass extends Component {
           text: "Monthly Expenses",
           align: "center",
           style: {
-            fontFamily: "Inter, sans-serif",
+            fontSize: "18px", // Adjust font size
+            color: "#005c7d", // Adjust text color
+            fontFamily: "var(--body-medium-regular)", // Adjust font family
+            fontWeight: "bold", // Adjust font weight
           },
         },
         xaxis: {
@@ -214,7 +219,16 @@ class ApexChartClass extends Component {
 
   render() {
     return (
-      <div id="chart">
+      <div
+        id="chart"
+        style={{
+          position: "absolute",
+          top: 40,
+          width: 640,
+          left:720,
+          transform: "translateX(-50%)",
+        }}
+      >
         <ReactApexChart
           options={this.state.options}
           series={this.state.series}
@@ -453,31 +467,15 @@ const Dashboard = () => {
       <div className={styles.dashboard}>
         <div className={styles.content}>
           <div className={styles.monthlyExpenses}>
-            <div className={styles.bigCard}>
               <div className={styles.bigCardChild1} />
               <ApexChartClass />
-            </div>
             <div className={styles.graph}>
               {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
             </div>
           </div>
-          <div className={styles.variationBasedOnContract}>
-            <div className={styles.bigCard1}>
-              <div className={styles.bigCardChild2} />
-            </div>
-            <img
-              className={styles.backgroundIcon}
-              alt=""
-              src="/background7.svg"
-            />
-            <ApexChartt />
-          </div>
           <div className={styles.power}>
-            <div className={styles.bigCard2}>
               <div className={styles.bigCardChild3} />
-            </div>
             <div>
-              <div className={styles.powerChild} />
               <div className={styles.powerInKwhContainer}>
                 <p className={styles.kwh}>
                   {monthlyUsageData.length > 0
@@ -519,14 +517,8 @@ const Dashboard = () => {
             <b className={styles.power1}>Power</b>
           </div>
           <div className={styles.activity}>
-            <div className={styles.bigCard3}>
               <div className={styles.bigCardChild} />
-            </div>
-            <img
-              className={styles.backgroundIcon1}
-              alt=""
-              src="/background.svg"
-            />
+
             {/* <img className={styles.lineIcon} alt="" src="/line.svg" />*/}
             <div className={styles.apexChartContainer}>
               <ApexChart />

@@ -257,6 +257,11 @@ const Dashboard = () => {
     setNotificationsOpen(false);
   }, []);
 
+
+  const onDashboardContainerClick = useCallback(() => {
+    navigate("/dashboard");
+  }, [navigate]);
+
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-collaborator");
   }, [navigate]);
@@ -374,11 +379,9 @@ const Dashboard = () => {
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <img className={styles.settingsIcon} alt="" src="/settings.svg" />
             <div className={styles.settings1}>Settings</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <img className={styles.iconshelp} alt="" src="/iconshelp.svg" />
             <div className={styles.help1}>Help</div>
           </div>
           <div className={styles.menu}>
@@ -394,8 +397,11 @@ const Dashboard = () => {
             >
               <div className={styles.reportsTexto}>Timelines</div>
             </div>
-            <div className={styles.dashboard2}>
-              <b className={styles.dashboard3}>Dashboard</b>
+            <div
+              className={styles.dashboard1}
+              onClick={onDashboardContainerClick}
+            >
+              <div className={styles.reportsTexto}>Dashboard</div>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
