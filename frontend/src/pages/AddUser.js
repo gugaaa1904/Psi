@@ -12,16 +12,16 @@ const AddUser = () => {
   const [formData, setFormData] = useState({
     name: "",
     companyname: "",
-    address: "",
     email: "",
     phone: "",
     age: "",
     gender: "",
     password: "",
+    address: "",
     plafond: "",
     tariff: "",
-    end_date: "",
     start_date: "",
+    end_date: ""
   });
 
   const onAddUserClick = useCallback(() => {
@@ -29,6 +29,7 @@ const AddUser = () => {
     console.log(formData);
     fetch("http://localhost/Psi/backend/services/collaborator.php", {
       method: "POST",
+      mode:"no-cors",
       headers: {
         "Content-Type": "application/json",
       },

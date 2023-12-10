@@ -48,8 +48,8 @@ class CollaboratorService
             $address = isset($_POST['address']) ?  $this->sanitize($_POST['address']) : '';
             $plafond = isset($_POST['plafond']) ?  $this->sanitize($_POST['plafond']) : '';
             $tariff = isset($_POST['tariff']) ?  $this->sanitize($_POST['tariff']) : '';
-            $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
             $start_date = isset($_POST['start_date']) ?  $this->sanitize($_POST['start_date']) : '';
+            $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
 
             // Use prepared statements to prevent SQL injection
             $companyname = trim($companyname);
