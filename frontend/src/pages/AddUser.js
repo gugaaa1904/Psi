@@ -11,7 +11,6 @@ const AddUser = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
-    companyname: "",
     email: "",
     phone: "",
     age: "",
@@ -121,15 +120,6 @@ const AddUser = () => {
             type="password"
             onChange={handleInputChange}
             value={formData.password}
-          />
-          <input
-            className={styles.companyname}
-            name="companyname"
-            id="companyname"
-            placeholder="Company Name"
-            type="text"
-            onChange={handleInputChange}
-            value={formData.companyname}
           />
           <input
             className={styles.adress}
