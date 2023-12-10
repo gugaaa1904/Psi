@@ -61,7 +61,6 @@ CREATE TABLE `collaborator` (
   `COLLABORATOR_ID` int(11) NOT NULL,
   `COMPANY_ID` int(11) NOT NULL,
   `NAME` varchar(100) NOT NULL,
-  `COMPANYNAME` varchar(100) NOT NULL,
   `EMAIL` varchar(100) NOT NULL,
   `PHONE` int(11) DEFAULT NULL,
   `AGE` int(11) DEFAULT NULL,
@@ -78,10 +77,10 @@ CREATE TABLE `collaborator` (
 -- Extraindo dados da tabela `collaborator`
 --
 
-INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`) VALUES
-(3, 2, 'João', 'pila', 'joao57rafa@hotmail.com', 968912443, 5435345, 'Female', '4324234', 'Av 8 De Marco', 50, 432, '2023-10-31', '2023-11-15'),
-(4, 2, 'RandomName', 'RandomCompany', 'random@example.com', 6546456, 6546456, 'Male', 'RandomPassword', 'RandomAddress', 654, 654, '2023-12-01', '2023-12-15'),
-(5, 2, 'joni', 'pila', 'fdsf@gmail.com', 432423, 432, 'female', 'pila', 'gdfgdfg', 543, 543, '2023-12-13', '2023-12-21');
+INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`) VALUES
+(3, 2, 'João', 'joao57rafa@hotmail.com', 968912443, 5435345, 'Female', '4324234', 'Av 8 De Marco', 50, 432, '2023-10-31', '2023-11-15'),
+(4, 2, 'RandomName', 'random@example.com', 6546456, 6546456, 'Male', 'RandomPassword', 'RandomAddress', 654, 654, '2023-12-01', '2023-12-15'),
+(5, 2, 'joni', 'fdsf@gmail.com', 432423, 432, 'female', 'pila', 'gdfgdfg', 543, 543, '2023-12-13', '2023-12-21');
 
 -- --------------------------------------------------------
 
