@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require_once '../config.php';
 
 class CollaboratorService
 {
@@ -14,19 +14,19 @@ class CollaboratorService
     public function insert_collaborator_post()
     {
         /**
-         * name: "",
-          *  companyname: "",
-          *  address: "",
-          *  email: "",
-          *  phone: "",
-          *  age: "",
-          *  gender: "",
-           * password: "",
-           * plafond: "",
-          *  tariff: "",
-          *  end_date: "",
-          *  start_date: "",
-          
+         * name: "", !
+          *  companyname: "", !
+          *  address: "", !
+          *  email: "", !
+          *  phone: "", !
+          *  age: "", !
+          *  gender: "", !
+           * password: "", !
+           * plafond: "",  !
+          *  tariff: "", !
+          *  end_date: "", !
+          *  start_date: "", !
+
           *  emailplug: "",
            * passwordplug: "",
            * ipplug:
