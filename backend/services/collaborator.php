@@ -52,15 +52,14 @@ class CollaboratorService
             $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
 
             // Use prepared statements to prevent SQL injection
-            $stmt = $this->conn->prepare("INSERT INTO `Collaborator` (`COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
+            $stmt = $this->conn->prepare("INSERT INTO `Collaborator` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Bind parameters
             $stmt->bind_param(
-                "isssissssiiss",
+                "ississssiiss",
                 $companyid,
                 $name,
-                $companyname,
                 $email,
                 $phone,
                 $age,
