@@ -166,8 +166,7 @@
   font-weight: 500;
 }
 .collaboratorInformation,
-.companyInformation,
-.profile {
+.companyInformation {
   position: absolute;
   top: 211px;
   left: 0;
@@ -176,12 +175,23 @@
   height: 48px;
   cursor: pointer;
 }
+
+.profile {
+  position: absolute;
+  top: 251px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
 .collaboratorInformation,
 .companyInformation {
-  top: 163px;
+  top: 193px;
 }
 .companyInformation {
-  top: 115px;
+  top: 135px;
 }
 .removeUser4 {
   position: absolute;
@@ -198,12 +208,13 @@
 }
 .removeUser3 {
   position: absolute;
-  top: 67px;
+  top: 77px;
   background-color: var(--greyscale-50);
   color: var(--color-steelblue-100);
 }
 .addUser {
-  top: 19px;
+  position: absolute;
+  top: 20px;
   cursor: pointer;
 }
 

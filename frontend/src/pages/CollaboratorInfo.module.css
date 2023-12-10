@@ -981,7 +981,7 @@
 }
 .profile {
   position: absolute;
-  top: 211px;
+  top: 251px;
   left: 0;
   border-radius: var(--br-xs);
   width: 218px;
@@ -996,7 +996,7 @@
 }
 .collaboratorInformation1 {
   position: absolute;
-  top: 163px;
+  top: 193px;
   left: 0;
   border-radius: var(--br-xs);
   background-color: var(--greyscale-50);
@@ -1006,7 +1006,7 @@
 }
 .companyInformation {
   position: absolute;
-  top: 115px;
+  top: 135px;
 }
 .addUser,
 .companyInformation,
@@ -1019,10 +1019,11 @@
 }
 .removeUser {
   position: absolute;
-  top: 67px;
+  top: 77px;
 }
 .addUser {
-  top: 19px;
+  top: 20px;
+    position: absolute;
 }
 
 .settings,

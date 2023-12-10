@@ -389,19 +389,29 @@ input:focus {
   cursor: pointer;
 }
 
+.profile {
+  position: absolute;
+  top: 251px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
 .collaboratorInformation,
 .companyInformation,
 .removeUser {
-  top: 163px;
+  top: 193px;
 }
 
 .companyInformation,
 .removeUser {
-  top: 115px;
+  top: 135px;
 }
 
 .removeUser {
-  top: 67px;
+  top: 77px;
 }
 
 .addUser3 {
@@ -412,7 +422,8 @@ input:focus {
 }
 
 .addUser2 {
-  top: 19px;
+  position: absolute;
+  top: 20px;
   left: 0;
   border-radius: var(--br-xs);
   background-color: var(--greyscale-50);

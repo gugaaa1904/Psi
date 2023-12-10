@@ -291,6 +291,7 @@
   font-size: var(--heading-h3-size);
   color: white;
 }
+
 .settings2,
 .settingsIcon {
   position: absolute;
@@ -344,22 +345,28 @@
   line-height: 160%;
   font-weight: 500;
 }
-.collaboratorInformation,
+.collaboratorInformation {
+  position: absolute;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+  top: 193px;
+}
+
 .profile {
   position: absolute;
-  top: 211px;
+  top: 251px;
   left: 0;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
-.collaboratorInformation {
-  top: 163px;
-}
 .companyInformation {
   position: absolute;
-  top: 115px;
+  top: 135px;
 }
 .addUser,
 .companyInformation,
@@ -372,11 +379,13 @@
 }
 .removeUser {
   position: absolute;
-  top: 67px;
+  top: 77px;
 }
 .addUser {
-  top: 19px;
+  top: 20px;
+  position: absolute;
 }
+
 
 .help,
 .profile1,

@@ -234,7 +234,7 @@
 
 .profile {
   position: absolute;
-  top: 211px;
+  top: 251px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -242,12 +242,12 @@
 }
 
 .collaboratorInformation {
-  top: 163px;
+  top: 193px;
 }
 
 .companyInformation {
   position: absolute;
-  top: 115px;
+  top: 135px;
 }
 
 .addUser,
@@ -262,11 +262,12 @@
 
 .removeUser {
   position: absolute;
-  top: 67px;
+  top: 77px;
 }
 
 .addUser {
-  top: 19px;
+    position: absolute;
+  top: 20px;
 }
 
 .settings,
