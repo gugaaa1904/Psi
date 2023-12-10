@@ -29,6 +29,7 @@ const AddUser = () => {
     console.log(formData);
     fetch("http://localhost/Psi/backend/services/collaborator.php", {
       method: "POST",
+      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
