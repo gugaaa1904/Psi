@@ -6,7 +6,7 @@
   background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
   width: 1565px;
-  height: 950px;
+  height: 900px;
 }
 
 .button,
@@ -114,7 +114,7 @@
   letter-spacing: 0.2px;
   line-height: 140%;
   text-align: center;
-  top: 5px;
+  top: 0px;
   color: white;
   font-size: 14px;
 }
@@ -127,9 +127,10 @@
 }
 
 .changeButton {
-  top: 590px;
+  top: 585px;
   background-color: #005c7d;
   width: 119px;
+  border: none;
   position: absolute;
   text-align: center;
   border-radius: 10px;
@@ -329,10 +330,12 @@
 }
 
 .settings1 {
+  position: absolute;
+  top: 13px;
   left: 24px;
   letter-spacing: 0.2px;
   line-height: 160%;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .settings {
@@ -343,9 +346,12 @@
 .settings {
   position: absolute;
   top: 880px;
+  left: 16px;
   border-radius: var(--br-xs);
+  background-color: var(--greyscale-50);
   width: 218px;
   height: 48px;
+  color: var(--color-steelblue-100);
   cursor: pointer;
 }
 
@@ -374,18 +380,17 @@
   left: 24px;
   letter-spacing: 0.2px;
   line-height: 160%;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .help5 {
   position: absolute;
-  top: 825px;
   left: 16px;
+  top: 825px;
   border-radius: var(--br-xs);
-  background-color: var(--greyscale-50);
   width: 218px;
   height: 48px;
-  color: var(--color-steelblue-100);
+  cursor: pointer;
 }
 
 .reportsTexto {
@@ -430,14 +435,14 @@
 .dashboard,
 .profile,
 .reports,
-.settings {
+.help5 {
   transition: background-color 0.3s ease;
 }
 
 .reports:hover,
 .dashboard:hover,
 .profile:hover,
-.settings:hover {
+.help5:hover {
   background-color: #005c7d;
   /* Change to your desired hover color */
 }

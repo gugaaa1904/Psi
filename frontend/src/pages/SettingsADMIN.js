@@ -172,11 +172,9 @@ const SettingsADMIN = () => {
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
-            <div className={styles.changeButton}>
-              <button type="submit">
-                <b className={styles.button1}>Change</b>
-              </button>
-            </div>
+            <button type="submit" className={styles.changeButton}>
+              <b className={styles.button1}>Change</b>
+            </button>
 
             {/* Exibe mensagens de erro/sucesso */}
             {message && <p>{message}</p>}

@@ -181,11 +181,10 @@ const SettingsCollaborator = () => {
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
-            <div className={styles.changeButton}>
-              <button type="submit">
+              <button type="submit" className={styles.changeButton}>
                 <b className={styles.button1}>Change</b>
               </button>
-            </div>
+
 
             {/* Exibe mensagens de erro/sucesso */}
             {message && <p>{message}</p>}
@@ -245,7 +244,6 @@ const SettingsCollaborator = () => {
           </div>
 
           <div className={styles.title}>Privacy</div>
-          <div className={styles.divider} />
           <div className={styles.divider1} />
           <div className={styles.divider1} />
         </div>

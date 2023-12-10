@@ -100,12 +100,13 @@
   height: 64px;
   color: black;
 }
+
 .button1 {
   position: relative;
   letter-spacing: 0.2px;
   line-height: 140%;
   text-align: center;
-  top: 5px;
+  top: 0px;
   color: white;
   font-size: 14px;
 }
@@ -116,10 +117,12 @@
   left: 80px;
   box-sizing: border-box;
 }
+
 .changeButton {
-  top: 590px;
+  top: 585px;
   background-color: #005c7d;
   width: 119px;
+  border: none;
   position: absolute;
   text-align: center;
   border-radius: 10px;
@@ -130,6 +133,7 @@
   box-sizing: border-box;
   cursor: pointer;
 }
+
 .confirmNewPassword,
 .newPassword,
 .oldPassword {
@@ -427,7 +431,7 @@
   top: 12px;
   left: 53px;
   width: 140px;
-  height: 90px;
+  height: 100px;
   background-color: rgb(22, 128, 160);
   border-radius: 10px;
   display: flex;
@@ -436,8 +440,9 @@
   color: #ffffff;
   font-family: 'Arial', sans-serif;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: bold
 }
+
 .settingsAdmin,
 .sidebar {
   height: 1200px;
