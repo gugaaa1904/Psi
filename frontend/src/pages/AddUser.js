@@ -27,7 +27,7 @@ const AddUser = () => {
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
     console.log(formData);
-    fetch("http://localhost/Psi/backend/routes.php/collaborator", {
+    fetch("http://localhost/Psi/backend/services/collaborator.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
