@@ -103,7 +103,7 @@ input {
 
 .enterTheFields {
   top: 150px;
-  left: 350px;
+  left: 375px;
   position: absolute;
   line-height: 160%;
   font-weight: 600;
@@ -128,19 +128,19 @@ input {
 }
 
 .adress {
-  top: 260px;
+  top: 240px;
 }
 
 .phoneNumber {
-  top: 280px;
+  top: 260px;
 }
 
 .gender {
-  top: 300px;
+  top: 280px;
 }
 
 .age {
-  top: 320px;
+  top: 300px;
 }
 
 /**/
@@ -194,15 +194,15 @@ input:focus {
 }
 
 .endDate {
-  top: 280px;
+  top: 270px;
 }
 
 .plafond {
-  top: 360px;
+  top: 340px;
 }
 
 .tariff {
-  top: 440px;
+  top: 410px;
 }
 
 
