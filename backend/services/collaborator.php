@@ -39,7 +39,7 @@ class CollaboratorService
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
             $name = isset($_POST['name']) ? $this->sanitize($_POST['name']) : '';
-            $companyname = isset($_POST['companyname']) ? $this->sanitize($_POST['companyname']) : '';
+            $companyid = isset($_POST['company_id']) ? $this->sanitize($_POST['company_id']) : '';
             $email = isset($_POST['email']) ?  $this->sanitize($_POST['email']) : '';
             $phone = isset($_POST['phone']) ? $this->sanitize($_POST['phone']) : '';
             $age = isset($_POST['age']) ?  $this->sanitize($_POST['age']) : '';
@@ -50,22 +50,6 @@ class CollaboratorService
             $tariff = isset($_POST['tariff']) ?  $this->sanitize($_POST['tariff']) : '';
             $start_date = isset($_POST['start_date']) ?  $this->sanitize($_POST['start_date']) : '';
             $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
-
-            // Use prepared statements to prevent SQL injection
-            $companyname = trim($companyname);
-            $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
-            $sql->bind_param("s", $companyname);
-            $sql->execute();
-            $sql->bind_result($companyid);
-
-            // Fetch the result
-            if (!$sql->fetch()) {
-                // Company not found, handle the error (return an appropriate response)
-                $this->response(array('status' => 'failed', 'error' => 'Company not found'));
-                return;
-            }
-
-            $sql->close();
 
             // Use prepared statements to prevent SQL injection
             $stmt = $this->conn->prepare("INSERT INTO `Collaborator` (`COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
@@ -88,7 +72,6 @@ class CollaboratorService
                 $end_date,
                 $start_date
             );
-
 
             // Execute the statement
             $result = $stmt->execute();

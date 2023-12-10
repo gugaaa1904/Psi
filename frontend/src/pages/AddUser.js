@@ -10,6 +10,7 @@ const AddUser = () => {
     useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    company_id: sessionStorage.getItem('company_id'),
     name: "",
     email: "",
     phone: "",
