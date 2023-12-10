@@ -103,6 +103,12 @@ const HelpCollaborator = () => {
          </div>
 
          <div className={styles.header}>
+           <img
+             className={styles.notificationsIcon}
+             alt=""
+             src="/notifications.svg"
+             onClick={openNotifications}
+           />
            <b className={styles.help}>Help</b>
          </div>
 
@@ -119,7 +125,10 @@ const HelpCollaborator = () => {
          <div className={styles.sidebar}>
            <div className={styles.menu}>
              <b className={styles.menu1}>MENU</b>
-             <div className={styles.dashboard} onClick={onDashboardContainerClick}>
+             <div
+               className={styles.dashboard}
+               onClick={onDashboardContainerClick}
+             >
                <div className={styles.dashboard1}>Dashboard</div>
              </div>
              <div className={styles.reports} onClick={onReportsContainerClick}>
@@ -141,6 +150,15 @@ const HelpCollaborator = () => {
            <div className={styles.line} />
          </div>
        </div>
+       {isNotificationsOpen && (
+         <PortalPopup
+           overlayColor="rgba(113, 113, 113, 0.3)"
+           placement="Centered"
+           onOutsideClick={closeNotifications}
+         >
+           <Notifications onClose={closeNotifications} />
+         </PortalPopup>
+       )}
      </>
    );
 };
