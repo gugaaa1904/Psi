@@ -22,17 +22,13 @@ const AddUser = () => {
     tariff: "",
     end_date: "",
     start_date: "",
-    
-    emailplug: "",
-    passwordplug: "",
-    ipplug: "",
   });
 
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
+    console.log(formData);
     fetch("http://localhost/Psi/backend/routes.php/collaborator", {
       method: "POST",
-      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -98,7 +94,6 @@ const AddUser = () => {
           <div className={styles.enterTheFields}>
             Enter the fields below to add a new user:
           </div>
-
           <input
             className={styles.name}
             name="name"
@@ -108,7 +103,6 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.name}
           />
-
           <input
             className={styles.email}
             name="email"
@@ -118,7 +112,6 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.email}
           />
-
           <input
             className={styles.password}
             name="password"
@@ -128,7 +121,6 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.password}
           />
-
           <input
             className={styles.companyname}
             name="companyname"
@@ -138,7 +130,6 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.companyname}
           />
-
           <input
             className={styles.adress}
             name="address"
@@ -148,7 +139,6 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.address}
           />
-
           <input
             className={styles.phoneNumber}
             name="phone"
@@ -158,7 +148,6 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.phone}
           />
-
           <select
             className={styles.gender}
             required={true}
@@ -171,7 +160,6 @@ const AddUser = () => {
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
-
           <input
             className={styles.age}
             name="age"
@@ -223,41 +211,6 @@ const AddUser = () => {
           onChange={handleInputChange}
           value={formData.tariff}
         />
-
-       
-
-
-        <input
-          className={styles.emailplug}
-          name="emailplug"
-          id="emailplug"
-          placeholder="Email of Tapo Account"
-          type="text"
-          onChange={handleInputChange}
-        />
-
-        <input
-          className={styles.passwordplug}
-          name="passwordplug"
-          id="passwordplug"
-          placeholder="Password of Tapo Account"
-          type="text"
-          onChange={handleInputChange}
-        />
-
-        <input
-          className={styles.ipplug}
-          name="ipplug"
-          id="ipplug"
-          placeholder="IP of Tapo Plug"
-          type="number"
-          onChange={handleInputChange}
-        />
-
-        
-
-
-
         <button
           className={styles.createNewUserButton}
           autoFocus={true}

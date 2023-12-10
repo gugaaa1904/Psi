@@ -13,6 +13,24 @@ class CollaboratorService
 
     public function insert_collaborator_post()
     {
+        /**
+         * name: "",
+          *  companyname: "",
+          *  address: "",
+          *  email: "",
+          *  phone: "",
+          *  age: "",
+          *  gender: "",
+           * password: "",
+           * plafond: "",
+          *  tariff: "",
+          *  end_date: "",
+          *  start_date: "",
+          
+          *  emailplug: "",
+           * passwordplug: "",
+           * ipplug:
+         */
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
             $name = isset($_POST['name']) ? $this->sanitize($_POST['name']) : '';
@@ -34,9 +52,6 @@ class CollaboratorService
             $sql->bind_param("s", $companyname);
             $sql->execute();
             $sql->bind_result($companyid);
-
-            echo "Company Name: $companyname<br>";
-            echo "Database Encoding: " . $this->conn->character_set_name() . "<br>";
 
             // Fetch the result
             if (!$sql->fetch()) {
