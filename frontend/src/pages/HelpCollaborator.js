@@ -117,29 +117,25 @@ const HelpCollaborator = () => {
            </span>
          </div>
          <div className={styles.sidebar}>
-           <div className={styles.menu}></div>
-           <b className={styles.menu1}>MENU</b>
-           <div
-             className={styles.dashboard}
-             onClick={onDashboardContainerClick}
-           >
-             <div className={styles.profile1}>Dashboard</div>
-           </div>
-           <div className={styles.reports} onClick={onReportsContainerClick}>
-             <div className={styles.reportsTexto}>Reports</div>
-           </div>
+           <div className={styles.menu}>
+             <b className={styles.menu1}>MENU</b>
+             <div className={styles.dashboard} onClick={onDashboardContainerClick}>
+               <div className={styles.dashboard1}>Dashboard</div>
+             </div>
+             <div className={styles.reports} onClick={onReportsContainerClick}>
+               <div className={styles.reportsTexto}>Reports</div>
+             </div>
 
-           <div className={styles.profile} onClick={onProfileContainerClick}>
-             <div className={styles.profile1}>Profile</div>
+             <div className={styles.profile} onClick={onProfileContainerClick}>
+               <div className={styles.profile1}>Profile</div>
+             </div>
            </div>
-
-           <div className={styles.help2}>
-             <b className={styles.help3}>Help</b>
+           <div className={styles.help5}>
+             <b className={styles.help6}>Help</b>
            </div>
            <div className={styles.settings} onClick={onSettingsContainerClick}>
              <div className={styles.settings1}>Settings</div>
            </div>
-           <div className={styles.menu}></div>
 
            <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
            <div className={styles.line} />

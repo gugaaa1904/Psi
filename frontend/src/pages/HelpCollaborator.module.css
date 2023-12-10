@@ -1,36 +1,4 @@
 
-.reportsTexto {
-  position: absolute;
-  top: 13px;
-  left: 16px;
-  line-height: 160%;
-  font-weight: 500;
-}
-.reports {
-  position: absolute;
-  top: 115px;
-}
-.dashboard,
-.reports,
-.timelines {
-  left: 0;
-  border-radius: var(--br-xs);
-  width: 218px;
-  height: 48px;
-  cursor: pointer;
-}
-.timelines {
-  position: absolute;
-  top: 67px;
-}
-.dashboard {
-  top: 19px;
-}
-.dashboard,
-.menu,
-.menu1 {
-  position: absolute;
-}
 
 .wereHereForWhateverYouNe {
   position: absolute;
@@ -201,8 +169,7 @@
   color: var(--color-gray-300);
 }
 
-.settings1,
-.settingsIcon {
+.settings1 {
   position: absolute;
   top: 13px;
 }
@@ -215,7 +182,11 @@
 }
 
 .settings {
+  position: absolute;
   left: 16px;
+}
+
+.settings {
   position: absolute;
   top: 880px;
   border-radius: var(--br-xs);
@@ -224,47 +195,100 @@
   cursor: pointer;
 }
 
-.help2 {
-  position: absolute;
-  top: 13px;
-  left: 24px;
-  letter-spacing: 0.2px;
-  color: var(--color-steelblue-100);
-  width: 40px;
-  height: 16px;
-}
-
-.help1,
-.profile1 {
-  position: absolute;
-  left: 16px;
-}
-
-.help1 {
-  background-color: var(--greyscale-50);
-  position: absolute;
-  top: 825px;
-  border-radius: var(--br-xs);
-  width: 218px;
-  height: 48px;
-}
-
-.profile1 {
-  top: 13px;
-  letter-spacing: 0.2px;
-  line-height: 160%;
-  font-weight: 500;
-}
-
 .profile {
   position: absolute;
-  top: 211px;
+  top: 140px;
+  left: 0;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
   cursor: pointer;
 }
 
+.profile1 {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+
+.help6 {
+  position: absolute;
+  top: 13px;
+  left: 24px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 700;
+}
+.help5 {
+  position: absolute;
+  top: 825px;
+  left: 16px;
+  border-radius: var(--br-xs);
+  background-color: var(--greyscale-50);
+  width: 218px;
+  height: 48px;
+  color: var(--color-steelblue-100);
+}
+.reportsTexto {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.reports {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.dashboard1 {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dashboard {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.dashboard,
+.profile,
+.reports,
+.settings {
+  transition: background-color 0.3s ease;
+}
+
+.reports:hover,
+.dashboard:hover,
+.profile:hover,
+.settings:hover {
+  background-color: #005c7d;
+  /* Change to your desired hover color */
+}
+
+.menu,
+.menu1 {
+  position: absolute;
+}
 
 .menu1 {
   top: -10px;
@@ -276,7 +300,7 @@
 }
 
 .menu {
-  top: 148px;
+  top: 140px;
   left: 16px;
   width: 218px;
   height: 259px;
@@ -297,7 +321,7 @@
   top: 12px;
   left: 53px;
   width: 140px;
-  height: 90px;
+  height: 100px;
   background-color: rgb(22, 128, 160);
   border-radius: 10px;
   display: flex;
@@ -306,7 +330,7 @@
   color: #ffffff;
   font-family: 'Arial', sans-serif;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: bold
 }
 
 .helpCollaborator ,
