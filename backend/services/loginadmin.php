@@ -4,6 +4,7 @@ header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
+
 require_once '../config.php';
 
 class LogINAdminService
@@ -66,11 +67,9 @@ class LogINAdminService
     }
 }
 
-$LogInadminService = new LogINAdminService();
+$logInAdminService = new LogINAdminService();
 
-//echo $_POST;
-//echo $_POST['password'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $LogInadminService->login_admin();
+    $logInAdminService->login_admin();
 
 }
