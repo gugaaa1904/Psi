@@ -123,9 +123,9 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: 25,
-          width: 640,
-          left: 390,
+          top: 20,
+          width: 660,
+          left: 1150,
           transform: "translateX(-50%)",
         }}
       >
@@ -133,7 +133,7 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={350}
+          height={700}
         />
       </div>
     );
@@ -256,25 +256,6 @@ const CollaboratorInfo = () => {
           </b>
         </div>
 
-        <div className={styles.generalOverview}>
-          <select
-            id="collaboratorSelect"
-            value={selectedCollaborator}
-            onChange={(e) => onChangeCollaborator(e.target.value)}
-          >
-            <option value="">Selecione um colaborador</option>
-            {collaborators.map((collaborator) => (
-              <option
-                key={collaborator.COLLABORATOR_ID}
-                value={collaborator.COLLABORATOR_ID}
-              >
-                {collaborator.NAME}
-              </option>
-            ))}
-          </select>
-          <div className={styles.generalOverview1}>General Overview</div>
-        </div>
-
         <div className={styles.maxPowerAchieved}>
           <div className={styles.bg} />
 
@@ -297,7 +278,7 @@ const CollaboratorInfo = () => {
           className={styles.averageEnergyConsumptionIn}
           style={{ position: "relative", zIndex: "2" }}
         >
-          <div className={styles.backgroundCopy2} />
+          <div className={styles.backgroundCopy1} />
           <div className={styles.data3}>
             {selectedInterval === "weekly"
               ? averageWeeklyUsage && `${averageWeeklyUsage} kWh`
@@ -339,30 +320,26 @@ const CollaboratorInfo = () => {
         </div>
         <div className={styles.backgroundlist} />
         <div className={styles.listtitle}>List of Collaborators</div>
-        <div className={styles.listOfCollaborators}>
-          {collaborators.map((collaborator, index) => (
-            <div key={index}>
-              <b className={styles.name}>{collaborator.NAME}</b>
-              <div className={styles.position}>
-                <p className={styles.dhlEmployee}>
-                  {collaborator.COMPANYNAME} - Employee
-                </p>
-                <p className={styles.dhlEmployee}>
-                  Monthly Expenses: {collaborator.MONTHLY_USAGE} kwh -{" "}
-                  {collaborator.MONTHLY_USAGE * 0.2} EUR
-                </p>
-              </div>
-              <img
-                className={styles.image21Icon}
-                alt=""
-                src="/image-21@2x.png"
-              />
-            </div>
-          ))}
+        <div className={styles.generalOverview}>
+          <select
+            id="collaboratorSelect"
+            value={selectedCollaborator}
+            onChange={(e) => onChangeCollaborator(e.target.value)}
+          >
+            <option value="">Selecione um colaborador</option>
+            {collaborators.map((collaborator) => (
+              <option
+                key={collaborator.COLLABORATOR_ID}
+                value={collaborator.COLLABORATOR_ID}
+              >
+                {collaborator.NAME}
+              </option>
+            ))}
+          </select>
+          <div className={styles.generalOverview1}>General Overview</div>
         </div>
 
         <div className={styles.generalConsuming}>
-          <div className={styles.background} />
           <ApexChartClass selectedCollaborator={selectedCollaborator} />
           <div className={styles.graph}>
             <div className={styles.graph1}></div>

@@ -1,12 +1,3 @@
-.bg{
-  position: absolute;
-  border-radius: var(--br-base);
-  background-color: #ffe2e5;
-  top: 0px;
-  left: -50px;
-  width: 400px;
-  height: 155px;
-}
 
 .numberOfCollaborators,
 .percentage {
@@ -69,17 +60,6 @@
   height: 155px;
 }
 
-
-
-.bg1 {
-  position: absolute;
-  top: 0px;
-  left: -30px;
-  border-radius: var(--br-base);
-  background-color: var(--colors-green-100);
-  width: 400px;
-  height: 155px;
-}
 
 .monthsDropDown1 {
   position: absolute;
@@ -178,23 +158,53 @@
   width: 229px;
   height: 155px;
 }
+
 .backgroundCopy2 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 431px;
-  height: 155px;
-}
-.backgroundCopy2 {
-  height: 100%;
-  width: 100%;
+  height: 380px;
+  width: 350px;
+  top: -595px;
   right: 0;
   bottom: 0;
-  border-radius: var(--br-7xl);
+  left: 0px;
+  border-radius: var(--br-5xl);
   background-color: var(--additional-white);
-  box-shadow: 0 4px 20px rgba(238, 238, 238, 0.5);
-  border: 1px solid var(--color-aliceblue-100);
-  box-sizing: border-box;
+}
+
+.backgroundCopy1 {
+  position: absolute;
+  height: 343px;
+  width: 350px;
+  top: -20px;
+  right: 0;
+  bottom: 0;
+  left: 0px;
+  border-radius: var(--br-5xl);
+  background-color: var(--additional-white);
+}
+
+.bg {
+  position: absolute;
+  height: 380px;
+  width: 350px;
+  top: -595px;
+  right: 0;
+  bottom: 0;
+  left: -90px;
+  border-radius: var(--br-5xl);
+  background-color: var(--additional-white);
+}
+
+.bg1 {
+  position: absolute;
+  height: 343px;
+  width: 350px;
+  top: -20px;
+  right: 0;
+  bottom: 0;
+  left: -70px;
+  border-radius: var(--br-5xl);
+  background-color: var(--additional-white);
 }
 
 .averageCostIn1,
@@ -385,39 +395,16 @@
 
 .backgroundlist {
   position: absolute;
-  top: 170px;
-  left: 860px;
-  width: 730px;
-  height: 744px;
+  height: 750px;
+  width: 800px;
+  top: 163px;
   right: 0;
   bottom: 0;
-  border-radius: var(--br-xl);
+  left: 780px;
+  border-radius: var(--br-5xl);
   background-color: var(--additional-white);
-  box-shadow: 0 4px 20px rgba(238, 238, 238, 0.5);
-  border: 1px solid var(--color-whitesmoke-100);
-  box-sizing: border-box;
 }
 
-
-
-.background{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 688px;
-  height: 302px;
-}
-.background {
-  height: 100%;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  border-radius: var(--br-xl);
-  background-color: var(--additional-white);
-  box-shadow: 0 4px 20px rgba(238, 238, 238, 0.5);
-  border: 1px solid var(--color-whitesmoke-100);
-  box-sizing: border-box;
-}
 .path2Copy,
 .path2Copy2,
 .path2Copy3,
