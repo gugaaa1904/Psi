@@ -7,9 +7,7 @@ header("Content-Type: application/json");
 
 require_once 'services/company.php';
 require_once 'services/admin.php';
-require_once 'services/loginadmin.php';
 require_once 'services/collaborator.php';
-require_once 'services/logincollaborator.php';
 require_once 'config.php';
 $conn = connect();
 
@@ -48,36 +46,6 @@ switch ($uri) {
             //clients_list();
         } elseif ($requestMethod === 'POST') {
             insert_collaborator_post();
-        } else {
-            http_response_code(405); // Method Not Allowed
-        }
-        break;
-    case '/loginadmin':
-        if ($requestMethod === 'GET'
-        ) {
-            //clients_list();
-        } elseif ($requestMethod === 'POST') {
-            login_admin();
-        } else {
-            http_response_code(405); // Method Not Allowed
-        }
-        break;
-    case '/logincollaborator':
-        if ($requestMethod === 'GET'
-        ) {
-            //clients_list();
-        } elseif ($requestMethod === 'POST') {
-            login_collaborator();
-        } else {
-            http_response_code(405); // Method Not Allowed
-        }
-        break;
-    case '/changepasswordadmin':
-        if ($requestMethod === 'GET'
-        ) {
-                //clients_list();
-        } elseif ($requestMethod === 'POST') {
-            change_password_admin();
         } else {
             http_response_code(405); // Method Not Allowed
         }
