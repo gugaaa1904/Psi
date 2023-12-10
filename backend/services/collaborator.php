@@ -53,7 +53,7 @@ class CollaboratorService
 
             // Use prepared statements to prevent SQL injection
             $stmt = $this->conn->prepare("INSERT INTO `Collaborator` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Bind parameters
             $stmt->bind_param(
