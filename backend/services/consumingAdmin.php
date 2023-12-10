@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 $companyId = $_GET['company_id'];
 // Consulta SQL para obter a soma total da coluna DAILY_USAGE para todos os IDs
 $sql = "SELECT 
-DAY,
+DAY,MONTH_YEAR,
 COALESCE(SUM(DAILY_USAGE), 0) AS total_daily_usage
 FROM consuming c
 JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
@@ -34,6 +34,7 @@ if ($result) {
         $dados[] = array(
             'DAY' => $row["DAY"],
             'DAILY_USAGE' => $row["total_daily_usage"],
+            'MONTH_YEAR' => $row["MONTH_YEAR"],
         );
     }
 
@@ -45,4 +46,3 @@ if ($result) {
 
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>

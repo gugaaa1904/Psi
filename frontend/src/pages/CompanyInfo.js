@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback , Component } from "react";
+import React, { useState, useEffect, useCallback, Component } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CompanyInfo.module.css";
 import ReactApexChart from "react-apexcharts";
@@ -69,17 +69,21 @@ class ApexChartClass extends Component {
       },
     };
   }
-  
+
   fetchData = async () => {
     try {
-      const companyID = sessionStorage.getItem('company_id');
-      const response = await axios.get(`http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`);
+      const companyID = sessionStorage.getItem("company_id");
+      const response = await axios.get(
+        `http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`
+      );
       //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
       //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
-      const dataFromServer = response.data; 
-      console.log(dataFromServer)
+      const dataFromServer = response.data;
+      console.log(dataFromServer);
       // Preencher o array de Consuming multiplicando por 2.5
-      const consumingData = dataFromServer.map((item) => (item.DAILY_USAGE / 0.2) *0.245 );
+      const consumingData = dataFromServer.map(
+        (item) => (item.DAILY_USAGE / 0.2) * 0.245
+      );
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
       const plafondData = Array(consumingData.length).fill(20);
@@ -99,7 +103,9 @@ class ApexChartClass extends Component {
           ...this.state.options,
           xaxis: {
             ...this.state.options.xaxis,
-            categories: dataFromServer.map((item) => item.DAY),
+            categories: dataFromServer.map(
+              (item) => `${item.DAY}/${item.MONTH_YEAR}`
+            ),
           },
         },
       });
@@ -136,13 +142,12 @@ class ApexChartClass extends Component {
   }
 }
 
-
-
 const CompanyInfo = () => {
   const navigate = useNavigate();
   const [averageWeeklyUsage, setAverageWeeklyUsage] = useState(null);
   const [averageMonthlyUsage, setAverageMonthlyUsage] = useState(null);
-  const [selectedOption, setSelectedOption] = useState('Weekly');
+  const [selectedOption, setSelectedOption] = useState("Weekly");
+  const [tariff, settariff] = useState(null);
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
@@ -172,15 +177,16 @@ const CompanyInfo = () => {
     // Função para buscar os dados do backend
     const fetchData = async () => {
       try {
-        const companyId = sessionStorage.getItem('company_id');
-        const response = await fetch(`http://localhost/Psi/backend/services/companyinfo.php?company_id=${companyId}`);
+        const companyId = sessionStorage.getItem("company_id");
+        const response = await fetch(
+          `http://localhost/Psi/backend/services/companyinfo.php?company_id=${companyId}`
+        );
         const data = await response.json();
         setAverageWeeklyUsage(data[0].average_weekly_usage);
         setAverageMonthlyUsage(data[0].average_monthly_usage);
-
-
+        settariff(data[0].tariff);
       } catch (error) {
-        console.error('Erro ao buscar dados do backend:', error);
+        console.error("Erro ao buscar dados do backend:", error);
       }
     };
 
@@ -210,10 +216,13 @@ const CompanyInfo = () => {
           <div className={styles.value}>
             {selectedOption === "Weekly" &&
               averageWeeklyUsage &&
-              `${(averageWeeklyUsage * 0.2).toFixed(1)} €`}
+              tariff &&
+              `${(averageWeeklyUsage * tariff).toFixed(1)} €`}
+
             {selectedOption === "Monthly" &&
               averageMonthlyUsage &&
-              `${(averageMonthlyUsage * 0.2).toFixed(1)} €`}
+              tariff &&
+              `${(averageMonthlyUsage * tariff).toFixed(1)} €`}
           </div>
           <div
             className={styles.text}

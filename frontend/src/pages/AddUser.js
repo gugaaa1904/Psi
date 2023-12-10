@@ -10,7 +10,7 @@ const AddUser = () => {
     useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    company_id: sessionStorage.getItem('company_id'),
+    company_id: sessionStorage.getItem("company_id"),
     name: "",
     email: "",
     phone: "",
@@ -21,7 +21,11 @@ const AddUser = () => {
     plafond: "",
     tariff: "",
     start_date: "",
-    end_date: ""
+    end_date: "",
+
+    emailplug: "",
+    passwordplug: "",
+    ipplug: "",
   });
 
   const onAddUserClick = useCallback(() => {
@@ -199,10 +203,41 @@ const AddUser = () => {
           name="tariff"
           id="tariff"
           placeholder="Tariff"
-          type="number"
+          type="text"
           onChange={handleInputChange}
           value={formData.tariff}
         />
+
+        <input
+          className={styles.emailplug}
+          name="emailplug"
+          id="emailplug"
+          placeholder="Email of Tapo Account"
+          type="text"
+          onChange={handleInputChange}
+          value={formData.emailplug}
+        />
+
+        <input
+          className={styles.passwordplug}
+          name="passwordplug"
+          id="passwordplug"
+          placeholder="Password of Tapo Account"
+          type="text"
+          onChange={handleInputChange}
+          value={formData.passwordplug}
+        />
+
+        <input
+          className={styles.ipplug}
+          name="ipplug"
+          id="ipplug"
+          placeholder="IP of Tapo Plug"
+          type="number"
+          onChange={handleInputChange}
+          value={formData.ipplug}
+        />
+
         <button
           className={styles.createNewUserButton}
           autoFocus={true}

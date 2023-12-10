@@ -16,11 +16,19 @@ if ($conn->connect_error) {
 $company_id = $_GET['company_id'];
 // Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE
 $sql = "SELECT 
-            AVG(WEEKLY_USAGE) AS average_weekly_usage,
-            AVG(MONTHLY_USAGE) AS average_monthly_usage
-        FROM consuming c
-        JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
-        WHERE col.COMPANY_ID = $company_id";
+            MAX(c.TARIFF) AS tariff,
+            SUM(max_weekly) AS average_weekly_usage,
+            SUM(max_monthly) AS average_monthly_usage
+        FROM (
+            SELECT 
+                COLLABORATOR_ID,
+                MAX(WEEKLY_USAGE) AS max_weekly,
+                MAX(MONTHLY_USAGE) AS max_monthly
+            FROM consuming
+            WHERE COLLABORATOR_ID IN (SELECT COLLABORATOR_ID FROM collaborator WHERE COMPANY_ID = $company_id)
+            GROUP BY COLLABORATOR_ID
+        ) AS max_values
+        JOIN collaborator c ON max_values.COLLABORATOR_ID = c.COLLABORATOR_ID";
 
 $result = $conn->query($sql);
 
@@ -31,6 +39,7 @@ if ($result) {
     // Loop sobre os resultados e adiciona cada linha ao array
     while ($row = $result->fetch_assoc()) {
         $dados[] = array(
+            'tariff' => number_format($row["tariff"], 1),
             'average_weekly_usage' => number_format($row["average_weekly_usage"], 1),
             'average_monthly_usage' => number_format($row["average_monthly_usage"], 1),
         );
@@ -44,4 +53,3 @@ if ($result) {
 
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>

@@ -13,17 +13,17 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-$collaboratorID = $_GET['collaborator_id'];
-
-// Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE
+$collaboratorId = $_GET['collaborator_id'];
+// Consulta SQL para obter a soma total da coluna DAILY_USAGE e o PLAFOND para todos os IDs
 $sql = "SELECT 
-    AVG(DAILY_USAGE) AS average_daily_usage,
-    MIN(DAILY_USAGE) AS min_daily_usage,
-    MAX(DAILY_USAGE) AS max_daily_usage,
-    MAX(WEEKLY_USAGE) AS average_weekly_usage,
-    MAX(MONTHLY_USAGE) AS average_monthly_usage
-FROM consuming 
-WHERE COLLABORATOR_ID = $collaboratorID";
+    c.DAY,
+    c.MONTH_YEAR,
+    COALESCE(SUM(c.DAILY_USAGE), 0) AS total_daily_usage,
+    co.PLAFOND
+FROM consuming c
+JOIN collaborator co ON c.COLLABORATOR_ID = co.COLLABORATOR_ID
+WHERE c.COLLABORATOR_ID = $collaboratorId
+GROUP BY c.DAY";
 
 $result = $conn->query($sql);
 
@@ -34,11 +34,10 @@ if ($result) {
     // Loop sobre os resultados e adiciona cada linha ao array
     while ($row = $result->fetch_assoc()) {
         $dados[] = array(
-            'average_daily_usage' => number_format($row["average_daily_usage"], 1),
-            'min_daily_usage' => number_format($row["min_daily_usage"], 1),
-            'max_daily_usage' => number_format($row["max_daily_usage"], 1),
-            'average_weekly_usage' => number_format($row["average_weekly_usage"], 1),
-            'average_monthly_usage' => number_format($row["average_monthly_usage"], 1),
+            'DAY' => $row["DAY"],
+            'DAILY_USAGE' => $row["total_daily_usage"],
+            'PLAFOND' => $row["PLAFOND"],
+            'MONTH_YEAR' => $row["MONTH_YEAR"],
         );
     }
 

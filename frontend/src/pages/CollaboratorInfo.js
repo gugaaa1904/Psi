@@ -71,9 +71,9 @@ class ApexChartClass extends Component {
 
   fetchData = async () => {
     try {
-      const companyID = sessionStorage.getItem("company_id");
+      const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`
+        `http://localhost/Psi/backend/services/collaboratorinfo.php?collaborator_id=${collaboratorId}`
       );
       //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
       //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
@@ -83,7 +83,7 @@ class ApexChartClass extends Component {
       const consumingData = dataFromServer.map((item) => item.DAILY_USAGE);
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
-      const plafondData = Array(consumingData.length).fill(50);
+      const plafondData = dataFromServer.map((item) => item.PLAFOND);
 
       this.setState({
         series: [
@@ -100,7 +100,9 @@ class ApexChartClass extends Component {
           ...this.state.options,
           xaxis: {
             ...this.state.options.xaxis,
-            categories: dataFromServer.map((item) => item.DAY),
+            categories: dataFromServer.map(
+              (item) => `${item.DAY}/${item.MONTH_YEAR}`
+            ),
           },
         },
       });
@@ -109,8 +111,10 @@ class ApexChartClass extends Component {
     }
   };
 
-  componentDidMount() {
-    this.fetchData();
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedCollaborator !== this.props.selectedCollaborator) {
+      this.fetchData();
+    }
   }
 
   render() {
@@ -142,8 +146,10 @@ const CollaboratorInfo = () => {
   const [averageMonthlyUsage, setAverageMonthlyUsage] = useState(null);
   const [minDailyUsage, setMinDailyUsage] = useState(null);
   const [maxDailyUsage, setMaxDailyUsage] = useState(null);
-  const [collaborators, setCollaborators] = useState([]);
   const [selectedInterval, setSelectedInterval] = useState("weekly");
+
+  const [collaborators, setCollaborators] = useState([]);
+  const [selectedCollaborator, setSelectedCollaborator] = useState("");
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
@@ -176,12 +182,12 @@ const CollaboratorInfo = () => {
   }
 
   useEffect(() => {
-    const companyID = sessionStorage.getItem("company_id");
+    const collaboratorID = sessionStorage.getItem("collaborator_id");
     const fetchData = async () => {
       try {
-        const companyId = sessionStorage.getItem("company_id");
+        const collaboratorID = sessionStorage.getItem("collaborator_id");
         const response = await fetch(
-          `http://localhost/Psi/backend/services/consumingAdmin2.php?company_id=${companyId}&interval=${selectedInterval}`
+          `http://localhost/Psi/backend/services/consumingAdmin2.php?collaborator_id=${collaboratorID}&interval=${selectedInterval}`
         );
         const data = await response.json();
         setAverageWeeklyUsage(data[0].average_weekly_usage);
@@ -194,18 +200,37 @@ const CollaboratorInfo = () => {
     };
 
     fetchData();
-  }, [selectedInterval]); // Adicione selectedInterval à lista de dependências
+  }, [selectedInterval, selectedCollaborator]);
 
   useEffect(() => {
     const companyID = sessionStorage.getItem("company_id");
+
     const fetchCollaborators = async () => {
       try {
         const response = await fetch(
           `http://localhost/Psi/backend/services/listcollaborator.php?company_id=${companyID}`
         );
         const data = await response.json();
-        addCollaborators(data);
-        setCollaborators(collaborators);
+
+        // Remove duplicates using a Set
+        const uniqueCollaborators = Array.from(
+          new Set(data.map((collaborator) => collaborator.COLLABORATOR_ID))
+        ).map((collaboratorId) =>
+          data.find(
+            (collaborator) => collaborator.COLLABORATOR_ID === collaboratorId
+          )
+        );
+
+        setCollaborators(uniqueCollaborators);
+
+        // Set the initial selected collaborator when collaborators are fetched
+        if (uniqueCollaborators.length > 0) {
+          setSelectedCollaborator(uniqueCollaborators[0].COLLABORATOR_ID);
+          sessionStorage.setItem(
+            "collaborator_id",
+            uniqueCollaborators[0].COLLABORATOR_ID
+          );
+        }
       } catch (error) {
         console.error("Erro ao buscar dados do backend:", error);
       }
@@ -213,6 +238,14 @@ const CollaboratorInfo = () => {
 
     fetchCollaborators();
   }, []);
+
+  const onChangeCollaborator = (selectedValue) => {
+    // Update the state with the collaborator selected
+    setSelectedCollaborator(selectedValue);
+
+    // Store the COLLABORATOR_ID in sessionStorage
+    sessionStorage.setItem("collaborator_id", selectedValue);
+  };
 
   return (
     <div className={styles.collaboratorInfo}>
@@ -224,6 +257,21 @@ const CollaboratorInfo = () => {
         </div>
 
         <div className={styles.generalOverview}>
+          <select
+            id="collaboratorSelect"
+            value={selectedCollaborator}
+            onChange={(e) => onChangeCollaborator(e.target.value)}
+          >
+            <option value="">Selecione um colaborador</option>
+            {collaborators.map((collaborator) => (
+              <option
+                key={collaborator.COLLABORATOR_ID}
+                value={collaborator.COLLABORATOR_ID}
+              >
+                {collaborator.NAME}
+              </option>
+            ))}
+          </select>
           <div className={styles.generalOverview1}>General Overview</div>
         </div>
 
@@ -257,7 +305,7 @@ const CollaboratorInfo = () => {
           </div>
           <div
             className={styles.averageEnergyConsumption}
-          >{`Average Energy Consumption in kWh `}</div>
+          >{`Total Energy Consumption in kWh `}</div>
 
           {/* Seletor para escolher entre 'monthly' e 'weekly' */}
           <select
@@ -277,7 +325,7 @@ const CollaboratorInfo = () => {
               ? averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`
               : averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`}
           </div>
-          <div className={styles.averageCostIn1}>{`Average Cost in € `}</div>
+          <div className={styles.averageCostIn1}>{`Total Cost in € `}</div>
 
           {/* Seletor para escolher entre 'weekly' e 'monthly' */}
           <select
@@ -315,7 +363,7 @@ const CollaboratorInfo = () => {
 
         <div className={styles.generalConsuming}>
           <div className={styles.background} />
-          <ApexChartClass />
+          <ApexChartClass selectedCollaborator={selectedCollaborator} />
           <div className={styles.graph}>
             <div className={styles.graph1}></div>
           </div>

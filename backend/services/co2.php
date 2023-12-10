@@ -49,4 +49,3 @@ if ($result) {
 
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>

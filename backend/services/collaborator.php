@@ -18,24 +18,6 @@ class CollaboratorService
 
     public function insert_collaborator_post()
     {
-        /**
-         * name: "", !
-          *  companyname: "", !
-          *  address: "", !
-          *  email: "", !
-          *  phone: "", !
-          *  age: "", !
-          *  gender: "", !
-           * password: "", !
-           * plafond: "",  !
-          *  tariff: "", !
-          *  end_date: "", !
-          *  start_date: "", !
-
-          *  emailplug: "",
-           * passwordplug: "",
-           * ipplug:
-         */
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Sanitize and validate input data
             $name = isset($_POST['name']) ? $this->sanitize($_POST['name']) : '';
@@ -51,13 +33,17 @@ class CollaboratorService
             $start_date = isset($_POST['start_date']) ?  $this->sanitize($_POST['start_date']) : '';
             $end_date = isset($_POST['end_date']) ?  $this->sanitize($_POST['end_date']) : '';
 
+            $emailplug = isset($_POST['emailplug']) ?  $this->sanitize($_POST['emailplug']) : '';
+            $passwordplug = isset($_POST['passwordplug']) ?  $this->sanitize($_POST['passwordplug']) : '';
+            $ipplug = isset($_POST['ipplug']) ?  $this->sanitize($_POST['ipplug']) : '';
+
             // Use prepared statements to prevent SQL injection
-            $stmt = $this->conn->prepare("INSERT INTO `Collaborator` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`) 
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $this->conn->prepare("INSERT INTO `Collaborator` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PLAFOND`, `TARIFF`, `END_DATE`, `START_DATE`, `EMAIL_PLUG`, `PASSWORD_PLUG`, `IP_PLUG`) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Bind parameters
             $stmt->bind_param(
-                "ississssiiss",
+                "issiisssidsssss",
                 $companyid,
                 $name,
                 $email,
@@ -69,7 +55,10 @@ class CollaboratorService
                 $plafond,
                 $tariff,
                 $end_date,
-                $start_date
+                $start_date,
+                $emailplug,
+                $passwordplug,
+                $ipplug,
             );
 
             // Execute the statement
