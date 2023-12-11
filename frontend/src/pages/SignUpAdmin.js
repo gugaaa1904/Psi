@@ -176,9 +176,20 @@ const SignUpAdmin = () => {
           onChange={handleInputChange}
           value={formData.address}
         />
-        
-        <label htmlFor="fileInput" className={styles.iconCamera} onClick={handleImageClick}>
-          <img loading="eager" alt="" src="/camera@3x.png"  style={{ width: '24px', height: '24px', marginRight: '5px' }} />
+
+        <div className={styles.addYourCompany}>Add your Company Image</div>
+
+        <label
+          htmlFor="fileInput"
+          className={styles.iconCamera}
+          onClick={handleImageClick}
+        >
+          <img
+            loading="eager"
+            alt=""
+            src="/camera@3x.png"
+            className={styles.img}
+          />
         </label>
         <input
           type="file"
@@ -188,9 +199,6 @@ const SignUpAdmin = () => {
           style={{ display: "none" }}
           onChange={handleImageChange}
         />
-
-
-
       </div>
       <div className={styles.buttonlargeprimary} onClick={onSignUpClick}>
         <b className={styles.button}>Sign Up</b>

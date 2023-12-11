@@ -110,6 +110,7 @@
   width: 20px;
   height: 20px;
   overflow: hidden;
+    cursor: pointer;
 }
 
 .byCreatingAnAccountMeansY {
@@ -136,6 +137,17 @@
   width: 24px;
   height: 24px;
   object-fit: cover;
+    cursor: pointer;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 .cnpj,

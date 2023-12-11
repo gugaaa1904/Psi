@@ -156,19 +156,6 @@ const SignUpCompany = () => {
           value={formData.telephone}
         />
 
-        <div className={styles.addYourCompany}>Add your Company Image</div>
-        <label htmlFor="fileInput" className={styles.iconCamera} onClick={handleImageClick}>
-          <img loading="eager" alt="" src="/camera@3x.png"  />
-        </label>
-        <input
-          type="file"
-          accept="image/*"
-          id="fileInput"
-          name="fileInput"
-          style={{ display: "none" }}
-          onChange={handleImageChange}
-        />
-
         <div className={styles.byCreatingAnAccountMeansY}>
           <input
             className={styles.checkbox}
@@ -188,6 +175,28 @@ const SignUpCompany = () => {
             </p>
           </div>
         </div>
+
+        <div className={styles.addYourCompany}>Add your Company Image</div>
+        <label
+          htmlFor="fileInput"
+          className={styles.iconCamera}
+          onClick={handleImageClick}
+        >
+          <img
+            className={styles.img}
+            loading="eager"
+            alt=""
+            src="/camera@3x.png"
+          />
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          id="fileInput"
+          name="fileInput"
+          style={{ display: "none" }}
+          onChange={handleImageChange}
+        />
 
         <div className={styles.buttonlargeprimary} onClick={onSignUpClick}>
           <b className={styles.button}>Sign Up</b>
