@@ -16,6 +16,9 @@ const ForgotPasswordADMIN = () => {
   return (
     <div className={styles.forgotPasswordAdmin}>
       <div className={styles.content}>
+        <div className={styles.logo}>
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+        </div>
         <div className={styles.header}>
           <b className={styles.resetYourPassword}>Reset your password</b>
           <div className={styles.enterTheEmail}>
@@ -43,9 +46,6 @@ const ForgotPasswordADMIN = () => {
         <b className={styles.signUp} onClick={onSignUpTextClick}>
           Sign Up
         </b>
-      </div>
-      <div className={styles.logo}>
-        <img className={styles.logo1Icon} alt="" src="/logo-12@2x.png" />
       </div>
     </div>
   );

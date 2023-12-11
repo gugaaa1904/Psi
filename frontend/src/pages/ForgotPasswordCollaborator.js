@@ -11,10 +11,10 @@ const ForgotPasswordCollaborator = () => {
 
   return (
     <div className={styles.forgotPasswordCollaborator}>
-      <div className={styles.logo}>
-        <img className={styles.logo1Icon} alt="" src="/logo-12@2x.png" />
-      </div>
       <div className={styles.content}>
+        <div className={styles.logo}>
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+        </div>
         <div className={styles.header}>
           <b className={styles.resetYourPassword}>Reset your password</b>
           <div className={styles.enterTheEmail}>
