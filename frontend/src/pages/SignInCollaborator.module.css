@@ -47,7 +47,7 @@
 .buttonlargeprimary {
   position: absolute;
   cursor: pointer;
-  top: 694px;
+  top: 711px;
   left: 140px;
   border-radius: var(--br-xs);
   background-color: #005c7d;
@@ -134,7 +134,7 @@
 }
 .logo1Icon {
   position: absolute;
-  top: 32px;
+  top: 29px;
   left: 40px;
   width: 180px;
   height: 120px;
