@@ -1,7 +1,7 @@
 .logo1Icon {
   position: absolute;
   top: 12px;
-  left: 40px;
+  left: 35px;
   width: 180px;
   height: 120px;
   background-color: #005c7d;
@@ -40,7 +40,7 @@
 }
 .header {
   top: 201px;
-  left: 198px;
+  left: 195px;
   width: 300px;
   height: 64px;
   font-size: var(--heading-h3-size);
