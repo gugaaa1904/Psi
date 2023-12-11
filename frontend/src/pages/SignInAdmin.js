@@ -73,10 +73,10 @@ const onButtonLargePrimaryContainerClick = async () => {
         />
       </div>
       <div className={styles.signInAdmin}>
+        <div className={styles.logo}>
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+        </div>
         <div className={styles.content}>
-          <div className={styles.logo}>
-            <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
-          </div>
           <div className={styles.header}>
             <b className={styles.tittle}>Sign In Administrator</b>
             <div className={styles.body}>
