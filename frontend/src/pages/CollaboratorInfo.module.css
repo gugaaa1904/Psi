@@ -21,8 +21,8 @@
 }
 
 .data {
-  top: 75px;
-  left: 100px;
+  top: -435px;
+  left: 40px;
   position: absolute;
   font-size: var(--heading-h3-size);
   line-height: 32px;
@@ -33,21 +33,21 @@
   height: 30px;
 }
 .redIcon {
-  top: 16px;
   position: absolute;
-  left: -30px;
+  top: -315px;
+  left: 70px;
   width: 30px;
   height: 30px;
 }
 .maxPowerAchieved1 {
   position: absolute;
-  width: 90.39%;
-  top: 15px;
-  left: 48px;
-  font-size: 16px;
+  width: 250px;
+  top: -550px;
+  left: -30px;
+  font-size: 24px;
   line-height: 32px;
   font-weight: 600;
-  color: var(--primary-dark-shade);
+  color: #005c7d;
   text-align: center;
   display: inline-block;
   height: 59px;
@@ -63,8 +63,8 @@
 
 .monthsDropDown1 {
   position: absolute;
-  top: 70px;
-  left: 70px;
+  top: 220px;
+  left: 140px;
   width: 75px;
   height: 40px;
   padding-left: 13.5px;
@@ -82,8 +82,8 @@
 
 .monthsDropDown2 {
   position: absolute;
-  top: 70px;
-  left: 70px;
+  top: -320px;
+  left: 390px;
   width: 75px;
   height: 40px;
   padding-left: 13.5px;
@@ -99,6 +99,24 @@
   background-size: 20px 20px;
 }
 
+.dropdowncollaborator {
+  position: absolute;
+  top: -10px;
+  left: 740px;
+  width: 175px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid;
+  background-color: #fff;
+  font-size: 14px;
+  color: #005c7d;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  appearance: none;
+  background: no-repeat right center;
+  background-size: 20px 20px;
+}
 
 .numberOfCollaborators1,
 .percentage1 {
@@ -127,26 +145,27 @@
   display: inline-block;
 }
 .data1 {
-  top: 75px;
-  left: 120px;
+  top: 135px;
+  left: 65px;
   font-size: var(--heading-h3-size);
   color: #005c7d;
   width: 150px;
   height: 30px;
 }
 .minPowerAchieved1 {
-  width: 90.39%;
-  top: 15px;
-  left: 65px;
-  font-size: 16px;
-  color: var(--primary-dark-shade);
+  width: 250px;
+  top: 30px;
+  left: -15px;
+  font-size: 24px;
+  color:  #005c7d;
   text-align: center;
   height: 59px;
 }
+
 .greenIcon {
   position: absolute;
-  top: 17px;
-  left: -10px;
+  top: 225px;
+  left: 90px;
   width: 30px;
   height: 30px;
   color: rgb(58, 207, 108);
@@ -166,7 +185,7 @@
   top: -595px;
   right: 0;
   bottom: 0;
-  left: 0px;
+  left: 250px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
@@ -192,7 +211,7 @@
   bottom: 0;
   left: -90px;
   border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
+  background-color: rgb(255, 170, 170);
 }
 
 .bg1 {
@@ -204,7 +223,7 @@
   bottom: 0;
   left: -70px;
   border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
+  background-color: rgb(190, 242, 207);
 }
 
 .averageCostIn1,
@@ -215,17 +234,17 @@
   display: inline-block;
 }
 .data2 {
-  top: 75px;
-  left: 220px;
+  top: -430px;
+  left: 390px;
   width: 150px;
   height: 29px;
 }
 .averageCostIn1 {
   width: 44.55%;
-  top: calc(50% - 56.5px);
-  left: 120px;
-  font-size: 16px;
-  color: var(--primary-dark-shade);
+  top: -550px;
+  left: 340px;
+  font-size: 24px;
+  color: #005c7d;
   height: 27px;
 }
 .averageCostIn {
@@ -245,20 +264,21 @@
   display: inline-block;
 }
 .data3 {
-  top: 75px;
-  left: 220px;
+  top: 135px;
+  left: 125px;
   width: 150px;
   height: 29px;
 }
 
 
 .averageEnergyConsumption {
-  width: 89.1%;
-  top: calc(50% - 60.5px);
+  width: 250px;
+  top: 15px;
   left: 50px;
-  font-size: 16px;
-  color: var(--primary-dark-shade);
+  font-size: 24px;
+  color: #005c7d;
   height: 27px;
+  text-align: center;
 }
 .averageEnergyConsumptionIn {
   position: absolute;
@@ -268,129 +288,6 @@
   height: 155px;
   font-size: var(--heading-h3-size);
   color: rgb(58, 207, 108);
-}
-
-
-.listtitle {
-  position: absolute;
-  top: 200px;
-  left: 1140px;
-  width: 400px;
-  height: 155px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #005c7d;
-}
-
-
-.employee4Child {
-  position: absolute;
-  top: 0;
-  left: 1.1px;
-  width: 347.9px;
-  height: 121px;
-}
-.employee {
-  margin-bottom: 20px; 
-}
-.employee4Child {
-  left: 0;
-  border-radius: var(--br-xl);
-  background-color: var(--additional-white);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  width: 309px;
-  height: 122px;
-}
-.name {
-  position: absolute;
-  top: 24px;
-  left: 106px;
-  letter-spacing: 0.2px;
-  line-height: 160%;
-  display: inline-block;
-  width: 138.3px;
-}
-.dhlEmployee {
-  margin-bottom: 20px;
-}
-.position {
-  position: absolute;
-  top: 40px;
-  left: 106px;
-  font-size: var(--body-medium-regular-size);
-  letter-spacing: 0.2px;
-  line-height: 160%;
-  color: var(--color-gray-200);
-  display: inline-block;
-  width: 120.7px;
-}
-.image21Icon {
-  position: absolute;
-  top: 24px;
-  left: 22px;
-  width: 68px;
-  height: 74px;
-  object-fit: cover;
-}
-.employee4,
-.image18Icon {
-  position: absolute;
-  top: 535px;
-  left: 35px;
-  width: 349px;
-  height: 122px;
-}
-.image18Icon {
-  top: 23px;
-  left: 22px;
-  width: 68px;
-  height: 75px;
-  object-fit: cover;
-}
-.employee,
-.employee2,
-.employee3 {
-  position: absolute;
-  top: 381px;
-  left: 35px;
-  width: 349px;
-  height: 122px;
-}
-.employee,
-.employee2 {
-  top: 227px;
-}
-.employee {
-  top: 73px;
-}
-
-.listOfCollaborators1 {
-  position: absolute;
-  width: 49.16%;
-  top: calc(50% - 319.5px);
-  left: 25.54%;
-  font-size: var(--xl-semibold-size);
-  line-height: 32px;
-  font-weight: 600;
-  font-family: var(--xl-semibold);
-  color: var(--primary-dark-shade);
-  display: flex;
-  flex-direction: column;
-  height: 27px;
-}
-.listOfCollaborators {
-  position: absolute;
-  top: 200px;
-  left: 873px;
-  width: 419px;
-  font-size: var(--heading-h6-size);
-  color: var(--color-black);
-  font-family: var(--body-medium-regular);
-
-  /* Adicionando flexbox para layout em coluna */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinhar os colaboradores à esquerda */
 }
 
 .backgroundlist {
@@ -824,6 +721,19 @@
   right: 0;
   left: 0;
 }
+
+.titlegeneral {
+  position: absolute;
+  width: 250px;
+  top: 0px;
+  left: 1000px;
+  font-size: 24px;
+  color: #005c7d;
+  text-align: center;
+  height: 59px;
+  font-weight: 600;
+}
+
 .generalConsuming1 {
   position: absolute;
   width: 98.23%;

@@ -16,7 +16,11 @@ if ($conn->connect_error) {
 $collaboratorId = $_GET['collaborator_id'];
 
 // Consulta SQL para obter os dados desejados, com filtro opcional do mês
-$sql = "SELECT DAY, MONTH_YEAR, DAILY_USAGE, DAILY_RUNTIME, WEEKLY_USAGE, MONTHLY_USAGE FROM consuming WHERE COLLABORATOR_ID = ?";
+$sql = "SELECT c.DAY, c.MONTH_YEAR, c.DAILY_USAGE, c.DAILY_RUNTIME, c.WEEKLY_USAGE, c.MONTHLY_USAGE, co.TARIFF
+        FROM consuming c
+        JOIN collaborator co ON c.COLLABORATOR_ID = co.COLLABORATOR_ID
+        WHERE c.COLLABORATOR_ID = ?";
+
 $stmt = $conn->prepare($sql);
 
 // Vincula o valor do parâmetro
@@ -30,17 +34,22 @@ $result = $stmt->get_result();
 
 $dados = array();
 
+// ...
+
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Formatação desejada
         $formattedDate = $row["DAY"] . '/' . $row["MONTH_YEAR"];
         $formattedUsage = $row["DAILY_USAGE"] . ' kW';
-        $formattedUsagecost = $row["DAILY_USAGE"] * 0.2 . ' €';
-        $formattedUsagecostmonthly = $row["MONTHLY_USAGE"] * 0.2 . ' €';
+
+        // Multiplica pelo valor do TARIFF para obter o custo diário
+        $formattedUsagecost = $row["DAILY_USAGE"] * $row["TARIFF"] . ' €';
+
+        // Multiplica pelo valor do TARIFF para obter o custo mensal
+        $formattedUsagecostmonthly = $row["MONTHLY_USAGE"] * $row["TARIFF"] . ' €';
+
         $formattedDatemonth = $row["MONTH_YEAR"];
         $formattedUsagemonth = $row["MONTHLY_USAGE"] . ' kW';
-
-
 
         $dados[] = array(
             'DATE_USAGE' => $formattedDate,
@@ -49,7 +58,6 @@ if ($result->num_rows > 0) {
             'MONTHLY_USAGEE' => $formattedUsagecostmonthly,
             'MONTH_USAGE' => $formattedDatemonth,
             'MONTHLY_USAGE' => $formattedUsagemonth,
-
         );
     }
 
@@ -58,5 +66,9 @@ if ($result->num_rows > 0) {
     echo json_encode(array()); // Retorna um array vazio se não houver dados
 }
 
+// ...
+
+
 // Fecha a conexão com o banco de dados
 $conn->close();
+?>

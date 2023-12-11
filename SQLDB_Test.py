@@ -58,7 +58,7 @@ async def main():
 
             try:
                 # Consultar COLLABORATOR_ID usando tapo_username
-                select_collaborator_query = "SELECT COLLABORATOR_ID FROM collaborator WHERE EMAIL = %s"
+                select_collaborator_query = "SELECT COLLABORATOR_ID FROM collaborator WHERE EMAIL_PLUG = %s"
                 cursor.execute(select_collaborator_query, (tapo_username,))
                 collaborator_id_result = cursor.fetchone()
 

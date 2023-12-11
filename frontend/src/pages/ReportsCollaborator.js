@@ -72,7 +72,7 @@ const ApexChart = () => {
       // Substitua a URL abaixo pela URL correta do seu arquivo PHP
       const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`
+        `http://localhost/Psi/backend/services/dashboardplafond.php?collaborator_id=${collaboratorId}`
       );
       console.log(response.data);
       // Extrai os dados da resposta
@@ -83,7 +83,7 @@ const ApexChart = () => {
         {
           name: "Consuming",
           data: dataFromServer.map((item) =>
-            parseFloat((item.DAILY_USAGE * 0.2).toFixed(1))
+            parseFloat((item.DAILY_USAGE * item.TARIFF ).toFixed(1))
           ), // Arredonda para a primeira casa decimal
         },
       ]);
@@ -93,14 +93,13 @@ const ApexChart = () => {
         ...prevOptions,
         xaxis: {
           ...prevOptions.xaxis,
-          categories: dataFromServer.map((item) => item.DAY), // Usamos os valores da coluna "DAY" no eixo X
+          categories: dataFromServer.map((item) => `${item.DAY}/${item.MONTH_YEAR}` ), // Usamos os valores da coluna "DAY" no eixo X
         },
       }));
     } catch (error) {
       console.error("Erro ao buscar dados do servidor:", error);
     }
   }, []);
-
   // Chama a função para buscar dados ao montar o componente
   useEffect(() => {
     fetchData();
@@ -200,17 +199,17 @@ class ApexChartClass extends Component {
     try {
       const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/dashboard.php?collaborator_id=${collaboratorId}`
+        `http://localhost/Psi/backend/services/dashboardplafond.php?collaborator_id=${collaboratorId}`
       );
       const dataFromServer = response.data;
 
       // Preencher o array de Consuming multiplicando por 2.5
       const consumingData = dataFromServer.map(
-        (item) => item.MONTHLY_USAGE * 0.2
+        (item) => (item.MONTHLY_USAGE * item.TARIFF).toFixed(1)
       );
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
-      const plafondData = Array(consumingData.length).fill(50);
+      const plafondData = dataFromServer.map((item) => item.PLAFOND);
 
       this.setState({
         series: [

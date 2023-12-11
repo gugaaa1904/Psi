@@ -9,9 +9,9 @@ from tapo import ApiClient, EnergyDataInterval
 
 
 async def main():
-    tapo_username = "diogo.aaa.correia.2002@gmail.com"
-    tapo_password = "Novaims2"
-    ip_address = "192.168.1.18"
+    tapo_username = "joao57rafa@gmail.com"
+    tapo_password = "Novaims1"
+    ip_address = "192.168.1.6"
 
     client = ApiClient(tapo_username, tapo_password)
     device = await client.p110(ip_address)

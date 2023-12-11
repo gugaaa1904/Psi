@@ -41,16 +41,6 @@ class ApexChartClass extends Component {
           width: 2,
           colors: ["transparent"],
         },
-        title: {
-          text: "General Consuming",
-          align: "center",
-          style: {
-            fontSize: "18px", // Adjust font size
-            color: "#005c7d", // Adjust text color
-            fontFamily: "var(--body-medium-regular)", // Adjust font family
-            fontWeight: "bold", // Adjust font weight
-          },
-        },
         xaxis: {
           categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
         },
@@ -123,7 +113,7 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: 20,
+          top: 70,
           width: 660,
           left: 1150,
           transform: "translateX(-50%)",
@@ -133,7 +123,7 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={700}
+          height={650}
         />
       </div>
     );
@@ -299,43 +289,8 @@ const CollaboratorInfo = () => {
           </select>
         </div>
 
-        <div className={styles.averageCostIn}>
-          <div className={styles.backgroundCopy2} />
-          <div className={styles.data2}>
-            {selectedInterval === "weekly"
-              ? averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`
-              : averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`}
-          </div>
-          <div className={styles.averageCostIn1}>{`Total Cost in € `}</div>
-
-          {/* Seletor para escolher entre 'weekly' e 'monthly' */}
-          <select
-            value={selectedInterval}
-            onChange={(e) => setSelectedInterval(e.target.value)}
-            className={styles.monthsDropDown2}
-          >
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-          </select>
-        </div>
         <div className={styles.backgroundlist} />
-        <div className={styles.listtitle}>List of Collaborators</div>
         <div className={styles.generalOverview}>
-          <select
-            id="collaboratorSelect"
-            value={selectedCollaborator}
-            onChange={(e) => onChangeCollaborator(e.target.value)}
-          >
-            <option value="">Selecione um colaborador</option>
-            {collaborators.map((collaborator) => (
-              <option
-                key={collaborator.COLLABORATOR_ID}
-                value={collaborator.COLLABORATOR_ID}
-              >
-                {collaborator.NAME}
-              </option>
-            ))}
-          </select>
           <div className={styles.generalOverview1}>General Overview</div>
         </div>
 
@@ -343,8 +298,45 @@ const CollaboratorInfo = () => {
           <ApexChartClass selectedCollaborator={selectedCollaborator} />
           <div className={styles.graph}>
             <div className={styles.graph1}></div>
+            <div className={styles.titlegeneral}>General Consuming</div>
+            <select
+              className={styles.dropdowncollaborator}
+              id="collaboratorSelect"
+              value={selectedCollaborator}
+              onChange={(e) => onChangeCollaborator(e.target.value)}
+            >
+              <option value="">Selecione um colaborador</option>
+              {collaborators.map((collaborator) => (
+                <option
+                  key={collaborator.COLLABORATOR_ID}
+                  value={collaborator.COLLABORATOR_ID}
+                >
+                  {collaborator.NAME}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
+      </div>
+
+      <div className={styles.averageCostIn}>
+        <div className={styles.backgroundCopy2} />
+        <div className={styles.data2}>
+          {selectedInterval === "weekly"
+            ? averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`
+            : averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`}
+        </div>
+        <div className={styles.averageCostIn1}>{`Total Cost in € `}</div>
+
+        {/* Seletor para escolher entre 'weekly' e 'monthly' */}
+        <select
+          value={selectedInterval}
+          onChange={(e) => setSelectedInterval(e.target.value)}
+          className={styles.monthsDropDown2}
+        >
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
       </div>
 
       <div className={styles.sidebar}>
