@@ -58,21 +58,17 @@ const SignInCollaborator = () => {
         />
       </div>
       <div className={styles.signInCollaborator}>
+        <div className={styles.logo}>
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+        </div>
         <div className={styles.content}>
-          <div
-            className={styles.buttonlargeprimary}
-            onClick={onButtonLargePrimaryContainerClick}
-          >
-            <b className={styles.button}>Sign In</b>
+          <div className={styles.header}>
+            <b className={styles.tittle1}>Sign In to your Account</b>
+            <div className={styles.body1}>
+              Welcome back! please enter your detail
+            </div>
           </div>
-          <div className={styles.forgotPassword}>
-            <b
-              className={styles.forgotPassword1}
-              onClick={onForgotPasswordTextClick}
-            >
-              Forgot Password?
-            </b>
-          </div>
+
           <div className={styles.input}>
             <input
               className={styles.email}
@@ -91,14 +87,21 @@ const SignInCollaborator = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className={styles.header}>
-            <b className={styles.tittle1}>Sign In to your Account</b>
-            <div className={styles.body1}>
-              Welcome back! please enter your detail
-            </div>
+
+          <div className={styles.forgotPassword}>
+            <b
+              className={styles.forgotPassword1}
+              onClick={onForgotPasswordTextClick}
+            >
+              Forgot Password?
+            </b>
           </div>
-          <div className={styles.logo}>
-            <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
+
+          <div
+            className={styles.buttonlargeprimary}
+            onClick={onButtonLargePrimaryContainerClick}
+          >
+            <b className={styles.button}>Sign In</b>
           </div>
         </div>
       </div>
