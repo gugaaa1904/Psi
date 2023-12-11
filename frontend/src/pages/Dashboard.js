@@ -6,6 +6,8 @@ import styles from "./Dashboard.module.css";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 
+
+
 const ApexChart = () => {
   const [series, setSeries] = useState([
     {
@@ -227,7 +229,16 @@ class ApexChartClass extends Component {
           ...this.state.options,
           xaxis: {
             ...this.state.options.xaxis,
-            categories: dataFromServer.map((item) => item.MONTH_YEAR),
+            categories: dataFromServer.map((item) => {
+              const monthNumber = parseInt(item.MONTH_YEAR, 10);
+              const monthNames = [
+                'January', 'February', 'March', 'April',
+                'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'
+              ];
+          
+              return monthNames[monthNumber - 1]; // Arrays are zero-based
+            }),
           },
         },
       });
@@ -459,7 +470,7 @@ const Dashboard = () => {
             </div>
             
             <div className={styles.bigCardChild5} />
-            <div className={styles.historyOfCharges}>
+            <div className={styles.historyOfCharges} style={{ maxHeight: '400px', overflowY: 'auto' }}>
               <b className={styles.historyOfCharges1}>History of Charges</b>
               <div className={styles.line} />
               <div className={styles.tuesday23Container}>
@@ -473,6 +484,7 @@ const Dashboard = () => {
                 </ul>
               </div>
             </div>
+
 
             <b className={styles.power1}>Power</b>
           </div>

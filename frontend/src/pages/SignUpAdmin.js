@@ -14,37 +14,8 @@ const SignUpAdmin = () => {
     gender: "",
     password: "",
     companyname: "",
+    companyImage: null,
   });
-
-  const onSignInTextClick = useCallback(() => {
-    navigate("/sign-in-admin");
-  }, [navigate]);
-  console.log(formData);
-  const onSignUpClick = useCallback(() => {
-    // Aqui você deve fazer a requisição para o backend
-    fetch("http://localhost/Psi/backend/routes.php/admin", {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: new URLSearchParams(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Lógica para lidar com a resposta do backend
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Erro na solicitação:", error);
-      });
-    navigate("/sign-in-admin");
-  }, [formData, navigate]);
-
-
-  const onBackButtonClick = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,6 +24,58 @@ const SignUpAdmin = () => {
       [name]: value,
     }));
   };
+
+  const handleImageClick = () => {
+    document.getElementById("fileInput").click();
+  };
+
+  const handleImageChange = (e) => {
+    const image = e.target.files[0];
+    setFormData((prevData) => ({
+      ...prevData,
+      companyImage: image,
+    }));
+  };
+
+  const onSignInTextClick = useCallback(() => {
+    navigate("/sign-in-admin");
+  }, [navigate]);
+  console.log(formData);
+  const onSignUpClick = useCallback(async () => {
+    try {
+      const formDataWithImage = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (key === 'companyImage') {
+          formDataWithImage.append('companyImage', value);
+        } else {
+          formDataWithImage.append(key, value);
+        }
+      });
+
+      const response = await fetch("http://localhost/Psi/backend/routes.php/admin", {
+        method: "POST",
+        body: formDataWithImage,
+      });
+
+      if (!response.ok) {
+        console.error("Erro na solicitação:", response.statusText);
+        // Lógica para lidar com o erro
+        return;
+      }
+
+      const data = await response.json();
+      console.log(data);
+      
+    } catch (error) {
+      console.error("Erro na solicitação:", error.message);
+    }
+    navigate("/sign-in-admin");
+  }, [formData, navigate]);
+
+
+  const onBackButtonClick = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
 
   return (
     <div className={styles.signUpAdmin}>
@@ -153,6 +176,21 @@ const SignUpAdmin = () => {
           onChange={handleInputChange}
           value={formData.address}
         />
+        
+        <label htmlFor="fileInput" className={styles.iconCamera} onClick={handleImageClick}>
+          <img loading="eager" alt="" src="/camera@3x.png"  style={{ width: '24px', height: '24px', marginRight: '5px' }} />
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          id="fileInput"
+          name="fileInput"
+          style={{ display: "none" }}
+          onChange={handleImageChange}
+        />
+
+
+
       </div>
       <div className={styles.buttonlargeprimary} onClick={onSignUpClick}>
         <b className={styles.button}>Sign Up</b>
@@ -196,3 +234,6 @@ const SignUpAdmin = () => {
 };
 
 export default SignUpAdmin;
+
+
+        

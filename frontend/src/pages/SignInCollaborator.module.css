@@ -46,8 +46,9 @@
 }
 .buttonlargeprimary {
   position: absolute;
-  top: 771px;
-  left: 146px;
+  cursor: pointer;
+  top: 694px;
+  left: 140px;
   border-radius: var(--br-xs);
   background-color: #005c7d;
   width: 126px;
@@ -65,7 +66,7 @@
 .forgotPassword {
   position: absolute;
   top: 559px;
-  left: 140.5px;
+  left: 131.5px;
   width: 143px;
   height: 42px;
   text-align: right;
@@ -77,8 +78,8 @@
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 17px;
-  left: 15px;
+  top: 20px;
+  left: 0;
   border-radius: var(--br-xs);
   box-sizing: border-box;
   height: 56px;
@@ -94,8 +95,8 @@
   font-family: var(--body-medium-regular);
   font-size: var(--heading-h6-size);
   background-color: transparent;
-  top: 89px;
-  left: 15px;
+  top: 102px;
+  left: 0;
   border-radius: var(--br-xs);
   box-sizing: border-box;
   height: 56px;
@@ -125,7 +126,7 @@
 }
 .header {
   top: 211px;
-  left: 74px;
+  left: 64px;
   width: 278px;
   height: 64px;
   font-size: var(--heading-h3-size);
@@ -133,8 +134,8 @@
 }
 .logo1Icon {
   position: absolute;
-  top: 24px;
-  left: 198px;
+  top: 32px;
+  left: 40px;
   width: 180px;
   height: 120px;
   background-color: #005c7d;
@@ -158,7 +159,7 @@
 .content {
   top: 23px;
   left: 153px;
-  width: 506px;
+  width: 406px;
   height: 846.5px;
   overflow: hidden;
   text-align: left;

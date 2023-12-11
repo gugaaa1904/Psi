@@ -26,7 +26,7 @@ class PowerMonthlyService
 
             $collaboratorId = $dadosRecebidos['collaborator_id'];
             $selectedMonth = $dadosRecebidos['month'];
-            $stmt = $this->conn->prepare("SELECT DAY,MONTH_YEAR,DAILY_USAGE,DAILY_RUNTIME,WEEKLY_USAGE,MONTHLY_USAGE FROM consuming WHERE COLLABORATOR_ID=? AND MONTH_YEAR=?");
+            $stmt = $this->conn->prepare("SELECT DAY,MONTH_YEAR,DAILY_USAGE,DAILY_RUNTIME,WEEKLY_USAGE,MAX(MONTHLY_USAGE) FROM consuming WHERE COLLABORATOR_ID=? AND MONTH_YEAR=?");
             $stmt->bind_param("is", $collaboratorId, $selectedMonth);
             $stmt->execute();
             $stmt->bind_result($day, $month_year, $daily_usage, $daily_runtime, $weekly_usage, $monthly_usage);

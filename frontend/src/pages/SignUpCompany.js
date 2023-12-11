@@ -12,35 +12,11 @@ const SignUpCompany = () => {
     email: "",
     funcs: "",
     cnpj: "",
+    companyImage: null, // Adicione o estado para a imagem aqui
   });
 
   const onSignInTextClick = useCallback(() => {
     navigate("/sign-in-admin");
-  }, [navigate]);
-console.log(formData)
-const onSignUpClick = useCallback(() => {
-  // Aqui você deve fazer a requisição para o backend
-  fetch("http://localhost/Psi/backend/routes.php/company", {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: new URLSearchParams(formData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // Lógica para lidar com a resposta do backend
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Erro na solicitação:", error);
-    });
-  navigate("/sign-in-admin");
-}, [formData, navigate]);
-
-  const onBackButtonClick = useCallback(() => {
-    navigate("/");
   }, [navigate]);
 
   const handleInputChange = (e) => {
@@ -52,7 +28,6 @@ const onSignUpClick = useCallback(() => {
   };
 
   const handleImageClick = () => {
-    // Abrir o seletor de arquivo quando a imagem é clicada
     document.getElementById("fileInput").click();
   };
 
@@ -63,6 +38,35 @@ const onSignUpClick = useCallback(() => {
       companyImage: image,
     }));
   };
+
+  const onSignUpClick = useCallback(() => {
+    const formDataForBackend = new FormData();
+    formDataForBackend.append("name", formData.name);
+    formDataForBackend.append("address", formData.address);
+    formDataForBackend.append("telephone", formData.telephone);
+    formDataForBackend.append("email", formData.email);
+    formDataForBackend.append("funcs", formData.funcs);
+    formDataForBackend.append("cnpj", formData.cnpj);
+    formDataForBackend.append("companyImage", formData.companyImage);
+  
+    fetch("http://localhost/Psi/backend/routes.php/company", {
+      method: "POST",
+      body: formDataForBackend,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Erro na solicitação:", error);
+      });
+      navigate("/sign-in-admin");
+  }, [formData, navigate]);
+
+  const onBackButtonClick = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
 
   return (
     <div className={styles.signUpCompany}>
@@ -153,18 +157,17 @@ const onSignUpClick = useCallback(() => {
         />
 
         <div className={styles.addYourCompany}>Add your Company Image</div>
-        <label
-          htmlFor="fileInput"
-          className={styles.iconCamera}
-          onClick={handleImageClick}
-        >
-          <img
-            loading="eager"
-            alt=""
-            src="/camera@3x.png"
-            style={{ width: "24px", height: "24px", marginRight: "5px" }}
-          />
+        <label htmlFor="fileInput" className={styles.iconCamera} onClick={handleImageClick}>
+          <img loading="eager" alt="" src="/camera@3x.png"  />
         </label>
+        <input
+          type="file"
+          accept="image/*"
+          id="fileInput"
+          name="fileInput"
+          style={{ display: "none" }}
+          onChange={handleImageChange}
+        />
 
         <div className={styles.byCreatingAnAccountMeansY}>
           <input

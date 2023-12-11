@@ -99,6 +99,7 @@ const SettingsCollaborator = () => {
             const errorMessage = data.error || "Erro desconhecido";
             console.error("Erro ao alterar a senha", errorMessage);
             setMessage(errorMessage);
+            navigate("/dashboard");
           }
         } else {
           // Conteúdo não é JSON válido

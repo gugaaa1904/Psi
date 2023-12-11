@@ -42,16 +42,7 @@ class ApexChartClass extends Component {
           width: 2,
           colors: ["transparent"],
         },
-        title: {
-          text: "General Consuming",
-          align: "center",
-          style: {
-            fontSize: "18px", // Adjust font size
-            color: "#005c7d", // Adjust text color
-            fontFamily: "var(--body-medium-regular)", // Adjust font family
-            fontWeight: "bold", // Adjust font weight
-          },
-        },
+        
         xaxis: {
           categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
         },

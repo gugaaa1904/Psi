@@ -13,6 +13,10 @@ const ProfileADMIN = () => {
   const [Address , setAddress] = useState('');
   const[Email, setEmail] = useState('');
   const [CompanyName , setCompanyName] = useState('');
+  const [photo, setPhoto] = useState('');
+  const [imageBaseUrl, setImageBaseUrl] = useState('');
+  const [imageBaseUrll, setImageBaseUrll] = useState('');
+
   
   
 
@@ -57,6 +61,7 @@ const ProfileADMIN = () => {
     
     async function fetchData() {
       const idString = sessionStorage.getItem('admin_id');
+      const companyId = sessionStorage.getItem('company_id');
       console.log({admin_id: idString});
       try {
         const response = await fetch(
@@ -64,7 +69,7 @@ const ProfileADMIN = () => {
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({admin_id: idString})
+            body: JSON.stringify({admin_id: idString,company_id: companyId})
         })
         const data = await response.json();
         console.log(data);
@@ -75,6 +80,8 @@ const ProfileADMIN = () => {
         setAge(data.AGE);
         setGender(data.GENDER);
         setAddress(data.ADDRESS);
+        setImageBaseUrl('http://localhost/Psi/backend/' + data.PHOTO);
+        setImageBaseUrll('http://localhost/Psi/backend/' + data.PHOTOO);
       }catch(error){
           return [];
       }
@@ -86,11 +93,7 @@ const ProfileADMIN = () => {
     <div className={styles.profileAdmin}>
       <div className={styles.content}>
         <div className={styles.backgroundImage}>
-          <img
-            className={styles.unsplashNwaetf6qo0Icon}
-            alt=""
-            src="/unsplash-nwaetf6qo0@2x.png"
-          />
+          <img className={styles.unsplashNwaetf6qo0Icon} alt="" src={imageBaseUrl}/>
         </div>
         <div>
           <input
@@ -146,7 +149,7 @@ const ProfileADMIN = () => {
 
           <b className={styles.name}>{fullName}</b>
         </div>
-        <img className={styles.profileIcon} alt="" src="/profile.svg" />
+        <img className={styles.profileIcon} alt="" src={imageBaseUrll} />
       </div>
       <div className={styles.header}>
         <b className={styles.profile}>Profile</b>

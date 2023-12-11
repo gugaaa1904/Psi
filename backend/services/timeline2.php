@@ -32,8 +32,8 @@ $dados = array();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        // Formatação desejada
-        $formattedDate = $row["MONTH_YEAR"];
+        // Converte o formato numérico para o nome do mês
+        $formattedDate = date("F Y", mktime(0, 0, 0, $row["MONTH_YEAR"], 1));
         $formattedUsage = $row["TOTAL_CHARGES"];
 
         $dados[] = array(

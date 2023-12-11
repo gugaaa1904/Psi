@@ -25,10 +25,15 @@ class ProfileCollaboratorService
             $dadosRecebidos = json_decode($jsonInput, true);
             $id = $dadosRecebidos['collaborator_id'];
         
-            $stmt = $this->conn->prepare("SELECT NAME,COMPANYNAME,EMAIL,PHONE,AGE,GENDER,ADDRESS,TARIFF,PLAFOND FROM collaborator WHERE COLLABORATOR_ID = ?");
+            $stmt = $this->conn->prepare("SELECT c.NAME as COMPANYNAME, cc.NAME, cc.EMAIL, cc.PHONE, cc.AGE, cc.GENDER, cc.ADDRESS, cc.TARIFF, cc.PLAFOND, c.PHOTO 
+            FROM collaborator cc 
+            JOIN company c ON cc.COMPANY_ID = c.COMPANY_ID 
+            WHERE cc.COLLABORATOR_ID = ?");
+
             $stmt->bind_param("i", $id);
             $stmt->execute();
-            $stmt->bind_result($name, $company_name, $email, $phone, $age, $gender, $address, $tariff, $plafond);
+            $stmt->bind_result($company_name, $name, $email, $phone, $age, $gender, $address, $tariff, $plafond, $photo);
+            
         
             if($stmt->fetch()){
                 $this->response('sucess', array(
@@ -41,6 +46,7 @@ class ProfileCollaboratorService
                     'ADDRESS' => $address,
                     'TARIFF' => $tariff,
                     'PLAFOND' => $plafond,
+                    'PHOTO' => $photo,
                 ));
             }else{
                 $this->response('failed', array('error' => 'Collaborator not found for id: ' . $id));

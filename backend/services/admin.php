@@ -23,7 +23,7 @@ class AdminService
             $password = isset($_POST['password']) ?  $this->sanitize($_POST['password']) : '';
             $companyname = isset($_POST['companyname']) ?  $this->sanitize($_POST['companyname']) : '';
             $address = isset($_POST['address']) ?  $this->sanitize($_POST['address']) : '';
-
+            
             // Use prepared statements to prevent SQL injection
             $companyname = trim($companyname);
             $sql = $this->conn->prepare("SELECT COMPANY_ID FROM Company WHERE NAME = ?");
@@ -40,14 +40,20 @@ class AdminService
 
             $sql->close();
 
+
+            $photoPath = 'services/images/' . $phone . '.png';
+
+
+            // Mover a foto para a pasta correta
+            move_uploaded_file($_FILES['companyImage']['tmp_name'], $photoPath);
             // Use prepared statements to prevent SQL injection
-            $stmt = $this->conn->prepare("INSERT INTO `Admin` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`) 
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $this->conn->prepare("INSERT INTO `Admin` (`COMPANY_ID`, `NAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `COMPANYNAME`, `ADDRESS`, `PHOTOO`) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Bind parameters
-            $stmt->bind_param("issiissss", $companyid, $name, $email, $phone, $age, $gender, $password, $companyname, $address);
+            $stmt->bind_param("issiisssss", $companyid, $name, $email, $phone, $age, $gender, $password, $companyname, $address, $photoPath);
 
-            // Execute the statement
+            // Execute a declaração
             $result = $stmt->execute();
 
             // Check the result

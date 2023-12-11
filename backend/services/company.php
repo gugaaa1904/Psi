@@ -22,19 +22,27 @@ class CompanyService
             $funcs = isset($_POST['funcs']) ?  $this->sanitize($_POST['funcs']) : '';
             $cnpj = isset($_POST['cnpj']) ?  $this->sanitize($_POST['cnpj']) : '';
 
-            // Use prepared statements to prevent SQL injection
-            $stmt = "INSERT INTO `Company` (`NAME`, `ADDRESS`, `PHONE`, `EMAIL`, `NUMBER_EMPLOYEES`, `CNPJ`) 
-                                        VALUES ('$name', '$address', '$telephone', '$email', '$funcs', '$cnpj')";
+            $photoPath = 'services/images/' . $cnpj . '.png';
 
-            // Execute the statement
-            $result = $this->conn-> query($stmt);
+
+            // Mover a foto para a pasta correta
+            move_uploaded_file($_FILES['companyImage']['tmp_name'], $photoPath);
+
+            // Use prepared statements para prevenir SQL injection
+            $stmt = $this->conn->prepare("INSERT INTO `Company` (`NAME`, `ADDRESS`, `PHONE`, `EMAIL`, `NUMBER_EMPLOYEES`, `CNPJ`, `PHOTO`) 
+                                        VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+            $stmt->bind_param("sssssss", $name, $address, $telephone, $email, $funcs, $cnpj, $photoPath);
+            $stmt->execute();
+
+            // Obter o resultado do statement preparado
+            $result = $stmt->get_result();
 
             if ($result === FALSE) {
                 $this->response(array('status' => 'failed', 'error' => 'Invalid data received'));
             } else {
                 $this->response(array('status' => 'success'));
             }
-
         }
     }
 

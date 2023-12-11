@@ -16,6 +16,7 @@ const ProfileCollaborator = () => {
   const [CompanyName , setCompanyName] = useState('');
   const [Tariff , setTariff] = useState('');
   const [Plafond , setPlafond] = useState('');
+  const [imageBaseUrl, setImageBaseUrl] = useState('');
   
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -70,6 +71,7 @@ const ProfileCollaborator = () => {
         setAddress(data.ADDRESS);
         setTariff(data.TARIFF);
         setPlafond(data.PLAFOND);
+        setImageBaseUrl('http://localhost/Psi/backend/' + data.PHOTO);
       }catch(error){
           return [];
       }
@@ -82,11 +84,7 @@ const ProfileCollaborator = () => {
     <div className={styles.profileCollaborator}>
       <div className={styles.content}>
         <div className={styles.backgroundImage}>
-          <img
-            className={styles.unsplashNwaetf6qo0Icon}
-            alt=""
-            src="/unsplash-nwaetf6qo0@2x.png"
-          />
+          <img className={styles.unsplashNwaetf6qo0Icon} alt="" src={imageBaseUrl}/>
         </div>
         <div className={styles.profileInfo}>
           <div className={styles.profileInfoChild} />

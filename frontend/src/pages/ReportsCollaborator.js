@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./ReportsCollaborator.module.css";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const ApexChart = () => {
   const [series, setSeries] = useState([
@@ -226,7 +227,16 @@ class ApexChartClass extends Component {
           ...this.state.options,
           xaxis: {
             ...this.state.options.xaxis,
-            categories: dataFromServer.map((item) => item.MONTH_YEAR),
+            categories: dataFromServer.map((item) => {
+              const monthNumber = parseInt(item.MONTH_YEAR, 10);
+              const monthNames = [
+                'January', 'February', 'March', 'April',
+                'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'
+              ];
+          
+              return monthNames[monthNumber - 1]; // Arrays are zero-based
+            }),
           },
         },
       });
@@ -338,58 +348,81 @@ const Dashboard = () => {
             <b className={styles.textLeft}>
               You loaded it on the following days and got the following results:
             </b>
-            <ul className={styles.analysisChild}>
-              {timelineData.map((item) => (
-                <li key={item.DATE_USAGE}>
+            <Scrollbars autoHide style={{ maxHeight: '250px', width: '100%' }}>
+              <ul className={styles.analysisChild}>
+                {timelineData.map((item, index) => (
+                  <li key={item.DATE_USAGE}>
+                    <span>
+                      In day{" "}
+                      <strong className={styles.dateUsage}>
+                        {item.DATE_USAGE}
+                      </strong>{" "}
+                      consumed{" "}
+                    </span>
+                    <span className={styles.span}>
+                      <strong className={styles.dailyUsage}>
+                        {item.DAILY_USAGE}
+                      </strong>{" "}
+                      what converted to money is{" "}
+                      <strong className={styles.dailyUsageE}>
+                        {item.DAILY_USAGEE}
+                      </strong>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Scrollbars>
+          </div>
+
+
+
+
+
+        </div>
+
+        <div className={styles.analysis2}>
+          <b className={styles.resultsHeader}>
+            You loaded it on the following days and got the following results:
+          </b>
+          <Scrollbars autoHide style={{ maxHeight: '260px', width: '100%' }}>
+            <ul className={styles.november5October6Septemb}>
+              {timelineData.reduce((uniqueItems, item) => {
+                const existingItemIndex = uniqueItems.findIndex(
+                  (existingItem) => existingItem.DATE_USAGE === item.DATE_USAGE
+                );
+
+                if (existingItemIndex !== -1) {
+                  uniqueItems[existingItemIndex] = item;
+                } else {
+                  uniqueItems.push(item);
+                }
+
+                return uniqueItems;
+              }, []).slice(0, 7).map((uniqueItem) => (
+                <li key={uniqueItem.DATE_USAGE}>
                   <span>
-                    In day{" "}
-                    <strong className={styles.dateUsage}>
-                      {item.DATE_USAGE}
+                    In{" "}
+                    <strong className={styles.monthUsage}>
+                      {uniqueItem.MONTH_USAGE}
                     </strong>{" "}
                     consumed{" "}
                   </span>
                   <span className={styles.span}>
-                    <strong className={styles.dailyUsage}>
-                      {item.DAILY_USAGE}
+                    <strong className={styles.monthlyUsage}>
+                      {uniqueItem.MONTHLY_USAGE}
                     </strong>{" "}
                     what converted to money is{" "}
-                    <strong className={styles.dailyUsageE}>
-                      {item.DAILY_USAGEE}
+                    <strong className={styles.monthlyUsageE}>
+                      {uniqueItem.MONTHLY_USAGEE}
                     </strong>
                   </span>
                 </li>
               ))}
             </ul>
-          </div>
+          </Scrollbars>
         </div>
 
-        <div className={styles.analysis2}>
-          <b>
-            You loaded it on the following days and got the following results:
-          </b>
-          <ul className={styles.november5October6Septemb}>
-            {timelineData.map((item) => (
-              <li key={item.DATE_USAGE}>
-                <span>
-                  In month{" "}
-                  <strong className={styles.monthUsage}>
-                    {item.MONTH_USAGE}
-                  </strong>{" "}
-                  consumed{" "}
-                </span>
-                <span className={styles.span}>
-                  <strong className={styles.monthlyUsage}>
-                    {item.MONTHLY_USAGE}
-                  </strong>{" "}
-                  what converted to money is{" "}
-                  <strong className={styles.monthlyUsageE}>
-                    {item.MONTHLY_USAGEE}
-                  </strong>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+
 
         <div className={styles.header}>
           <img

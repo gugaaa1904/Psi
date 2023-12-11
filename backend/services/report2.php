@@ -48,7 +48,8 @@ if ($result->num_rows > 0) {
         // Multiplica pelo valor do TARIFF para obter o custo mensal
         $formattedUsagecostmonthly = $row["MONTHLY_USAGE"] * $row["TARIFF"] . ' €';
 
-        $formattedDatemonth = $row["MONTH_YEAR"];
+        $formattedDatemonth = date("F", mktime(0, 0, 0, $row["MONTH_YEAR"], 1));
+
         $formattedUsagemonth = $row["MONTHLY_USAGE"] . ' kW';
 
         $dados[] = array(
