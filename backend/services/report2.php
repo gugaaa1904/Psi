@@ -19,7 +19,8 @@ $collaboratorId = $_GET['collaborator_id'];
 $sql = "SELECT c.DAY, c.MONTH_YEAR, c.DAILY_USAGE, c.DAILY_RUNTIME, c.WEEKLY_USAGE, c.MONTHLY_USAGE, co.TARIFF
         FROM consuming c
         JOIN collaborator co ON c.COLLABORATOR_ID = co.COLLABORATOR_ID
-        WHERE c.COLLABORATOR_ID = ?";
+        WHERE c.COLLABORATOR_ID = ?
+        ORDER BY c.MONTH_YEAR DESC, c.MONTHLY_USAGE DESC";
 
 $stmt = $conn->prepare($sql);
 
@@ -27,49 +28,41 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $collaboratorId);
 
 // Executa a consulta
-$stmt->execute();
+if ($stmt->execute()) {
+    // Obtém os resultados
+    $result = $stmt->get_result();
 
-// Obtém os resultados
-$result = $stmt->get_result();
+    $dados = array();
+    $monthsProcessed = array();
 
-$dados = array();
-
-// ...
-
-if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        // Formatação desejada
-        $formattedDate = $row["DAY"] . '/' . $row["MONTH_YEAR"];
-        $formattedUsage = $row["DAILY_USAGE"] . ' kW';
+        $monthYear = $row["MONTH_YEAR"];
 
-        // Multiplica pelo valor do TARIFF para obter o custo diário
-        $formattedUsagecost = $row["DAILY_USAGE"] * $row["TARIFF"] . ' €';
+        if (!in_array($monthYear, $monthsProcessed)) {
+            $formattedDate = $row["DAY"] . '/' . $monthYear;
+            $formattedUsage = $row["DAILY_USAGE"] . ' kW';
+            $formattedUsagecost = $row["DAILY_USAGE"] * $row["TARIFF"] . ' €';
+            $formattedUsagecostmonthly = $row["MONTHLY_USAGE"] * $row["TARIFF"] . ' €';
+            $formattedDatemonth = date("F", mktime(0, 0, 0, $monthYear, 1));
+            $formattedUsagemonth = $row["MONTHLY_USAGE"] . ' kW';
 
-        // Multiplica pelo valor do TARIFF para obter o custo mensal
-        $formattedUsagecostmonthly = $row["MONTHLY_USAGE"] * $row["TARIFF"] . ' €';
+            $dados[] = array(
+                'DATE_USAGE' => $formattedDate,
+                'DAILY_USAGE' => $formattedUsage,
+                'DAILY_USAGEE' => $formattedUsagecost,
+                'MONTHLY_USAGEE' => $formattedUsagecostmonthly,
+                'MONTH_USAGE' => $formattedDatemonth,
+                'MONTHLY_USAGE' => $formattedUsagemonth,
+            );
 
-        $formattedDatemonth = date("F", mktime(0, 0, 0, $row["MONTH_YEAR"], 1));
-
-        $formattedUsagemonth = $row["MONTHLY_USAGE"] . ' kW';
-
-        $dados[] = array(
-            'DATE_USAGE' => $formattedDate,
-            'DAILY_USAGE' => $formattedUsage,
-            'DAILY_USAGEE' => $formattedUsagecost,
-            'MONTHLY_USAGEE' => $formattedUsagecostmonthly,
-            'MONTH_USAGE' => $formattedDatemonth,
-            'MONTHLY_USAGE' => $formattedUsagemonth,
-        );
+            $monthsProcessed[] = $monthYear;
+        }
     }
 
     echo json_encode($dados);
 } else {
-    echo json_encode(array()); // Retorna um array vazio se não houver dados
+    echo json_encode(array('error' => 'Erro ao executar a consulta SQL'));
 }
-
-// ...
-
 
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>

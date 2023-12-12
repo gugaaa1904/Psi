@@ -78,9 +78,9 @@ class ApexChartClass extends Component {
       ];
       console.log(dataFromServer);
       // Preencher o array de Consuming multiplicando por 2.5
-      const consumingData = dataFromServer.map(
-        (item) => (item.MONTHLY_USAGE / 0.2) * 0.245 
-      );
+     const consumingData = dataFromServer.map((item) =>
+       parseFloat(((item.MONTHLY_USAGE / 0.2) * 0.245).toFixed(1))
+     );
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
       const plafondData = Array(consumingData.length).fill(20);
