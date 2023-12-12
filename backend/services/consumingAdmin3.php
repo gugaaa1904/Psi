@@ -13,18 +13,15 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-$collaboratorId = $_GET['collaborator_id'];
-// Consulta SQL para obter a soma total da coluna DAILY_USAGE e o PLAFOND para todos os IDs
+$companyId = $_GET['company_id'];
+// Consulta SQL para obter a soma total da coluna DAILY_USAGE para todos os IDs
 $sql = "SELECT 
-    c.DAY,
-    c.MONTH_YEAR,
-    MAX(c.DAILY_USAGE) AS total_daily_usage,
-    co.PLAFOND
+DAY,MONTH_YEAR,
+SUM(MONTHLY_USAGE) AS total_monthly_usage
 FROM consuming c
-JOIN collaborator co ON c.COLLABORATOR_ID = co.COLLABORATOR_ID
-WHERE c.COLLABORATOR_ID = $collaboratorId
-GROUP BY c.DAY,c.MONTH_YEAR";
-
+JOIN collaborator col ON c.COLLABORATOR_ID = col.COLLABORATOR_ID
+WHERE col.COMPANY_ID = $companyId
+GROUP BY MONTH_YEAR";
 
 $result = $conn->query($sql);
 
@@ -36,8 +33,7 @@ if ($result) {
     while ($row = $result->fetch_assoc()) {
         $dados[] = array(
             'DAY' => $row["DAY"],
-            'DAILY_USAGE' => $row["total_daily_usage"],
-            'PLAFOND' => $row["PLAFOND"],
+            'MONTHLY_USAGE' => $row["total_monthly_usage"],
             'MONTH_YEAR' => $row["MONTH_YEAR"],
         );
     }

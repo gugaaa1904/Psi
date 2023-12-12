@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 05:46 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Tempo de geração: 12-Dez-2023 às 01:58
+-- Versão do servidor: 10.4.28-MariaDB
+-- versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `infocharge`
+-- Banco de dados: `infocharge`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Estrutura da tabela `admin`
 --
 
 CREATE TABLE `admin` (
@@ -37,22 +37,22 @@ CREATE TABLE `admin` (
   `AGE` int(11) DEFAULT NULL,
   `GENDER` varchar(30) DEFAULT NULL,
   `PASSWORD` varchar(100) NOT NULL,
-  `ADDRESS` varchar(255) DEFAULT NULL
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `PHOTOO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin`
+-- Extraindo dados da tabela `admin`
 --
 
-INSERT INTO `admin` (`ADMIN_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`) VALUES
-(3, 2, 'admin', 'dhl', 'admin@gmail.com', 968912443, 4324, '', 'momo', 'Av 8 De Marco'),
-(35, 4, 'admin2', 'nike', 'admin2@gmail.com', 968912443, 32, 'Female', '123', 'Av 8 De Marco'),
-(37, 2, 'rute', 'dhl', 'rute@gmail.com', 23, 23, 'Female', 'rute1', 'rua');
+INSERT INTO `admin` (`ADMIN_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PHOTOO`) VALUES
+(51, 54, 'Diogo Correia', 'DHL', 'admin@gmail.com', 351, 21, '', '123', 'Rua das Inspirações , Póvoa de Santa Iria', 'services/images/351 963876956.png'),
+(52, 54, 'Rogério', 'DHL', 'admin2@gmail.com', 351, 25, '', '123', 'Rua de Odivelas', 'services/images/351 964567478.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `collaborator`
+-- Estrutura da tabela `collaborator`
 --
 
 CREATE TABLE `collaborator` (
@@ -72,23 +72,22 @@ CREATE TABLE `collaborator` (
   `END_DATE` date NOT NULL,
   `EMAIL_PLUG` varchar(255) DEFAULT NULL,
   `PASSWORD_PLUG` varchar(255) DEFAULT NULL,
-  `IP_PLUG` varchar(15) DEFAULT NULL
+  `IP_PLUG` varchar(15) DEFAULT NULL,
+  `PHOTOO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `collaborator`
+-- Extraindo dados da tabela `collaborator`
 --
 
-INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`, `EMAIL_PLUG`, `PASSWORD_PLUG`, `IP_PLUG`) VALUES
-(3, 2, 'collaborator', 'dhl', 'joao57rafa@gmail.com', 968912443, 5435345, 'Female', 'agua', 'Av 8 De Marco', 0.00, 20.00, '2023-10-31', '2023-11-15', 'joao57rafa@gmail.com', 'Novaims1', '192.168.1.6'),
-(35, 2, 'odete', 'dhl', 'joao67rafa@gmail.com', 6546456, 6546456, 'Male', 'BENFICA', 'AFRICA', 0.00, 654.00, '2023-12-01', '2023-12-15', 'joao67rafa@gmail.com', 'Novaims1', '192.168.1.5'),
-(37, 2, 'badjarda', '', 'badjarda@gmail.com', 526562, 5426, 'Other', 'badjarda', 'whgerthgwr', 999.99, 999.99, '2023-12-04', '2023-12-19', NULL, NULL, NULL),
-(50, 2, 'paula', '', 'paula@gmail.com', 657, 237456, 'Female', 'paula', 'shtfhs', 0.30, 45.00, '2023-12-11', '2023-12-27', 'paula@gmail.com', 'paula', '32366');
+INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`, `EMAIL_PLUG`, `PASSWORD_PLUG`, `IP_PLUG`, `PHOTOO`) VALUES
+(77, 54, 'Nuno Bernardino', '', 'collaborator@gmail.com', 351, 20, '', '123', 'Rua dos Descobrimentos', 0.25, 30.00, '2023-12-11', '2023-12-15', 'joao57rafa@gmail.com', 'Novaims1', '192.168.1.2', NULL),
+(78, 54, 'Diogo Correia', '', 'collaborator2@gmail.com', 351, 25, '', '123', 'Costa da caparica', 0.30, 30.00, '2023-12-05', '2024-02-06', 'joao67rafa@gmail.com', 'Novaims1', '192.168.1.5', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company`
+-- Estrutura da tabela `company`
 --
 
 CREATE TABLE `company` (
@@ -99,31 +98,20 @@ CREATE TABLE `company` (
   `NUMBER_EMPLOYEES` int(11) DEFAULT NULL,
   `CNPJ` int(11) DEFAULT NULL,
   `EMAIL` varchar(100) NOT NULL,
-  `PHOTO` blob DEFAULT NULL
+  `PHOTO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `company`
+-- Extraindo dados da tabela `company`
 --
 
 INSERT INTO `company` (`COMPANY_ID`, `NAME`, `ADDRESS`, `PHONE`, `NUMBER_EMPLOYEES`, `CNPJ`, `EMAIL`, `PHOTO`) VALUES
-(2, 'dhl', 'Av 8 De Marco', 968912443, 432423, 423423, 'dhl@gmail.com', NULL),
-(4, 'nike', 'Av 8 De Marco', 968912443, 321, 232, 'nike@gmail.com', NULL),
-(5, 'puma', 'puma street', 968912443, 2, 32, 'puma@gmail.com', NULL),
-(6, 'hluz', 'Av 8 De Marco', 543543534, 543, 432, 'hluz@gmail.com', NULL),
-(8, 'adidas', 'fsd', 968912443, 32, 123, 'adidas@mail.com', NULL),
-(9, 'hfg', 'gdg', 432, 432, 645, 'hfg@gmail.com', NULL),
-(10, 'hrth', 'fg', 432, 423, 535, 'hfg@gmail.com', NULL),
-(11, 'hfg', '543', 543, 543, 543, 'joao57rafa@hotmail.com', NULL),
-(12, 'ggdf', '321fsd', 43242, 43, 432, 'fds@gmail.com', NULL),
-(13, 'Numero 7 , 2*esquerdo', 'Av 8 De Marco', 968912443, 432, 432, 'joao57rafa@hotmail.com', NULL),
-(14, 'Numero 7 , 2*esquerdo', 'Av 8 De Marco', 968912443, 654, 654, 'joao67rafa@gmail.com', NULL),
-(15, 'Numero 7 , 2*esquerdo', 'Av 8 De Marco', 968912443, 654, 6456, 'joao57rafa@gmail.com', NULL);
+(54, 'DHL', 'Av. Luis de Camões , Lisboa', 351, 500, 423423, 'dhl@gmail.com', 'services/images/423423.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consuming`
+-- Estrutura da tabela `consuming`
 --
 
 CREATE TABLE `consuming` (
@@ -139,86 +127,90 @@ CREATE TABLE `consuming` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `consuming`
+-- Extraindo dados da tabela `consuming`
 --
 
 INSERT INTO `consuming` (`CONSUMING_ID`, `COLLABORATOR_ID`, `DAILY_USAGE`, `DAILY_RUNTIME`, `DAY`, `MONTH_YEAR`, `WEEKLY_USAGE`, `MONTHLY_USAGE`, `YEAR`) VALUES
-(4, 35, 50, 60, 9, '12', 30, 40, NULL),
-(49, 3, 16, 878, 9, '12', 16, 50, 2023),
-(50, 35, 0, 311, 9, '12', 0, 0, 2023),
-(51, 3, 25, 878, 10, '12', 17, 51, 2023);
+(155, 77, 12, 38, 6, '12', 18, 38, 2023),
+(156, 77, 2, 38, 7, '12', 20, 40, 2023),
+(157, 77, 15, 38, 8, '12', 35, 55, 2023),
+(158, 77, 5, 38, 9, '12', 40, 60, 2023),
+(159, 77, 4, 38, 10, '12', 44, 64, 2023),
+(160, 77, 3, 39, 11, '12', 47, 67, 2023),
+(163, 78, 1, 56, 10, '12', 1, 15, 2023),
+(165, 78, 6, 56, 11, '12', 7, 22, 2023);
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `admin`
+-- Índices para tabela `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ADMIN_ID`),
   ADD KEY `FK_ADMIN_RELATIONS_COMPANY` (`COMPANY_ID`);
 
 --
--- Indexes for table `collaborator`
+-- Índices para tabela `collaborator`
 --
 ALTER TABLE `collaborator`
   ADD PRIMARY KEY (`COLLABORATOR_ID`),
   ADD KEY `FK_COLLABOR_RELATIONS_COMPANY` (`COMPANY_ID`);
 
 --
--- Indexes for table `company`
+-- Índices para tabela `company`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`COMPANY_ID`);
 
 --
--- Indexes for table `consuming`
+-- Índices para tabela `consuming`
 --
 ALTER TABLE `consuming`
   ADD PRIMARY KEY (`CONSUMING_ID`),
   ADD KEY `FK_CONSUMIN_RELATIONS_COLLABOR` (`COLLABORATOR_ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT de tabela `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT for table `collaborator`
+-- AUTO_INCREMENT de tabela `collaborator`
 --
 ALTER TABLE `collaborator`
-  MODIFY `COLLABORATOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `COLLABORATOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT for table `company`
+-- AUTO_INCREMENT de tabela `company`
 --
 ALTER TABLE `company`
-  MODIFY `COMPANY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `COMPANY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT for table `consuming`
+-- AUTO_INCREMENT de tabela `consuming`
 --
 ALTER TABLE `consuming`
-  MODIFY `CONSUMING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `CONSUMING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
--- Constraints for table `admin`
+-- Limitadores para a tabela `admin`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `FK_ADMIN_RELATIONS_COMPANY` FOREIGN KEY (`COMPANY_ID`) REFERENCES `company` (`COMPANY_ID`);
 
 --
--- Constraints for table `collaborator`
+-- Limitadores para a tabela `collaborator`
 --
 ALTER TABLE `collaborator`
   ADD CONSTRAINT `FK_COLLABOR_RELATIONS_COMPANY` FOREIGN KEY (`COMPANY_ID`) REFERENCES `company` (`COMPANY_ID`);

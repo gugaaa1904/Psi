@@ -233,7 +233,7 @@ const AddUser = () => {
           name="ipplug"
           id="ipplug"
           placeholder="IP of Tapo Plug"
-          type="number"
+          type="text"
           onChange={handleInputChange}
           value={formData.ipplug}
         />

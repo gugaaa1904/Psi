@@ -200,7 +200,7 @@ class ApexChartClass extends Component {
     try {
       const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/dashboardplafond.php?collaborator_id=${collaboratorId}`
+        `http://localhost/Psi/backend/services/dashboardmonthlyexpenses.php?collaborator_id=${collaboratorId}`
       );
       const dataFromServer = response.data;
 

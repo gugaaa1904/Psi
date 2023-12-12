@@ -81,10 +81,7 @@ class ApexChartClass extends Component {
             name: "Actually Charged",
             data: consumingData,
           },
-          {
-            name: "Expected Consume",
-            data: plafondData,
-          },
+          
         ],
         options: {
           ...this.state.options,
@@ -136,6 +133,7 @@ const CollaboratorInfo = () => {
   const [averageMonthlyUsage, setAverageMonthlyUsage] = useState(null);
   const [minDailyUsage, setMinDailyUsage] = useState(null);
   const [maxDailyUsage, setMaxDailyUsage] = useState(null);
+  const [tariff, setTariff] = useState(null);
   const [selectedInterval, setSelectedInterval] = useState("weekly");
 
   const [collaborators, setCollaborators] = useState([]);
@@ -184,6 +182,7 @@ const CollaboratorInfo = () => {
         setAverageMonthlyUsage(data[0].average_monthly_usage);
         setMinDailyUsage(data[0].min_daily_usage);
         setMaxDailyUsage(data[0].max_daily_usage);
+        setTariff(data[0].tariff);
       } catch (error) {
         console.error("Erro ao buscar dados do backend:", error);
       }
@@ -322,10 +321,14 @@ const CollaboratorInfo = () => {
       <div className={styles.averageCostIn}>
         <div className={styles.backgroundCopy2} />
         <div className={styles.data2}>
-          {selectedInterval === "weekly"
-            ? averageWeeklyUsage && `${averageWeeklyUsage * 0.2} kWh`
-            : averageMonthlyUsage && `${averageMonthlyUsage * 0.2} kWh`}
+          {selectedInterval === "weekly" && averageWeeklyUsage &&
+            `${(averageWeeklyUsage * tariff).toFixed(1)} €`
+          }
+          {selectedInterval === "monthly" && averageMonthlyUsage &&
+            `${(averageMonthlyUsage * tariff).toFixed(1)} €`
+          }
         </div>
+
         <div className={styles.averageCostIn1}>{`Total Cost in € `}</div>
 
         {/* Seletor para escolher entre 'weekly' e 'monthly' */}

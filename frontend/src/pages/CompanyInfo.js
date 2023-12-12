@@ -11,7 +11,7 @@ class ApexChartClass extends Component {
     this.state = {
       series: [
         {
-          name: "Expected Consume",
+          name: "CO2 Savings",
           data: [],
           color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
@@ -61,19 +61,25 @@ class ApexChartClass extends Component {
     };
   }
 
+  
+
   fetchData = async () => {
     try {
       const companyID = sessionStorage.getItem("company_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/consumingAdmin.php?company_id=${companyID}`
+        `http://localhost/Psi/backend/services/consumingAdmin3.php?company_id=${companyID}`
       );
       //para mandar o company_id no get é tipo "http://localhost/Psi/backend/services/consumingAdmin.php?id=3"
       //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
       const dataFromServer = response.data;
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
       console.log(dataFromServer);
       // Preencher o array de Consuming multiplicando por 2.5
       const consumingData = dataFromServer.map(
-        (item) => (item.DAILY_USAGE / 0.2) * 0.245
+        (item) => (item.MONTHLY_USAGE / 0.2) * 0.245 
       );
 
       // Preencher o array de Plafond based on Contract com valores fixos (por exemplo, [50, 50])
@@ -82,20 +88,16 @@ class ApexChartClass extends Component {
       this.setState({
         series: [
           {
-            name: "Value",
-            data: consumingData,
-          },
-          {
-            name: "Expected",
-            data: plafondData,
-          },
+            name: "",
+            data: consumingData ,
+          }
         ],
         options: {
           ...this.state.options,
           xaxis: {
             ...this.state.options.xaxis,
-            categories: dataFromServer.map(
-              (item) => `${item.DAY}/${item.MONTH_YEAR}`
+          categories: dataFromServer.map(
+            (item) => months[parseInt(item.MONTH_YEAR, 10) - 1]
             ),
           },
         },

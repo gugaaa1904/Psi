@@ -177,7 +177,7 @@ const SignUpAdmin = () => {
           value={formData.address}
         />
 
-        <div className={styles.addYourCompany}>Add your Company Image</div>
+        <div className={styles.addYourCompany}>Add your Profile Image</div>
 
         <label
           htmlFor="fileInput"

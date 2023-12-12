@@ -202,7 +202,7 @@ class ApexChartClass extends Component {
     try {
       const collaboratorId = sessionStorage.getItem("collaborator_id");
       const response = await axios.get(
-        `http://localhost/Psi/backend/services/dashboardplafond.php?collaborator_id=${collaboratorId}`
+        `http://localhost/Psi/backend/services/dashboardmonthlyexpenses.php?collaborator_id=${collaboratorId}`
       );
       const dataFromServer = response.data;
 
@@ -449,7 +449,7 @@ const Dashboard = () => {
             </div>
 
             <div className={styles.bigCardChild4} />
-            <div className={styles.numberOfChargesMadeMonthly}>
+            <div className={styles.numberOfChargesMadeMonthly} style={{ maxHeight: '400px', overflowY: 'auto' }}>
               <b className={styles.numberOfCharges}>
                 Number of Charges Made Monthly
               </b>
@@ -486,7 +486,7 @@ const Dashboard = () => {
             </div>
 
 
-            <b className={styles.power1}>Power</b>
+            <b className={styles.power1}>Energy</b>
           </div>
           <div className={styles.activity}>
             <div className={styles.bigCardChild} />

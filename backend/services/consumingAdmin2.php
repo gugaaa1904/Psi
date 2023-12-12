@@ -15,15 +15,17 @@ if ($conn->connect_error) {
 
 $collaboratorID = $_GET['collaborator_id'];
 
-// Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE
+// Consulta SQL para obter a média, mínimo e máximo das colunas DAILY_USAGE e WEEKLY_USAGE, e a coluna TARIFF da tabela collaborator
 $sql = "SELECT 
-    AVG(DAILY_USAGE) AS average_daily_usage,
-    MIN(DAILY_USAGE) AS min_daily_usage,
-    MAX(DAILY_USAGE) AS max_daily_usage,
-    MAX(WEEKLY_USAGE) AS average_weekly_usage,
-    MAX(MONTHLY_USAGE) AS average_monthly_usage
-FROM consuming 
-WHERE COLLABORATOR_ID = $collaboratorID";
+    AVG(c.DAILY_USAGE) AS average_daily_usage,
+    MIN(c.DAILY_USAGE) AS min_daily_usage,
+    MAX(c.DAILY_USAGE) AS max_daily_usage,
+    MAX(c.WEEKLY_USAGE) AS average_weekly_usage,
+    MAX(c.MONTHLY_USAGE) AS average_monthly_usage,
+    coll.TARIFF
+FROM consuming c
+JOIN collaborator coll ON c.COLLABORATOR_ID = coll.COLLABORATOR_ID
+WHERE c.COLLABORATOR_ID = $collaboratorID";
 
 $result = $conn->query($sql);
 
@@ -39,6 +41,7 @@ if ($result) {
             'max_daily_usage' => number_format($row["max_daily_usage"], 1),
             'average_weekly_usage' => number_format($row["average_weekly_usage"], 1),
             'average_monthly_usage' => number_format($row["average_monthly_usage"], 1),
+            'tariff' => number_format($row["TARIFF"], 1),
         );
     }
 
@@ -50,3 +53,4 @@ if ($result) {
 
 // Fecha a conexão com o banco de dados
 $conn->close();
+?>

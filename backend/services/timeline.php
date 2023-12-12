@@ -34,7 +34,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Formatação desejada
         $formattedDate = $row["DAY"] . '/' . $row["MONTH_YEAR"];
-        $formattedUsage = $row["DAILY_USAGE"] . ' kW';
+        $formattedUsage = $row["DAILY_USAGE"] . ' kWh';
 
         $dados[] = array(
             'DATE_USAGE' => $formattedDate,
