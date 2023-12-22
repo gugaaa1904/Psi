@@ -1,7 +1,7 @@
 .bigCardChild {
   position: absolute;
-  height: 420px;
-  width: 350px;
+  height: 450px;
+  width: 370px;
   top: 10px;
   right: 0;
   bottom: 0;
@@ -12,21 +12,21 @@
 
 .bigCardChild1 {
   position: absolute;
-  height: 790px;
+  height: 880px;
   width: 800px;
   top: -360px;
   right: 0;
   bottom: 0;
-  left: 320px;
+  left: 350px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
 .bigCardChild3 {
   position: absolute;
-  height: 343px;
-  width: 350px;
-  top: 570px;
+  height: 400px;
+  width: 370px;
+  top: 600px;
   right: 0;
   bottom: 0;
   left: 40px;
@@ -37,24 +37,24 @@
 
 .bigCardChild4 {
   position: absolute;
-  height: 340px;
-  width: 350px;
-  top: 90px;
+  height: 400px;
+  width: 370px;
+  top: 120px;
   right: 0;
   bottom: 0;
-  left: 390px;
+  left: 405px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
 .bigCardChild5 {
   position: absolute;
-  height: 420px;
-  width: 350px;
+  height: 450px;
+  width: 370px;
   top: -360px;
   right: 0;
   bottom: 0;
-  left: 390px;
+  left: 405px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
@@ -65,7 +65,7 @@
   top: 110px;
   border-radius: 8px;
   width: 320px;
-  height: 310px;
+  height: 450px;
 }
 
 .numberOfCharges {
@@ -73,8 +73,8 @@
   font-size: 20px;
   color: #005c7d;
   width: 200px;
-  left: 58px;
-  top: 10px;
+  left: 80px;
+  top: 40px;
   text-align: center;
 }
 
@@ -91,7 +91,8 @@
   justify-content: space-between;
   padding: 6px 0;
   font-size: 20px;
-  left: 18px;
+  left: 30px;
+  top: 40px;
   width: 280px;
   border-bottom: 1px solid #ddd;
 }
@@ -112,11 +113,11 @@
 
 .historyOfCharges {
   position: absolute;
-  left: 405px;
+  left: 420px;
   top: -340px;
   border-radius: 8px;
-  width: 320px;
-  height: 380px;
+  width: 340px;
+  height: 430px;
 }
 
 .historyOfCharges1 {
@@ -286,7 +287,7 @@
 
 .powerInKwhContainer {
   position: absolute;
-  top: 220px;
+  top: 280px;
   left: 130px;
   font-weight: 600;
   display: inline-block;
@@ -299,8 +300,8 @@
 
 .monthsDropDown {
   position: absolute;
-  top: 330px;
-  left: 140px;
+  top: 400px;
+  left: 150px;
   width: 102px;
   height: 49px;
   border: 1px solid;
@@ -322,8 +323,8 @@
 }
 
 .power1 {
-  top: 130px;
-  left: 155px;
+  top: 160px;
+  left: 160px;
   color: #005c7d;
   font-size: 24px;
   display: inline-block;
@@ -594,7 +595,7 @@
 
 .settings {
   position: absolute;
-  top: 880px;
+  top: 970px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -618,7 +619,7 @@
 
 .help {
   position: absolute;
-  top: 825px;
+  top: 910px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -746,7 +747,7 @@
 
 .dashboard,
 .sidebar {
-  height: 1000px;
+  height: 1100px;
   overflow: hidden;
 }
 
@@ -764,7 +765,7 @@
 .dashboard {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);

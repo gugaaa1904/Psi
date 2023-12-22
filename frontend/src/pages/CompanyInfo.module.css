@@ -1,5 +1,5 @@
 .background1 {
-  height: 815px;
+  height: 900px;
   /* Adjust height */
   width: 800px;
   /* Adjust width */
@@ -12,9 +12,9 @@
 }
 
 .background2 {
-  height: 400px;
+  height: 440px;
   /* Adjust height */
-  width: 750px;
+  width: 790px;
   /* Adjust width */
   top: 112px;
   left: 850px;
@@ -25,11 +25,11 @@
 }
 
 .background3 {
-  height: 400px;
+  height: 440px;
   /* Adjust height */
-  width: 750px;
+  width: 790px;
   /* Adjust width */
-  top: 530px;
+  top: 570px;
   left: 850px;
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
@@ -61,7 +61,7 @@
 .totalRevenue {
   position: absolute;
   width: 640px;
-  top: 110px;
+  top: 140px;
   left: 6.9%;
   line-height: 32px;
   display: inline-block;
@@ -90,7 +90,7 @@
 .kwh {
   position: absolute;
   top: 280px;
-  left: 280px;
+  left: 260px;
   font-weight: 600;
   color: rgb(58, 207, 108);
   font-size: 25px;
@@ -101,7 +101,7 @@
 .value {
   position: absolute;
   top: 280px;
-  left: 310px;
+  left: 280px;
   font-weight: 600;
   color: rgb(58, 207, 108);
   font-size: 25px;
@@ -112,7 +112,7 @@
 .monthsDropDown {
   position: absolute;
   top: 210px;
-  left: 300px;
+  left: 280px;
   width: 75px;
   height: 40px;
   padding-left: 13.5px;
@@ -146,8 +146,8 @@
   line-height: 32px;
   display: inline-block;
   height: 156px;
-  top: 50px;
-  left: 220px;
+  top:30px;
+  left: 200px;
   font-size: 25px;
   font-weight: 600;
   height: 33px;
@@ -158,7 +158,7 @@
   position: absolute;
   height: 300px;
   width: 700px;
-  top: 540px;
+  top: 620px;
   right: 4.12%;
   left: 46.01%;
 }
@@ -170,7 +170,7 @@
   display: inline-block;
   height: 40px;
   top: 50px;
-  left: 200px;
+  left: 180px;
   font-size: 25px;
   font-weight: 600;
   height: 33px;
@@ -241,7 +241,7 @@
 
 .settings {
   position: absolute;
-  top: 880px;
+  top: 970px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -265,7 +265,7 @@
 
 .help {
   position: absolute;
-  top: 825px;
+  top: 910px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -398,7 +398,7 @@
 }
 .companyInfo,
 .sidebar {
-  height: 1000px;
+  height: 1100px;
   overflow: hidden;
 }
 .sidebar {
@@ -414,7 +414,7 @@
 .companyInfo {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);

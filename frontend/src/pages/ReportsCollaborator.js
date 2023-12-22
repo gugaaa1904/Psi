@@ -113,7 +113,7 @@ const ApexChart = () => {
         position: "absolute",
         top: 40,
         width: 700,
-        left: 400,
+        left: 410,
         transform: "translateX(-50%)",
       }}
     >
@@ -121,7 +121,7 @@ const ApexChart = () => {
         options={options}
         series={series}
         type="line"
-        height={320}
+        height={350}
       />
     </div>
   );
@@ -255,7 +255,7 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: 80,
+          top: 130,
           width: 700,
           left: 720,
           transform: "translateX(-50%)",
@@ -265,7 +265,7 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={320}
+          height={350}
         />
       </div>
     );

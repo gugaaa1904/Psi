@@ -128,7 +128,7 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={425}
+          height={550}
         />
       </div>
     );

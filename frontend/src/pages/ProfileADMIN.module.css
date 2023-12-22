@@ -3,7 +3,7 @@
   top: 0px;
   left: 20;
   border-radius: var(--br-xs) var(--br-xs) 0 0;
-  width: 1565px;
+  width: 1600px;
   height: 212px;
   object-fit: cover;
 }
@@ -14,8 +14,8 @@
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  width: 1565px;
-  height: 815px;
+  width: 1600px;
+  height: 900px;
 }
 .button {
   position: absolute;
@@ -165,7 +165,7 @@
 
 .settings {
   position: absolute;
-  top: 880px;
+  top: 970px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -189,7 +189,7 @@
 
 .help {
   position: absolute;
-  top: 825px;
+  top: 910px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -319,7 +319,7 @@
 }
 .profileAdmin,
 .sidebar {
-  height: 1000px;
+  height: 1100px;
   overflow: hidden;
 }
 .sidebar {
@@ -335,7 +335,7 @@
 .profileAdmin {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: black;

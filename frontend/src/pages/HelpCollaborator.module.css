@@ -11,10 +11,10 @@
 
 .wereHereFor {
   position: absolute;
-  top: 63px;
-  left: 625px;
-  font-size: var(--font-size-lg);
-  width: 299px;
+  top: 80px;
+  left: 645px;
+  font-size: 20px;
+  width: 350px;
   line-height: 125%;
   font-weight: 600;
   color: #005c7d;
@@ -22,7 +22,7 @@
 
 .divider {
   position: absolute;
-  width: 1560px;
+  width: 1600px;
   height: 100px;
   right: 0;
   bottom: 0;
@@ -57,14 +57,14 @@
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  width: 1565px;
-  height: 760px;
+  width: 1600px;
+  height: 840px;
 }
 
 .weHopeWeve {
   position: absolute;
-  top: 608px;
-  left: 560px;
+  top: 650px;
+  left: 580px;
   letter-spacing: 0.2px;
   line-height: 150%;
   font-weight: 600;
@@ -100,8 +100,8 @@
 }
 
 .whatCanYouContainer {
-  top: 160px;
-  left: 100px;
+  top: 200px;
+  left: 110px;
   font-size: 18px;
   font-family: var(--font-inherit);
   width: 1400px;
@@ -172,8 +172,8 @@
 
 .ifYouHaveContainer {
   position: absolute;
-  top: 824px;
-  left: 690px;
+  top: 900px;
+  left: 730px;
   font-size: 15px;
   letter-spacing: 0.2px;
   line-height: 150%;
@@ -201,7 +201,7 @@
 
 .settings {
   position: absolute;
-  top: 880px;
+  top: 970px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -237,7 +237,7 @@
 }
 .help5 {
   position: absolute;
-  top: 825px;
+  top: 910px;
   left: 16px;
   border-radius: var(--br-xs);
   background-color: var(--greyscale-50);
@@ -348,7 +348,7 @@
 
 .helpCollaborator ,
 .sidebar {
-  height: 1000px;
+  height: 1100px;
   overflow: hidden;
 }
 
@@ -366,7 +366,7 @@
 .helpCollaborator {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);

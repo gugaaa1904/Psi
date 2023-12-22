@@ -110,9 +110,9 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: 70,
-          width: 660,
-          left: 1150,
+          top: 80,
+          width: 750,
+          left: 1170,
           transform: "translateX(-50%)",
         }}
       >
@@ -120,7 +120,7 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={650}
+          height={730}
         />
       </div>
     );

@@ -5,8 +5,8 @@
   border-radius: var(--br-mini);
   background-color: var(--additional-white);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  width: 1565px;
-  height: 950px;
+  width: 1600px;
+  height: 900px;
 }
 .button,
 .logout {
@@ -44,7 +44,7 @@
 }
 .divider {
   position: absolute;
-  width: 1560px;
+  width: 1600px;
   height: 100px;
   right: 0;
   bottom: 0;
@@ -308,7 +308,7 @@
 .settings1 {
   left: 16px;
   position: absolute;
-  top: 880px;
+  top: 970px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -332,7 +332,7 @@
 }
 .help {
   position: absolute;
-  top: 825px;
+  top: 910px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -470,7 +470,7 @@
 .settingsAdmin {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);

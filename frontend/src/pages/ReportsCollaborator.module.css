@@ -1,6 +1,6 @@
 .bigCardChild {
   position: absolute;
-  height: 350px;
+  height: 390px;
   width: 750px;
   top: 20px;
   right: 0;
@@ -14,9 +14,9 @@
 
 .bigCardChild1 {
   position: absolute;
-  height: 360px;
+  height: 390px;
   width: 750px;
-  top: 62px;
+  top: 110px;
   right: 0;
   bottom: 0;
   left: 350px;
@@ -28,9 +28,9 @@
 
 .bigCardChild3 {
   position: absolute;
-  height: 390px;
+  height: 420px;
   width: 1540px;
-  top: 530px;
+  top: 580px;
   right: 0;
   bottom: 0;
   left: 45px;
@@ -41,7 +41,7 @@
 
 .bigCardChild4 {
   position: absolute;
-  height: 380px;
+  height: 420px;
   width: 1540px;
   top: 120px;
   right: 0;
@@ -157,7 +157,7 @@
   left: 840px;
   top: 140px;
   width: 680px;
-  height: 300px;
+  height: 340px;
   padding: 20px;
   background-color: #ffffff;
   text-align: center;
@@ -209,9 +209,9 @@
 .analysis2 {
   position: absolute;
   left: 320px;
-  top: 550px;
+  top: 600px;
   width: 680px;
-  height: 310px;
+  height: 340px;
   padding: 20px;
   background-color: #ffffff;
   text-align: center;
@@ -698,7 +698,7 @@
 
 .settings {
   position: absolute;
-  top: 880px;
+  top: 970px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -722,7 +722,7 @@
 
 .help {
   position: absolute;
-  top: 825px;
+  top: 910px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -864,7 +864,7 @@
 
 .dashboard,
 .sidebar {
-  height: 1000px;
+  height: 1100px;
   overflow: hidden;
 }
 
@@ -882,7 +882,7 @@
 .dashboard {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);

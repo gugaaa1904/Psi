@@ -20,7 +20,7 @@
 }
 
 .data {
-  top: -435px;
+  top: -410px;
   left: 40px;
   position: absolute;
   font-size: var(--heading-h3-size);
@@ -33,7 +33,7 @@
 }
 .redIcon {
   position: absolute;
-  top: -315px;
+  top: -290px;
   left: 70px;
   width: 30px;
   height: 30px;
@@ -62,7 +62,7 @@
 
 .monthsDropDown1 {
   position: absolute;
-  top: 220px;
+  top: 310px;
   left: 140px;
   width: 75px;
   height: 40px;
@@ -81,7 +81,7 @@
 
 .monthsDropDown2 {
   position: absolute;
-  top: -320px;
+  top: -300px;
   left: 390px;
   width: 75px;
   height: 40px;
@@ -144,7 +144,7 @@
   display: inline-block;
 }
 .data1 {
-  top: 135px;
+  top: 190px;
   left: 65px;
   font-size: var(--heading-h3-size);
   color: #005c7d;
@@ -153,7 +153,7 @@
 }
 .minPowerAchieved1 {
   width: 250px;
-  top: 30px;
+  top: 50px;
   left: -15px;
   font-size: 24px;
   color:  #005c7d;
@@ -163,7 +163,7 @@
 
 .greenIcon {
   position: absolute;
-  top: 225px;
+  top: 320px;
   left: 90px;
   width: 30px;
   height: 30px;
@@ -179,7 +179,7 @@
 
 .backgroundCopy2 {
   position: absolute;
-  height: 380px;
+  height: 410px;
   width: 350px;
   top: -595px;
   right: 0;
@@ -191,9 +191,9 @@
 
 .backgroundCopy1 {
   position: absolute;
-  height: 343px;
+  height: 410px;
   width: 350px;
-  top: -20px;
+  top: 10px;
   right: 0;
   bottom: 0;
   left: 0px;
@@ -203,7 +203,7 @@
 
 .bg {
   position: absolute;
-  height: 380px;
+  height: 410px;
   width: 350px;
   top: -595px;
   right: 0;
@@ -215,9 +215,9 @@
 
 .bg1 {
   position: absolute;
-  height: 343px;
+  height: 410px;
   width: 350px;
-  top: -20px;
+  top: 10px;
   right: 0;
   bottom: 0;
   left: -70px;
@@ -233,7 +233,7 @@
   display: inline-block;
 }
 .data2 {
-  top: -430px;
+  top: -410px;
   left: 390px;
   width: 150px;
   height: 29px;
@@ -263,7 +263,7 @@
   display: inline-block;
 }
 .data3 {
-  top: 135px;
+  top: 190px;
   left: 125px;
   width: 150px;
   height: 29px;
@@ -291,8 +291,8 @@
 
 .backgroundlist {
   position: absolute;
-  height: 750px;
-  width: 800px;
+  height: 850px;
+  width: 850px;
   top: 163px;
   right: 0;
   bottom: 0;
@@ -837,7 +837,7 @@
 
 .settings {
   position: absolute;
-  top: 880px;
+  top: 970px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -861,7 +861,7 @@
 
 .help {
   position: absolute;
-  top: 825px;
+  top: 910px;
   border-radius: var(--br-xs);
   width: 218px;
   height: 48px;
@@ -989,7 +989,7 @@
 }
 .collaboratorInfo,
 .sidebar {
-  height: 1000px;
+  height: 1100px;
   overflow: hidden;
 }
 .sidebar {
@@ -1005,7 +1005,7 @@
 .collaboratorInfo {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 1900px;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);
