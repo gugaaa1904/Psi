@@ -36,6 +36,10 @@ const SettingsADMIN = () => {
     navigate("/collaborator-info");
   }, [navigate]);
 
+  const onReportsContainerClick = useCallback(() => {
+    navigate("/reports-admin");
+  }, [navigate]);
+
   const onCompanyInformationContainerClick = useCallback(() => {
     navigate("/company-info");
   }, [navigate]);
@@ -250,6 +254,9 @@ const SettingsADMIN = () => {
           <div className={styles.menu}>
             <div className={styles.profile} onClick={onProfileContainerClick}>
               <div className={styles.profile1}>Profile</div>
+            </div>
+            <div className={styles.reports} onClick={onReportsContainerClick}>
+              <div className={styles.reports1}>Reports</div>
             </div>
             <div
               className={styles.collaboratorInformation}

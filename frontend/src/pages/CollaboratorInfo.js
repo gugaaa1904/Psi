@@ -158,6 +158,10 @@ const CollaboratorInfo = () => {
   const onRemoveUserContainerClick = useCallback(() => {
     navigate("/remove-user");
   }, [navigate]);
+  
+  const onReportsContainerClick = useCallback(() => {
+    navigate("/reports-admin");
+  }, [navigate]);
 
   const onAddUserContainerClick = useCallback(() => {
     navigate("/add-user");
@@ -352,6 +356,9 @@ const CollaboratorInfo = () => {
         <div className={styles.menu}>
           <div className={styles.profile} onClick={onProfileContainerClick}>
             <div className={styles.profile1}>Profile</div>
+          </div>
+          <div className={styles.reports} onClick={onReportsContainerClick}>
+            <div className={styles.reports1}>Reports</div>
           </div>
           <div className={styles.collaboratorInformation1}>
             <b className={styles.collaboratorInformation2}>

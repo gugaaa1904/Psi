@@ -75,6 +75,10 @@ const AddUser = () => {
     navigate("/help-admin");
   }, [navigate]);
 
+  const onReportsContainerClick = useCallback(() => {
+    navigate("/reports-admin");
+  }, [navigate]);
+
   const onProfileContainerClick = useCallback(() => {
     navigate("/profile-admin");
   }, [navigate]);
@@ -261,6 +265,11 @@ const AddUser = () => {
             <div className={styles.profile} onClick={onProfileContainerClick}>
               <div className={styles.profile1}>Profile</div>
             </div>
+
+            <div className={styles.reports} onClick={onReportsContainerClick}>
+              <div className={styles.reports1}>Reports</div>
+            </div>
+
             <div
               className={styles.collaboratorInformation}
               onClick={onCollaboratorInformationContainerClick}

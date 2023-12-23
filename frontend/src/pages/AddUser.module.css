@@ -433,10 +433,30 @@ input:focus {
   color: var(--color-steelblue-100);
 }
 
+.reports {
+  position: absolute;
+  top: 308px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.reports1 {
+  top: 13px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 400;
+  position: absolute;
+  left: 16px;
+}
+
 .settings,
 .profile1,
 .help,
 .collaboratorInformation,
+.reports,
 .companyInformation,
 .removeUser {
   transition: background-color 0.3s ease;
@@ -445,6 +465,7 @@ input:focus {
 .settings:hover,
 .profile:hover,
 .help:hover,
+.reports:hover,
 .collaboratorInformation:hover,
 .companyInformation:hover,
 .removeUser:hover {

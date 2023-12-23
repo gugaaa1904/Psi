@@ -27,6 +27,8 @@ import FullReportsCollaborators from "./pages/FullReportsCollaborators";
 import CollaboratorInfo from "./pages/CollaboratorInfo";
 import CompanyInfo from "./pages/CompanyInfo";
 import ProfileADMIN from "./pages/ProfileADMIN";
+import ReportsAdmin from "./pages/ReportsAdmin";
+
 
 function App() {
   const action = useNavigationType();
@@ -132,6 +134,10 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/reports-admin":
+        title = "";
+        metaDescription = "";
+        break;
     }
 
     if (title) {
@@ -182,6 +188,7 @@ function App() {
       <Route path="/collaborator-info" element={<CollaboratorInfo />} />
       <Route path="/company-info" element={<CompanyInfo />} />
       <Route path="/profile-admin" element={<ProfileADMIN />} />
+      <Route path="/reports-admin" element={<ReportsAdmin />} />
     </Routes>
   );
 }

@@ -166,6 +166,10 @@ const CompanyInfo = () => {
     navigate("/add-user");
   }, [navigate]);
 
+  const onReportsContainerClick = useCallback(() => {
+    navigate("/reports-admin");
+  }, [navigate]);
+
   useEffect(() => {
     // Função para buscar os dados do backend
     const fetchData = async () => {
@@ -275,6 +279,10 @@ const CompanyInfo = () => {
           <div className={styles.profile} onClick={onProfileContainerClick}>
             <div className={styles.profile1}>Profile</div>
           </div>
+          <div className={styles.reports} onClick={onReportsContainerClick}>
+            <div className={styles.reports1}>Reports</div>
+          </div>
+
           <div
             className={styles.collaboratorInformation}
             onClick={onCollaboratorInformationContainerClick}

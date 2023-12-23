@@ -296,6 +296,26 @@
   height: 48px;
   cursor: pointer;
 }
+
+.reports {
+  position: absolute;
+  top: 308px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+.reports1 {
+  top: 13px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 400;
+  position: absolute;
+  left: 16px;
+}
+
+
 .collaboratorInformation {
   top: 193px;
 }
@@ -337,7 +357,8 @@
 .help,
 .collaboratorInformation,
 .removeUser,
-.addUser {
+.addUser,
+.reports {
   transition: background-color 0.3s ease;
 }
 
@@ -346,7 +367,8 @@
 .help:hover,
 .collaboratorInformation:hover,
 .removeUser:hover,
-.addUser:hover {
+.addUser:hover,
+.reports:hover {
   background-color: #005c7d;
   /* Change to your desired hover color */
 }

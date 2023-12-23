@@ -17,6 +17,11 @@ const RemoveUser = () => {
     setPopUpRemoveUserOpen(false);
   }, []);
 
+  
+  const onReportsContainerClick = useCallback(() => {
+    navigate("/reports-admin");
+  }, [navigate]);
+
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-admin");
   }, [navigate]);
@@ -100,6 +105,9 @@ const RemoveUser = () => {
           <div className={styles.menu}>
             <div className={styles.profile} onClick={onProfileContainerClick}>
               <div className={styles.profile1}>Profile</div>
+            </div>
+            <div className={styles.reports} onClick={onReportsContainerClick}>
+              <div className={styles.reports1}>Reports</div>
             </div>
             <div
               className={styles.collaboratorInformation}
