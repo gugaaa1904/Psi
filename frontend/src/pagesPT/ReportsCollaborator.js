@@ -2,13 +2,10 @@ import React, { useState, useEffect, useCallback, Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./Dashboard.module.css";
+import styles from "./ReportsCollaborator.module.css";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-
-
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const ApexChart = () => {
   const [series, setSeries] = useState([
@@ -104,7 +101,6 @@ const ApexChart = () => {
       console.error("Erro ao buscar dados do servidor:", error);
     }
   }, []);
-
   // Chama a função para buscar dados ao montar o componente
   useEffect(() => {
     fetchData();
@@ -116,8 +112,8 @@ const ApexChart = () => {
       style={{
         position: "absolute",
         top: 40,
-        width: 340,
-        left: 200,
+        width: 700,
+        left: 410,
         transform: "translateX(-50%)",
       }}
     >
@@ -125,7 +121,7 @@ const ApexChart = () => {
         options={options}
         series={series}
         type="line"
-        height={400}
+        height={350}
       />
     </div>
   );
@@ -259,9 +255,9 @@ class ApexChartClass extends Component {
         id="chart"
         style={{
           position: "absolute",
-          top: -320,
-          width: 640,
-          left:750,
+          top: 130,
+          width: 700,
+          left: 720,
           transform: "translateX(-50%)",
         }}
       >
@@ -269,23 +265,35 @@ class ApexChartClass extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={800}
+          height={350}
         />
       </div>
     );
   }
 }
 
-
-
 const Dashboard = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
   const navigate = useNavigate();
   const [selectedMonth, setSelectedMonth] = useState(1); // Valor padrão ou vazio
   const [monthlyUsageData, setMonthlyUsageData] = useState([]);
-  const [monthlyChargeData, setMonthlyChargeData] = useState([]);
   const [timelineData, setTimelineData] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem("collaborator_id");
+        const response = await axios.get(
+          `http://localhost/Psi/backend/services/report2.php?collaborator_id=${collaboratorId}`
+        );
+        setTimelineData(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar dados da API:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
@@ -294,6 +302,11 @@ const Dashboard = () => {
   const closeNotifications = useCallback(() => {
     setNotificationsOpen(false);
   }, []);
+
+
+  const onDashboardContainerClick = useCallback(() => {
+    navigate("/dashboard");
+  }, [navigate]);
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/settings-collaborator");
@@ -307,115 +320,13 @@ const Dashboard = () => {
     navigate("/profile-collaborator");
   }, [navigate]);
 
-  const onReportsContainerClick = useCallback(() => {
-    navigate("/reports-collaborator");
-  }, [navigate]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const collaboratorId = sessionStorage.getItem("collaborator_id");
-        const response = await axios.get(
-          `http://localhost/Psi/backend/services/timeline.php?collaborator_id=${collaboratorId}`
-        );
-        setTimelineData(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar dados da API:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    // Função para obter dados do backend
-    const fetchData = async () => {
-      try {
-        const collaboratorId = sessionStorage.getItem("collaborator_id");
-        const response = await axios.get(
-          `http://localhost/Psi/backend/services/timeline2.php?collaborator_id=${collaboratorId}`
-        );
-        setMonthlyChargeData(response.data);
-      } catch (error) {
-        console.error("Erro ao obter dados do backend:", error);
-      }
-    };
-
-    fetchData(); // Chama a função ao montar o componente
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const collaboratorId = sessionStorage.getItem("collaborator_id");
-        console.log(selectedMonth);
-        const response = await fetch(
-          "http://localhost/Psi/backend/services/powermonthly.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              collaborator_id: collaboratorId,
-              month: selectedMonth,
-            }),
-          }
-        );
-
-        const data = await response.json();
-
-        console.log("Data from server:", data); // Adiciona esta linha para verificar a estrutura dos dados
-
-        if (data.status === "sucess") {
-          const monthlyUsage = {
-            DAY: data.DAY,
-            MONTH_YEAR: data.MONTH_YEAR,
-            DAILY_USAGE: data.DAILY_USAGE,
-            DAILY_RUNTIME: data.DAILY_RUNTIME,
-            WEEKLY_USAGE: data.WEEKLY_USAGE,
-            MONTHLY_USAGE: data.MONTHLY_USAGE,
-          };
-
-          setMonthlyUsageData([monthlyUsage]);
-        } else {
-          console.error(
-            `Erro ao obter dados para o mês ${selectedMonth}:`,
-            data.error
-          );
-        }
-      } catch (error) {
-        console.error("Erro ao buscar dados:", error);
-      }
-    };
-
-    fetchData();
-  }, [selectedMonth]);
-
-  const handleMonthChange = (event) => {
-    setSelectedMonth(event.target.value);
-  };
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
   return (
     <>
-      <div className="container-fluid"></div>
       <div className={styles.dashboard}>
         <div className={styles.content}>
+          <div className={styles.bigCardChild4} />
+          <div className={styles.bigCardChild3} />
 
           <div className={styles.monthlyExpenses}>
             <div className={styles.bigCardChild1} />
@@ -424,82 +335,94 @@ const Dashboard = () => {
               {/* GOSTAVA QUE O DASHBOARD FICASSE NESTE BLOCO DE CODIGO*/}
             </div>
           </div>
-          
-          <div className={styles.bigCardChild3} />
-          <div className={styles.power}>
-            <div>
-              <div className={styles.powerInKwhContainer}>
-                <p className={styles.kwh}>
-                  {monthlyUsageData.length > 0
-                    ? `${monthlyUsageData[0].MONTHLY_USAGE} kWh`
-                    : "Loading..."}
-                </p>
-                <p className={styles.blankLine}>&nbsp;</p>
-              </div>
-              <select
-                className={styles.monthsDropDown}
-                id="meses"
-                onChange={handleMonthChange}
-                value={selectedMonth}
-              >
-                {/* Gera as opções do select usando os nomes dos meses */}
-                {monthNames.map((monthName, index) => (
-                  <option key={index} value={index + 1}>
-                    {monthName}
-                  </option>
-                ))}
-              </select>
-            </div>
 
-            <div className={styles.bigCardChild4} />
-            <div className={styles.numberOfChargesMadeMonthly} style={{ maxHeight: '400px', overflowY: 'auto' }}>
-              <b className={styles.numberOfCharges}>
-                Number of Charges Made Monthly
-              </b>
-              <div className={styles.line} />
-
-              <ul className={styles.monthlyChargesList}>
-                {monthlyChargeData.map((monthData, index) => (
-                  <li key={index} className={styles.chargeListItem}>
-                    <span
-                      className={styles.date}
-                    >{`${monthData.DATE_USAGE}: `}</span>
-                    <span className={styles.totalCharges}>
-                      {monthData.TOTAL_CHARGES}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className={styles.bigCardChild5} />
-            <div className={styles.historyOfCharges} style={{ maxHeight: '400px', overflowY: 'auto' }}>
-              <b className={styles.historyOfCharges1}>History of Charges</b>
-              <div className={styles.line} />
-              <div className={styles.tuesday23Container}>
-                <ul className={styles.november5October6Septemb}>
-                  {timelineData.map((item) => (
-                    <li key={item.DATE_USAGE}>
-                      <span className={styles.date}>{item.DATE_USAGE} - </span>
-                      <span className={styles.span}>{item.DAILY_USAGE}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-
-            <b className={styles.power1}>Energy</b>
-          </div>
           <div className={styles.activity}>
             <div className={styles.bigCardChild} />
-
             {/* <img className={styles.lineIcon} alt="" src="/line.svg" />*/}
             <div className={styles.apexChartContainer}>
               <ApexChart />
             </div>
           </div>
+
+          <div className={styles.analysis1}>
+            <b className={styles.textLeft}>
+              You loaded it on the following days and got the following results:
+            </b>
+            <Scrollbars autoHide style={{ maxHeight: '250px', width: '100%' }}>
+              <ul className={styles.analysisChild}>
+                {timelineData.map((item, index) => (
+                  <li key={item.DATE_USAGE}>
+                    <span>
+                      In day{" "}
+                      <strong className={styles.dateUsage}>
+                        {item.DATE_USAGE}
+                      </strong>{" "}
+                      consumed{" "}
+                    </span>
+                    <span className={styles.span}>
+                      <strong className={styles.dailyUsage}>
+                        {item.DAILY_USAGE}
+                      </strong>{" "}
+                      what converted to money is{" "}
+                      <strong className={styles.dailyUsageE}>
+                        {item.DAILY_USAGEE}
+                      </strong>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Scrollbars>
+          </div>
+
+
+
+
+
         </div>
+
+        <div className={styles.analysis2}>
+          <b className={styles.resultsHeader}>
+            You loaded it on the following days and got the following results:
+          </b>
+          <Scrollbars autoHide style={{ maxHeight: '260px', width: '100%' }}>
+            <ul className={styles.november5October6Septemb}>
+              {timelineData.reduce((uniqueItems, item) => {
+                const existingItemIndex = uniqueItems.findIndex(
+                  (existingItem) => existingItem.DATE_USAGE === item.DATE_USAGE
+                );
+
+                if (existingItemIndex !== -1) {
+                  uniqueItems[existingItemIndex] = item;
+                } else {
+                  uniqueItems.push(item);
+                }
+
+                return uniqueItems;
+              }, []).slice(0, 7).map((uniqueItem) => (
+                <li key={uniqueItem.DATE_USAGE}>
+                  <span>
+                    In{" "}
+                    <strong className={styles.monthUsage}>
+                      {uniqueItem.MONTH_USAGE}
+                    </strong>{" "}
+                    consumed{" "}
+                  </span>
+                  <span className={styles.span}>
+                    <strong className={styles.monthlyUsage}>
+                      {uniqueItem.MONTHLY_USAGE}
+                    </strong>{" "}
+                    what converted to money is{" "}
+                    <strong className={styles.monthlyUsageE}>
+                      {uniqueItem.MONTHLY_USAGEE}
+                    </strong>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Scrollbars>
+        </div>
+
+
 
         <div className={styles.header}>
           <img
@@ -508,9 +431,8 @@ const Dashboard = () => {
             src="/notifications.svg"
             onClick={openNotifications}
           />
-          <b className={styles.dashboard1}>Dashboard</b>
+          <b className={styles.dashboard1}>Reports</b>
         </div>
-
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
             <div className={styles.settings1}>Settings</div>
@@ -522,19 +444,21 @@ const Dashboard = () => {
             <div className={styles.profile} onClick={onProfileContainerClick}>
               <div className={styles.reportsTexto}>Profile</div>
             </div>
-            <div className={styles.reports} onClick={onReportsContainerClick}>
-              <div className={styles.reportsTexto}>Reports</div>
-            </div>
             <div className={styles.dashboard2}>
-              <b className={styles.dashboard3}>Dashboard</b>
+              <div className={styles.reportsTexto1}>Reports</div>
+            </div>
+            <div
+              className={styles.dashboard3}
+              onClick={onDashboardContainerClick}
+            >
+              <div className={styles.reportsTexto}>Dashboard</div>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>
-          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
           <div className={styles.line} />
+          <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         </div>
       </div>
-
       {isNotificationsOpen && (
         <PortalPopup
           overlayColor="rgba(113, 113, 113, 0.3)"

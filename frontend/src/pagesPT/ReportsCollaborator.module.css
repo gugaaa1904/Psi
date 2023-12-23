@@ -1,35 +1,39 @@
 .bigCardChild {
   position: absolute;
-  height: 450px;
-  width: 370px;
-  top: 10px;
+  height: 390px;
+  width: 750px;
+  top: 20px;
   right: 0;
   bottom: 0;
-  left: 20px;
+  left: 35px;
   border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #005c7d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bigCardChild1 {
   position: absolute;
-  height: 880px;
-  width: 800px;
-  top: -360px;
+  height: 390px;
+  width: 750px;
+  top: 110px;
   right: 0;
   bottom: 0;
   left: 350px;
   border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #005c7d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bigCardChild3 {
   position: absolute;
-  height: 400px;
-  width: 370px;
-  top: 600px;
+  height: 420px;
+  width: 1540px;
+  top: 580px;
   right: 0;
   bottom: 0;
-  left: 40px;
+  left: 45px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
@@ -37,27 +41,17 @@
 
 .bigCardChild4 {
   position: absolute;
-  height: 400px;
-  width: 370px;
+  height: 420px;
+  width: 1540px;
   top: 120px;
   right: 0;
   bottom: 0;
-  left: 405px;
+  left: 45px;
   border-radius: var(--br-5xl);
   background-color: var(--additional-white);
 }
 
-.bigCardChild5 {
-  position: absolute;
-  height: 450px;
-  width: 370px;
-  top: -360px;
-  right: 0;
-  bottom: 0;
-  left: 405px;
-  border-radius: var(--br-5xl);
-  background-color: var(--additional-white);
-}
+
 
 .numberOfChargesMadeMonthly {
   position: absolute;
@@ -65,7 +59,7 @@
   top: 110px;
   border-radius: 8px;
   width: 320px;
-  height: 450px;
+  height: 310px;
 }
 
 .numberOfCharges {
@@ -73,8 +67,8 @@
   font-size: 20px;
   color: #005c7d;
   width: 200px;
-  left: 80px;
-  top: 40px;
+  left: 58px;
+  top: 10px;
   text-align: center;
 }
 
@@ -91,8 +85,7 @@
   justify-content: space-between;
   padding: 6px 0;
   font-size: 20px;
-  left: 30px;
-  top: 40px;
+  left: 18px;
   width: 280px;
   border-bottom: 1px solid #ddd;
 }
@@ -113,11 +106,11 @@
 
 .historyOfCharges {
   position: absolute;
-  left: 420px;
+  left: 405px;
   top: -340px;
   border-radius: 8px;
-  width: 340px;
-  height: 430px;
+  width: 320px;
+  height: 380px;
 }
 
 .historyOfCharges1 {
@@ -159,7 +152,110 @@
 }
 
 
+.analysis1 {
+  position: absolute;
+  left: 840px;
+  top: 140px;
+  width: 680px;
+  height: 340px;
+  padding: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.textLeft {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.analysisChild {
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  list-style: none;
+  padding: 0;
+  width: 550px;
+}
+
+.analysisChild li {
+  position: relative;
+  margin-bottom: 15px;
+  width: 500px;
+  font-size: 16px;
+  color: #333;
+}
+
+.dateUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.dailyUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.dailyUsageE {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+
+
+
+.analysis2 {
+  position: absolute;
+  left: 320px;
+  top: 600px;
+  width: 680px;
+  height: 340px;
+  padding: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.analysis2 b {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.november5October6Septemb {
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  list-style: none;
+  padding: 0;
+  width: 550px;
+}
+
+.november5October6Septemb li {
+  position: relative;
+  margin-bottom: 15px;
+  width: 500px;
+  font-size: 16px;
+  color: #333;
+}
+
+.monthUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.monthlyUsage {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
+
+.monthlyUsageE {
+  color: #005c7d;
+  /* Adjust the color based on your preference */
+}
 
 
 .div1 {
@@ -287,7 +383,7 @@
 
 .powerInKwhContainer {
   position: absolute;
-  top: 280px;
+  top: 220px;
   left: 130px;
   font-weight: 600;
   display: inline-block;
@@ -300,8 +396,8 @@
 
 .monthsDropDown {
   position: absolute;
-  top: 400px;
-  left: 150px;
+  top: 330px;
+  left: 140px;
   width: 102px;
   height: 49px;
   border: 1px solid;
@@ -323,8 +419,8 @@
 }
 
 .power1 {
-  top: 160px;
-  left: 160px;
+  top: 130px;
+  left: 155px;
   color: #005c7d;
   font-size: 24px;
   display: inline-block;
@@ -531,6 +627,13 @@
   height: 338px;
 }
 
+
+
+
+
+
+
+
 .content {
   position: absolute;
   top: 0px;
@@ -650,9 +753,18 @@
   font-weight: 500;
 }
 
+.reportsTexto1 {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 700;
+}
+
 .reports {
   position: absolute;
-  top: 80px;
+  top: 88px;
   left: 0;
   border-radius: var(--br-xs);
   width: 218px;
@@ -663,14 +775,18 @@
 
 
 .dashboard3 {
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
   position: absolute;
-  top: 13px;
-  left: 16px;
-  line-height: 160%;
+  top: 20px;
 }
 
 .dashboard2 {
-  top: 20px;
+  position: absolute;
+  top: 80px;
   left: 0;
   border-radius: var(--br-xs);
   background-color: var(--greyscale-50);
@@ -680,7 +796,8 @@
 }
 
 
-.reports,
+
+.dashboard3,
 .help,
 .profile,
 .settings {
@@ -688,7 +805,7 @@
 }
 
 .profile:hover,
-.reports:hover,
+.dashboard3:hover,
 .help:hover,
 .settings:hover {
   background-color: #005c7d;
@@ -718,7 +835,7 @@
 }
 
 .line {
-  top: 0;
+  top: 0px;
   position: fixed;
   left: 250px;
   border-right: 1px solid var(--greyscale-100);
@@ -729,11 +846,11 @@
 
 
 .logo1Icon {
-  position: fixed;
-  top: 2%;
-  left: 2.7%;
-  width: 7.5%;
-  height: 12%;
+  position: absolute;
+  top: 12px;
+  left: 53px;
+  width: 140px;
+  height: 100px;
   background-color: rgb(22, 128, 160);
   border-radius: 10px;
   display: flex;
@@ -747,7 +864,7 @@
 
 .dashboard,
 .sidebar {
-  height: 100%;
+  height: 1100px;
   overflow: hidden;
 }
 
@@ -757,7 +874,7 @@
   left: 0;
   background-color: rgb(22, 128, 160);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  width: 13.3%;
+  width: 250px;
   font-size: var(--body-medium-regular-size);
   color: white;
 }
@@ -765,22 +882,9 @@
 .dashboard {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);
   font-family: var(--body-medium-regular);
-}
-
-/* Responsive styles using media queries */
-@media screen and (max-width: 768px) {
-  /* Adust other styles as needed for smaller screens */
-}
-
-@media screen and (min-width: 769px) and (max-width: 1200px) {
-  /* Styles for screens with a width between 769 and 1200 pixels */
-}
-
-@media screen and (min-width: 1201px) {
-  /* Styles for screens with a width greater than 1200 pixels */
 }

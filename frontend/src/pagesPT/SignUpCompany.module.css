@@ -1,0 +1,311 @@
+.signIn {
+  position: absolute;
+  top: 892px;
+  left: 450px;
+  line-height: 160%;
+  display: inline-block;
+  color: #005c7d;
+  width: 50px;
+  height: 24px;
+  cursor: pointer;
+}
+.span {
+  letter-spacing: 0.2px;
+  font-weight: 500;
+}
+.doYouAlreadyContainer {
+  position: absolute;
+  top: 892px;
+  left: 220px;
+  line-height: 160%;
+  color: var(--greyscale-900);
+}
+.line,
+.orSignIn {
+  position: absolute;
+}
+.line {
+  top: 9px;
+  left: -0.5px;
+  border-top: 1px solid var(--greyscale-200);
+  box-sizing: border-box;
+  width: 146px;
+  height: 1px;
+}
+.orSignIn {
+  top: 0;
+  left: 161px;
+  line-height: 160%;
+}
+.line1 {
+  position: absolute;
+  top: 9px;
+  left: 258.5px;
+  border-top: 1px solid var(--greyscale-200);
+  box-sizing: border-box;
+  width: 146px;
+  height: 1px;
+}
+.orSignInWith {
+  position: absolute;
+  top: 859px;
+  left: 170px;
+  width: 404px;
+  height: 19px;
+  font-size: var(--body-small-medium-size);
+}
+.button {
+  position: absolute;
+  top: 4px;
+  left: 26px;
+  letter-spacing: 0.2px;
+  line-height: 140%;
+}
+.buttonlargeprimary {
+  position: absolute;
+  top: 805px;
+  left: 316px;
+  border-radius: var(--br-xs);
+  background-color: #005c7d;
+  width: 114px;
+  height: 30px;
+  cursor: pointer;
+  text-align: left;
+  font-size: var(--heading-h6-size);
+  color: var(--additional-white);
+}
+
+.terms {
+  font-weight: 600;
+}
+.byCreatingAnAccountMeansY1 {
+  margin: 0;
+}
+.andOur,
+.privacyPolicy {
+  font-family: var(--body-medium-regular);
+  color: var(--greyscale-500);
+}
+.privacyPolicy {
+  font-weight: 600;
+  color: var(--greyscale-900);
+}
+.conditionsAndOurPrivacyPol {
+  margin: 0;
+  color: var(--greyscale-900);
+}
+.byCreatingAnContainer {
+  position: absolute;
+  top: 55px;
+  left: 74px;
+  line-height: 160%;
+  display: inline-block;
+  width: 308px;
+}
+
+.checkbox {
+  position: absolute;
+  top: 59px;
+  left: 34px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+    cursor: pointer;
+}
+
+.byCreatingAnAccountMeansY {
+  position: absolute;
+  top: 686px;
+  left: 166px;
+  width: 340px;
+  height: 38px;
+  text-align: left;
+  font-size: var(--body-small-medium-size);
+}
+.addYourCompany {
+  position: absolute;
+  top: 703px;
+  left: 242px;
+  line-height: 160%;
+  color: #636364;
+  opacity: 0.7;
+}
+.iconCamera {
+  position: absolute;
+  top: 701px;
+  left: 202px;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+    cursor: pointer;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.cnpj,
+.company_address,
+.companyEmail,
+.companyName,
+.employeesNumber,
+.phoneNumber {
+  position: relative;
+  /* Ensures positioning relative to the parent */
+  border: 1px solid var(--greyscale-200);
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+  background-color: white;
+  /* White background for a cleaner look */
+  border-radius: 8px;
+  /* Adjust as needed for rounded corners */
+  box-sizing: border-box;
+  width: 404px;
+  height: 56px;
+  padding: 12px;
+  left: 175px;
+  /* Add padding for a more comfortable input area */
+  display: flex;
+  align-items: center;
+
+  /* Optional: Add box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the input inside the container */
+.cnpj,
+.company_address,
+.companyEmail,
+.companyName,
+.employeesNumber,
+.phoneNumber,
+input {
+  outline: none;
+  padding: 0 12px;
+  background-color: transparent;
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+}
+
+.companyName {
+  top: 280px;
+}
+
+.cnpj {
+  top: 290px;
+}
+
+.companyEmail {
+  top: 300px;
+}
+
+.company_address {
+  top: 310px;
+}
+
+.employeesNumber {
+  top: 320px;
+}
+
+.companyAddress {
+  top: 330px;
+}
+
+.phoneNumber {
+  top: 330px;
+}
+
+
+.signUpYour,
+.welcomeEnterYour {
+  position: absolute;
+  top: 52px;
+  left: 11px;
+  line-height: 160%;
+}
+.signUpYour {
+  top: 10px;
+  left: 25px;
+  font-size: var(--heading-h3-size);
+  letter-spacing: 0.2px;
+  line-height: 125%;
+  color: var(--greyscale-900);
+}
+.header {
+  position: absolute;
+  top: 177px;
+  left: 250px;
+  width: 271px;
+  height: 64px;
+  text-align: left;
+}
+.logo1Icon {
+  position: absolute;
+  top: 25px;
+  left: 45px;
+  width: 180px;
+  height: 120px;
+  background-color: #005c7d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold
+}
+.logo {
+  position: absolute;
+  top: -1px;
+  left: 243px;
+  width: 246px;
+  height: 98px;
+}
+.backButtonIcon,
+.content {
+  position: absolute;
+  overflow: hidden;
+}
+.backButtonIcon {
+  position: absolute;
+  top: 70px;
+  right: 0px;
+  left: 90px;
+  width: 50.5px;
+  height: 43.5px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #005c7d;
+}
+
+.content {
+  position: absolute;
+  top: 0px;
+  left: 570px;
+  width: 806px;
+  height: 957px;
+  overflow: hidden;
+}
+
+.signUpCompany {
+  overflow: hidden;
+}
+
+.signUpCompany {
+  position: relative;
+  background-color: var(--additional-white);
+  width: 100%;
+  height: 1000px;
+  text-align: left;
+  left: 0px;
+  font-size: var(--body-medium-regular-size);
+  color: var(--greyscale-900);
+  font-family: var(--body-medium-regular);
+}

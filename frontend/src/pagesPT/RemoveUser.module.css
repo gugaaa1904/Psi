@@ -1,0 +1,308 @@
+.contentChild {
+  position: absolute;
+  top: 112px;
+  left: 30px;
+  border-radius: var(--br-mini);
+  background-color: var(--additional-white);
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  width: 1600px;
+  height: 900px;
+}
+.removeUser1 {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  font-size: var(--heading-h6-size);
+  letter-spacing: 0.2px;
+  line-height: 140%;
+  font-family: var(--body-medium-regular);
+  color: var(--additional-white);
+  text-align: center;
+}
+
+.removeUserButton {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: var(--color-steelblue-100);
+  position: absolute;
+  top: 670px;
+  left: 760px;
+  border-radius: var(--br-xs);
+  width: 143px;
+  height: 32px;
+}
+.removeUserButton:hover {
+  background-color: #2980b9;
+  border-color: #0463a1;
+  /* Darker shade on hover, adjust as needed */
+}
+
+.email,
+.name {
+  position: relative;
+  /* Ensures positioning relative to the parent */
+  border: 1px solid var(--greyscale-200);
+  font-family: var(--body-medium-regular);
+  font-size: var(--heading-h6-size);
+  background-color: white;
+  /* White background for a cleaner look */
+  top: 400px;
+  left: 610px;
+  border-radius: 8px;
+  /* Adjust as needed for rounded corners */
+  box-sizing: border-box;
+  width: 404px;
+  height: 56px;
+  padding: 12px;
+  /* Add padding for a more comfortable input area */
+  display: flex;
+  align-items: center;
+
+  /* Optional: Add box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.email {
+  top: 450px;
+}
+.enterTheFields {
+  position: absolute;
+  top: 320px;
+  left: 700px;
+  font-size: var(--body-medium-regular-size);
+  line-height: 160%;
+  font-weight: 600;
+  color: var(--greyscale-500);
+  text-align: left;
+  display: inline-block;
+  width: 270px;
+}
+.content {
+  position: absolute;
+  top: 0px;
+  left: 250px;
+  background-color: #f5f5f5;
+  /* Light gray background */
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: auto;
+}
+.removeUser2 {
+  position: absolute;
+  top: 29px;
+  left: 32px;
+  letter-spacing: 0.2px;
+  line-height: 125%;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  background-color: #005c7d;
+  width: 1690px;
+  height: 88px;
+  overflow: hidden;
+  font-size: var(--heading-h3-size);
+  color: white;
+}
+
+.settings1,
+.settingsIcon {
+  position: absolute;
+  top: 13px;
+}
+
+.settings1 {
+  left: 24px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+
+.iconshelp,
+.settings {
+  position: absolute;
+  left: 16px;
+}
+
+.settings {
+  position: absolute;
+  top: 970px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.help1 {
+  position: absolute;
+  top: 13px;
+  left: 24px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+
+.help,
+.profile1 {
+  position: absolute;
+  left: 16px;
+}
+
+.help {
+  position: absolute;
+  top: 910px;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.profile1 {
+  top: 13px;
+  letter-spacing: 0.2px;
+  line-height: 160%;
+  font-weight: 500;
+}
+.collaboratorInformation,
+.companyInformation {
+  position: absolute;
+  top: 211px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.profile {
+  position: absolute;
+  top: 251px;
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.collaboratorInformation,
+.companyInformation {
+  top: 193px;
+}
+.companyInformation {
+  top: 135px;
+}
+.removeUser4 {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  line-height: 160%;
+}
+.addUser,
+.removeUser3 {
+  left: 0;
+  border-radius: var(--br-xs);
+  width: 218px;
+  height: 48px;
+}
+.removeUser3 {
+  position: absolute;
+  top: 77px;
+  background-color: var(--greyscale-50);
+  color: var(--color-steelblue-100);
+}
+.addUser {
+  position: absolute;
+  top: 20px;
+  cursor: pointer;
+}
+
+.settings,
+.profile1,
+.help,
+.collaboratorInformation,
+.companyInformation,
+.addUser {
+  transition: background-color 0.3s ease;
+}
+
+.settings:hover,
+.profile:hover,
+.help:hover,
+.collaboratorInformation:hover,
+.companyInformation:hover,
+.addUser:hover {
+  background-color: #005c7d;
+  /* Change to your desired hover color */
+}
+.addUser,
+.menu,
+.menu1 {
+  position: absolute;
+}
+.menu1 {
+  top: -10px;
+  left: 89px;
+  font-size: var(--body-small-medium-size);
+  letter-spacing: 1px;
+  line-height: 160%;
+  color: white;
+}
+.menu {
+  top: 148px;
+  left: 16px;
+  width: 218px;
+  height: 259px;
+}
+
+.line {
+  top: 0px;
+  position: fixed;
+  left: 250px;
+  border-right: 1px solid var(--greyscale-100);
+  width: 1px;
+  height: 88px;
+  box-sizing: border-box;
+}
+
+.logo1Icon {
+  position: absolute;
+  top: 12px;
+  left: 53px;
+  width: 140px;
+  height: 100px;
+  background-color: rgb(22, 128, 160);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold
+}
+.removeUser,
+.sidebar {
+  height: 1100px;
+  overflow: hidden;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(22, 128, 160);
+  box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
+  width: 250px;
+  font-size: var(--body-medium-regular-size);
+  color: white;
+}
+.removeUser {
+  position: fixed;
+  background-color: var(--color-gray-100);
+  width: 2000px;
+  text-align: left;
+  font-size: var(--body-small-medium-size);
+  color: var(--greyscale-500);
+  font-family: var(--body-medium-regular);
+}
