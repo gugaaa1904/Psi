@@ -24,19 +24,19 @@ const ProfileCollaborator = () => {
   };
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-collaborator");
+    navigate("/pt-settings-collaborator");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-collaborator");
+    navigate("/pt-help-collaborator");
   }, [navigate]);
 
   const onReportsContainerClick = useCallback(() => {
-    navigate("/reports-collaborator");
+    navigate("/pt-reports-collaborator");
   }, [navigate]);
 
   const onDashboardContainerClick = useCallback(() => {
-    navigate("/dashboard");
+    navigate("/pt-dashboard");
   }, [navigate]);
 
   const [formData, setFormData] = useState({
@@ -46,7 +46,7 @@ const ProfileCollaborator = () => {
   useEffect(() => {
     const idString = sessionStorage.getItem('collaborator_id');
     if(!idString){
-      navigate("/sign-in-collaborator")
+      navigate("/pt-sign-in-collaborator")
     }
 
     async function fetchData() {
@@ -91,47 +91,47 @@ const ProfileCollaborator = () => {
 
           <div className={styles.fullNameContainer}>
             <p className={styles.fullNameAntnioMendes}>
-              <b className={styles.fullName}>{`Full Name : `}</b>
+              <b className={styles.fullName}>{`Nome Completo : `}</b>
               <span className={styles.antnioMendes}>{fullName}</span>
             </p>
             <p className={styles.blankLine}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
-              <b className={styles.fullName}>Age:</b>
+              <b className={styles.fullName}>Idade:</b>
               <span> {Age}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
-              <b>Gender:</b>
+              <b>Género:</b>
               <span className={styles.fullName}> {Gender}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
-              <b className={styles.fullName}>Phone Number:</b>
+              <b className={styles.fullName}>Telefone:</b>
               <span> {Phone}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
-              <b className={styles.fullName}>{`Address: `}</b>
+              <b className={styles.fullName}>{`Morada: `}</b>
               <span> {Address}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
-              <b className={styles.fullName}>Company:</b>
+              <b className={styles.fullName}>Empresa:</b>
               <span> {CompanyName}</span>
             </p>
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
 
             <p className={styles.fullNameAntnioMendes}>&nbsp;</p>
             <p className={styles.fullNameAntnioMendes}>
-              <b className={styles.fullName}>Contract:</b>
+              <b className={styles.fullName}>Contrato:</b>
               <span>{` `}</span>
             </p>
             <ul className={styles.typeConsultantTariff02}>
               <li className={styles.typeConsultant}>
-                <span>{`Type: Consultant `}</span>
+                <span>{`Tipo: Consultor `}</span>
               </li>
               <li className={styles.typeConsultant}>
-                <span>Tariff: {Tariff} kWh/€</span>
+                <span>Tarifa: {Tariff} kWh/€</span>
               </li>
               <li className={styles.typeConsultant}>
                 <span>Plafond: {Plafond}€</span>
@@ -150,7 +150,7 @@ const ProfileCollaborator = () => {
               onChange={handleFileChange}
             />
             <label htmlFor="uploadInput" className={styles.editPhotoButton}>
-              <b className={styles.button}>Edit Photo</b>
+              <b className={styles.button}>Editar Foto</b>
             </label>
           </div>
         </div>
@@ -163,7 +163,7 @@ const ProfileCollaborator = () => {
         <div className={styles.notifications}>
           <div className={styles.notificationsHeader}>
             <div className={styles.line} />
-            <b className={styles.notificationsTitle}>Notifications</b>
+            <b className={styles.notificationsTitle}>Notificações</b>
           </div>
 
           <div className={styles.notificationGroup}>
@@ -174,17 +174,14 @@ const ProfileCollaborator = () => {
               src="/dangersquare.svg"
             />
             <div className={styles.alertExcessiveUse}>
-              Alert: Excessive use of energy!
+              Alerta: Uso excessivo de energia!
             </div>
           </div>
 
           <div className={styles.notificationGroup}>
             <div className={styles.notificationsContent}>
               <div className={styles.pleaseUnplugYour}>
-                Please unplug your electric car charger to prevent overloading
-                the grid and conserve energy. By taking this action, you are not
-                only contributing to a sustainable energy future but also
-                preventing potential service disruptions.
+                Por favor, desligue o carregador do seu carro elétrico para evitar sobrecargas na rede e conservar energia. Ao tomar esta medida, você não está apenas contribuindo para um futuro de energia sustentável, mas também prevenindo possíveis interrupções no serviço.
               </div>
             </div>
           </div>
@@ -197,44 +194,41 @@ const ProfileCollaborator = () => {
               src="/dangersquare1.svg"
             />
             <div className={styles.alertExcessiveUse}>
-              Alert: Excessive use of energy!
+              Alerta: Uso excessivo de energia!
             </div>
           </div>
 
           <div className={styles.notificationGroup}>
             <div className={styles.notificationsContent}>
               <div className={styles.pleaseUnplugYour1}>
-                Please unplug your electric car charger to prevent overloading
-                the grid and conserve energy. By taking this action, you are not
-                only contributing to a sustainable energy future but also
-                preventing potential service disruptions.
+                Por favor, desligue o carregador do seu carro elétrico para evitar sobrecargas na rede e conservar energia. Ao tomar esta medida, você não está apenas contribuindo para um futuro de energia sustentável, mas também prevenindo possíveis interrupções no serviço.
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.header}>
-        <b className={styles.profile}>Profile</b>
+        <b className={styles.profile}>Perfil</b>
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <div className={styles.settings1}>Settings</div>
+          <div className={styles.settings1}>Definições</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <div className={styles.help1}>Help</div>
+          <div className={styles.help1}>Ajuda</div>
         </div>
         <div className={styles.menu}>
           <div className={styles.profile1}>
-            <b className={styles.profile2}>Profile</b>
+            <b className={styles.profile2}>Perfil</b>
           </div>
           <div className={styles.reports} onClick={onReportsContainerClick}>
-            <div className={styles.reportsTexto}>Reports</div>
+            <div className={styles.reportsTexto}>Relatórios</div>
           </div>
           <div
             className={styles.dashboard3}
             onClick={onDashboardContainerClick}
           >
-            <div className={styles.dashboard2}>Dashboard</div>
+            <div className={styles.dashboard2}>Dashboards</div>
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>

@@ -31,7 +31,7 @@ const ApexChart = () => {
       curve: "straight",
     },
     title: {
-      text: "Daily Activity",
+      text: "Atividade Diária",
       align: "center",
       style: {
         fontSize: "18px", // Adjust font size
@@ -82,7 +82,7 @@ const ApexChart = () => {
       // Atualiza o estado da série com os dados do servidor
       setSeries([
         {
-          name: "Consuming",
+          name: "Consumo",
           data: dataFromServer.map((item) =>
             parseFloat((item.DAILY_USAGE * item.TARIFF ).toFixed(1))
           ), // Arredonda para a primeira casa decimal
@@ -134,12 +134,12 @@ class ApexChartClass extends Component {
     this.state = {
       series: [
         {
-          name: "Consuming",
+          name: "Consumo",
           data: [],
           color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
-          name: "Plafond based on Contract",
+          name: "Plafond com base no Contrato",
           data: [],
           color: "rgb(58, 207, 108)", // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
@@ -165,7 +165,7 @@ class ApexChartClass extends Component {
           colors: ["transparent"],
         },
         title: {
-          text: "Monthly Expenses",
+          text: "Despesas Mensais",
           align: "center",
           style: {
             fontSize: "18px", // Adjust font size
@@ -215,11 +215,11 @@ class ApexChartClass extends Component {
       this.setState({
         series: [
           {
-            name: "Consuming",
+            name: "Consumo",
             data: consumingData,
           },
           {
-            name: "Plafond based on Contract",
+            name: "Plafond com base no Contrato",
             data: plafondData,
           },
         ],
@@ -230,9 +230,18 @@ class ApexChartClass extends Component {
             categories: dataFromServer.map((item) => {
               const monthNumber = parseInt(item.MONTH_YEAR, 10);
               const monthNames = [
-                'January', 'February', 'March', 'April',
-                'May', 'June', 'July', 'August',
-                'September', 'October', 'November', 'December'
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Agosto",
+                "Setembro",
+                "Outubro",
+                "Novembro",
+                "Dezembro"
               ];
           
               return monthNames[monthNumber - 1]; // Arrays are zero-based
@@ -305,19 +314,19 @@ const Dashboard = () => {
 
 
   const onDashboardContainerClick = useCallback(() => {
-    navigate("/dashboard");
+    navigate("/pt-dashboard");
   }, [navigate]);
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-collaborator");
+    navigate("/pt-settings-collaborator");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-collaborator");
+    navigate("/pt-help-collaborator");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-collaborator");
+    navigate("/pt-profile-collaborator");
   }, [navigate]);
 
 
@@ -346,24 +355,24 @@ const Dashboard = () => {
 
           <div className={styles.analysis1}>
             <b className={styles.textLeft}>
-              You loaded it on the following days and got the following results:
+              Carregou nos seguintes dias e obteve os seguintes resultados:
             </b>
             <Scrollbars autoHide style={{ maxHeight: '250px', width: '100%' }}>
               <ul className={styles.analysisChild}>
                 {timelineData.map((item, index) => (
                   <li key={item.DATE_USAGE}>
                     <span>
-                      In day{" "}
+                      No dia {" "}
                       <strong className={styles.dateUsage}>
                         {item.DATE_USAGE}
                       </strong>{" "}
-                      consumed{" "}
+                      consumiu {" "}
                     </span>
                     <span className={styles.span}>
                       <strong className={styles.dailyUsage}>
                         {item.DAILY_USAGE}
                       </strong>{" "}
-                      what converted to money is{" "}
+                      o que convertido em dinheiro é:{" "}
                       <strong className={styles.dailyUsageE}>
                         {item.DAILY_USAGEE}
                       </strong>
@@ -382,7 +391,7 @@ const Dashboard = () => {
 
         <div className={styles.analysis2}>
           <b className={styles.resultsHeader}>
-            You loaded it on the following days and got the following results:
+            Carregaste nos seguintes meses e obtiveste os seguintes resultados:
           </b>
           <Scrollbars autoHide style={{ maxHeight: '260px', width: '100%' }}>
             <ul className={styles.november5October6Septemb}>
@@ -401,17 +410,17 @@ const Dashboard = () => {
               }, []).slice(0, 7).map((uniqueItem) => (
                 <li key={uniqueItem.DATE_USAGE}>
                   <span>
-                    In{" "}
+                    No mês de{" "}
                     <strong className={styles.monthUsage}>
                       {uniqueItem.MONTH_USAGE}
                     </strong>{" "}
-                    consumed{" "}
+                    consumiu{" "}
                   </span>
                   <span className={styles.span}>
                     <strong className={styles.monthlyUsage}>
                       {uniqueItem.MONTHLY_USAGE}
                     </strong>{" "}
-                    what converted to money is{" "}
+                    o que convertido em dinheiro é: {" "}
                     <strong className={styles.monthlyUsageE}>
                       {uniqueItem.MONTHLY_USAGEE}
                     </strong>
@@ -431,27 +440,27 @@ const Dashboard = () => {
             src="/notifications.svg"
             onClick={openNotifications}
           />
-          <b className={styles.dashboard1}>Reports</b>
+          <b className={styles.dashboard1}>Relatórios</b>
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <div className={styles.settings1}>Settings</div>
+            <div className={styles.settings1}>Definições</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <div className={styles.help1}>Help</div>
+            <div className={styles.help1}>Ajuda</div>
           </div>
           <div className={styles.menu}>
             <div className={styles.profile} onClick={onProfileContainerClick}>
-              <div className={styles.reportsTexto}>Profile</div>
+              <div className={styles.reportsTexto}>Perfil</div>
             </div>
             <div className={styles.dashboard2}>
-              <div className={styles.reportsTexto1}>Reports</div>
+              <div className={styles.reportsTexto1}>Relatórios</div>
             </div>
             <div
               className={styles.dashboard3}
               onClick={onDashboardContainerClick}
             >
-              <div className={styles.reportsTexto}>Dashboard</div>
+              <div className={styles.reportsTexto}>Dashboards</div>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>

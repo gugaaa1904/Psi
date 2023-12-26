@@ -37,19 +37,23 @@ const SettingsCollaborator = () => {
   }, []);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-collaborator");
+    navigate("/pt-help-collaborator");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-collaborator");
+    navigate("/pt-profile-collaborator");
   }, [navigate]);
 
   const onReportsContainerClick = useCallback(() => {
-    navigate("/reports-collaborator");
+    navigate("/pt-reports-collaborator");
   }, [navigate]);
 
   const onDashboardContainerClick = useCallback(() => {
-    navigate("/dashboard");
+    navigate("/pt-dashboard");
+  }, [navigate]);
+
+  const onEnglishContainerClick = useCallback(() => {
+    navigate("/settings-collaborator");
   }, [navigate]);
 
   const handleSubmit = async (e) => {
@@ -93,13 +97,13 @@ const SettingsCollaborator = () => {
 
           if (data.status === "success") {
             // Realizar redirecionamento para a página desejada
-            navigate("/dashboard");
+            navigate("/pt-dashboard");
           } else {
             // Se a resposta não for bem-sucedida, mostrar o erro
             const errorMessage = data.error || "Erro desconhecido";
             console.error("Erro ao alterar a senha", errorMessage);
             setMessage(errorMessage);
-            navigate("/dashboard");
+            navigate("/pt-dashboard");
           }
         } else {
           // Conteúdo não é JSON válido
@@ -134,22 +138,22 @@ const SettingsCollaborator = () => {
               src="/notifications.svg"
               onClick={openNotifications}
             />
-            <b className={styles.settingsheader}>Settings</b>
+            <b className={styles.settingsheader}>Definições</b>
           </div>
 
           <div className={styles.language}>
             <div className={styles.tabs}>
-              <div className={styles.tab}>
-                <div className={styles.title1}>Portuguese</div>
+              <div className={styles.portuguese}>
+                <div className={styles.portuguese1}>Português</div>
               </div>
-              <div className={styles.tab1}>
-                <div className={styles.title2}>English</div>
+              <div className={styles.english} onClick={onEnglishContainerClick}>
+                <div className={styles.english1}>English</div>
               </div>
             </div>
           </div>
 
           <div className={styles.changePassword}>
-            <div className={styles.tittle}>Change your password</div>
+            <div className={styles.tittle}>Altere a Palavra-passe</div>
           </div>
           <form onSubmit={handleSubmit} method="POST">
             <label>
@@ -157,7 +161,7 @@ const SettingsCollaborator = () => {
                 className={styles.oldPassword}
                 name="Old Password"
                 id="old_password"
-                placeholder="Enter your old Password"
+                placeholder="Palavra-passe Antiga"
                 type="password"
                 onChange={(e) => setOldPassword(e.target.value)}
               />
@@ -167,7 +171,7 @@ const SettingsCollaborator = () => {
                 className={styles.newPassword}
                 name="New Password"
                 id="new_password"
-                placeholder="Enter your new Password"
+                placeholder="Palavra-passe Nova"
                 type="password"
                 onChange={(e) => setNewPassword(e.target.value)}
               />
@@ -177,22 +181,19 @@ const SettingsCollaborator = () => {
                 className={styles.confirmNewPassword}
                 name="Confirm new Password"
                 id="confirm_new_password"
-                placeholder="Confirm your new Password"
+                placeholder="Confirmar Nova Palavra-passe"
                 type="password"
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
               <button type="submit" className={styles.changeButton}>
-                <b className={styles.button1}>Change</b>
+                <b className={styles.button1}>Alterar</b>
               </button>
 
 
             {/* Exibe mensagens de erro/sucesso */}
             {message && <p>{message}</p>}
           </form>
-          <div className={styles.changePassword}>
-            <div className={styles.tittle}>Change your password</div>
-          </div>
 
           <div
             className={styles.changePassword}
@@ -205,46 +206,40 @@ const SettingsCollaborator = () => {
             }
           ></div>
           <div className={styles.logout} onClick={onLogoutContainerClick}>
-            <b className={styles.button}>Log Out</b>
+            <b className={styles.button}>Terminar Sessão</b>
           </div>
           <div className={styles.yourPrivacyIsContainer}>
             <p
               className={styles.yourPrivacyIs}
-            >{`Your privacy is important to us, and we want to ensure that you have control over who can access your information on this platform. Below, you can adjust your privacy settings to customize your experience. `}</p>
+            >{`A sua privacidade é importante para nós, e queremos assegurar que tem controlo sobre quem pode aceder às suas informações nesta plataforma. Abaixo, pode ajustar as suas configurações de privacidade para personalizar a sua experiência.`}</p>
             <p className={styles.yourPrivacyIs}>&nbsp;</p>
-            <p className={styles.yourPrivacyIs}>Account Security</p>
+            <p className={styles.yourPrivacyIs}>Segurança da Conta</p>
             <p className={styles.yourPrivacyIs}>
-              Change Password: Regularly update your password to enhance the
-              security of your account.
+              Alterar Senha: Atualize regularmente a sua senha para reforçar a segurança da sua conta.
             </p>
             <p className={styles.yourPrivacyIs}>&nbsp;</p>
-            <p className={styles.yourPrivacyIs}>Data Sharing</p>
+            <p className={styles.yourPrivacyIs}>Partilha de Dados</p>
             <p className={styles.yourPrivacyIs}>
-              Information Sharing: Choose the level of information you are
-              comfortable sharing with others. [Minimal/Basic/Detailed/Custom]
+              Partilha de Informações: Escolha o nível de informação com o qual se sente confortável compartilhar com outros. [Mínimo/Básico/Detalhado/Personalizado] 
             </p>
             <p className={styles.yourPrivacyIs}>
-              Third-Party Apps: Manage which third-party apps can access your
-              data and revoke access at any time.
+              Aplicações de Terceiros: Gerencie quais aplicações de terceiros podem acessar seus dados e revogue o acesso a qualquer momento.
             </p>
             <p className={styles.yourPrivacyIs}>&nbsp;</p>
             <p className={styles.yourPrivacyIs}>Visibility</p>
             <p className={styles.yourPrivacyIs}>
-              Profile Visibility: Control who can see your profile and your
-              posts. [Public/Friends Only/Private]
+              Visibilidade do Perfil: Controle quem pode ver o seu perfil e as suas publicações. [Público/Apenas Amigos/Privado]
             </p>
             <p className={styles.yourPrivacyIs}>
-              Search Engine Indexing: Allow search engines to index your
-              profile? [Yes/No]
+              Indexação por Motores de Busca: Permitir que os motores de busca indexem o seu perfil? [Sim/Não]
             </p>
             <p className={styles.yourPrivacyIs}>Privacy Policy</p>
             <p className={styles.yourPrivacyIs}>
-              Review our privacy policy for a detailed understanding of how your
-              data is handled.
+              Revise a nossa política de privacidade para uma compreensão detalhada de como os seus dados são tratados.
             </p>
           </div>
 
-          <div className={styles.title}>Privacy</div>
+          <div className={styles.title}>Privacidade</div>
           <div className={styles.divider1} />
           <div className={styles.divider1} />
         </div>
@@ -256,21 +251,21 @@ const SettingsCollaborator = () => {
               className={styles.dashboard}
               onClick={onDashboardContainerClick}
             >
-              <div className={styles.dashboard1}>Dashboard</div>
+              <div className={styles.dashboard1}>Dashboards</div>
             </div>
             <div className={styles.reports} onClick={onReportsContainerClick}>
-              <div className={styles.reportsTexto}>Reports</div>
+              <div className={styles.reportsTexto}>Relatórios</div>
             </div>
 
             <div className={styles.profile} onClick={onProfileContainerClick}>
-              <div className={styles.profile1}>Profile</div>
+              <div className={styles.profile1}>Perfil</div>
             </div>
           </div>
           <div className={styles.help5} onClick={onHelpContainerClick}>
-            <b className={styles.help6}>Help</b>
+            <b className={styles.help6}>Ajuda</b>
           </div>
           <div className={styles.settings}>
-            <div className={styles.settings1}>Settings</div>
+            <div className={styles.settings1}>Definições</div>
           </div>
 
           <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
