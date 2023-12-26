@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ProfileCollaborator.module.css";
+import styles from "./PTProfileCollaborator.module.css";
 import React, { Component, useState, useEffect } from 'react';
 
 

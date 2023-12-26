@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ChooseThe3TypesUser.module.css";
+import styles from "./PTChooseThe3TypesUser.module.css";
 
 const ChooseThe3TypesUser = () => {
   const navigate = useNavigate();
@@ -13,6 +13,11 @@ const ChooseThe3TypesUser = () => {
     navigate("/sign-in-admin");
   }, [navigate]);
 
+  const onEnglishContainerClick = useCallback(() => {
+    navigate("/pt-main");
+  }, [navigate]);
+
+
   return (
     <div className={styles.chooseThe3TypesUser}>
       <div className={styles.content}>
@@ -22,7 +27,7 @@ const ChooseThe3TypesUser = () => {
             <div className={styles.portuguese}>
               <div className={styles.portuguese1}>Português</div>
             </div>
-            <div className={styles.english}>
+            <div className={styles.english} onClick={onEnglishContainerClick}>
               <div className={styles.english1}>English</div>
             </div>
           </div>
@@ -43,7 +48,7 @@ const ChooseThe3TypesUser = () => {
         </div>
 
         <b className={styles.areYouAn}>
-          Welcome to InfoCharge ! Good to have you here !
+          Bem-vindo a InfoCharge ! Que Bom vê-lo aqui !
         </b>
 
         <div className={styles.welcomePleaseSelect}>

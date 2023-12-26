@@ -3,7 +3,7 @@ import PopUpChangePassword from "../components/PopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
 import Notifications from "../components/Notifications";
 import { useNavigate } from "react-router-dom";
-import styles from "./SettingsCollaborator.module.css";
+import styles from "./PTSettingsCollaborator.module.css";
 
 const SettingsCollaborator = () => {
   const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] =

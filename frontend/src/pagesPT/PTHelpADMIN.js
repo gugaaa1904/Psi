@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./HelpADMIN.module.css";
+import styles from "./PTHelpADMIN.module.css";
 
 const HelpADMIN = () => {
   const navigate = useNavigate();

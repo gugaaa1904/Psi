@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./SignInCollaborator.module.css";
+import styles from "./PTSignInCollaborator.module.css";
 
 
 const SignInCollaborator = () => {

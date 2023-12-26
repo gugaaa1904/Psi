@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import FullReport from "../components/FullReport";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./FullReportsCollaborators.module.css";
+import styles from "./PTFullReportsCollaborators.module.css";
 
 const FullReportsCollaborators = () => {
   const [isFullReportOpen, setFullReportOpen] = useState(false);

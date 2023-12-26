@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./SignUpCompany.module.css";
+import styles from "./PTSignUpCompany.module.css";
 import React, { useState } from "react";
 
 const SignUpCompany = () => {

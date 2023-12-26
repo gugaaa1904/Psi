@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import PopUpRemoveUser from "../components/PopUpRemoveUser";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./RemoveUser.module.css";
+import styles from "./PTRemoveUser.module.css";
 import axios from "axios";
 
 const RemoveUser = () => {

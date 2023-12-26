@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./AdminAddedSucessfullyHR.module.css";
+import styles from "./PTAdminAddedSucessfullyHR.module.css";
 
 const AdminAddedSucessfullyHR = () => {
   const navigate = useNavigate();

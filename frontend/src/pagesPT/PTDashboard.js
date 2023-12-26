@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./Dashboard.module.css";
+import styles from "./PTDashboard.module.css";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";

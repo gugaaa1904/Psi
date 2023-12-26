@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./CollaboratorInfo.module.css";
+import styles from "./PTCollaboratorInfo.module.css";
 import React, { useState, useEffect, useCallback, Component } from "react";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";

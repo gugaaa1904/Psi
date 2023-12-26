@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ProfileADMIN.module.css";
+import styles from "./PTProfileADMIN.module.css";
 import React, { Component, useState, useEffect } from 'react';
 
 const ProfileADMIN = () => {

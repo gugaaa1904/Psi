@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./AddUser.module.css";
+import styles from "./PTAddUser.module.css";
 
 
 const AddUser = () => {

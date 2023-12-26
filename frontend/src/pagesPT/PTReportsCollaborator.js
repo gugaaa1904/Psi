@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, Component } from "react";
 import Notifications from "../components/Notifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./ReportsCollaborator.module.css";
+import styles from "./PTReportsCollaborator.module.css";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 import { Scrollbars } from 'react-custom-scrollbars';

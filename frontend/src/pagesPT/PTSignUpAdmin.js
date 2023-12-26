@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./SignUpAdmin.module.css";
+import styles from "./PTSignUpAdmin.module.css";
 import React, { useState } from "react";
 
 const SignUpAdmin = () => {

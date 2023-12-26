@@ -13,13 +13,17 @@ const ChooseThe3TypesUser = () => {
     navigate("/sign-in-admin");
   }, [navigate]);
 
+  const onPortuguesContainerClick = useCallback(() => {
+    navigate("/pt-main");
+  }, [navigate]);
+
   return (
     <div className={styles.chooseThe3TypesUser}>
       <div className={styles.content}>
         <div className={styles.background}></div>
         <div className={styles.language}>
           <div className={styles.tabs}>
-            <div className={styles.portuguese}>
+            <div className={styles.portuguese} onClick={onPortuguesContainerClick}>
               <div className={styles.portuguese1}>Português</div>
             </div>
             <div className={styles.english}>

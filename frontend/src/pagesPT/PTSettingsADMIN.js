@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import PopUpChangePassword from "../components/PopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
-import styles from "./SettingsADMIN.module.css";
+import styles from "./PTSettingsADMIN.module.css";
 
 const SettingsADMIN = () => {
   const [isPopUpChangePasswordOpen, setPopUpChangePasswordOpen] = useState(false);

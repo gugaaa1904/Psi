@@ -9,7 +9,6 @@ import ChooseThe3TypesUser from "./pages/ChooseThe3TypesUser";
 import SignInCollaborator from "./pages/SignInCollaborator";
 import ReportsCollaborator from "./pages/ReportsCollaborator";
 import ProfileCollaborator from "./pages/ProfileCollaborator";
-import Timeline from "./pages/Timeline";
 import HelpCollaborator from "./pages/HelpCollaborator";
 import SettingsCollaborator from "./pages/SettingsCollaborator";
 import Dashboard from "./pages/Dashboard";
@@ -28,6 +27,29 @@ import CollaboratorInfo from "./pages/CollaboratorInfo";
 import CompanyInfo from "./pages/CompanyInfo";
 import ProfileADMIN from "./pages/ProfileADMIN";
 import ReportsAdmin from "./pages/ReportsAdmin";
+
+import PTChooseThe3TypesUser from "./pagesPT/PTChooseThe3TypesUser";
+import PTSignInCollaborator from "./pagesPT/PTSignInCollaborator";
+import PTReportsCollaborator from "./pagesPT/PTReportsCollaborator";
+import PTProfileCollaborator from "./pagesPT/PTProfileCollaborator";
+import PTHelpCollaborator from "./pagesPT/PTHelpCollaborator";
+import PTSettingsCollaborator from "./pagesPT/PTSettingsCollaborator";
+import PTDashboard from "./pagesPT/PTDashboard";
+import PTForgotPasswordCollaborator from "./pagesPT/PTForgotPasswordCollaborator";
+import PTForgotPasswordADMIN from "./pagesPT/PTForgotPasswordADMIN";
+import PTAdminAddedSucessfullyHR from "./pagesPT/PTAdminAddedSucessfullyHR";
+import PTSignUpAdmin from "./pagesPT/PTSignUpAdmin";
+import PTSignInAdmin from "./pagesPT/PTSignInAdmin";
+import PTHelpADMIN from "./pagesPT/PTHelpADMIN";
+import PTSettingsADMIN from "./pagesPT/PTSettingsADMIN";
+import PTRemoveUser from "./pagesPT/PTRemoveUser";
+import PTAddUser from "./pagesPT/PTAddUser";
+import PTSignUpCompany from "./pagesPT/PTSignUpCompany";
+import PTFullReportsCollaborators from "./pagesPT/PTFullReportsCollaborators";
+import PTCollaboratorInfo from "./pagesPT/PTCollaboratorInfo";
+import PTCompanyInfo from "./pagesPT/PTCompanyInfo";
+import PTProfileADMIN from "./pagesPT/PTProfileADMIN";
+
 
 
 function App() {
@@ -59,10 +81,6 @@ function App() {
         metaDescription = "";
         break;
       case "/profile-collaborator":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/timeline":
         title = "";
         metaDescription = "";
         break;
@@ -138,6 +156,97 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      
+      
+      
+      case "/pt-main":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-sign-in-collaborator":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-reports-collaborator":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-profile-collaborator":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-help-collaborator":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-settings-collaborator":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-dashboard":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-forgot-password-collaborator":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-forgot-password-admin":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-admin-added-sucessfully-hr":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-sign-up-admin":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-sign-in-admin":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-help-admin":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-settings-admin":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-remove-user":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-add-user":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-sign-up-company":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-full-reports-collaborators":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-collaborator-info":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-company-info":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-profile-admin":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/pt-reports-admin":
+        title = "";
+        metaDescription = "";
+        break;
     }
 
     if (title) {
@@ -156,11 +265,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<ChooseThe3TypesUser />} />
+            <Route path="/" element={<ChooseThe3TypesUser />} />
       <Route path="/sign-in-collaborator" element={<SignInCollaborator />} />
       <Route path="/reports-collaborator" element={<ReportsCollaborator />} />
       <Route path="/profile-collaborator" element={<ProfileCollaborator />} />
-      <Route path="/timeline" element={<Timeline />} />
       <Route path="/help-collaborator" element={<HelpCollaborator />} />
       <Route path="/settings-collaborator" element={<SettingsCollaborator />} />
       <Route path="/dashboard" element={<Dashboard />} />
@@ -189,6 +297,42 @@ function App() {
       <Route path="/company-info" element={<CompanyInfo />} />
       <Route path="/profile-admin" element={<ProfileADMIN />} />
       <Route path="/reports-admin" element={<ReportsAdmin />} />
+
+
+
+                  <Route path="/pt-main" element={<PTChooseThe3TypesUser />} />
+      <Route path="/pt-sign-in-collaborator" element={<PTSignInCollaborator />} />
+      <Route path="/pt-reports-collaborator" element={<PTReportsCollaborator />} />
+      <Route path="/pt-profile-collaborator" element={<PTProfileCollaborator />} />
+      <Route path="/pt-help-collaborator" element={<PTHelpCollaborator />} />
+      <Route path="/pt-settings-collaborator" element={<PTSettingsCollaborator />} />
+      <Route path="/pt-dashboard" element={<PTDashboard />} />
+      <Route
+        path="/pt-forgot-password-collaborator"
+        element={<PTForgotPasswordCollaborator />}
+      />
+      <Route path="/pt-forgot-password-admin" element={<PTForgotPasswordADMIN />} />
+      <Route
+        path="/pt-admin-added-sucessfully-hr"
+        element={<PTAdminAddedSucessfullyHR />}
+      />
+      <Route path="/pt-sign-up-admin" element={<PTSignUpAdmin />} />
+      <Route path="/pt-sign-in-admin" element={<PTSignInAdmin />} />
+      <Route path="/pt-help-admin" element={<PTHelpADMIN />} />
+      <Route path="/pt-settings-admin" element={<PTSettingsADMIN />} />
+      <Route path="/pt-remove-user" element={<PTRemoveUser />} />
+      <Route path="/pt-add-user" element={<PTAddUser />} />
+      <Route path="/pt-sign-up-company" element={<PTSignUpCompany />} />
+
+      
+      <Route
+        path="/pt-full-reports-collaborators"
+        element={<PTFullReportsCollaborators />}
+      />
+      <Route path="/pt-collaborator-info" element={<PTCollaboratorInfo />} />
+      <Route path="/pt-company-info" element={<PTCompanyInfo />} />
+      <Route path="/pt-profile-admin" element={<PTProfileADMIN />} />
+
     </Routes>
   );
 }
