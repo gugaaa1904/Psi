@@ -34,7 +34,7 @@ const ApexChart = () => {
       curve: "straight",
     },
     title: {
-      text: "Daily Activity",
+      text: "Atividade Diária",
       align: "center",
       style: {
         fontSize: "18px", // Adjust font size
@@ -85,7 +85,7 @@ const ApexChart = () => {
       // Atualiza o estado da série com os dados do servidor
       setSeries([
         {
-          name: "Consuming",
+          name: "Consumo",
           data: dataFromServer.map((item) =>
             parseFloat((item.DAILY_USAGE * item.TARIFF ).toFixed(1))
           ), // Arredonda para a primeira casa decimal
@@ -138,12 +138,12 @@ class ApexChartClass extends Component {
     this.state = {
       series: [
         {
-          name: "Consuming",
+          name: "Consumo",
           data: [],
           color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
-          name: "Plafond based on Contract",
+          name: "Plafond com base no Contrato",
           data: [],
           color: "rgb(58, 207, 108)", // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
@@ -169,7 +169,7 @@ class ApexChartClass extends Component {
           colors: ["transparent"],
         },
         title: {
-          text: "Monthly Expenses",
+          text: "Despesas Mensais",
           align: "center",
           style: {
             fontSize: "18px", // Adjust font size
@@ -219,11 +219,11 @@ class ApexChartClass extends Component {
       this.setState({
         series: [
           {
-            name: "Consuming",
+            name: "Consumo",
             data: consumingData,
           },
           {
-            name: "Plafond based on Contract",
+            name: "Plafond com base no Contrato",
             data: plafondData,
           },
         ],
@@ -234,9 +234,18 @@ class ApexChartClass extends Component {
             categories: dataFromServer.map((item) => {
               const monthNumber = parseInt(item.MONTH_YEAR, 10);
               const monthNames = [
-                'January', 'February', 'March', 'April',
-                'May', 'June', 'July', 'August',
-                'September', 'October', 'November', 'December'
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Agosto",
+                "Setembro",
+                "Outubro",
+                "Novembro",
+                "Dezembro"
               ];
           
               return monthNames[monthNumber - 1]; // Arrays are zero-based
@@ -296,19 +305,19 @@ const Dashboard = () => {
   }, []);
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-collaborator");
+    navigate("/pt-settings-collaborator");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-collaborator");
+    navigate("/pt-help-collaborator");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-collaborator");
+    navigate("/pt-profile-collaborator");
   }, [navigate]);
 
   const onReportsContainerClick = useCallback(() => {
-    navigate("/reports-collaborator");
+    navigate("/pt-reports-collaborator");
   }, [navigate]);
 
   useEffect(() => {
@@ -397,18 +406,18 @@ const Dashboard = () => {
   };
 
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
   ];
 
   return (
@@ -454,7 +463,7 @@ const Dashboard = () => {
             <div className={styles.bigCardChild4} />
             <div className={styles.numberOfChargesMadeMonthly} style={{ maxHeight: '400px', overflowY: 'auto' }}>
               <b className={styles.numberOfCharges}>
-                Number of Charges Made Monthly
+                Número de Cobranças Realizadas Mensalmente
               </b>
               <div className={styles.line} />
 
@@ -474,7 +483,7 @@ const Dashboard = () => {
             
             <div className={styles.bigCardChild5} />
             <div className={styles.historyOfCharges} style={{ maxHeight: '400px', overflowY: 'auto' }}>
-              <b className={styles.historyOfCharges1}>History of Charges</b>
+              <b className={styles.historyOfCharges1}>Histórico de Carregamentos</b>
               <div className={styles.line} />
               <div className={styles.tuesday23Container}>
                 <ul className={styles.november5October6Septemb}>
@@ -489,7 +498,7 @@ const Dashboard = () => {
             </div>
 
 
-            <b className={styles.power1}>Energy</b>
+            <b className={styles.power1}>Energia</b>
           </div>
           <div className={styles.activity}>
             <div className={styles.bigCardChild} />
@@ -508,25 +517,25 @@ const Dashboard = () => {
             src="/notifications.svg"
             onClick={openNotifications}
           />
-          <b className={styles.dashboard1}>Dashboard</b>
+          <b className={styles.dashboard1}>Dashboards</b>
         </div>
 
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <div className={styles.settings1}>Settings</div>
+            <div className={styles.settings1}>Definições</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <div className={styles.help1}>Help</div>
+            <div className={styles.help1}>Ajuda</div>
           </div>
           <div className={styles.menu}>
             <div className={styles.profile} onClick={onProfileContainerClick}>
-              <div className={styles.reportsTexto}>Profile</div>
+              <div className={styles.reportsTexto}>Perfil</div>
             </div>
             <div className={styles.reports} onClick={onReportsContainerClick}>
-              <div className={styles.reportsTexto}>Reports</div>
+              <div className={styles.reportsTexto}>Relatórios</div>
             </div>
             <div className={styles.dashboard2}>
-              <b className={styles.dashboard3}>Dashboard</b>
+              <b className={styles.dashboard3}>Dashboards</b>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>

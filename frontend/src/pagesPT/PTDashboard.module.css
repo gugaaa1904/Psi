@@ -61,10 +61,10 @@
 
 .numberOfChargesMadeMonthly {
   position: absolute;
-  left: 410px;
+  left: 415px;
   top: 110px;
   border-radius: 8px;
-  width: 320px;
+  width: 350px;
   height: 450px;
 }
 
@@ -72,15 +72,15 @@
   position: absolute;
   font-size: 20px;
   color: #005c7d;
-  width: 200px;
-  left: 80px;
+  width: 300px;
+  left: 40px;
   top: 40px;
   text-align: center;
 }
 
 .monthlyChargesList {
   position: absolute;
-  top: 35px;
+  top: 55px;
   list-style: none;
   padding: 0;
 }
@@ -91,7 +91,7 @@
   justify-content: space-between;
   padding: 6px 0;
   font-size: 20px;
-  left: 30px;
+  left: 40px;
   top: 40px;
   width: 280px;
   border-bottom: 1px solid #ddd;
@@ -116,7 +116,7 @@
   left: 420px;
   top: -340px;
   border-radius: 8px;
-  width: 340px;
+  width: 350px;
   height: 430px;
 }
 
@@ -124,15 +124,15 @@
   position: absolute;
   font-size: 20px;
   color: #005c7d;
-  width: 200px;
-  left: 58px;
+  width: 300px;
+  left: 28px;
   top: 10px;
   text-align: center;
 }
 
 .november5October6Septemb {
   position: absolute;
-  top: 35px;
+  top: 45px;
   list-style: none;
   padding: 0;
 }
@@ -143,7 +143,7 @@
   justify-content: space-between;
   padding: 6px 0;
   font-size: 20px;
-  left: 18px;
+  left: 30px;
   width: 280px;
   border-bottom: 1px solid #ddd;
 }
@@ -729,11 +729,11 @@
 
 
 .logo1Icon {
-  position: fixed;
-  top: 2%;
-  left: 2.7%;
-  width: 7.5%;
-  height: 12%;
+  position: absolute;
+  top: 12px;
+  left: 53px;
+  width: 140px;
+  height: 100px;
   background-color: rgb(22, 128, 160);
   border-radius: 10px;
   display: flex;
@@ -747,7 +747,7 @@
 
 .dashboard,
 .sidebar {
-  height: 100%;
+  height: 1100px;
   overflow: hidden;
 }
 
@@ -757,7 +757,7 @@
   left: 0;
   background-color: rgb(22, 128, 160);
   box-shadow: 10px 10px 50px rgba(100, 116, 139, 0.04);
-  width: 13.3%;
+  width: 250px;
   font-size: var(--body-medium-regular-size);
   color: white;
 }
@@ -765,22 +765,10 @@
 .dashboard {
   position: fixed;
   background-color: var(--color-gray-100);
-  width: 100%;
+  width: 2000px;
   text-align: left;
   font-size: var(--body-small-medium-size);
   color: var(--greyscale-500);
   font-family: var(--body-medium-regular);
 }
 
-/* Responsive styles using media queries */
-@media screen and (max-width: 768px) {
-  /* Adust other styles as needed for smaller screens */
-}
-
-@media screen and (min-width: 769px) and (max-width: 1200px) {
-  /* Styles for screens with a width between 769 and 1200 pixels */
-}
-
-@media screen and (min-width: 1201px) {
-  /* Styles for screens with a width greater than 1200 pixels */
-}

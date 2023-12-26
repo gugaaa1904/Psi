@@ -39,8 +39,10 @@
 }
 .button {
   position: absolute;
-  top: 17px;
-  left: 35.5px;
+  top: 7px;
+  width: 100px;
+  text-align: center;
+  left: 16px;
   letter-spacing: 0.2px;
   line-height: 140%
 }
@@ -66,8 +68,8 @@
 .forgotPassword {
   position: absolute;
   top: 559px;
-  left: 131.5px;
-  width: 143px;
+  left: 90px;
+  width: 300px;
   height: 42px;
   text-align: right;
   font-size: var(--body-medium-regular-size);
@@ -108,7 +110,7 @@
 }
 .tittle1 {
   top: 0;
-  left: 0;
+  left: 15px;
   letter-spacing: 0.2px;
   line-height: 125%;
 }
@@ -119,15 +121,15 @@
 }
 .body1 {
   top: 42px;
-  left: 9px;
+  left: 0px;
   font-size: var(--body-medium-regular-size);
   line-height: 160%;
   color: var(--greyscale-500);
 }
 .header {
   top: 211px;
-  left: 64px;
-  width: 278px;
+  left: 40px;
+  width: 450px;
   height: 64px;
   font-size: var(--heading-h3-size);
   color: var(--greyscale-900);
