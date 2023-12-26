@@ -14,7 +14,7 @@ const ChooseThe3TypesUser = () => {
   }, [navigate]);
 
   const onEnglishContainerClick = useCallback(() => {
-    navigate("/pt-main");
+    navigate("/");
   }, [navigate]);
 
 
