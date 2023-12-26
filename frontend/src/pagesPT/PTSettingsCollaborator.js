@@ -17,7 +17,7 @@ const SettingsCollaborator = () => {
   const [message, setMessage] = useState("");
 
   const onLogoutContainerClick = useCallback(() => {
-    navigate("/");
+    navigate("/pt-main");
   }, [navigate]);
 
   const openPopUpChangePassword = useCallback(() => {
@@ -226,14 +226,14 @@ const SettingsCollaborator = () => {
               Aplicações de Terceiros: Gerencie quais aplicações de terceiros podem acessar seus dados e revogue o acesso a qualquer momento.
             </p>
             <p className={styles.yourPrivacyIs}>&nbsp;</p>
-            <p className={styles.yourPrivacyIs}>Visibility</p>
+            <p className={styles.yourPrivacyIs}>Visibilidade</p>
             <p className={styles.yourPrivacyIs}>
               Visibilidade do Perfil: Controle quem pode ver o seu perfil e as suas publicações. [Público/Apenas Amigos/Privado]
             </p>
             <p className={styles.yourPrivacyIs}>
               Indexação por Motores de Busca: Permitir que os motores de busca indexem o seu perfil? [Sim/Não]
             </p>
-            <p className={styles.yourPrivacyIs}>Privacy Policy</p>
+            <p className={styles.yourPrivacyIs}>Política de Privacidade</p>
             <p className={styles.yourPrivacyIs}>
               Revise a nossa política de privacidade para uma compreensão detalhada de como os seus dados são tratados.
             </p>
