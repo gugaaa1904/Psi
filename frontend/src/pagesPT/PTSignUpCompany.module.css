@@ -1,11 +1,11 @@
 .signIn {
   position: absolute;
-  top: 892px;
-  left: 450px;
+  top: 922px;
+  left: 400px;
   line-height: 160%;
   display: inline-block;
   color: #005c7d;
-  width: 50px;
+  width: 100px;
   height: 24px;
   cursor: pointer;
 }
@@ -15,7 +15,7 @@
 }
 .doYouAlreadyContainer {
   position: absolute;
-  top: 892px;
+  top: 922px;
   left: 220px;
   line-height: 160%;
   color: var(--greyscale-900);
@@ -26,7 +26,7 @@
 }
 .line {
   top: 9px;
-  left: -0.5px;
+  left: 10px;
   border-top: 1px solid var(--greyscale-200);
   box-sizing: border-box;
   width: 146px;
@@ -40,7 +40,7 @@
 .line1 {
   position: absolute;
   top: 9px;
-  left: 258.5px;
+  left: 298.5px;
   border-top: 1px solid var(--greyscale-200);
   box-sizing: border-box;
   width: 146px;
@@ -48,8 +48,8 @@
 }
 .orSignInWith {
   position: absolute;
-  top: 859px;
-  left: 170px;
+  top: 879px;
+  left: 150px;
   width: 404px;
   height: 19px;
   font-size: var(--body-small-medium-size);
@@ -57,13 +57,13 @@
 .button {
   position: absolute;
   top: 4px;
-  left: 26px;
+  left: 24px;
   letter-spacing: 0.2px;
   line-height: 140%;
 }
 .buttonlargeprimary {
   position: absolute;
-  top: 805px;
+  top: 831px;
   left: 316px;
   border-radius: var(--br-xs);
   background-color: #005c7d;
@@ -100,7 +100,7 @@
   left: 74px;
   line-height: 160%;
   display: inline-block;
-  width: 308px;
+  width: 350px;
 }
 
 .checkbox {
@@ -231,7 +231,7 @@ input {
 }
 .signUpYour {
   top: 10px;
-  left: 25px;
+  left: 50px;
   font-size: var(--heading-h3-size);
   letter-spacing: 0.2px;
   line-height: 125%;
@@ -240,8 +240,8 @@ input {
 .header {
   position: absolute;
   top: 177px;
-  left: 250px;
-  width: 271px;
+  left: 220px;
+  width: 400px;
   height: 64px;
   text-align: left;
 }

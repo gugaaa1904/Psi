@@ -16,7 +16,7 @@ const SignUpCompany = () => {
   });
 
   const onSignInTextClick = useCallback(() => {
-    navigate("/sign-in-admin");
+    navigate("/pt-sign-in-admin");
   }, [navigate]);
 
   const handleInputChange = (e) => {
@@ -60,11 +60,11 @@ const SignUpCompany = () => {
       .catch((error) => {
         console.error("Erro na solicitação:", error);
       });
-      navigate("/sign-in-admin");
+      navigate("/pt-sign-in-admin");
   }, [formData, navigate]);
 
   const onBackButtonClick = useCallback(() => {
-    navigate("/");
+    navigate("/pt-main");
   }, [navigate]);
 
 
@@ -82,9 +82,9 @@ const SignUpCompany = () => {
           <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         </div>
         <div className={styles.header}>
-          <b className={styles.signUpYour}>Sign Up Company</b>
+          <b className={styles.signUpYour}>Registar Empresa</b>
           <div className={styles.welcomeEnterYour}>
-            Welcome! Enter your company details
+            Bem-vindo! Insira os detalhes da sua empresa:
           </div>
         </div>
 
@@ -100,7 +100,7 @@ const SignUpCompany = () => {
           className={styles.companyName}
           name="name"
           id="company_name"
-          placeholder="Company Name"
+          placeholder="Nome da Empresa"
           type="text"
           onChange={handleInputChange}
           value={formData.name}
@@ -110,7 +110,7 @@ const SignUpCompany = () => {
           className={styles.cnpj}
           name="cnpj"
           id="cnpj"
-          placeholder="CNPJ (National Register of Legal Entities)"
+          placeholder="CNPJ (Registro Nacional de Pessoas Jurídicas)"
           type="integer"
           onChange={handleInputChange}
           value={formData.cnpj}
@@ -120,7 +120,7 @@ const SignUpCompany = () => {
           className={styles.companyEmail}
           name="email"
           id="company_email"
-          placeholder="Company Email"
+          placeholder="Email da Empresa"
           type="email"
           onChange={handleInputChange}
           value={formData.email}
@@ -130,7 +130,7 @@ const SignUpCompany = () => {
           className={styles.company_address}
           name="address"
           id="company_address"
-          placeholder="Company Address"
+          placeholder="Morada da Empresa"
           type="text"
           onChange={handleInputChange}
           value={formData.address}
@@ -140,7 +140,7 @@ const SignUpCompany = () => {
           className={styles.employeesNumber}
           name="funcs"
           id="employess_number"
-          placeholder="Employees Number"
+          placeholder="Número de Funcionários"
           type="integer"
           onChange={handleInputChange}
           value={formData.funcs}
@@ -150,7 +150,7 @@ const SignUpCompany = () => {
           className={styles.phoneNumber}
           name="telephone"
           id="phone_number"
-          placeholder="Phone Number"
+          placeholder="Telefone"
           type="integer"
           onChange={handleInputChange}
           value={formData.telephone}
@@ -163,20 +163,17 @@ const SignUpCompany = () => {
             id="terms_conditions"
             type="checkbox"
           />
-          <div className={styles.byCreatingAnContainer}>
-            <p className={styles.byCreatingAnAccountMeansY1}>
-              <span>{`By creating an account means you agree to the `}</span>
-              <span className={styles.terms}>Terms</span>
-            </p>
-            <p className={styles.conditionsAndOurPrivacyPol}>
-              <span className={styles.terms}>{`& Conditions`}</span>
-              <span className={styles.andOur}>{` and our `}</span>
-              <span className={styles.privacyPolicy}>Privacy Policy</span>
-            </p>
-          </div>
+      <div className={styles.byCreatingAnContainer}>
+        <p className={styles.byCreatingAnAccountMeansY1}>
+          <span>{`Ao criar uma conta, significa que você concorda com os `}</span>
+          <span className={styles.terms}>Termos & Condições</span>
+          <span>{` e a nossa `}</span>
+          <span className={styles.privacyPolicy}>Politica de Privacidade</span>
+        </p>
+      </div>
         </div>
 
-        <div className={styles.addYourCompany}>Add your Company Image</div>
+        <div className={styles.addYourCompany}>Adicione a sua Imagem de Perfil da Empresa</div>
         <label
           htmlFor="fileInput"
           className={styles.iconCamera}
@@ -199,24 +196,24 @@ const SignUpCompany = () => {
         />
 
         <div className={styles.buttonlargeprimary} onClick={onSignUpClick}>
-          <b className={styles.button}>Sign Up</b>
+          <b className={styles.button}>Registar</b>
         </div>
 
         <div className={styles.orSignInWith}>
           <div className={styles.line} />
-          <div className={styles.orSignIn}>Or sign in with</div>
+          <div className={styles.orSignIn}>Ou Inicie a Sessão com</div>
           <div className={styles.line1} />
         </div>
 
         <div className={styles.doYouAlreadyContainer}>
-          <span>Do you already have an account?</span>
+          <span>Já tem uma conta?</span>
           <span className={styles.span}>{` `}</span>
         </div>
 
         <b className={styles.signIn} onClick={onSignInTextClick}>
-          Sign In
+          Iniciar Sessão
         </b>
-      </div>
+        </div>
     </div>
   );
 };
