@@ -8,15 +8,15 @@ const SignInAdmin = () => {
   const [password, setPassword] = useState();
 
   const onForgotPasswordContainerClick = useCallback(() => {
-    navigate("/forgot-password-admin");
+    navigate("/pt-forgot-password-admin");
   }, [navigate]);
 
   const onForgotPasswordTextClick = useCallback(() => {
-    navigate("/forgot-password-admin");
+    navigate("/pt-forgot-password-admin");
   }, [navigate]);
 
   const onBackButtonClick = useCallback(() => {
-    navigate("/");
+    navigate("/pt-main");
   }, [navigate]);
 
 const onButtonLargePrimaryContainerClick = async () => {
@@ -78,9 +78,9 @@ const onButtonLargePrimaryContainerClick = async () => {
             <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
           </div>
           <div className={styles.header}>
-            <b className={styles.tittle}>Sign In Administrator</b>
+            <b className={styles.tittle}>Iniciar Sessão Administrador</b>
             <div className={styles.body}>
-              Welcome back! please enter your detail
+              Bem-vindo de volta ! Por favor insira os seus dados
             </div>
           </div>
           <div className={styles.input}>
@@ -96,7 +96,7 @@ const onButtonLargePrimaryContainerClick = async () => {
               className={styles.password}
               name="password"
               id="password"
-              placeholder="Password"
+              placeholder="Palavra passe"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -109,28 +109,28 @@ const onButtonLargePrimaryContainerClick = async () => {
               className={styles.forgotPassword1}
               onClick={onForgotPasswordTextClick}
             >
-              Forgot Password?
+              Esqueceu-se da palavra passe?
             </b>
           </div>
           <div
             className={styles.buttonlargeprimary}
             onClick={onButtonLargePrimaryContainerClick}
           >
-            <b className={styles.button}>Sign In</b>
+            <b className={styles.button}>Iniciar Sessão</b>
           </div>
           <b className={styles.signUp} onClick={onSignUpTextClick}>
-            Sign Up
+            Registar
           </b>
           <div className={styles.dontHaveAnContainer}>
-            <span>Don’t have an account?</span>
+            <span>Não tem uma conta?</span>
             <span className={styles.span}>{` `}</span>
           </div>
 
           <b className={styles.signUpCompany1} onClick={onSignUpCompanyClick}>
-            Sign Up Company
+            Registar Empresa
           </b>
           <div className={styles.dontHaveAContainer}>
-            <span>Don’t have a Company?</span>
+            <span>Não tem uma empresa?</span>
             <span className={styles.span}>{` `}</span>
           </div>
         </div>

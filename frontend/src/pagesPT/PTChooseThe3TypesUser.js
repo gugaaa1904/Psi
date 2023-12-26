@@ -6,11 +6,11 @@ const ChooseThe3TypesUser = () => {
   const navigate = useNavigate();
 
   const onRegularEmployeeContainerClick = useCallback(() => {
-    navigate("/sign-in-collaborator");
+    navigate("/pt-sign-in-collaborator");
   }, [navigate]);
 
   const onAdministratorContainerClick = useCallback(() => {
-    navigate("/sign-in-admin");
+    navigate("/pt-sign-in-admin");
   }, [navigate]);
 
   const onEnglishContainerClick = useCallback(() => {
@@ -37,14 +37,14 @@ const ChooseThe3TypesUser = () => {
           className={styles.regularEmployee}
           onClick={onRegularEmployeeContainerClick}
         >
-          <b className={styles.button}> Sign In Collaborator</b>
+          <b className={styles.button}> Iniciar Sessão Colaborador</b>
         </div>
 
         <div
           className={styles.administrator}
           onClick={onAdministratorContainerClick}
         >
-          <b className={styles.administrator1}>Sign In Administrator</b>
+          <b className={styles.administrator1}>Iniciar Sessão Administrador</b>
         </div>
 
         <b className={styles.areYouAn}>
@@ -52,7 +52,7 @@ const ChooseThe3TypesUser = () => {
         </b>
 
         <div className={styles.welcomePleaseSelect}>
-          To explore the app, please select how do you want to sign in:
+          Para explorar a app, por favor seleciona como quer fazer sign in:
         </div>
 
         <div className={styles.logo}>

@@ -40,8 +40,8 @@
 }
 .header {
   top: 201px;
-  left: 198px;
-  width: 300px;
+  left: 158px;
+  width: 400px;
   height: 64px;
   font-size: var(--heading-h3-size);
 }
@@ -88,8 +88,8 @@
 .forgotPassword {
   position: absolute;
   top: 489px;
-  left: 265.5px;
-  width: 143px;
+  left: 225.5px;
+  width: 300px;
   height: 42px;
   cursor: pointer;
   text-align: right;
@@ -107,10 +107,12 @@
 }
 .button {
   position: absolute;
-  top: 17px;
-  left: 35.5px;
+  top: 6px;
+  left: 14.5px;
   letter-spacing: 0.2px;
   line-height: 140%;
+  text-align: center;
+  width: 100px;
 }
 .buttonlargeprimary,
 .signUp {
@@ -129,7 +131,7 @@
 }
 .signUp {
   top: 556px;
-  left: 391px;
+  left: 371px;
   line-height: 160%;
   color: #005c7d;
   text-align: right;
