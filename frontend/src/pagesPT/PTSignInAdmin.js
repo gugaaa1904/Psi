@@ -55,11 +55,11 @@ const onButtonLargePrimaryContainerClick = async () => {
 
   
   const onSignUpTextClick = useCallback(() => {
-    navigate("/sign-up-admin");
+    navigate("/pt-sign-up-admin");
   }, [navigate]);
 
   const onSignUpCompanyClick = useCallback(() => {
-    navigate("/sign-up-company");
+    navigate("/pt-sign-up-company");
   }, [navigate]);
 
   return (

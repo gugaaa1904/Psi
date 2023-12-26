@@ -6,11 +6,11 @@ const ForgotPasswordADMIN = () => {
   const navigate = useNavigate();
 
   const onBackToSignInClick = useCallback(() => {
-    navigate("/sign-in-admin");
+    navigate("/pt-sign-in-admin");
   }, [navigate]);
 
   const onSignUpTextClick = useCallback(() => {
-    navigate("/sign-up-admin");
+    navigate("/pt-sign-up-admin");
   }, [navigate]);
 
   return (
@@ -20,31 +20,31 @@ const ForgotPasswordADMIN = () => {
           <img className={styles.logo1Icon} alt="" src="/logoinfocharge.png" />
         </div>
         <div className={styles.header}>
-          <b className={styles.resetYourPassword}>Reset your password</b>
+          <b className={styles.resetYourPassword}>Redefina sua senha</b>
           <div className={styles.enterTheEmail}>
-            Enter the email address associated with your account and we will
-            send you a link to reset your password.
+            Digite o endereço de e-mail associado à sua conta e nós enviaremos
+            um link para redefinir sua senha.
           </div>
         </div>
         <input
           className={styles.resetPassword}
           name="New Password"
           id="newpassword"
-          placeholder="Enter your new Password"
+          placeholder="Insira a sua nova palavra-passe"
           type="text"
         />
         <div className={styles.buttonContinue}>
-          <b className={styles.button}>Continue</b>
+          <b className={styles.button}>Continuar</b>
         </div>
         <div className={styles.backToSignIn} onClick={onBackToSignInClick}>
-          <b className={styles.backToSign}>Back to Sign In</b>
+          <b className={styles.backToSign}>Voltar para Iniciar Sessão</b>
         </div>
         <div className={styles.dontHaveAnContainer}>
-          <span>Don’t have an account?</span>
+          <span>Não tem uma conta?</span>
           <span className={styles.span}>{` `}</span>
         </div>
         <b className={styles.signUp} onClick={onSignUpTextClick}>
-          Sign Up
+          Registar
         </b>
       </div>
     </div>
