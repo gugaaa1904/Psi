@@ -52,6 +52,10 @@ const SettingsCollaborator = () => {
     navigate("/dashboard");
   }, [navigate]);
 
+  const onPortuguesContainerClick = useCallback(() => {
+    navigate("/pt-settings-collaborator");
+  }, [navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -139,12 +143,12 @@ const SettingsCollaborator = () => {
 
           <div className={styles.language}>
             <div className={styles.tabs}>
-              <div className={styles.tab}>
-                <div className={styles.title1}>Portuguese</div>
+              <div className={styles.portuguese} onClick={onPortuguesContainerClick}>
+                <div className={styles.portuguese1}>Português</div>
               </div>
-              <div className={styles.tab1}>
-                <div className={styles.title2}>English</div>
+              <div className={styles.english}>
               </div>
+              <div className={styles.english1}>English</div>
             </div>
           </div>
 
