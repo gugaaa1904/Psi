@@ -48,11 +48,11 @@ const ChooseThe3TypesUser = () => {
         </div>
 
         <b className={styles.areYouAn}>
-          Bem-vindo a InfoCharge ! Que Bom vê-lo aqui !
+          Bem-vindo à InfoCharge ! Que bom vê-lo aqui !
         </b>
 
         <div className={styles.welcomePleaseSelect}>
-          Para explorar a app, por favor seleciona como quer fazer sign in:
+          Para explorar a app, por favor seleciona como deseja fazer sign in:
         </div>
 
         <div className={styles.logo}>
