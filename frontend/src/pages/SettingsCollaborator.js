@@ -94,10 +94,13 @@ const SettingsCollaborator = () => {
         if (contentType && contentType.includes("application/json")) {
           const data = await response.json();
           console.log(data.status);
-          window.location.reload(); 
-          
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+
           if (data.status === "success") {
             // Realizar redirecionamento para a página desejada
+
           } else {
             // Se a resposta não for bem-sucedida, mostrar o erro
             const errorMessage = data.error || "Erro desconhecido";
