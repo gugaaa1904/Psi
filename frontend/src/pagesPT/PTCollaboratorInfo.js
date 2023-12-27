@@ -11,12 +11,12 @@ class ApexChartClass extends Component {
     this.state = {
       series: [
         {
-          name: "Expected Consume",
+          name: "Consumo Esperado",
           data: [],
           color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
-          name: "Actually Charged",
+          name: "Efetivamente Carregado",
           data: [],
           color: "rgb(58, 207, 108)", // Array dinâmico com o mesmo comprimento da série "Consuming"
         },
@@ -78,7 +78,7 @@ class ApexChartClass extends Component {
       this.setState({
         series: [
           {
-            name: "Actually Charged",
+            name: "Efetivamente Carregado",
             data: consumingData,
           },
           
@@ -140,27 +140,27 @@ const CollaboratorInfo = () => {
   const [selectedCollaborator, setSelectedCollaborator] = useState("");
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-admin");
+    navigate("/pt-settings-admin");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-admin");
+    navigate("/pt-help-admin");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-admin");
+    navigate("/pt-profile-admin");
   }, [navigate]);
 
   const onCompanyInformationContainerClick = useCallback(() => {
-    navigate("/company-info");
+    navigate("/pt-company-info");
   }, [navigate]);
 
   const onRemoveUserContainerClick = useCallback(() => {
-    navigate("/remove-user");
+    navigate("/pt-remove-user");
   }, [navigate]);
 
   const onAddUserContainerClick = useCallback(() => {
-    navigate("/add-user");
+    navigate("/pt-add-user");
   }, [navigate]);
 
   function addCollaborators(data) {
@@ -241,7 +241,7 @@ const CollaboratorInfo = () => {
       <div className={styles.content}>
         <div className={styles.header}>
           <b className={styles.collaboratorInformation}>
-            Collaborator Information
+            Informações dos Colaboradores
           </b>
         </div>
 
@@ -252,7 +252,7 @@ const CollaboratorInfo = () => {
             {maxDailyUsage && `${maxDailyUsage} kW`}
           </div>
           <img className={styles.redIcon} alt="" src="/red-icon1.svg" />
-          <div className={styles.maxPowerAchieved1}>Max Power Achieved</div>
+          <div className={styles.maxPowerAchieved1}>Potência Máxima Alcançada</div>
         </div>
         <div className={styles.minPowerAchieved}>
           <div className={styles.bg1} />
@@ -260,7 +260,7 @@ const CollaboratorInfo = () => {
           <div className={styles.data1}>
             {minDailyUsage && `${minDailyUsage} kW`}
           </div>
-          <div className={styles.minPowerAchieved1}>Min Power Achieved</div>
+          <div className={styles.minPowerAchieved1}>Potência Mínima Alcançada</div>
           <img className={styles.greenIcon} alt="" src="/green-icon.svg" />
         </div>
         <div
@@ -275,7 +275,7 @@ const CollaboratorInfo = () => {
           </div>
           <div
             className={styles.averageEnergyConsumption}
-          >{`Total Energy Consumption in kWh `}</div>
+          >{`Consumo Total de Energia em kWh `}</div>
 
           {/* Seletor para escolher entre 'monthly' e 'weekly' */}
           <select
@@ -283,21 +283,21 @@ const CollaboratorInfo = () => {
             value={selectedInterval}
             onChange={(e) => setSelectedInterval(e.target.value)}
           >
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
+            <option value="weekly">Semanal</option>
+            <option value="monthly">Mensal</option>
           </select>
         </div>
 
         <div className={styles.backgroundlist} />
         <div className={styles.generalOverview}>
-          <div className={styles.generalOverview1}>General Overview</div>
+          <div className={styles.generalOverview1}>Visão Geral</div>
         </div>
 
         <div className={styles.generalConsuming}>
           <ApexChartClass selectedCollaborator={selectedCollaborator} />
           <div className={styles.graph}>
             <div className={styles.graph1}></div>
-            <div className={styles.titlegeneral}>General Consuming</div>
+            <div className={styles.titlegeneral}>Consumo Geral</div>
             <select
               className={styles.dropdowncollaborator}
               id="collaboratorSelect"
@@ -329,7 +329,7 @@ const CollaboratorInfo = () => {
           }
         </div>
 
-        <div className={styles.averageCostIn1}>{`Total Cost in € `}</div>
+        <div className={styles.averageCostIn1}>{`Custo Total em € `}</div>
 
         {/* Seletor para escolher entre 'weekly' e 'monthly' */}
         <select
@@ -337,41 +337,41 @@ const CollaboratorInfo = () => {
           onChange={(e) => setSelectedInterval(e.target.value)}
           className={styles.monthsDropDown2}
         >
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
+          <option value="weekly">Semanal</option>
+          <option value="monthly">Mensal</option>
         </select>
       </div>
 
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <div className={styles.settings1}>Settings</div>
+          <div className={styles.settings1}>Definições</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <div className={styles.help1}>Help</div>
+          <div className={styles.help1}>Ajuda</div>
         </div>
         <div className={styles.menu}>
           <div className={styles.profile} onClick={onProfileContainerClick}>
-            <div className={styles.profile1}>Profile</div>
+            <div className={styles.profile1}>Perfil</div>
           </div>
           <div className={styles.collaboratorInformation1}>
             <b className={styles.collaboratorInformation2}>
-              Collaborator Information
+              Colaboradores
             </b>
           </div>
           <div
             className={styles.companyInformation}
             onClick={onCompanyInformationContainerClick}
           >
-            <div className={styles.profile1}>Company Information</div>
+            <div className={styles.profile1}>Empresa</div>
           </div>
           <div
             className={styles.removeUser}
             onClick={onRemoveUserContainerClick}
           >
-            <div className={styles.profile1}>Remove User</div>
+            <div className={styles.profile1}>Remover Utilizador</div>
           </div>
           <div className={styles.addUser} onClick={onAddUserContainerClick}>
-            <div className={styles.profile1}>Add User</div>
+            <div className={styles.profile1}>Adicionar Utilizador</div>
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>

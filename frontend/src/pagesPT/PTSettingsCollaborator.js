@@ -128,7 +128,7 @@ const SettingsCollaborator = () => {
           <div className={styles.contentChild} />
           <div className={styles.accessSecurity}>
             <div className={styles.divider} />
-            <div className={styles.accessSecurity1}>{`Access & Security`}</div>
+            <div className={styles.accessSecurity1}>{`Acesso & Segurança`}</div>
           </div>
 
           <div className={styles.header}>

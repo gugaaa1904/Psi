@@ -26,27 +26,27 @@ const ProfileADMIN = () => {
   };
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-admin");
+    navigate("/pt-settings-admin");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-admin");
+    navigate("/pt-help-admin");
   }, [navigate]);
 
   const onCollaboratorInformationContainerClick = useCallback(() => {
-    navigate("/collaborator-info");
+    navigate("/pt-collaborator-info");
   }, [navigate]);
 
   const onCompanyInformationContainerClick = useCallback(() => {
-    navigate("/company-info");
+    navigate("/pt-company-info");
   }, [navigate]);
 
   const onRemoveUserContainerClick = useCallback(() => {
-    navigate("/remove-user");
+    navigate("/pt-remove-user");
   }, [navigate]);
 
   const onAddUserContainerClick = useCallback(() => {
-    navigate("/add-user");
+    navigate("/pt-add-user");
   }, [navigate]);
 
   const [formData, setFormData] = useState({
@@ -56,7 +56,7 @@ const ProfileADMIN = () => {
   useEffect(() => {
     const idString = sessionStorage.getItem('admin_id');
     if(!idString){
-      navigate("/sign-in-admin")
+      navigate("/pt-sign-in-admin")
     }
     
     async function fetchData() {
@@ -103,39 +103,39 @@ const ProfileADMIN = () => {
             onChange={handleFileChange}
           />
           <label htmlFor="uploadInput" className={styles.editPhotoButton}>
-            <b className={styles.button}>Edit Photo</b>
+            <b className={styles.button}>Editar Foto</b>
           </label>
         </div>
         <div className={styles.profileInfo}>
           <div className={styles.profileInfoChild} />
           <div className={styles.fullNameContainer}>
 
-              <b className={styles.fullName}>{`Full Name : `}</b>
+              <b className={styles.fullName}>{`Nome Completo : `}</b>
               <span className={styles.josAlbertoDos}>{fullName}</span>
 
             <p className={styles.blankLine}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>
-              <b className={styles.fullName}>Age:</b>
+              <b className={styles.fullName}>Idade:</b>
               <span> {Age}</span>
             </p>
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>
-              <b>Gender:</b>
+              <b>Género:</b>
               <span className={styles.fullName}> {Gender}</span>
             </p>
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>
-              <b className={styles.fullName}>Phone Number:</b>
+              <b className={styles.fullName}>Telefone:</b>
               <span> {Phone}</span>
             </p>
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>
-              <b className={styles.fullName}>Address:</b>
+              <b className={styles.fullName}>Morada:</b>
               <span> {Address}</span>
             </p>
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
             <p className={styles.fullNameJosAlbertoDosS}>
-              <b className={styles.fullName}>Company:</b>
+              <b className={styles.fullName}>Empresa:</b>
               <span> {CompanyName}</span>
             </p>
             <p className={styles.fullNameJosAlbertoDosS}>&nbsp;</p>
@@ -152,25 +152,25 @@ const ProfileADMIN = () => {
         <img className={styles.profileIcon} alt="" src={imageBaseUrll} />
       </div>
       <div className={styles.header}>
-        <b className={styles.profile}>Profile</b>
+        <b className={styles.profile}>Perfil</b>
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <div className={styles.settings1}>Settings</div>
+          <div className={styles.settings1}>Definições</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <div className={styles.help1}>Help</div>
+          <div className={styles.help1}>Ajuda</div>
         </div>
         <div className={styles.menu}>
           <div className={styles.profile1}>
-            <b className={styles.profile2}>Profile</b>
+            <b className={styles.profile2}>Perfil</b>
           </div>
           <div
             className={styles.collaboratorInformation}
             onClick={onCollaboratorInformationContainerClick}
           >
             <div className={styles.collaboratorInformation1}>
-              Collaborator Information
+              Colaboradores
             </div>
           </div>
           <div
@@ -178,17 +178,17 @@ const ProfileADMIN = () => {
             onClick={onCompanyInformationContainerClick}
           >
             <div className={styles.collaboratorInformation1}>
-              Company Information
+              Empresa
             </div>
           </div>
           <div
             className={styles.removeUser}
             onClick={onRemoveUserContainerClick}
           >
-            <div className={styles.collaboratorInformation1}>Remove User</div>
+            <div className={styles.collaboratorInformation1}>Remover Utilizador</div>
           </div>
           <div className={styles.addUser} onClick={onAddUserContainerClick}>
-            <div className={styles.collaboratorInformation1}>Add User</div>
+            <div className={styles.collaboratorInformation1}>Adicionar Utilizador</div>
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>
