@@ -11,12 +11,12 @@ class ApexChartClass extends Component {
     this.state = {
       series: [
         {
-          name: "CO2 Savings",
+          name: "Poupanças de CO2",
           data: [],
           color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
         },
         {
-          name: "Actually Charged",
+          name: "Cobrança Efetiva",
           data: [],
           color: "rgb(58, 207, 108)",
           // Array dinâmico com o mesmo comprimento da série "Consuming"
@@ -73,8 +73,18 @@ class ApexChartClass extends Component {
       //sendo que o id é o company_id daqui -> const idString = sessionStorage.getItem('company_id');
       const dataFromServer = response.data;
       const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro"
       ];
       console.log(dataFromServer);
       // Preencher o array de Consuming multiplicando por 2.5
@@ -139,31 +149,31 @@ const CompanyInfo = () => {
   const navigate = useNavigate();
   const [averageWeeklyUsage, setAverageWeeklyUsage] = useState(null);
   const [averageMonthlyUsage, setAverageMonthlyUsage] = useState(null);
-  const [selectedOption, setSelectedOption] = useState("Weekly");
+  const [selectedOption, setSelectedOption] = useState("Semanal");
   const [tariff, settariff] = useState(null);
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-admin");
+    navigate("/pt-settings-admin");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-admin");
+    navigate("/pt-help-admin");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-admin");
+    navigate("/pt-profile-admin");
   }, [navigate]);
 
   const onCollaboratorInformationContainerClick = useCallback(() => {
-    navigate("/collaborator-info");
+    navigate("/pt-collaborator-info");
   }, [navigate]);
 
   const onRemoveUserContainerClick = useCallback(() => {
-    navigate("/remove-user");
+    navigate("/pt-remove-user");
   }, [navigate]);
 
   const onAddUserContainerClick = useCallback(() => {
-    navigate("/add-user");
+    navigate("/pt-add-user");
   }, [navigate]);
 
   useEffect(() => {
@@ -193,105 +203,99 @@ const CompanyInfo = () => {
         <div className={styles.background1} />
         <div className={styles.reductionOfCo2Emissions}>
           <div className={styles.reductionOfCo2}>
-            Reduction of CO2 Emissions
+            Redução de Emissões de CO2
           </div>
           <div className={styles.totalRevenue}>
-            The Reduction of CO2 Emissions signifies the overall decrease in the
-            amount of carbon dioxide released into the environment. On average,
-            we assume 0.245 kg of CO2 emissions per kilometer traveled by a
-            fossil-fueled car. An electric car might need approximately 0.2 kWh
-            of electricity to travel 1 kilometer.
+            A redução das emissões de CO2 significa a diminuição global da quantidade de dióxido de carbono libertado para o ambiente. Em média, assumimos 0,245 kg de emissões de CO2 por quilómetro percorrido por um carro a combustíveis fósseis. Um carro elétrico pode precisar aproximadamente de 0,2 kWh de eletricidade para percorrer 1 quilómetro.
           </div>
           <ApexChartClass />
         </div>
         <div className={styles.background3} />
         <div className={styles.totalSpendingsIn}>
           <div className={styles.value}>
-            {selectedOption === "Weekly" &&
+            {selectedOption === "Semanal" &&
               averageWeeklyUsage &&
               tariff &&
               `${(averageWeeklyUsage * tariff).toFixed(1)} €`}
 
-            {selectedOption === "Monthly" &&
+            {selectedOption === "Mensal" &&
               averageMonthlyUsage &&
               tariff &&
               `${(averageMonthlyUsage * tariff).toFixed(1)} €`}
           </div>
           <div
             className={styles.text}
-          >{`The Total Spendings in euros (€) represent the cumulative sum of all expenditures incurred by various collaborators within the company. `}</div>
-          <div className={styles.totalSpendingsIn1}>Total Spendings in €</div>
+          >{`Os Gastos Totais em euros (€) representam a soma acumulativa de todas as despesas incorridas por vários colaboradores dentro da empresa. `}</div>
+          <div className={styles.totalSpendingsIn1}>Gastos Totais em €</div>
           <select
             className={styles.monthsDropDown}
             id="select_weekly_monthly"
             onChange={(e) => setSelectedOption(e.target.value)}
             value={selectedOption}
           >
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly">Monthly</option>
+            <option value="Semanal">Semanal</option>
+            <option value="Mensal">Mensal</option>
           </select>
         </div>
         <div className={styles.background2} />
         <div className={styles.totalConsumedInKwh}>
           <div className={styles.kwh}>
-            {selectedOption === "Weekly" &&
+            {selectedOption === "Semanal" &&
               averageWeeklyUsage &&
               `${averageWeeklyUsage} kWh`}
-            {selectedOption === "Monthly" &&
+            {selectedOption === "Mensal" &&
               averageMonthlyUsage &&
               `${averageMonthlyUsage} kWh`}
           </div>
           <div className={styles.text}>
-            The Total Energy Consumed in kilowatt-hours (kWh) is the sum of
-            energy consumed by all individuals or entities associated with the
-            company.
+            A Energia Total Consumida em quilowatt-horas (kWh) é a soma da energia consumida por todas as pessoas ou entidades associadas à empresa.
           </div>
-          <div className={styles.totalConsumedIn}>Total Consumed in kWh</div>
+          <div className={styles.totalConsumedIn}>Total Consumido em kWh</div>
           <select
             className={styles.monthsDropDown}
             id="select_weekly_monthly"
             onChange={(e) => setSelectedOption(e.target.value)}
             value={selectedOption}
           >
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly">Monthly</option>
+            <option value="Semanal">Semanal</option>
+            <option value="Mensal">Mensal</option>
           </select>
         </div>
         <div className={styles.header}>
-          <div className={styles.generalOverview}>Company Information</div>
+          <div className={styles.generalOverview}>Informações da Empresa</div>
         </div>
       </div>
       <div className={styles.header1}>
-        <b className={styles.companyInformation}>Company Information</b>
+        <b className={styles.companyInformation}>Informações da Empresa</b>
       </div>
       <div className={styles.sidebar}>
         <div className={styles.settings} onClick={onSettingsContainerClick}>
-          <div className={styles.settings1}>Settings</div>
+          <div className={styles.settings1}>Definições</div>
         </div>
         <div className={styles.help} onClick={onHelpContainerClick}>
-          <div className={styles.help1}>Help</div>
+          <div className={styles.help1}>Ajuda</div>
         </div>
         <div className={styles.menu}>
           <div className={styles.profile} onClick={onProfileContainerClick}>
-            <div className={styles.profile1}>Profile</div>
+            <div className={styles.profile1}>Perfil</div>
           </div>
           <div
             className={styles.collaboratorInformation}
             onClick={onCollaboratorInformationContainerClick}
           >
-            <div className={styles.profile1}>Collaborator Information</div>
+            <div className={styles.profile1}>Colaboradores</div>
           </div>
           <div className={styles.companyInformation1}>
-            <b className={styles.companyInformation2}>Company Information</b>
+            <b className={styles.companyInformation2}>Empresa</b>
           </div>
           <div
             className={styles.removeUser}
             onClick={onRemoveUserContainerClick}
           >
-            <div className={styles.profile1}>Remove User</div>
+            <div className={styles.profile1}>Remover Utilizador</div>
           </div>
           <div className={styles.addUser} onClick={onAddUserContainerClick}>
-            <div className={styles.profile1}>Add User</div>
+            <div className={styles.profile1}>Adicionar Utilizador</div>
           </div>
           <b className={styles.menu1}>MENU</b>
         </div>

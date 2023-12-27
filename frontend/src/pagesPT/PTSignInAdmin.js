@@ -41,7 +41,7 @@ const onButtonLargePrimaryContainerClick = async () => {
       sessionStorage.setItem('admin_id', JSON.stringify(data.id));
       sessionStorage.setItem('company_id', JSON.stringify(data.company));
       // Credenciais válidas, redirecionar para company-info
-      navigate("/company-info");
+      navigate("/pt-company-info");
     } else {
       // Se a resposta não for bem-sucedida, mostrar o erro
       const errorMessage = data.error || "Erro desconhecido";

@@ -18,27 +18,27 @@ const RemoveUser = () => {
   }, []);
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-admin");
+    navigate("/pt-settings-admin");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-admin");
+    navigate("/pt-help-admin");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-admin");
+    navigate("/pt-profile-admin");
   }, [navigate]);
 
   const onCollaboratorInformationContainerClick = useCallback(() => {
-    navigate("/collaborator-info");
+    navigate("/pt-collaborator-info");
   }, [navigate]);
 
   const onCompanyInformationContainerClick = useCallback(() => {
-    navigate("/company-info");
+    navigate("/pt-company-info");
   }, [navigate]);
 
   const onAddUserContainerClick = useCallback(() => {
-    navigate("/add-user");
+    navigate("/pt-add-user");
   }, [navigate]);
 
   const handleRemoveUser = useCallback(async () => {
@@ -67,13 +67,13 @@ const RemoveUser = () => {
         <div className={styles.content}>
           <div className={styles.contentChild} />
           <div className={styles.removeUserButton} onClick={handleRemoveUser}>
-            <b className={styles.removeUser1}>Remove User</b>
+            <b className={styles.removeUser1}>Remover Utilizador</b>
           </div>
           <input
             className={styles.name}
             name="Admin Name"
             id="admin_name"
-            placeholder="Name"
+            placeholder="Nome"
             type="text"
           />
           <input
@@ -84,40 +84,40 @@ const RemoveUser = () => {
             type="email"
           />
           <div className={styles.enterTheFields}>
-            Enter the fields below to remove a user:
+            Introduza os campos abaixo para remover um utilizador:
           </div>
         </div>
         <div className={styles.header}>
-          <b className={styles.removeUser2}>Remove User</b>
+          <b className={styles.removeUser2}>Remover Utilizador</b>
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <div className={styles.settings1}>Settings</div>
+            <div className={styles.settings1}>Definições</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <div className={styles.help1}>Help</div>
+            <div className={styles.help1}>Ajuda</div>
           </div>
           <div className={styles.menu}>
             <div className={styles.profile} onClick={onProfileContainerClick}>
-              <div className={styles.profile1}>Profile</div>
+              <div className={styles.profile1}>Perfil</div>
             </div>
             <div
               className={styles.collaboratorInformation}
               onClick={onCollaboratorInformationContainerClick}
             >
-              <div className={styles.profile1}>Collaborator Information</div>
+              <div className={styles.profile1}>Colaboradores</div>
             </div>
             <div
               className={styles.companyInformation}
               onClick={onCompanyInformationContainerClick}
             >
-              <div className={styles.profile1}>Company Information</div>
+              <div className={styles.profile1}>Empresa</div>
             </div>
             <div className={styles.removeUser3}>
-              <b className={styles.removeUser4}>Remove User</b>
+              <b className={styles.removeUser4}>Remover Utilizador</b>
             </div>
             <div className={styles.addUser} onClick={onAddUserContainerClick}>
-              <div className={styles.profile1}>Add User</div>
+              <div className={styles.profile1}>Adicionar Utilizador</div>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>

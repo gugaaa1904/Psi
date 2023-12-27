@@ -9,7 +9,7 @@ const SignInCollaborator = () => {
   const [password, setPassword] = useState();
 
   const onBackButtonClick = useCallback(() => {
-    navigate("/");
+    navigate("/pt-main");
   }, [navigate]);
 
   const onButtonLargePrimaryContainerClick = async () => {

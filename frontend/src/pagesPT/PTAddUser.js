@@ -68,27 +68,27 @@ const AddUser = () => {
 
 
   const onSettingsContainerClick = useCallback(() => {
-    navigate("/settings-admin");
+    navigate("/pt-settings-admin");
   }, [navigate]);
 
   const onHelpContainerClick = useCallback(() => {
-    navigate("/help-admin");
+    navigate("/pt-help-admin");
   }, [navigate]);
 
   const onProfileContainerClick = useCallback(() => {
-    navigate("/profile-admin");
+    navigate("/pt-profile-admin");
   }, [navigate]);
 
   const onCollaboratorInformationContainerClick = useCallback(() => {
-    navigate("/collaborator-info");
+    navigate("/pt-collaborator-info");
   }, [navigate]);
 
   const onCompanyInformationContainerClick = useCallback(() => {
-    navigate("/company-info");
+    navigate("/pt-company-info");
   }, [navigate]);
 
   const onRemoveUserContainerClick = useCallback(() => {
-    navigate("/remove-user");
+    navigate("/pt-remove-user");
   }, [navigate]);
 
   return (
@@ -97,13 +97,13 @@ const AddUser = () => {
         <div className={styles.content}>
           <div className={styles.contentChild} />
           <div className={styles.enterTheFields}>
-            Enter the fields below to add a new user:
+            Introduza os campos abaixo para adicionar um novo utilizador:
           </div>
           <input
             className={styles.name}
             name="name"
             id="name"
-            placeholder="Name"
+            placeholder="Nome"
             type="text"
             onChange={handleInputChange}
             value={formData.name}
@@ -121,7 +121,7 @@ const AddUser = () => {
             className={styles.password}
             name="password"
             id="password"
-            placeholder="Password"
+            placeholder="Palavra-passe"
             type="password"
             onChange={handleInputChange}
             value={formData.password}
@@ -130,7 +130,7 @@ const AddUser = () => {
             className={styles.adress}
             name="address"
             id="address"
-            placeholder="Address"
+            placeholder="Morada"
             type="text"
             onChange={handleInputChange}
             value={formData.address}
@@ -139,7 +139,7 @@ const AddUser = () => {
             className={styles.phoneNumber}
             name="phone"
             id="phone"
-            placeholder="Phone Number"
+            placeholder="Telefone"
             type="integer"
             onChange={handleInputChange}
             value={formData.phone}
@@ -152,28 +152,28 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.gender}
           >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
+            <option value="Male">Masculino</option>
+            <option value="Female">Feminino</option>
+            <option value="Other">Outro</option>
           </select>
           <input
             className={styles.age}
             name="age"
             id="age"
-            placeholder="Age"
+            placeholder="Idade"
             type="integer"
             onChange={handleInputChange}
             value={formData.age}
           />
 
-          <div className={styles.contractOfThis}>Contract of this User</div>
+          <div className={styles.contractOfThis}>Contrato deste Utilizador</div>
         </div>
 
         <input
           className={styles.startDate}
           name="start_date"
           id="start_date"
-          placeholder="Start Date"
+          placeholder="Data de Início"
           type="date"
           onChange={handleInputChange}
           value={formData.start_date}
@@ -183,7 +183,7 @@ const AddUser = () => {
           className={styles.endDate}
           name="end_date"
           id="end_date"
-          placeholder="End Date"
+          placeholder="Data de Término"
           type="date"
           onChange={handleInputChange}
           value={formData.end_date}
@@ -202,7 +202,7 @@ const AddUser = () => {
           className={styles.tariff}
           name="tariff"
           id="tariff"
-          placeholder="Tariff"
+          placeholder="Tarifa"
           type="text"
           onChange={handleInputChange}
           value={formData.tariff}
@@ -212,7 +212,7 @@ const AddUser = () => {
           className={styles.emailplug}
           name="emailplug"
           id="emailplug"
-          placeholder="Email of Tapo Account"
+          placeholder="Email da Conta Tapo"
           type="text"
           onChange={handleInputChange}
           value={formData.emailplug}
@@ -222,7 +222,7 @@ const AddUser = () => {
           className={styles.passwordplug}
           name="passwordplug"
           id="passwordplug"
-          placeholder="Password of Tapo Account"
+          placeholder="Palavra-passe da Conta Tapo"
           type="text"
           onChange={handleInputChange}
           value={formData.passwordplug}
@@ -232,7 +232,7 @@ const AddUser = () => {
           className={styles.ipplug}
           name="ipplug"
           id="ipplug"
-          placeholder="IP of Tapo Plug"
+          placeholder="IP da Tomada Tapo"
           type="text"
           onChange={handleInputChange}
           value={formData.ipplug}
@@ -243,44 +243,44 @@ const AddUser = () => {
           autoFocus={true}
           onClick={onAddUserClick}
         >
-          <b className={styles.createNewUser}>Create New User</b>
+          <b className={styles.createNewUser}>Criar Utilizador</b>
         </button>
 
         <div className={styles.header}>
           <div className={styles.line} />
-          <b className={styles.addUser1}>Add User</b>
+          <b className={styles.addUser1}>Adicionar Utilizador</b>
         </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
-            <div className={styles.settings1}>Settings</div>
+            <div className={styles.settings1}>Definições</div>
           </div>
           <div className={styles.help} onClick={onHelpContainerClick}>
-            <div className={styles.help1}>Help</div>
+            <div className={styles.help1}>Ajuda</div>
           </div>
           <div className={styles.menu}>
             <div className={styles.profile} onClick={onProfileContainerClick}>
-              <div className={styles.profile1}>Profile</div>
+              <div className={styles.profile1}>Perfil</div>
             </div>
             <div
               className={styles.collaboratorInformation}
               onClick={onCollaboratorInformationContainerClick}
             >
-              <div className={styles.profile1}>Collaborator Information</div>
+              <div className={styles.profile1}>Colaboradores</div>
             </div>
             <div
               className={styles.companyInformation}
               onClick={onCompanyInformationContainerClick}
             >
-              <div className={styles.profile1}>Company Information</div>
+              <div className={styles.profile1}>Empresa</div>
             </div>
             <div
               className={styles.removeUser}
               onClick={onRemoveUserContainerClick}
             >
-              <div className={styles.profile1}>Remove User</div>
+              <div className={styles.profile1}>Remover Utilizador</div>
             </div>
             <div className={styles.addUser2}>
-              <b className={styles.addUser3}>Add User</b>
+              <b className={styles.addUser3}>Adicionar Utilizador</b>
             </div>
             <b className={styles.menu1}>MENU</b>
           </div>

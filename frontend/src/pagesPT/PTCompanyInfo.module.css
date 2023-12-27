@@ -61,7 +61,7 @@
 .totalRevenue {
   position: absolute;
   width: 640px;
-  top: 140px;
+  top: 120px;
   left: 6.9%;
   line-height: 32px;
   display: inline-block;
@@ -165,12 +165,12 @@
 
 .totalConsumedIn {
   position: absolute;
-  width: 300px;
+  width: 400px;
   line-height: 32px;
   display: inline-block;
   height: 40px;
   top: 50px;
-  left: 180px;
+  left: 160px;
   font-size: 25px;
   font-weight: 600;
   height: 33px;
