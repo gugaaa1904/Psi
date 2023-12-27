@@ -1,8 +1,9 @@
-import { useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
+
 
 
 const AddUser = () => {
@@ -28,6 +29,15 @@ const AddUser = () => {
     ipplug: "",
   });
 
+
+  const openPopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(true);
+  }, []);
+
+  const closePopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(false);
+  }, []);
+
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
     console.log(formData);
@@ -40,15 +50,19 @@ const AddUser = () => {
       body: new URLSearchParams(formData),
     })
       .then((response) => response.json())
-      .then((data) => {
+            .then((data) => {
         // Lógica para lidar com a resposta do backend
         console.log(data);
-        // If the response indicates success, open the PopUpAddCollaborator
+        // Se a resposta indicar sucesso, abre o popup
+        if (data.status === "success") {
+          openPopUpAddCollaborator();
+          // Configura um temporizador para fechar o popup após 3 segundos
+        }
       })
       .catch((error) => {
         console.error("Erro na solicitação:", error);
       });
-  }, [formData]);
+  }, [formData, openPopUpAddCollaborator, closePopUpAddCollaborator]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -58,13 +72,6 @@ const AddUser = () => {
     }));
   };
 
-  const openPopUpAddCollaborator = useCallback(() => {
-    setPopUpAddCollaboratorOpen(true);
-  }, []);
-
-  const closePopUpAddCollaborator = useCallback(() => {
-    setPopUpAddCollaboratorOpen(false);
-  }, []);
 
 
   const onSettingsContainerClick = useCallback(() => {
@@ -245,10 +252,19 @@ const AddUser = () => {
         <button
           className={styles.createNewUserButton}
           autoFocus={true}
-          onClick={onAddUserClick}
+          onClick={() => {
+            onAddUserClick();
+            openPopUpAddCollaborator();
+            setTimeout(() => {
+            closePopUpAddCollaborator();
+            // Realiza o refresh da página
+            window.location.reload();
+          }, 3000);
+          }}
         >
           <b className={styles.createNewUser}>Create New User</b>
         </button>
+
 
         <div className={styles.header}>
           <div className={styles.line} />

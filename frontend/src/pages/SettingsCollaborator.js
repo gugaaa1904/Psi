@@ -94,9 +94,13 @@ const SettingsCollaborator = () => {
         if (contentType && contentType.includes("application/json")) {
           const data = await response.json();
           console.log(data.status);
+
+
           setTimeout(() => {
             window.location.reload();
           }, 3000);
+
+          
 
           if (data.status === "success") {
             // Realizar redirecionamento para a página desejada
