@@ -94,16 +94,15 @@ const SettingsCollaborator = () => {
         if (contentType && contentType.includes("application/json")) {
           const data = await response.json();
           console.log(data.status);
-
+          window.location.reload(); 
+          
           if (data.status === "success") {
             // Realizar redirecionamento para a página desejada
-            navigate("/dashboard");
           } else {
             // Se a resposta não for bem-sucedida, mostrar o erro
             const errorMessage = data.error || "Erro desconhecido";
             console.error("Erro ao alterar a senha", errorMessage);
             setMessage(errorMessage);
-            navigate("/dashboard");
           }
         } else {
           // Conteúdo não é JSON válido
@@ -186,9 +185,10 @@ const SettingsCollaborator = () => {
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
-              <button type="submit" className={styles.changeButton}>
-                <b className={styles.button1}>Change</b>
-              </button>
+
+            <button type="submit" className={styles.changeButton} onClick={openPopUpChangePassword}>
+              <b className={styles.button1}>Change</b>
+            </button>
 
 
             {/* Exibe mensagens de erro/sucesso */}

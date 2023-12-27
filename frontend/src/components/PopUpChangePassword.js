@@ -1,6 +1,6 @@
 import styles from "./PopUpChangePassword.module.css";
 
-const PopUpChangePassword = ({ onClose }) => {
+const PopUpChangePassword = () => {
   return (
     <div className={styles.popUpChangePassword}>
       <img className={styles.dangerSquareIcon} alt="" src="/dangersquare.svg" />

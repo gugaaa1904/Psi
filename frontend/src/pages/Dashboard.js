@@ -7,9 +7,6 @@ import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
-
-
 const ApexChart = () => {
   const [series, setSeries] = useState([
     {

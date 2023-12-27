@@ -33,15 +33,19 @@
   box-sizing: border-box;
 }
 
-.alertExcessiveUse,
 .dangerSquareIcon {
   position: relative;
   width: 24px;
   height: 24px;
-  top: 5px;
+  top: 0px;
 }
 
 .alertExcessiveUse {
+  position: absolute;
+  width: 20px;
+  height: 24px;
+  top: 6.5px;
+  left: 50px;
   letter-spacing: 0.2px;
   line-height: 150%;
   display: inline-block;
@@ -56,7 +60,7 @@
   position: relative;
   border-radius: var(--br-3xs);
   border: 1px solid var(--color-steelblue-100);
-  width: 100%;
+  width: 380px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -67,13 +71,13 @@
 
 .message1 {
   top: 40px;
-  left: 4px;
+  left: 8px;
   
 }
 
 .message2 {
-  top: 60px;
-  left: 4px;
+  top: 50px;
+  left: 8px;
 }
 
 .notifications {
