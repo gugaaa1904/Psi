@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import PopUpChangePassword from "../componentsPT/PTPopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
-import Notifications from "../components/Notifications";
+import Notifications from "../componentsPT/PTNotifications";
 import { useNavigate } from "react-router-dom";
 import styles from "./PTSettingsCollaborator.module.css";
 

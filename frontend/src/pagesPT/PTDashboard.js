@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, Component } from "react";
-import Notifications from "../components/Notifications";
+import Notifications from "../componentsPT/PTNotifications";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./PTDashboard.module.css";
