@@ -1,15 +1,21 @@
-.aNewUser,
-.dangerSquareIcon {
+.aNewUser {
   position: absolute;
+  top: 42%;
+  left: 25%;
   width: 24px;
   height: 24px;
-}
-
-.aNewUser {
   letter-spacing: 0.2px;
   line-height: 150%;
   display: inline-block;
   width: 256px;
+}
+
+.dangerSquareIcon {
+  position: absolute;
+  top: 40%;
+  left: 15%;
+  width: 24px;
+  height: 24px;
 }
 
 .popUpAddUser {
@@ -20,8 +26,8 @@
   box-sizing: border-box;
   width: 334px;
   height: 155px;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: 43%;
   font-size: var(--body-medium-regular-size);
   color: var(--color-steelblue-100);
   font-family: var(--body-medium-regular);

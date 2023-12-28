@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
+import CollaboratorAddedSucessfullyHR from "../components/PopUpAddUser";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
@@ -254,11 +254,11 @@ const AddUser = () => {
           onClick={() => {
             onAddUserClick();
             openPopUpAddCollaborator();
-            /*setTimeout(() => {
+            setTimeout(() => {
             closePopUpAddCollaborator();
             // Realiza o refresh da página
             window.location.reload();
-          }, 3000);*/
+          }, 3000);
           }}
         >
           <b className={styles.createNewUser}>Create New User</b>
