@@ -20,7 +20,7 @@ const PopUpAddUser = () => {
       <img className={styles.dangerSquareIcon} alt="" src="/dangersquare.svg" />
       <b className={styles.aNewUser}>A New user has been Added</b>
     </div>
-  ): null;
+  ) : null
 };
 
 export default PopUpAddUser;
