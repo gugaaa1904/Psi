@@ -55,14 +55,13 @@ const AddUser = () => {
         console.log(data);
         // Se a resposta indicar sucesso, abre o popup
         if (data.status === "success") {
-          openPopUpAddCollaborator();
           // Configura um temporizador para fechar o popup após 3 segundos
         }
       })
       .catch((error) => {
         console.error("Erro na solicitação:", error);
       });
-  }, [formData, openPopUpAddCollaborator, closePopUpAddCollaborator]);
+  }, [formData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -255,11 +254,11 @@ const AddUser = () => {
           onClick={() => {
             onAddUserClick();
             openPopUpAddCollaborator();
-            setTimeout(() => {
+            /*setTimeout(() => {
             closePopUpAddCollaborator();
             // Realiza o refresh da página
             window.location.reload();
-          }, 3000);
+          }, 3000);*/
           }}
         >
           <b className={styles.createNewUser}>Create New User</b>
