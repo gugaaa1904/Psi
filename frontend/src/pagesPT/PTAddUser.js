@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import CollaboratorAddedSucessfullyHR from "../components/CollaboratorAddedSucessfullyHR";
+import { useEffect, useState, useCallback } from "react";
+import CollaboratorAddedSucessfullyHR from "../componentsPT/PTPopUpAddUser";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./PTAddUser.module.css";

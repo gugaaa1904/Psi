@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import PopUpChangePassword from "../components/PopUpChangePassword";
+import PopUpChangePassword from "../componentsPT/PTPopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
 import Notifications from "../components/Notifications";
 import { useNavigate } from "react-router-dom";

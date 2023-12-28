@@ -14,7 +14,6 @@ import SettingsCollaborator from "./pages/SettingsCollaborator";
 import Dashboard from "./pages/Dashboard";
 import ForgotPasswordCollaborator from "./pages/ForgotPasswordCollaborator";
 import ForgotPasswordADMIN from "./pages/ForgotPasswordADMIN";
-import AdminAddedSucessfullyHR from "./pages/AdminAddedSucessfullyHR";
 import SignUpAdmin from "./pages/SignUpAdmin";
 import SignInAdmin from "./pages/SignInAdmin";
 import HelpADMIN from "./pages/HelpADMIN";
@@ -22,7 +21,6 @@ import SettingsADMIN from "./pages/SettingsADMIN";
 import RemoveUser from "./pages/RemoveUser";
 import AddUser from "./pages/AddUser";
 import SignUpCompany from "./pages/SignUpCompany";
-import FullReportsCollaborators from "./pages/FullReportsCollaborators";
 import CollaboratorInfo from "./pages/CollaboratorInfo";
 import CompanyInfo from "./pages/CompanyInfo";
 import ProfileADMIN from "./pages/ProfileADMIN";
@@ -37,7 +35,6 @@ import PTSettingsCollaborator from "./pagesPT/PTSettingsCollaborator";
 import PTDashboard from "./pagesPT/PTDashboard";
 import PTForgotPasswordCollaborator from "./pagesPT/PTForgotPasswordCollaborator";
 import PTForgotPasswordADMIN from "./pagesPT/PTForgotPasswordADMIN";
-import PTAdminAddedSucessfullyHR from "./pagesPT/PTAdminAddedSucessfullyHR";
 import PTSignUpAdmin from "./pagesPT/PTSignUpAdmin";
 import PTSignInAdmin from "./pagesPT/PTSignInAdmin";
 import PTHelpADMIN from "./pagesPT/PTHelpADMIN";
@@ -45,7 +42,6 @@ import PTSettingsADMIN from "./pagesPT/PTSettingsADMIN";
 import PTRemoveUser from "./pagesPT/PTRemoveUser";
 import PTAddUser from "./pagesPT/PTAddUser";
 import PTSignUpCompany from "./pagesPT/PTSignUpCompany";
-import PTFullReportsCollaborators from "./pagesPT/PTFullReportsCollaborators";
 import PTCollaboratorInfo from "./pagesPT/PTCollaboratorInfo";
 import PTCompanyInfo from "./pagesPT/PTCompanyInfo";
 import PTProfileADMIN from "./pagesPT/PTProfileADMIN";
@@ -104,10 +100,7 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/admin-added-sucessfully-hr":
-        title = "";
-        metaDescription = "";
-        break;
+
       case "/sign-up-admin":
         title = "";
         metaDescription = "";
@@ -136,10 +129,7 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/full-reports-collaborators":
-        title = "";
-        metaDescription = "";
-        break;
+
       case "/collaborator-info":
         title = "";
         metaDescription = "";
@@ -195,10 +185,7 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/pt-admin-added-sucessfully-hr":
-        title = "";
-        metaDescription = "";
-        break;
+
       case "/pt-sign-up-admin":
         title = "";
         metaDescription = "";
@@ -227,10 +214,7 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/pt-full-reports-collaborators":
-        title = "";
-        metaDescription = "";
-        break;
+
       case "/pt-collaborator-info":
         title = "";
         metaDescription = "";
@@ -277,10 +261,6 @@ function App() {
         element={<ForgotPasswordCollaborator />}
       />
       <Route path="/forgot-password-admin" element={<ForgotPasswordADMIN />} />
-      <Route
-        path="/admin-added-sucessfully-hr"
-        element={<AdminAddedSucessfullyHR />}
-      />
       <Route path="/sign-up-admin" element={<SignUpAdmin />} />
       <Route path="/sign-in-admin" element={<SignInAdmin />} />
       <Route path="/help-admin" element={<HelpADMIN />} />
@@ -289,10 +269,7 @@ function App() {
       <Route path="/add-user" element={<AddUser />} />
       <Route path="/sign-up-company" element={<SignUpCompany />} />
 
-      <Route
-        path="/full-reports-collaborators"
-        element={<FullReportsCollaborators />}
-      />
+      
       <Route path="/collaborator-info" element={<CollaboratorInfo />} />
       <Route path="/company-info" element={<CompanyInfo />} />
       <Route path="/profile-admin" element={<ProfileADMIN />} />
@@ -312,10 +289,7 @@ function App() {
         element={<PTForgotPasswordCollaborator />}
       />
       <Route path="/pt-forgot-password-admin" element={<PTForgotPasswordADMIN />} />
-      <Route
-        path="/pt-admin-added-sucessfully-hr"
-        element={<PTAdminAddedSucessfullyHR />}
-      />
+
       <Route path="/pt-sign-up-admin" element={<PTSignUpAdmin />} />
       <Route path="/pt-sign-in-admin" element={<PTSignInAdmin />} />
       <Route path="/pt-help-admin" element={<PTHelpADMIN />} />
@@ -324,11 +298,7 @@ function App() {
       <Route path="/pt-add-user" element={<PTAddUser />} />
       <Route path="/pt-sign-up-company" element={<PTSignUpCompany />} />
 
-      
-      <Route
-        path="/pt-full-reports-collaborators"
-        element={<PTFullReportsCollaborators />}
-      />
+
       <Route path="/pt-collaborator-info" element={<PTCollaboratorInfo />} />
       <Route path="/pt-company-info" element={<PTCompanyInfo />} />
       <Route path="/pt-profile-admin" element={<PTProfileADMIN />} />

@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import PopUpChangePassword from "../components/PopUpChangePassword";
+import PopUpChangePassword from "../componentsPT/PTPopUpChangePassword";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./PTSettingsADMIN.module.css";

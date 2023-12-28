@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import PopUpRemoveUser from "../components/PopUpRemoveUser";
+import PopUpRemoveUser from "../componentsPT/PTPopUpRemoveUser";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./PTRemoveUser.module.css";
