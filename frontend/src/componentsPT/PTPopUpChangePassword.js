@@ -18,7 +18,7 @@ const PopUpChangePassword = () => {
   return isVisible ? (
     <div className={styles.popUpChangePassword}>
       <img className={styles.dangerSquareIcon} alt="" src="/dangersquare.svg" />
-      <b className={styles.thePasswordHas}>The password has been updated</b>
+      <b className={styles.thePasswordHas}>A palavra-passe foi atualizada.</b>
     </div>
   ) : null;
 };

@@ -3,7 +3,7 @@ import styles from "./PTNotifications.module.css";
 const Notifications = () => {
   return (
     <div className={styles.notifications}>
-      <b className={styles.notifications1}>Notifications</b>
+      <b className={styles.notifications1}>Notificações</b>
       <div className={styles.line} />
       <div className={styles.message2}>
         <img
@@ -12,7 +12,7 @@ const Notifications = () => {
           src="/dangersquare.svg"
         />
         <b className={styles.alertExcessiveUse}>
-          Alert: Excessive use of energy!
+          Alerta: Utilização excessiva de energia!
         </b>
       </div>
       <div className={styles.message2}>
@@ -22,7 +22,7 @@ const Notifications = () => {
           src="/dangersquare.svg"
         />
         <b className={styles.alertExcessiveUse}>
-          Alert: Excessive use of energy!
+          Alerta: Utilização excessiva de energia!
         </b>
       </div>
       <div className={styles.message2}>
@@ -32,7 +32,7 @@ const Notifications = () => {
           src="/dangersquare.svg"
         />
         <b className={styles.alertExcessiveUse}>
-          Alert: Excessive use of energy!
+          Alerta: Utilização excessiva de energia!
         </b>
       </div>
       <div className={styles.message2}>
@@ -42,7 +42,7 @@ const Notifications = () => {
           src="/dangersquare.svg"
         />
         <b className={styles.alertExcessiveUse}>
-          Alert: Excessive use of energy!
+          Alerta: Utilização excessiva de energia!
         </b>
       </div>
       <div className={styles.message2}>
@@ -52,7 +52,7 @@ const Notifications = () => {
           src="/dangersquare.svg"
         />
         <b className={styles.alertExcessiveUse}>
-          Alert: Excessive use of energy!
+          Alerta: Utilização excessiva de energia!
         </b>
       </div>
     </div>

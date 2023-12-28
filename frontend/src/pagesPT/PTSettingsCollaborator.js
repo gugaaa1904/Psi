@@ -91,35 +91,37 @@ const SettingsCollaborator = () => {
         }
 
         const contentType = response.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-          const data = await response.json();
-          console.log(data.status);
+         if (contentType && contentType.includes("application/json")) {
+           const data = await response.json();
+           console.log(data.status);
 
-          if (data.status === "success") {
-            // Realizar redirecionamento para a página desejada
-            navigate("/pt-dashboard");
-          } else {
-            // Se a resposta não for bem-sucedida, mostrar o erro
-            const errorMessage = data.error || "Erro desconhecido";
-            console.error("Erro ao alterar a senha", errorMessage);
-            setMessage(errorMessage);
-            navigate("/pt-dashboard");
-          }
-        } else {
-          // Conteúdo não é JSON válido
-          const text = await response.text();
-          console.error("Resposta não contém JSON válido:", text);
-          setMessage(text);
-        }
-      } catch (error) {
-        console.error("Erro ao processar a resposta:", error);
-        setMessage("Erro ao processar a resposta");
-      }
-    } catch (error) {
-      console.error("Erro ao realizar a solicitação:", error);
-      setMessage("Erro ao realizar a solicitação");
-    }
-  };
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+
+           if (data.status === "success") {
+             // Realizar redirecionamento para a página desejada
+           } else {
+             // Se a resposta não for bem-sucedida, mostrar o erro
+             const errorMessage = data.error || "Erro desconhecido";
+             console.error("Erro ao alterar a senha", errorMessage);
+             setMessage(errorMessage);
+           }
+         } else {
+           // Conteúdo não é JSON válido
+           const text = await response.text();
+           console.error("Resposta não contém JSON válido:", text);
+           setMessage(text);
+         }
+       } catch (error) {
+         console.error("Erro ao processar a resposta:", error);
+         setMessage("Erro ao processar a resposta");
+       }
+     } catch (error) {
+       console.error("Erro ao realizar a solicitação:", error);
+       setMessage("Erro ao realizar a solicitação");
+     }
+   };
 
   return (
     <>
@@ -186,7 +188,7 @@ const SettingsCollaborator = () => {
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
-              <button type="submit" className={styles.changeButton}>
+              <button type="submit" className={styles.changeButton} onClick={openPopUpChangePassword}>
                 <b className={styles.button1}>Alterar</b>
               </button>
 

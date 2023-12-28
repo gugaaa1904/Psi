@@ -94,15 +94,17 @@ const SettingsADMIN = () => {
            const data = await response.json();
            console.log(data.status);
 
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+
            if (data.status === "success") {
              // Realizar redirecionamento para a página desejada
-             navigate("/dashboard");
            } else {
              // Se a resposta não for bem-sucedida, mostrar o erro
              const errorMessage = data.error || "Erro desconhecido";
              console.error("Erro ao alterar a senha", errorMessage);
              setMessage(errorMessage);
-             navigate("/dashboard");
            }
          } else {
            // Conteúdo não é JSON válido
@@ -177,7 +179,7 @@ const SettingsADMIN = () => {
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </label>
-              <button type="submit" className={styles.changeButton}>
+              <button type="submit" className={styles.changeButton} onClick={openPopUpChangePassword}>
                 <b className={styles.button1}>Alterar</b>
               </button>
 

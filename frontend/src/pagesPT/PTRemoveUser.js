@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import PopUpRemoveUser from "../componentsPT/PTPopUpRemoveUser";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
@@ -66,7 +66,15 @@ const RemoveUser = () => {
       <div className={styles.removeUser}>
         <div className={styles.content}>
           <div className={styles.contentChild} />
-          <div className={styles.removeUserButton} onClick={handleRemoveUser}>
+          <div className={styles.removeUserButton} onClick={() => {
+            handleRemoveUser();
+            openPopUpRemoveUser();
+            setTimeout(() => {
+            closePopUpRemoveUser();
+            // Realiza o refresh da página
+            window.location.reload();
+          }, 3000);
+          }}>
             <b className={styles.removeUser1}>Remover Utilizador</b>
           </div>
           <input

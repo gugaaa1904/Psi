@@ -18,7 +18,7 @@ const PopUpRemoveUser = ({ onClose }) => {
   return isVisible ? (
     <div className={styles.popUpRemoveUser}>
       <img className={styles.dangerSquareIcon} alt="" src="/dangersquare.svg" />
-      <b className={styles.theUserHas}>The user has been Removed</b>
+      <b className={styles.theUserHas}>O utilizador foi removido.</b>
     </div>
   ) : null
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import CollaboratorAddedSucessfullyHR from "../componentsPT/PTPopUpAddUser";
-import PortalPopup from "../components/PortalPopup";
+import PortalPopup from "../componentsPT/PTPortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./PTAddUser.module.css";
 
@@ -27,6 +27,14 @@ const AddUser = () => {
     passwordplug: "",
     ipplug: "",
   });
+
+  const openPopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(true);
+  }, []);
+
+  const closePopUpAddCollaborator = useCallback(() => {
+    setPopUpAddCollaboratorOpen(false);
+  }, []);
 
   const onAddUserClick = useCallback(() => {
     // Aqui você deve fazer a requisição para o backend
@@ -57,15 +65,6 @@ const AddUser = () => {
       [name]: value,
     }));
   };
-
-  const openPopUpAddCollaborator = useCallback(() => {
-    setPopUpAddCollaboratorOpen(true);
-  }, []);
-
-  const closePopUpAddCollaborator = useCallback(() => {
-    setPopUpAddCollaboratorOpen(false);
-  }, []);
-
 
   const onSettingsContainerClick = useCallback(() => {
     navigate("/pt-settings-admin");
@@ -241,7 +240,15 @@ const AddUser = () => {
         <button
           className={styles.createNewUserButton}
           autoFocus={true}
-          onClick={onAddUserClick}
+          onClick={() => {
+            onAddUserClick();
+            openPopUpAddCollaborator();
+            /*setTimeout(() => {
+            closePopUpAddCollaborator();
+            // Realiza o refresh da página
+            window.location.reload();
+          }, 3000);*/
+          }}
         >
           <b className={styles.createNewUser}>Criar Utilizador</b>
         </button>
