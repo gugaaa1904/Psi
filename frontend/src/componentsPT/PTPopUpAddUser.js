@@ -4,7 +4,7 @@ import styles from "./PTPopUpAddUser.module.css";
 const PopUpAddUser = () => {
   const [isVisible, setIsVisible] = useState(true);
 
-  /*useEffect(() => {
+  useEffect(() => {
     // Configurando o temporizador para esconder o pop-up após 3 segundos
     const timer = setTimeout(() => {
       setIsVisible(false);
@@ -12,7 +12,7 @@ const PopUpAddUser = () => {
 
     // Limpando o temporizador ao desmontar o componente
     return () => clearTimeout(timer);
-  }, []);*/ // O segundo argumento vazio faz com que o efeito só seja executado uma vez, equivalente a componentDidMount
+  }, []); // O segundo argumento vazio faz com que o efeito só seja executado uma vez, equivalente a componentDidMount
 
   // Renderizando o pop-up apenas se isVisible for verdadeiro
   return isVisible ? (

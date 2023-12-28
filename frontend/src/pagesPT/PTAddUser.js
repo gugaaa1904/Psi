@@ -243,11 +243,11 @@ const AddUser = () => {
           onClick={() => {
             onAddUserClick();
             openPopUpAddCollaborator();
-            /*setTimeout(() => {
+            setTimeout(() => {
             closePopUpAddCollaborator();
             // Realiza o refresh da página
             window.location.reload();
-          }, 3000);*/
+          }, 3000);
           }}
         >
           <b className={styles.createNewUser}>Criar Utilizador</b>
