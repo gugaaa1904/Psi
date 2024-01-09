@@ -104,7 +104,7 @@ class ApexChartClass extends Component {
     }
   }
 
-  render() {
+    render() {
     return (
       <div
         id="chart"
@@ -112,16 +112,20 @@ class ApexChartClass extends Component {
           position: "absolute",
           top: 80,
           width: 750,
+          maxWidth: "100%", 
           left: 1170,
           transform: "translateX(-50%)",
+          overflowX: "auto",
         }}
       >
-        <ReactApexChart
-          options={this.state.options}
-          series={this.state.series}
-          type="bar"
-          height={730}
-        />
+        <div style={{ width: this.state.options.xaxis.categories.length * 150, overflowX: "auto" }}>
+          <ReactApexChart
+            options={this.state.options}
+            series={this.state.series}
+            type="bar"
+            height={730}
+          />
+        </div>
       </div>
     );
   }

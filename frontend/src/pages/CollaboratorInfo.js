@@ -13,12 +13,12 @@ class ApexChartClass extends Component {
         {
           name: "Expected Consume",
           data: [],
-          color: "#005c7d", // Preencheremos isso com os valores da coluna "MONTHLY_USAGE" multiplicados por 2.5
+          color: "#005c7d", 
         },
         {
           name: "Actually Charged",
           data: [],
-          color: "rgb(58, 207, 108)", // Array dinâmico com o mesmo comprimento da série "Consuming"
+          color: "rgb(58, 207, 108)", 
         },
       ],
       options: {
@@ -42,7 +42,7 @@ class ApexChartClass extends Component {
           colors: ["transparent"],
         },
         xaxis: {
-          categories: [], // Preencheremos isso com os valores da coluna "MONTH_YEAR"
+          categories: [], 
         },
         yaxis: {},
         fill: {
@@ -112,16 +112,20 @@ class ApexChartClass extends Component {
           position: "absolute",
           top: 80,
           width: 750,
+          maxWidth: "100%", 
           left: 1170,
           transform: "translateX(-50%)",
+          overflowX: "auto",
         }}
       >
-        <ReactApexChart
-          options={this.state.options}
-          series={this.state.series}
-          type="bar"
-          height={730}
-        />
+        <div style={{ width: this.state.options.xaxis.categories.length * 150, overflowX: "auto" }}>
+          <ReactApexChart
+            options={this.state.options}
+            series={this.state.series}
+            type="bar"
+            height={730}
+          />
+        </div>
       </div>
     );
   }
