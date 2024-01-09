@@ -143,6 +143,7 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.phone}
           />
+          
           <select
             className={styles.gender}
             required={true}
@@ -151,10 +152,14 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.gender}
           >
-            <option value="Male">Masculino</option>
+            <option value="" disabled selected>Select a Gender</option>
+            <option value="Masculino">Masculino</option>
             <option value="Female">Feminino</option>
             <option value="Other">Outro</option>
           </select>
+
+
+          
           <input
             className={styles.age}
             name="age"

@@ -4,8 +4,6 @@ import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddUser.module.css";
 
-
-
 const AddUser = () => {
   const [isPopUpAddCollaboratorOpen, setPopUpAddCollaboratorOpen] =
     useState(false);
@@ -154,6 +152,7 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.phone}
           />
+
           <select
             className={styles.gender}
             required={true}
@@ -162,10 +161,13 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.gender}
           >
+            <option value="" disabled selected>Select a Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
+
+
           <input
             className={styles.age}
             name="age"
