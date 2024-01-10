@@ -103,12 +103,12 @@ input {
 
 .enterTheFields {
   top: 200px;
-  left: 375px;
+  left: 310px;
   position: absolute;
   line-height: 160%;
   font-weight: 600;
   display: inline-block;
-  width: 276px;
+  width: 380px;
 }
 
 .name {
