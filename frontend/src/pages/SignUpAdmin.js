@@ -1,7 +1,7 @@
-import { useCallback } from "react";
+import React, { useState, useEffect, useCallback, Component } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUpAdmin.module.css";
-import React, { useState } from "react";
+
 
 const SignUpAdmin = () => {
   const navigate = useNavigate();
@@ -16,6 +16,29 @@ const SignUpAdmin = () => {
     companyname: "",
     companyImage: null,
   });
+
+  const [companies, setCompanies] = useState([]);
+
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'http://localhost/Psi/backend/services/getcompanies.php',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: {}
+          })
+        const data = await response.json();
+        console.log(data.NAMES);
+        setCompanies(data.NAMES); // Set the companies in state
+      } catch (error) {
+        console.error("Erro ao buscar dados do backend:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -126,7 +149,7 @@ const SignUpAdmin = () => {
           value={formData.password}
         />
 
-        <input
+        <select
           className={styles.companyName}
           name="companyname"
           id="companyname"
@@ -134,8 +157,14 @@ const SignUpAdmin = () => {
           type="text"
           onChange={handleInputChange}
           value={formData.companyname}
-        />
-
+        >
+          {companies.map((company, index) => (
+            <option key={index} value={company}>
+              {company}
+            </option>
+          ))}
+        </select>
+        
         <select
           className={styles.gender}
           required={true}
