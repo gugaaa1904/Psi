@@ -158,6 +158,7 @@ const SignUpAdmin = () => {
           onChange={handleInputChange}
           value={formData.companyname}
         >
+          <option value="" disabled selected>Select a Company</option>
           {companies.map((company, index) => (
             <option key={index} value={company}>
               {company}
@@ -173,6 +174,7 @@ const SignUpAdmin = () => {
           onChange={handleInputChange}
           value={formData.gender}
         >
+          <option value="" disabled selected>Select a Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
