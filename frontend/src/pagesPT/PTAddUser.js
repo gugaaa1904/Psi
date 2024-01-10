@@ -152,7 +152,7 @@ const AddUser = () => {
             onChange={handleInputChange}
             value={formData.gender}
           >
-            <option value="" disabled selected>Select a Gender</option>
+            <option value="" disabled selected>Seleciona o seu Género</option>
             <option value="Masculino">Masculino</option>
             <option value="Female">Feminino</option>
             <option value="Other">Outro</option>
