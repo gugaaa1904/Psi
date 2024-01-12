@@ -170,7 +170,7 @@ const AddUser = () => {
             value={formData.age}
           />
 
-          <div className={styles.contractOfThis}>Contrato deste Utilizador</div>
+          <div className={styles.contractOfThis}>Contrato deste Utilizador:</div>
         </div>
 
         <input

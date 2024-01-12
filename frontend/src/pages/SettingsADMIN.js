@@ -245,7 +245,6 @@ const SettingsADMIN = () => {
           </div>
 
           <div className={styles.title}>Privacy</div>
-          <div className={styles.divider} />
           <div className={styles.divider1} />
           <div className={styles.divider1} />
         </div>

@@ -95,17 +95,7 @@ const ProfileADMIN = () => {
         <div className={styles.backgroundImage}>
           <img className={styles.unsplashNwaetf6qo0Icon} alt="" src={imageBaseUrl}/>
         </div>
-        <div>
-          <input
-            type="file"
-            id="uploadInput"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-          <label htmlFor="uploadInput" className={styles.editPhotoButton}>
-            <b className={styles.button}>Editar Foto</b>
-          </label>
-        </div>
+
         <div className={styles.profileInfo}>
           <div className={styles.profileInfoChild} />
           <div className={styles.fullNameContainer}>
@@ -148,6 +138,17 @@ const ProfileADMIN = () => {
           </div>
 
           <b className={styles.name}>{fullName}</b>
+          <div>
+          <input
+            type="file"
+            id="uploadInput"
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
+          <label htmlFor="uploadInput" className={styles.editPhotoButton}>
+            <b className={styles.button}>Editar Foto</b>
+          </label>
+        </div>
         </div>
         <img className={styles.profileIcon} alt="" src={imageBaseUrll} />
       </div>

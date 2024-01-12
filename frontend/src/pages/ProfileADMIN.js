@@ -11,14 +11,10 @@ const ProfileADMIN = () => {
   const [Gender , setGender] = useState('');
   const [Phone , setPhone] = useState('');
   const [Address , setAddress] = useState('');
-  const[Email, setEmail] = useState('');
+  const [Email, setEmail] = useState('');
   const [CompanyName , setCompanyName] = useState('');
-  const [photo, setPhoto] = useState('');
   const [imageBaseUrl, setImageBaseUrl] = useState('');
   const [imageBaseUrll, setImageBaseUrll] = useState('');
-
-  
-  
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -99,17 +95,7 @@ const ProfileADMIN = () => {
         <div className={styles.backgroundImage}>
           <img className={styles.unsplashNwaetf6qo0Icon} alt="" src={imageBaseUrl}/>
         </div>
-        <div>
-          <input
-            type="file"
-            id="uploadInput"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-          <label htmlFor="uploadInput" className={styles.editPhotoButton}>
-            <b className={styles.button}>Edit Photo</b>
-          </label>
-        </div>
+
         <div className={styles.profileInfo}>
           <div className={styles.profileInfoChild} />
           <div className={styles.fullNameContainer}>
@@ -152,6 +138,17 @@ const ProfileADMIN = () => {
           </div>
 
           <b className={styles.name}>{fullName}</b>
+          <div>
+            <input
+              type="file"
+              id="uploadInput"
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+            <label htmlFor="uploadInput" className={styles.editPhotoButton}>
+              <b className={styles.button}>Edit Photo</b>
+            </label>
+          </div>
         </div>
         <img className={styles.profileIcon} alt="" src={imageBaseUrll} />
       </div>
