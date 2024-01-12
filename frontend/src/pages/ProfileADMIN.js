@@ -41,10 +41,6 @@ const ProfileADMIN = () => {
     navigate("/remove-user");
   }, [navigate]);
 
-  const onReportsContainerClick = useCallback(() => {
-    navigate("/reports-admin");
-  }, [navigate]);
-
   const onAddUserContainerClick = useCallback(() => {
     navigate("/add-user");
   }, [navigate]);
@@ -165,9 +161,6 @@ const ProfileADMIN = () => {
         <div className={styles.menu}>
           <div className={styles.profile1}>
             <b className={styles.profile2}>Profile</b>
-          </div>
-          <div className={styles.reports} onClick={onReportsContainerClick}>
-            <div className={styles.reports1}>Reports</div>
           </div>
           <div
             className={styles.collaboratorInformation}
