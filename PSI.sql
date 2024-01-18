@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2024 at 08:36 PM
+-- Generation Time: Jan 18, 2024 at 05:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,8 +46,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ADMIN_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `PHOTOO`) VALUES
-(51, 54, 'Rute Almeida', 'DHL', 'admin@gmail.com', 351, 21, 'Female', '123', 'Rua das Inspirações , Póvoa de Santa Iria', 'services/images/11111111.png'),
-(52, 54, 'Rogério Semedo', 'DHL', 'admin2@gmail.com', 351, 25, 'Male', '123', 'Rua de Odivelas', 'services/images/222222.png');
+(51, 54, 'Rute Almeida', 'DHL', 'admin@gmail.com', 923748167, 21, 'Female', '123', 'Rua das Inspirações , Póvoa de Santa Iria', 'services/images/11111111.png'),
+(52, 54, 'Rogério Semedo', 'DHL', 'admin2@gmail.com', 964372817, 25, 'Male', '123', 'Rua de Santo António, Lisboa', 'services/images/222222.png');
 
 -- --------------------------------------------------------
 
@@ -81,8 +81,8 @@ CREATE TABLE `collaborator` (
 --
 
 INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`, `EMAIL_PLUG`, `PASSWORD_PLUG`, `IP_PLUG`, `PHOTOO`) VALUES
-(77, 54, 'Nuno Bernardino', '', 'collaborator@gmail.com', 351, 20, 'Male', '123', 'Rua dos Descobrimentos', 0.25, 30.00, '2023-12-11', '2023-12-15', 'joao57rafa@gmail.com', 'Novaims1', '192.168.1.2', NULL),
-(78, 54, 'Diogo Correia', '', 'collaborator2@gmail.com', 351, 25, 'Male', '123', 'Costa da caparica', 0.30, 30.00, '2023-12-05', '2024-02-06', 'joao67rafa@gmail.com', 'Novaims1', '192.168.1.5', NULL);
+(1, 54, 'Diogo Correia', 'DHL', 'collaborator1@gmail.com', 914627389, 25, 'Male', '123', 'Rua da Prata, Amadora', 0.20, 30.00, '2023-12-05', '2024-02-06', 'joao67rafa@gmail.com', 'Novaims1', '192.168.1.5', ''),
+(2, 54, 'Gonçalo Custódio', '', 'collaborator2@gmail.com', 913900489, 21, 'Male', '123', 'Rua Maria José Cardo n14 1DT', 0.20, 15.00, '2024-01-07', '2024-01-30', 'joao57rafa@gmail.com', 'Novaims1', '192.168.1.2', NULL);
 
 -- --------------------------------------------------------
 
@@ -106,8 +106,7 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`COMPANY_ID`, `NAME`, `ADDRESS`, `PHONE`, `NUMBER_EMPLOYEES`, `CNPJ`, `EMAIL`, `PHOTO`) VALUES
-(54, 'DHL', 'Av. Luis de Camões , Lisboa', 351, 500, 423423, 'dhl@gmail.com', 'services/images/423423.png'),
-(56, 'Tesla', 'Rua Maria José Cardo n14 1DT', 342624567, 355555, 123, 'tesla@gmail.com', 'services/images/123.png');
+(54, 'DHL', 'Av. Luis de Camões , Lisboa', 968263745, 500, 423423, 'dhl@gmail.com', 'services/images/423423.png');
 
 -- --------------------------------------------------------
 
@@ -132,17 +131,10 @@ CREATE TABLE `consuming` (
 --
 
 INSERT INTO `consuming` (`CONSUMING_ID`, `COLLABORATOR_ID`, `DAILY_USAGE`, `DAILY_RUNTIME`, `DAY`, `MONTH_YEAR`, `WEEKLY_USAGE`, `MONTHLY_USAGE`, `YEAR`) VALUES
-(155, 77, 12, 38, 6, '12', 18, 38, 2023),
-(156, 77, 2, 38, 7, '12', 20, 40, 2023),
-(157, 77, 15, 38, 8, '12', 35, 55, 2023),
-(158, 77, 5, 38, 9, '12', 40, 60, 2023),
-(159, 77, 4, 38, 10, '12', 44, 64, 2023),
-(160, 77, 3, 39, 11, '12', 47, 67, 2023),
-(163, 78, 1, 56, 10, '12', 1, 15, 2023),
-(165, 78, 6, 56, 11, '12', 7, 22, 2023),
-(166, 77, 2, 38, 12, '12', 20, 40, 2023),
-(167, 77, 2, 38, 13, '12', 20, 40, 2023),
-(168, 77, 2, 38, 14, '12', 20, 40, 2023);
+(155, 2, 12, 38, 6, '1', 12, 12, 2024),
+(156, 2, 2, 38, 7, '1', 14, 14, 2024),
+(163, 1, 1, 56, 10, '1', 1, 1, 2024),
+(165, 1, 6, 56, 11, '1', 7, 7, 2024);
 
 --
 -- Indexes for dumped tables
@@ -189,13 +181,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `collaborator`
 --
 ALTER TABLE `collaborator`
-  MODIFY `COLLABORATOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `COLLABORATOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=782;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `COMPANY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `COMPANY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `consuming`
