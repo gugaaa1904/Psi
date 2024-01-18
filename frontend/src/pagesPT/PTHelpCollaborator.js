@@ -56,10 +56,9 @@ const HelpCollaborator = () => {
                </ul>
                <p
                  className={styles.theActivityAnd}
-               >{`  > Os dashboards de Atividade e Variação com base no Contrato podem ser visualizados de forma expandida ao serem clicados, enquanto os dashboards de Energia e Despesas Mensais são informativos e têm ambos o botão de menu suspenso para escolher visualizar os dados semanalmente ou mensalmente.`}</p>
-               <p
-                 className={styles.theActivityAnd}
-               >{`  > O conteúdo é visual, informativo e não interativo, com o propósito de fornecer uma visão mais detalhada sobre o histórico de cobranças e seus custos respectivos.`}</p><p className={styles.blankLine}>&nbsp;</p>
+               >{`  > Visualize seus consumos e gastos diários, semanais, mensais, você pode alterar a perspectiva de visualização e salvar o gráfico “Despesas Mensais”.`}</p>
+               
+               <p className={styles.blankLine}>&nbsp;</p>
                <ul className={styles.whatCanYouDoInTheAddUse}>
                  <li className={styles.whatCanYouDoInTheAddUse1}>
                    <span>O que podes fazer na secção de Relatórios?</span>
@@ -67,7 +66,7 @@ const HelpCollaborator = () => {
                </ul>
                <p
                  className={styles.theActivityAnd}
-               >{`  > Um relatório baseado nos Dashboards, não interativo.`}</p>
+               >{`  > O conteúdo é visual, informativo e não interativo, com o propósito de fornecer uma visão mais detalhada sobre o histórico de cobranças e seus custos respectivos.`}</p>
                <p className={styles.theActivityAnd}>&nbsp;</p>
                <ul className={styles.whatCanYouDoInTheAddUse}>
                  <li className={styles.whatCanYouDoInTheAddUse1}>
@@ -105,11 +104,12 @@ const HelpCollaborator = () => {
 
          <div className={styles.ifYouHaveContainer}>
            <span>
-              Se tiver alguma pergunta adicional, envie um e-mail para a nossa equipa de suporte -
+             Se tiver alguma pergunta adicional, envie um e-mail para a nossa
+             equipa de suporte -
            </span>
            <span className={styles.infochargegmailcom}>
              {" "}
-             infocharge@gmail.com
+             infocharge.sup@gmail.com
            </span>
          </div>
          <div className={styles.sidebar}>

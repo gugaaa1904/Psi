@@ -34,77 +34,106 @@ const HelpADMIN = () => {
   return (
     <>
       <div className={styles.helpAdmin}>
-         <div className={styles.content}>
-           <div className={styles.wereHereForWhateverYouNe} />
-           <div className={styles.faqFrequentlyAskedQuestion}>
-             <div className={styles.divider} />
-             <div className={styles.faqFrequentlyAsked}>
-               FAQ (Perguntas Frequentes)
-             </div>
-           </div>
-           <div className={styles.rectangleParent}>
-             <div className={styles.groupChild} />
-             <div className={styles.weHopeWeve}>
-               Esperamos ter conseguido ajudar! Agora, aproveite a InfoCharge.
-             </div>
-             <div className={styles.whatCanYouContainer}>
-               <ul className={styles.whatCanYouDoInTheAddUse}>
-                 <li className={styles.whatCanYouDoInTheAddUse1}>
-                   <span>O que podes fazer na secção de Dashboards?</span>
-                 </li>
-               </ul>
-               <p
-                 className={styles.theActivityAnd}
-               >{`  > Os dashboards de Atividade e Variação com base no Contrato podem ser visualizados de forma expandida ao serem clicados, enquanto os dashboards de Energia e Despesas Mensais são informativos e têm ambos o botão de menu suspenso para escolher visualizar os dados semanalmente ou mensalmente.`}</p>
-               <p
-                 className={styles.theActivityAnd}
-               >{`  > O conteúdo é visual, informativo e não interativo, com o propósito de fornecer uma visão mais detalhada sobre o histórico de cobranças e seus custos respectivos.`}</p><p className={styles.blankLine}>&nbsp;</p>
-               <ul className={styles.whatCanYouDoInTheAddUse}>
-                 <li className={styles.whatCanYouDoInTheAddUse1}>
-                   <span>O que podes fazer na secção de Relatórios?</span>
-                 </li>
-               </ul>
-               <p
-                 className={styles.theActivityAnd}
-               >{`  > Um relatório baseado nos Dashboards, não interativo.`}</p>
-               <p className={styles.theActivityAnd}>&nbsp;</p>
-               <ul className={styles.whatCanYouDoInTheAddUse}>
-                 <li className={styles.whatCanYouDoInTheAddUse1}>
-                   <span>O que podes fazer na secção de Perfil?</span>
-                 </li>
-               </ul>
-               <p
-                 className={styles.theActivityAnd}
-               >{`  > Editar a sua foto de perfil e ver as suas notificações.`}</p>
-               <p className={styles.theActivityAnd}>&nbsp;</p>
-               <ul className={styles.whatCanYouDoInTheAddUse}>
-                 <li className={styles.whatCanYouDoInTheAddUse1}>
-                   <span>O que podes fazer na secção de Definições?</span>
-                 </li>
-               </ul>
-               <p
-                 className={styles.theActivityAnd}
-               >{`  > Alterar o idioma da aplicação, mudar a sua senha e fazer logout. Também disponível as nossas Políticas de Privacidade e Termos e Condições.`}</p>
-             </div>
-             <div className={styles.wereHereFor}>
-               Estamos aqui para o que precisar!
-             </div>
-           </div>
-         </div>
+        <div className={styles.content}>
+          <div className={styles.wereHereForWhateverYouNe} />
+          <div className={styles.faqFrequentlyAskedQuestion}>
+            <div className={styles.divider} />
+            <div className={styles.faqFrequentlyAsked}>
+              FAQ (Perguntas Frequentes)
+            </div>
+          </div>
+          <div className={styles.rectangleParent}>
+            <div className={styles.groupChild} />
+            <div className={styles.weHopeWeve}>
+              Esperamos ter conseguido ajudar! Agora, aproveite a InfoCharge.
+            </div>
+            <div className={styles.whatCanYouContainer}>
+              <ul className={styles.whatCanYouDoInTheAddUse}>
+                <li className={styles.whatCanYouDoInTheAddUse1}>
+                  <span>
+                    O que podes fazer na secção de Adicionar Utilizador?
+                  </span>
+                </li>
+              </ul>
+              <p
+                className={styles.theActivityAnd}
+              >{`  > Os painéis Atividade e Variação com base no contrato podem ser visualizados de forma estendida quando clicados, enquanto as Despesas de energia e mensais são informativas e possuem o botão suspenso para optar por visualizar os dados semanais ou mensais.`}</p>
+
+              <p className={styles.blankLine}>&nbsp;</p>
+              <ul className={styles.whatCanYouDoInTheAddUse}>
+                <li className={styles.whatCanYouDoInTheAddUse1}>
+                  <span>
+                    O que podes fazer na secção de Remover Utilizador?
+                  </span>
+                </li>
+              </ul>
+              <p
+                className={styles.theActivityAnd}
+              >{`  > Ao meter o Nome e Email de um colaborador, poderá remover a conta do mesmo.`}</p>
+
+              <p className={styles.blankLine}>&nbsp;</p>
+              <ul className={styles.whatCanYouDoInTheAddUse}>
+                <li className={styles.whatCanYouDoInTheAddUse1}>
+                  <span>
+                    O que podes fazer na secção da Empresa?
+                  </span>
+                </li>
+              </ul>
+              <p
+                className={styles.theActivityAnd}
+              >{`  > O conteúdo é visual, informativo e não interativo, com o objetivo de dar uma melhor visão sobre o histórico de cobranças e seus respectivos custos.`}</p>
+
+              <p className={styles.blankLine}>&nbsp;</p>
+              <ul className={styles.whatCanYouDoInTheAddUse}>
+                <li className={styles.whatCanYouDoInTheAddUse1}>
+                  <span>
+                    O que podes fazer na secção dos Colaboradores?
+                  </span>
+                </li>
+              </ul>
+              <p
+                className={styles.theActivityAnd}
+              >{`  > O conteúdo é visual, informativo e não interativo, com o objetivo de dar uma melhor visão sobre o histórico de cobranças e seus respectivos custos.`}</p>
+
+              <p className={styles.theActivityAnd}>&nbsp;</p>
+              <ul className={styles.whatCanYouDoInTheAddUse}>
+                <li className={styles.whatCanYouDoInTheAddUse1}>
+                  <span>O que podes fazer na secção de Perfil?</span>
+                </li>
+              </ul>
+              <p
+                className={styles.theActivityAnd}
+              >{`  > Editar a sua foto de perfil e vizualizar as suas informações.`}</p>
+              <p className={styles.theActivityAnd}>&nbsp;</p>
+              <ul className={styles.whatCanYouDoInTheAddUse}>
+                <li className={styles.whatCanYouDoInTheAddUse1}>
+                  <span>O que podes fazer na secção de Definições?</span>
+                </li>
+              </ul>
+              <p
+                className={styles.theActivityAnd}
+              >{`  > Alterar o idioma da aplicação, mudar a sua senha e fazer logout. Também disponível as nossas Políticas de Privacidade e Termos e Condições.`}</p>
+            </div>
+            <div className={styles.wereHereFor}>
+              Estamos aqui para o que precisar!
+            </div>
+          </div>
+        </div>
 
         <div className={styles.header}>
           <b className={styles.help}>Ajuda</b>
         </div>
 
         <div className={styles.ifYouHaveContainer}>
-           <span>
-              Se tiver alguma pergunta adicional, envie um e-mail para a nossa equipa de suporte -
-           </span>
-           <span className={styles.infochargegmailcom}>
-             {" "}
-             infocharge@gmail.com
-           </span>
-         </div>
+          <span>
+            Se tiver alguma pergunta adicional, envie um e-mail para a nossa
+            equipa de suporte -
+          </span>
+          <span className={styles.infochargegmailcom}>
+            {" "}
+            infocharge.sup@gmail.com
+          </span>
+        </div>
         <div className={styles.sidebar}>
           <div className={styles.settings} onClick={onSettingsContainerClick}>
             <div className={styles.settings1}>Definições</div>

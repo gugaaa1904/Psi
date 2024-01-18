@@ -51,32 +51,21 @@ const HelpCollaborator = () => {
              <div className={styles.whatCanYouContainer}>
                <ul className={styles.whatCanYouDoInTheAddUse}>
                  <li className={styles.whatCanYouDoInTheAddUse1}>
-                   <span>What can you do in the Add User Section?</span>
+                   <span>What can you do in the Dashboards Section?</span>
                  </li>
                </ul>
                <p
                  className={styles.theActivityAnd}
-               >{`  > The Activity and Variation Based on the Contract dashboards can be viewed extended when clicked, while the Power and Monthly Expenses are informative an have both the drop down button to choose to view the data weeky or monthy.`}</p>
+               >{`  > Visualize your daily, weekly, monthly consuming and spendings, you can change the viewing perspective and save the "Monthly Expenses" graphic.`}</p>
                <p className={styles.blankLine}>&nbsp;</p>
                <ul className={styles.whatCanYouDoInTheAddUse}>
                  <li className={styles.whatCanYouDoInTheAddUse1}>
-                   <span>What can you do in the Remove User Section?</span>
+                   <span>What can you do in the Reports Section?</span>
                  </li>
                </ul>
                <p
                  className={styles.theActivityAnd}
                >{`  > The content is visual, informative and not interactive, with the purpose of giving a better insight on the history of charges and their respective costs.`}</p>
-               <p className={styles.blankLine}>&nbsp;</p>
-               <ul className={styles.whatCanYouDoInTheAddUse}>
-                 <li className={styles.whatCanYouDoInTheAddUse1}>
-                   <span>
-                     What can you do in the Company Information Section?
-                   </span>
-                 </li>
-               </ul>
-               <p
-                 className={styles.theActivityAnd}
-               >{`  >  A full report based on the Dashboards, not interactive.`}</p>
                <p className={styles.theActivityAnd}>&nbsp;</p>
                <ul className={styles.whatCanYouDoInTheAddUse}>
                  <li className={styles.whatCanYouDoInTheAddUse1}>
@@ -119,7 +108,7 @@ const HelpCollaborator = () => {
            </span>
            <span className={styles.infochargegmailcom}>
              {" "}
-             infocharge@gmail.com
+             infocharge.sup@gmail.com
            </span>
          </div>
          <div className={styles.sidebar}>

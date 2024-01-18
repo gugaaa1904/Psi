@@ -112,7 +112,7 @@ const HelpADMIN = () => {
           </span>
           <span className={styles.infochargegmailcom}>
             {" "}
-            infocharge@gmail.com
+            infocharge.sup@gmail.com
           </span>
         </div>
         <div className={styles.sidebar}>

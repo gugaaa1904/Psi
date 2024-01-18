@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 $collaboratorId = $_GET['collaborator_id'];
 
 // Consulta SQL para obter os dados desejados, com filtro opcional do mês
-$sql = "SELECT c.DAY, c.MONTH_YEAR, c.DAILY_RUNTIME, c.WEEKLY_USAGE, c.MONTHLY_USAGE, co.TARIFF
+$sql = "SELECT c.DAY, c.MONTH_YEAR, c.DAILY_USAGE, c.DAILY_RUNTIME, c.WEEKLY_USAGE, c.MONTHLY_USAGE, co.TARIFF
         FROM consuming c
         JOIN collaborator co ON c.COLLABORATOR_ID = co.COLLABORATOR_ID
         WHERE c.COLLABORATOR_ID = ?
@@ -37,22 +37,21 @@ if ($stmt->execute()) {
 
     while ($row = $result->fetch_assoc()) {
         $monthYear = $row["MONTH_YEAR"];
+        $formattedDate = $row["DAY"] . '/' . $monthYear;
+        $formattedUsage = $row["DAILY_USAGE"] . ' kW';
+        $formattedUsagecost = $row["DAILY_USAGE"] * $row["TARIFF"] . ' €';
+        $formattedUsagecostmonthly = $row["MONTHLY_USAGE"] * $row["TARIFF"] . ' €';
+        $formattedDatemonth = date("F", mktime(0, 0, 0, $monthYear, 1));
+        $formattedUsagemonth = $row["MONTHLY_USAGE"] . ' kW';
 
-        if (!in_array($monthYear, $monthsProcessed)) {
-            $formattedDate = $row["DAY"] . '/' . $monthYear;
-            $formattedUsagecostmonthly = $row["MONTHLY_USAGE"] * $row["TARIFF"] . ' €';
-            $formattedDatemonth = date("F", mktime(0, 0, 0, $monthYear, 1));
-            $formattedUsagemonth = $row["MONTHLY_USAGE"] . ' kW';
-
-            $dados[] = array(
-                'DATE_USAGE' => $formattedDate,
-                'MONTHLY_USAGEE' => $formattedUsagecostmonthly,
-                'MONTH_USAGE' => $formattedDatemonth,
-                'MONTHLY_USAGE' => $formattedUsagemonth,
-            );
-
-            $monthsProcessed[] = $monthYear;
-        }
+        $dados[] = array(
+            'DATE_USAGE' => $formattedDate,
+            'DAILY_USAGE' => $formattedUsage,
+            'DAILY_USAGEE' => $formattedUsagecost,
+            'MONTHLY_USAGEE' => $formattedUsagecostmonthly,
+            'MONTH_USAGE' => $formattedDatemonth,
+            'MONTHLY_USAGE' => $formattedUsagemonth,
+        );
     }
 
     echo json_encode($dados);

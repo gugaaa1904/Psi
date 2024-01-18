@@ -295,6 +295,22 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
+   useEffect(() => {
+     const fetchData = async () => {
+       try {
+         const collaboratorId = sessionStorage.getItem("collaborator_id");
+         const response = await axios.get(
+           `http://localhost/Psi/backend/services/report3.php?collaborator_id=${collaboratorId}`
+         );
+         setTimelineData(response.data);
+       } catch (error) {
+         console.error("Erro ao buscar dados da API:", error);
+       }
+     };
+
+     fetchData();
+   }, []);
+
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
   }, []);
@@ -382,7 +398,7 @@ const Dashboard = () => {
 
         <div className={styles.analysis2}>
           <b className={styles.resultsHeader}>
-            You loaded it on the following days and got the following results:
+            You loaded it on the following months and got the following results:
           </b>
           <Scrollbars autoHide style={{ maxHeight: '260px', width: '100%' }}>
             <ul className={styles.november5October6Septemb}>
