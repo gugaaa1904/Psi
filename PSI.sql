@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2024 at 05:31 PM
+-- Generation Time: Jan 18, 2024 at 06:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -131,10 +131,18 @@ CREATE TABLE `consuming` (
 --
 
 INSERT INTO `consuming` (`CONSUMING_ID`, `COLLABORATOR_ID`, `DAILY_USAGE`, `DAILY_RUNTIME`, `DAY`, `MONTH_YEAR`, `WEEKLY_USAGE`, `MONTHLY_USAGE`, `YEAR`) VALUES
-(155, 2, 12, 38, 6, '1', 12, 12, 2024),
-(156, 2, 2, 38, 7, '1', 14, 14, 2024),
-(163, 1, 1, 56, 10, '1', 1, 1, 2024),
-(165, 1, 6, 56, 11, '1', 7, 7, 2024);
+(155, 2, 4, 38, 1, '1', 4, 4, 2024),
+(156, 2, 2, 38, 2, '1', 6, 6, 2024),
+(157, 2, 3, 38, 10, '1', 3, 9, 2024),
+(158, 2, 6, 38, 12, '1', 9, 15, 2024),
+(159, 2, 2, 38, 14, '1', 14, 17, 2024),
+(160, 2, 7, 38, 15, '1', 21, 24, 2024),
+(169, 1, 2, 38, 1, '1', 2, 2, 2024),
+(170, 1, 5, 38, 2, '1', 7, 9, 2024),
+(171, 1, 1, 38, 10, '1', 1, 10, 2024),
+(172, 1, 2, 38, 12, '1', 3, 13, 2024),
+(173, 1, 8, 38, 14, '1', 11, 24, 2024),
+(174, 1, 5, 38, 15, '1', 16, 40, 2024);
 
 --
 -- Indexes for dumped tables
@@ -193,7 +201,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `consuming`
 --
 ALTER TABLE `consuming`
-  MODIFY `CONSUMING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `CONSUMING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- Constraints for dumped tables
