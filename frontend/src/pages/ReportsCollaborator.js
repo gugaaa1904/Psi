@@ -278,38 +278,37 @@ const Dashboard = () => {
   const [selectedMonth, setSelectedMonth] = useState(1); // Valor padrão ou vazio
   const [monthlyUsageData, setMonthlyUsageData] = useState([]);
   const [timelineData, setTimelineData] = useState([]);
+  const [timelineDataReport3, setTimelineDataReport3] = useState([]);
+  const [timelineDataReport2, setTimelineDataReport2] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataReport2 = async () => {
       try {
         const collaboratorId = sessionStorage.getItem("collaborator_id");
         const response = await axios.get(
           `http://localhost/Psi/backend/services/report2.php?collaborator_id=${collaboratorId}`
         );
-        setTimelineData(response.data);
+        setTimelineDataReport2(response.data);
       } catch (error) {
-        console.error("Erro ao buscar dados da API:", error);
+        console.error("Erro ao buscar dados da API (report2.php):", error);
       }
     };
 
-    fetchData();
+    const fetchDataReport3 = async () => {
+      try {
+        const collaboratorId = sessionStorage.getItem("collaborator_id");
+        const response = await axios.get(
+          `http://localhost/Psi/backend/services/report3.php?collaborator_id=${collaboratorId}`
+        );
+        setTimelineDataReport3(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar dados da API (report3.php):", error);
+      }
+    };
+
+    fetchDataReport2();
+    fetchDataReport3();
   }, []);
-
-   useEffect(() => {
-     const fetchData = async () => {
-       try {
-         const collaboratorId = sessionStorage.getItem("collaborator_id");
-         const response = await axios.get(
-           `http://localhost/Psi/backend/services/report3.php?collaborator_id=${collaboratorId}`
-         );
-         setTimelineData(response.data);
-       } catch (error) {
-         console.error("Erro ao buscar dados da API:", error);
-       }
-     };
-
-     fetchData();
-   }, []);
 
   const openNotifications = useCallback(() => {
     setNotificationsOpen(true);
@@ -366,7 +365,7 @@ const Dashboard = () => {
             </b>
             <Scrollbars autoHide style={{ maxHeight: '250px', width: '100%' }}>
               <ul className={styles.analysisChild}>
-                {timelineData.map((item, index) => (
+                {timelineDataReport3.map((item) => (
                   <li key={item.DATE_USAGE}>
                     <span>
                       In day{" "}
@@ -402,7 +401,7 @@ const Dashboard = () => {
           </b>
           <Scrollbars autoHide style={{ maxHeight: '260px', width: '100%' }}>
             <ul className={styles.november5October6Septemb}>
-              {timelineData.reduce((uniqueItems, item) => {
+              {timelineDataReport2.reduce((uniqueItems, item) => {
                 const existingItemIndex = uniqueItems.findIndex(
                   (existingItem) => existingItem.DATE_USAGE === item.DATE_USAGE
                 );
