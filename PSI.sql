@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2024 at 06:13 PM
+-- Generation Time: Jan 18, 2024 at 06:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -81,8 +81,8 @@ CREATE TABLE `collaborator` (
 --
 
 INSERT INTO `collaborator` (`COLLABORATOR_ID`, `COMPANY_ID`, `NAME`, `COMPANYNAME`, `EMAIL`, `PHONE`, `AGE`, `GENDER`, `PASSWORD`, `ADDRESS`, `TARIFF`, `PLAFOND`, `START_DATE`, `END_DATE`, `EMAIL_PLUG`, `PASSWORD_PLUG`, `IP_PLUG`, `PHOTOO`) VALUES
-(1, 54, 'Diogo Correia', 'DHL', 'collaborator1@gmail.com', 914627389, 25, 'Male', '123', 'Rua da Prata, Amadora', 0.20, 30.00, '2023-12-05', '2024-02-06', 'joao67rafa@gmail.com', 'Novaims1', '192.168.1.5', ''),
-(2, 54, 'Gonçalo Custódio', '', 'collaborator2@gmail.com', 913900489, 21, 'Male', '123', 'Rua Maria José Cardo n14 1DT', 0.20, 15.00, '2024-01-07', '2024-01-30', 'joao57rafa@gmail.com', 'Novaims1', '192.168.1.2', NULL);
+(1, 54, 'Diogo Correia', 'DHL', 'collaborator1@gmail.com', 914627389, 25, 'Male', '123', 'Rua da Prata, Amadora', 0.20, 15.00, '2023-12-05', '2024-02-06', 'joao67rafa@gmail.com', 'Novaims1', '192.168.1.5', ''),
+(2, 54, 'Gonçalo Custódio', '', 'collaborator2@gmail.com', 913900489, 21, 'Male', '123', 'Rua Maria José Cardo n14 1DT', 0.20, 10.00, '2024-01-07', '2024-01-30', 'joao57rafa@gmail.com', 'Novaims1', '192.168.1.2', NULL);
 
 -- --------------------------------------------------------
 
