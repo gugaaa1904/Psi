@@ -57,7 +57,7 @@ const HelpADMIN = () => {
               </ul>
               <p
                 className={styles.theActivityAnd}
-              >{`  > Os painéis Atividade e Variação com base no contrato podem ser visualizados de forma estendida quando clicados, enquanto as Despesas de energia e mensais são informativas e possuem o botão suspenso para optar por visualizar os dados semanais ou mensais.`}</p>
+              >{`  > Para Adicionar um Utilizador (Colaborador), necessita de preencher todos os campos com as informações do próprio colaborador, e este será associado automaticamente á sua empresa.`}</p>
 
               <p className={styles.blankLine}>&nbsp;</p>
               <ul className={styles.whatCanYouDoInTheAddUse}>
@@ -81,7 +81,7 @@ const HelpADMIN = () => {
               </ul>
               <p
                 className={styles.theActivityAnd}
-              >{`  > O conteúdo é visual, informativo e não interativo, com o objetivo de dar uma melhor visão sobre o histórico de cobranças e seus respectivos custos.`}</p>
+              >{`  > O conteúdo é visual, informativo e tem a habilidade de mudar a maneira como quer ver os dados, semanais ou mensais, com o objetivo de dar uma melhor visão sobre o impacto ambiental e os valores totais de consumo e de gastos.`}</p>
 
               <p className={styles.blankLine}>&nbsp;</p>
               <ul className={styles.whatCanYouDoInTheAddUse}>
@@ -93,7 +93,7 @@ const HelpADMIN = () => {
               </ul>
               <p
                 className={styles.theActivityAnd}
-              >{`  > O conteúdo é visual, informativo e não interativo, com o objetivo de dar uma melhor visão sobre o histórico de cobranças e seus respectivos custos.`}</p>
+              >{`  > Nesta secção pode ver em detalhe o consumo geral de cada utilizador, incluindo os seus gastos totais em € e kWh, podendo também ver os dados diários, semanais e mensais.`}</p>
 
               <p className={styles.theActivityAnd}>&nbsp;</p>
               <ul className={styles.whatCanYouDoInTheAddUse}>

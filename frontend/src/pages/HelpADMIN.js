@@ -55,7 +55,7 @@ const HelpADMIN = () => {
               </ul>
               <p
                 className={styles.theActivityAnd}
-              >{`  > The Activity and Variation Based on the Contract dashboards can be viewed extended when clicked, while the Power and Monthly Expenses are informative an have both the drop down button to choose to view the data weeky or monthy.`}</p>
+              >{`  > To Add a User (Collaborator), you need to fill in all the fields with the employee's information, and this will be automatically associated with your company.`}</p>
               <p className={styles.blankLine}>&nbsp;</p>
               <ul className={styles.whatCanYouDoInTheAddUse}>
                 <li className={styles.whatCanYouDoInTheAddUse1}>
@@ -64,7 +64,7 @@ const HelpADMIN = () => {
               </ul>
               <p
                 className={styles.theActivityAnd}
-              >{`  > The content is visual, informative and not interactive, with the purpose of giving a better insight on the history of charges and their respective costs.`}</p>
+              >{`  > By entering a collaborator's Name and Email, you can remove their account.`}</p>
               <p className={styles.blankLine}>&nbsp;</p>
               <ul className={styles.whatCanYouDoInTheAddUse}>
                 <li className={styles.whatCanYouDoInTheAddUse1}>
@@ -75,7 +75,20 @@ const HelpADMIN = () => {
               </ul>
               <p
                 className={styles.theActivityAnd}
-              >{`  >  A full report based on the Dashboards, not interactive.`}</p>
+              >{`  > The content is visual, informative and has the ability to change the way you want to see the data, weekly or monthly, with the aim of giving a better view of the environmental impact and total consumption and spending values.`}</p>
+
+              <p className={styles.blankLine}>&nbsp;</p>
+              <ul className={styles.whatCanYouDoInTheAddUse}>
+                <li className={styles.whatCanYouDoInTheAddUse1}>
+                  <span>
+                    What can you do in the Collaborator Information Section?
+                  </span>
+                </li>
+              </ul>
+              <p
+                className={styles.theActivityAnd}
+              >{`  > In this section you can see in detail the general consumption of each user, including their total expenses in € and kWh, and you can also see daily, weekly and monthly data.`}</p>
+              
               <p className={styles.theActivityAnd}>&nbsp;</p>
               <ul className={styles.whatCanYouDoInTheAddUse}>
                 <li className={styles.whatCanYouDoInTheAddUse1}>
@@ -84,7 +97,7 @@ const HelpADMIN = () => {
               </ul>
               <p
                 className={styles.theActivityAnd}
-              >{`  > Edit your profile photo an see your Notifications.`}</p>
+              >{`  > Edit your profile photo and view your information.`}</p>
               <p className={styles.theActivityAnd}>&nbsp;</p>
               <ul className={styles.whatCanYouDoInTheAddUse}>
                 <li className={styles.whatCanYouDoInTheAddUse1}>
